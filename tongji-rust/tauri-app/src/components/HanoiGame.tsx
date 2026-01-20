@@ -23,13 +23,9 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     toPillar: Pillar;
     progress: number; // 0-1, animation progress
   } | null>(null);
-  const [shouldStop, setShouldStop] = useState(false);
 
   // Initialize game
   const initGame = () => {
-    // Stop any ongoing animation first
-    setShouldStop(true);
-
     const stacks: number[][] = [[], [], []];
     const pillarIndex = startPillar === 'A' ? 0 : startPillar === 'B' ? 1 : 2;
 
@@ -46,15 +42,10 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       targetPillar,
     });
     setSelectedDisk(null);
+    setAutoSolving(false);
     setMoveHistory([]);
     setCurrentStep('');
     setAnimatingDisk(null);
-
-    // Reset flags after a short delay to allow animation to stop
-    setTimeout(() => {
-      setAutoSolving(false);
-      setShouldStop(false);
-    }, 100);
   };
 
   // Reset game when parameters change
@@ -242,11 +233,6 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     const frames = (animationDuration / 1000) * fps;
 
     for (let frame = 0; frame <= frames; frame++) {
-      if (shouldStop) {
-        setAnimatingDisk(null);
-        return false; // Animation was stopped
-      }
-
       const progress = frame / frames;
       setAnimatingDisk({
         disk,
@@ -258,12 +244,6 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     }
 
     setAnimatingDisk(null);
-    return true; // Animation completed
-  };
-
-  // Stop auto-solve
-  const stopAutoSolve = () => {
-    setShouldStop(true);
   };
 
   // Auto solve function using recursive algorithm
@@ -271,7 +251,6 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     if (!gameState || autoSolving) return;
 
     setAutoSolving(true);
-    setShouldStop(false);
     setMoveHistory([]);
     setCurrentStep('');
 
@@ -299,11 +278,6 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     // Wait a bit for reset to complete
     await new Promise(resolve => setTimeout(resolve, 500));
 
-    if (shouldStop) {
-      setAutoSolving(false);
-      return;
-    }
-
     // Generate move sequence
     const moves: { from: Pillar; to: Pillar }[] = [];
 
@@ -326,10 +300,6 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     // Execute moves with animation
     let currentState = initialState;
     for (let i = 0; i < moves.length; i++) {
-      if (shouldStop) {
-        break;
-      }
-
       const { from, to } = moves[i];
       const fromIndex = from === 'A' ? 0 : from === 'B' ? 1 : 2;
       const toIndex = to === 'A' ? 0 : to === 'B' ? 1 : 2;
@@ -343,10 +313,7 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       setMoveHistory(prev => [...prev, stepMsg]);
 
       // Animate the move
-      const completed = await animateMove(from, to, disk);
-      if (!completed) {
-        break; // Animation was stopped
-      }
+      await animateMove(from, to, disk);
 
       // Update game state after animation
       const newStacks = currentState.stacks.map(s => [...s]);
@@ -366,7 +333,6 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     }
 
     setAutoSolving(false);
-    setShouldStop(false);
   };
 
   // Check win condition
@@ -441,7 +407,8 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
 
           <button
             onClick={initGame}
-            className="px-4 py-1 bg-green-600 hover:bg-green-700 rounded transition-colors"
+            disabled={autoSolving}
+            className="px-4 py-1 bg-green-600 hover:bg-green-700 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Reset
           </button>
@@ -449,7 +416,7 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
           <button
             onClick={autoSolve}
             disabled={autoSolving}
-            className="px-4 py-1 bg-purple-600 hover:bg-purple-700 rounded transition-colors disabled:opacity-50 flex items-center gap-2"
+            className="px-4 py-1 bg-purple-600 hover:bg-purple-700 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
           >
             {autoSolving ? (
               <>
@@ -460,15 +427,6 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
               '🤖 Auto Solve'
             )}
           </button>
-
-          {autoSolving && (
-            <button
-              onClick={stopAutoSolve}
-              className="px-4 py-1 bg-red-600 hover:bg-red-700 rounded transition-colors flex items-center gap-2"
-            >
-              ⏹️ Stop
-            </button>
-          )}
         </div>
 
         {/* Current Step Display */}
