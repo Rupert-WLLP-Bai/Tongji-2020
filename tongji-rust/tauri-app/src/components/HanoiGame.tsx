@@ -17,6 +17,12 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
   const [autoSolving, setAutoSolving] = useState(false);
   const [moveHistory, setMoveHistory] = useState<string[]>([]);
   const [currentStep, setCurrentStep] = useState<string>('');
+  const [animatingDisk, setAnimatingDisk] = useState<{
+    disk: number;
+    fromPillar: Pillar;
+    toPillar: Pillar;
+    progress: number; // 0-1, animation progress
+  } | null>(null);
 
   // Initialize game
   const initGame = () => {
@@ -39,6 +45,7 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     setAutoSolving(false);
     setMoveHistory([]);
     setCurrentStep('');
+    setAnimatingDisk(null);
   };
 
   // Reset game when parameters change
@@ -83,36 +90,91 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       ctx.fillText(pillar, x, baseY + 40);
     });
 
-    // Draw disks
+    // Helper function to draw a disk
+    const drawDisk = (disk: number, x: number, y: number, isSelected: boolean, isAnimating: boolean) => {
+      const diskWidth = (disk / diskCount) * maxDiskWidth;
+      const hue = (disk / diskCount) * 360;
+
+      ctx.fillStyle = isSelected || isAnimating ? '#fbbf24' : `hsl(${hue}, 70%, 50%)`;
+      ctx.fillRect(x - diskWidth / 2, y, diskWidth, diskHeight - 2);
+
+      // Disk border
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(x - diskWidth / 2, y, diskWidth, diskHeight - 2);
+
+      // Disk number
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 14px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(disk.toString(), x, y + diskHeight / 2 + 5);
+    };
+
+    // Draw static disks (not animating)
     gameState.stacks.forEach((stack, pillarIndex) => {
       const x = pillarWidth * pillarIndex + pillarWidth / 2;
 
       stack.forEach((disk, stackIndex) => {
-        const diskWidth = (disk / diskCount) * maxDiskWidth;
-        const y = baseY - (stackIndex + 1) * diskHeight;
+        // Skip if this disk is currently animating
+        if (animatingDisk && animatingDisk.disk === disk) {
+          return;
+        }
 
-        // Disk color based on size
-        const hue = (disk / diskCount) * 360;
+        const y = baseY - (stackIndex + 1) * diskHeight;
         const isSelected = selectedDisk?.pillar === ['A', 'B', 'C'][pillarIndex] &&
                           selectedDisk?.disk === disk;
 
-        ctx.fillStyle = isSelected ? '#fbbf24' : `hsl(${hue}, 70%, 50%)`;
-        ctx.fillRect(x - diskWidth / 2, y, diskWidth, diskHeight - 2);
-
-        // Disk border
-        ctx.strokeStyle = '#000';
-        ctx.lineWidth = 2;
-        ctx.strokeRect(x - diskWidth / 2, y, diskWidth, diskHeight - 2);
-
-        // Disk number
-        ctx.fillStyle = '#fff';
-        ctx.font = 'bold 14px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(disk.toString(), x, y + diskHeight / 2 + 5);
+        drawDisk(disk, x, y, isSelected, false);
       });
     });
 
-  }, [gameState, selectedDisk]);
+    // Draw animating disk
+    if (animatingDisk) {
+      const fromIndex = animatingDisk.fromPillar === 'A' ? 0 : animatingDisk.fromPillar === 'B' ? 1 : 2;
+      const toIndex = animatingDisk.toPillar === 'A' ? 0 : animatingDisk.toPillar === 'B' ? 1 : 2;
+
+      const fromX = pillarWidth * fromIndex + pillarWidth / 2;
+      const toX = pillarWidth * toIndex + pillarWidth / 2;
+
+      // Calculate source and destination heights
+      const fromStack = gameState.stacks[fromIndex];
+      const toStack = gameState.stacks[toIndex];
+
+      // Source Y (top of source stack before removal)
+      const fromY = baseY - (fromStack.length + 1) * diskHeight;
+      // Destination Y (top of destination stack after placement)
+      const toY = baseY - (toStack.length + 1) * diskHeight;
+
+      // Animation has 3 phases:
+      // Phase 1 (0-0.33): Move up from source
+      // Phase 2 (0.33-0.67): Move horizontally
+      // Phase 3 (0.67-1.0): Move down to destination
+
+      let currentX = fromX;
+      let currentY = fromY;
+      const topY = 50; // Height to lift disk to
+
+      if (animatingDisk.progress < 0.33) {
+        // Phase 1: Moving up
+        const phase1Progress = animatingDisk.progress / 0.33;
+        currentX = fromX;
+        currentY = fromY + (topY - fromY) * phase1Progress;
+      } else if (animatingDisk.progress < 0.67) {
+        // Phase 2: Moving horizontally
+        const phase2Progress = (animatingDisk.progress - 0.33) / 0.34;
+        currentX = fromX + (toX - fromX) * phase2Progress;
+        currentY = topY;
+      } else {
+        // Phase 3: Moving down
+        const phase3Progress = (animatingDisk.progress - 0.67) / 0.33;
+        currentX = toX;
+        currentY = topY + (toY - topY) * phase3Progress;
+      }
+
+      drawDisk(animatingDisk.disk, currentX, currentY, false, true);
+    }
+
+  }, [gameState, selectedDisk, animatingDisk, diskCount]);
 
   // Handle pillar click
   const handlePillarClick = (pillar: Pillar) => {
@@ -163,6 +225,26 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     }
   };
 
+  // Animate a single move
+  const animateMove = async (from: Pillar, to: Pillar, disk: number) => {
+    const animationDuration = 800; // Total animation time in ms
+    const fps = 60;
+    const frames = (animationDuration / 1000) * fps;
+
+    for (let frame = 0; frame <= frames; frame++) {
+      const progress = frame / frames;
+      setAnimatingDisk({
+        disk,
+        fromPillar: from,
+        toPillar: to,
+        progress,
+      });
+      await new Promise(resolve => setTimeout(resolve, 1000 / fps));
+    }
+
+    setAnimatingDisk(null);
+  };
+
   // Auto solve function using recursive algorithm
   const autoSolve = async () => {
     if (!gameState || autoSolving) return;
@@ -203,12 +285,21 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       const fromIndex = from === 'A' ? 0 : from === 'B' ? 1 : 2;
       const toIndex = to === 'A' ? 0 : to === 'B' ? 1 : 2;
 
-      const newStacks = currentState.stacks.map(s => [...s]);
-      const disk = newStacks[fromIndex].pop()!;
-      newStacks[toIndex].push(disk);
-
+      const disk = currentState.stacks[fromIndex][currentState.stacks[fromIndex].length - 1];
       const moveCount = i + 1;
       const stepMsg = `Step ${moveCount}: ${from} → ${to}`;
+
+      // Update step info before animation
+      setCurrentStep(stepMsg);
+      setMoveHistory(prev => [...prev, stepMsg]);
+
+      // Animate the move
+      await animateMove(from, to, disk);
+
+      // Update game state after animation
+      const newStacks = currentState.stacks.map(s => [...s]);
+      newStacks[fromIndex].pop();
+      newStacks[toIndex].push(disk);
 
       currentState = {
         ...currentState,
@@ -217,11 +308,9 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       };
 
       setGameState(currentState);
-      setCurrentStep(stepMsg);
-      setMoveHistory(prev => [...prev, stepMsg]);
 
-      // Delay between moves (adjust speed here)
-      await new Promise(resolve => setTimeout(resolve, 500));
+      // Small delay between moves
+      await new Promise(resolve => setTimeout(resolve, 200));
     }
 
     setAutoSolving(false);
