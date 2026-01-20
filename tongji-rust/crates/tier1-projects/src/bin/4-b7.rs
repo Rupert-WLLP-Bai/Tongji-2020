@@ -147,7 +147,7 @@ fn read_level() -> io::Result<u32> {
         // Rust改进: 使用match + if guard进行范围检查
         match input.trim().parse::<u32>() {
             Ok(level) if (1..=16).contains(&level) => return Ok(level),
-            Ok(_) => continue, // 超出范围，继续循环
+            Ok(_) => continue,  // 超出范围，继续循环
             Err(_) => continue, // 解析失败，继续循环
         }
     }
@@ -318,12 +318,7 @@ mod tests {
         for n in 1..=10 {
             let moves = solve_hanoi(n, Tower::A, Tower::C);
             let expected_count = (1 << n) - 1; // 2^n - 1
-            assert_eq!(
-                moves.len(),
-                expected_count as usize,
-                "Failed for n={}",
-                n
-            );
+            assert_eq!(moves.len(), expected_count as usize, "Failed for n={}", n);
         }
     }
 
@@ -348,7 +343,9 @@ mod tests {
             };
 
             // 从源柱取出盘子
-            let disk = towers[from_idx].pop().expect("Source tower should not be empty");
+            let disk = towers[from_idx]
+                .pop()
+                .expect("Source tower should not be empty");
             assert_eq!(disk, m.disk, "Disk number mismatch");
 
             // 检查目标柱是否可以放置（目标柱为空或顶部盘子更大）
@@ -368,7 +365,11 @@ mod tests {
         // 验证最终状态：所有盘子都在目标柱C上
         assert!(towers[0].is_empty(), "Tower A should be empty");
         assert!(towers[1].is_empty(), "Tower B should be empty");
-        assert_eq!(towers[2], vec![4, 3, 2, 1], "All disks should be on Tower C");
+        assert_eq!(
+            towers[2],
+            vec![4, 3, 2, 1],
+            "All disks should be on Tower C"
+        );
     }
 
     #[test]

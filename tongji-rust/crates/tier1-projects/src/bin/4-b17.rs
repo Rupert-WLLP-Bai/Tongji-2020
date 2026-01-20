@@ -191,10 +191,7 @@ mod tests {
     fn test_not_quadratic() {
         // a = 0，不是二次方程
         assert_eq!(solve_quadratic(0.0, 2.0, 3.0), Solution::NotQuadratic);
-        assert_eq!(
-            solve_quadratic(1e-7, 2.0, 3.0),
-            Solution::NotQuadratic
-        );
+        assert_eq!(solve_quadratic(1e-7, 2.0, 3.0), Solution::NotQuadratic);
     }
 
     #[test]

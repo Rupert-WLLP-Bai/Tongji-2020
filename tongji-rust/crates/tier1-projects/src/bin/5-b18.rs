@@ -104,7 +104,10 @@ fn count_characters(password: &str) -> Result<CharacterStats, String> {
 /// * `Ok(true)` - 密码符合要求
 /// * `Ok(false)` - 密码不符合要求
 /// * `Err(String)` - 验证过程出错
-pub fn validate_password(password: &str, requirements: &PasswordRequirements) -> Result<bool, String> {
+pub fn validate_password(
+    password: &str,
+    requirements: &PasswordRequirements,
+) -> Result<bool, String> {
     let stats = count_characters(password)?;
 
     // 检查长度
@@ -142,7 +145,10 @@ pub fn validate_password(password: &str, requirements: &PasswordRequirements) ->
 /// * `Ok(true)` - 所有密码都符合要求
 /// * `Ok(false)` - 至少有一个密码不符合要求
 /// * `Err(String)` - 验证过程出错
-pub fn validate_all_passwords(passwords: &[String], requirements: &PasswordRequirements) -> Result<bool, String> {
+pub fn validate_all_passwords(
+    passwords: &[String],
+    requirements: &PasswordRequirements,
+) -> Result<bool, String> {
     for password in passwords {
         if !validate_password(password, requirements)? {
             return Ok(false);
@@ -207,13 +213,11 @@ fn read_input() -> Result<(PasswordRequirements, Vec<String>), String> {
 
 fn main() {
     match read_input() {
-        Ok((requirements, passwords)) => {
-            match validate_all_passwords(&passwords, &requirements) {
-                Ok(true) => println!("正确"),
-                Ok(false) => println!("错误"),
-                Err(e) => println!("错误: {}", e),
-            }
-        }
+        Ok((requirements, passwords)) => match validate_all_passwords(&passwords, &requirements) {
+            Ok(true) => println!("正确"),
+            Ok(false) => println!("错误"),
+            Err(e) => println!("错误: {}", e),
+        },
         Err(e) => {
             println!("错误");
             eprintln!("输入错误: {}", e);

@@ -37,7 +37,7 @@ struct DigitBreakdown {
 /// 3. 零运行时开销，编译期优化
 fn extract_digits(num: f64) -> Option<DigitBreakdown> {
     // 验证输入范围
-    if num < 0.0 || num >= 10_000_000_000.0 {
+    if !(0.0..10_000_000_000.0).contains(&num) {
         return None;
     }
 

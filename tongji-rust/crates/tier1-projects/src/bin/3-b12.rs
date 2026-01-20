@@ -116,7 +116,8 @@ fn read_year_month() -> (u32, u32) {
         }
 
         // Rust改进: 使用and_then链式调用同时解析两个数字
-        let result = parts[0].parse::<u32>()
+        let result = parts[0]
+            .parse::<u32>()
             .and_then(|y| parts[1].parse::<u32>().map(|m| (y, m)));
 
         match result {
@@ -140,7 +141,10 @@ fn read_year_month() -> (u32, u32) {
 /// * 该月1日的星期 (0-6)
 fn read_start_day(year: u32, month: u32) -> u32 {
     loop {
-        print!("请输入{}年{}月1日的星期(0-6表示星期日-星期六) : ", year, month);
+        print!(
+            "请输入{}年{}月1日的星期(0-6表示星期日-星期六) : ",
+            year, month
+        );
         io::stdout().flush().unwrap();
 
         let mut input = String::new();
@@ -205,11 +209,11 @@ mod tests {
     #[test]
     fn test_days_in_month_31_days() {
         // 测试31天的月份
-        assert_eq!(days_in_month(2020, 1), 31);  // 1月
-        assert_eq!(days_in_month(2020, 3), 31);  // 3月
-        assert_eq!(days_in_month(2020, 5), 31);  // 5月
-        assert_eq!(days_in_month(2020, 7), 31);  // 7月
-        assert_eq!(days_in_month(2020, 8), 31);  // 8月
+        assert_eq!(days_in_month(2020, 1), 31); // 1月
+        assert_eq!(days_in_month(2020, 3), 31); // 3月
+        assert_eq!(days_in_month(2020, 5), 31); // 5月
+        assert_eq!(days_in_month(2020, 7), 31); // 7月
+        assert_eq!(days_in_month(2020, 8), 31); // 8月
         assert_eq!(days_in_month(2020, 10), 31); // 10月
         assert_eq!(days_in_month(2020, 12), 31); // 12月
     }
@@ -217,9 +221,9 @@ mod tests {
     #[test]
     fn test_days_in_month_30_days() {
         // 测试30天的月份
-        assert_eq!(days_in_month(2020, 4), 30);  // 4月
-        assert_eq!(days_in_month(2020, 6), 30);  // 6月
-        assert_eq!(days_in_month(2020, 9), 30);  // 9月
+        assert_eq!(days_in_month(2020, 4), 30); // 4月
+        assert_eq!(days_in_month(2020, 6), 30); // 6月
+        assert_eq!(days_in_month(2020, 9), 30); // 9月
         assert_eq!(days_in_month(2020, 11), 30); // 11月
     }
 

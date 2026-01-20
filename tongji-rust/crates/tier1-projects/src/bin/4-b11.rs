@@ -228,16 +228,8 @@ mod tests {
             let iterative = fibonacci_iterative(n).unwrap();
             let memoized = fibonacci_memo(n);
 
-            assert_eq!(
-                recursive, iterative,
-                "递归和迭代结果不一致 at n={}",
-                n
-            );
-            assert_eq!(
-                recursive, memoized,
-                "递归和记忆化结果不一致 at n={}",
-                n
-            );
+            assert_eq!(recursive, iterative, "递归和迭代结果不一致 at n={}", n);
+            assert_eq!(recursive, memoized, "递归和记忆化结果不一致 at n={}", n);
         }
     }
 

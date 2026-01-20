@@ -1,5 +1,5 @@
 /// Hanoi Tower Game - Main Entry Point
-use hanoi::{GameState, Pillar, hanoi, game};
+use hanoi::{game, hanoi, GameState, Pillar};
 use std::io::{self, Write};
 
 fn main() {
@@ -17,10 +17,7 @@ fn main() {
         let start = get_pillar("Enter starting pillar (A/B/C): ");
 
         // Get target pillar
-        let target = get_pillar_different_from(
-            "Enter target pillar (A/B/C): ",
-            start
-        );
+        let target = get_pillar_different_from("Enter target pillar (A/B/C): ", start);
 
         // Get auxiliary pillar (the remaining one)
         let aux = get_auxiliary_pillar(start, target);
@@ -31,8 +28,10 @@ fn main() {
         // Create game state
         let mut state = GameState::new(disk_count, start, target);
 
-        println!("\nSolving Hanoi Tower with {} disks from {} to {} using {}...\n",
-                 disk_count, start, target, aux);
+        println!(
+            "\nSolving Hanoi Tower with {} disks from {} to {} using {}...\n",
+            disk_count, start, target, aux
+        );
 
         if display {
             hanoi::display::display_vertical(&state);

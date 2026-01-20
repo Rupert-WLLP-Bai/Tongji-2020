@@ -21,8 +21,10 @@ pub fn execute_move(
 
     // Display the move if requested
     if display {
-        println!("Step {}: Move disk {} from {} to {}",
-                 state.move_count, disk, from, to);
+        println!(
+            "Step {}: Move disk {} from {} to {}",
+            state.move_count, disk, from, to
+        );
     }
 
     // Apply delay based on speed

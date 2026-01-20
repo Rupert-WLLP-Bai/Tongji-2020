@@ -163,40 +163,28 @@ fn main() {
     // 预期面积: 0.5
     if true {
         let tr = Triangle::new(0, 0, 0, 1, 1, 0);
-        println!(
-            "三角形面积应该是：0.5，实际是：{}",
-            format_area(tr.area())
-        );
+        println!("三角形面积应该是：0.5，实际是：{}", format_area(tr.area()));
     }
 
     // 测试用例2: 三角形 (0,2) (-1,-1) (1,-1)
     // 预期面积: 3
     if true {
         let tr = Triangle::new(0, 2, -1, -1, 1, -1);
-        println!(
-            "三角形面积应该是：3，  实际是：{}",
-            format_area(tr.area())
-        );
+        println!("三角形面积应该是：3，  实际是：{}", format_area(tr.area()));
     }
 
     // 测试用例3: 三角形 (5,5) (-3,1) (9,-2)
     // 预期面积: 36
     if true {
         let tr = Triangle::new(5, 5, -3, 1, 9, -2);
-        println!(
-            "三角形面积应该是：36， 实际是：{}",
-            format_area(tr.area())
-        );
+        println!("三角形面积应该是：36， 实际是：{}", format_area(tr.area()));
     }
 
     // 测试用例4: 三点共线 (0,0) (1,1) (2,2)
     // 预期: -1 (无法构成三角形)
     if true {
         let tr = Triangle::new(0, 0, 1, 1, 2, 2);
-        println!(
-            "三角形面积应该是：-1， 实际是：{}",
-            format_area(tr.area())
-        );
+        println!("三角形面积应该是：-1， 实际是：{}", format_area(tr.area()));
     }
 }
 

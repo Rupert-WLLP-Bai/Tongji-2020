@@ -4,7 +4,7 @@
 
 use crossterm::{
     execute,
-    terminal::{Clear, ClearType, size},
+    terminal::{size, Clear, ClearType},
 };
 use std::io::{self, stdout};
 
@@ -39,27 +39,29 @@ pub fn cct_getconsoleborder() -> io::Result<(u16, u16)> {
 
 /// Set console window size
 ///
-/// Note: This function has limited cross-platform support.
-/// On some terminals, resizing may not be possible.
+/// **Note**: This function is intentionally a no-op for cross-platform compatibility.
+/// Terminal window resizing is not universally supported across different platforms
+/// and terminal emulators. Users should resize their terminal manually if needed.
+///
+/// In the original Windows-specific code, this used `SetConsoleWindowInfo`.
+/// Modern cross-platform terminals typically don't allow programmatic resizing
+/// for security and user experience reasons.
 ///
 /// # Arguments
-/// * `width` - Number of columns
-/// * `height` - Number of rows
+/// * `width` - Number of columns (ignored)
+/// * `height` - Number of rows (ignored)
 ///
 /// # Example
 /// ```no_run
 /// use console_tools::cct_setconsoleborder_size;
-/// // Set console to 80x25
+/// // This call succeeds but does not resize the terminal
 /// cct_setconsoleborder_size(80, 25).unwrap();
 /// ```
 pub fn cct_setconsoleborder_size(width: u16, height: u16) -> io::Result<()> {
-    // Note: crossterm doesn't provide direct window resizing
-    // This is a platform-specific feature that's not universally supported
-    // For now, we'll just return Ok as a no-op
-    // In the original Windows code, this would use SetConsoleWindowInfo
-
-    // TODO: Implement platform-specific resizing if needed
-    // For most use cases, users can resize their terminal manually
+    // Intentionally a no-op: crossterm doesn't provide direct window resizing,
+    // and this is a platform-specific feature that's not universally supported.
+    // Modern terminals typically don't allow programmatic resizing for security reasons.
+    // Users can resize their terminal manually if needed.
     let _ = (width, height); // Suppress unused variable warning
     Ok(())
 }

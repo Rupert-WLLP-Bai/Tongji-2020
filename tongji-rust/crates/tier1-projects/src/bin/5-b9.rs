@@ -46,9 +46,8 @@ const BLOCK_SIZE: usize = 3;
 fn validate_sudoku(grid: &SudokuGrid) -> bool {
     // Rust改进: 使用all()方法和迭代器，比嵌套循环更简洁
     // 验证所有行、列和3x3宫格
-    (0..GRID_SIZE).all(|i| {
-        validate_row(grid, i) && validate_column(grid, i) && validate_block(grid, i)
-    })
+    (0..GRID_SIZE)
+        .all(|i| validate_row(grid, i) && validate_column(grid, i) && validate_block(grid, i))
 }
 
 /// 验证指定行是否包含1-9所有数字且无重复
@@ -59,9 +58,9 @@ fn validate_sudoku(grid: &SudokuGrid) -> bool {
 fn validate_row(grid: &SudokuGrid, row: usize) -> bool {
     // Rust改进: 使用HashSet检测重复，比bool数组更符合Rust习惯
     let mut seen = HashSet::new();
-    grid[row].iter().all(|&num| {
-        num >= 1 && num <= 9 && seen.insert(num)
-    })
+    grid[row]
+        .iter()
+        .all(|&num| num >= 1 && num <= 9 && seen.insert(num))
 }
 
 /// 验证指定列是否包含1-9所有数字且无重复
@@ -110,7 +109,12 @@ fn read_number(row: usize, col: usize) -> u8 {
         io::stdin().read_line(&mut input).unwrap();
 
         // Rust改进: 使用链式调用和filter验证范围
-        if let Some(num) = input.trim().parse::<u8>().ok().filter(|&n| n >= 1 && n <= 9) {
+        if let Some(num) = input
+            .trim()
+            .parse::<u8>()
+            .ok()
+            .filter(|&n| n >= 1 && n <= 9)
+        {
             return num;
         }
 

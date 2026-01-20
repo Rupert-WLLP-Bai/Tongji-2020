@@ -123,15 +123,13 @@ fn tj_strncmp(s1: Option<&str>, s2: Option<&str>, len: usize) -> Ordering {
                     (None, None) => return Ordering::Equal,
                     (None, Some(_)) => return Ordering::Less,
                     (Some(_), None) => return Ordering::Greater,
-                    (Some(c1), Some(c2)) => {
-                        match c1.cmp(&c2) {
-                            Ordering::Equal => {
-                                count += 1;
-                                continue;
-                            }
-                            other => return other,
+                    (Some(c1), Some(c2)) => match c1.cmp(&c2) {
+                        Ordering::Equal => {
+                            count += 1;
+                            continue;
                         }
-                    }
+                        other => return other,
+                    },
                 }
             }
         }
@@ -299,11 +297,26 @@ fn main() {
 
     // tj_strcmp() 测试
     println!("tj_strcmp()测试部分：");
-    println!("1.horse 和 house 比较：{:?}", tj_strcmp(Some("horse"), Some("house")));
-    println!("2.hell 和 hello 比较：{:?}", tj_strcmp(Some("hell"), Some("hello")));
-    println!("3.hello 和 hell 比较：{:?}", tj_strcmp(Some("hello"), Some("hell")));
-    println!("4.hello 和 hello 比较：{:?}", tj_strcmp(Some("hello"), Some("hello")));
-    println!("5.HELLO 和 hello 比较：{:?}", tj_strcmp(Some("HELLO"), Some("hello")));
+    println!(
+        "1.horse 和 house 比较：{:?}",
+        tj_strcmp(Some("horse"), Some("house"))
+    );
+    println!(
+        "2.hell 和 hello 比较：{:?}",
+        tj_strcmp(Some("hell"), Some("hello"))
+    );
+    println!(
+        "3.hello 和 hell 比较：{:?}",
+        tj_strcmp(Some("hello"), Some("hell"))
+    );
+    println!(
+        "4.hello 和 hello 比较：{:?}",
+        tj_strcmp(Some("hello"), Some("hello"))
+    );
+    println!(
+        "5.HELLO 和 hello 比较：{:?}",
+        tj_strcmp(Some("HELLO"), Some("hello"))
+    );
     println!("6.None 和 hello 比较：{:?}", tj_strcmp(None, Some("hello")));
     println!("7.hello 和 None 比较：{:?}", tj_strcmp(Some("hello"), None));
     println!("8.None 和 None 比较：{:?}", tj_strcmp(None, None));
@@ -311,40 +324,91 @@ fn main() {
 
     // tj_strcasecmp() 测试
     println!("tj_strcasecmp()测试部分：");
-    println!("1.horse 和 house 比较：{:?}", tj_strcasecmp(Some("horse"), Some("house")));
-    println!("2.hell 和 hello 比较：{:?}", tj_strcasecmp(Some("hell"), Some("hello")));
-    println!("3.hello 和 hell 比较：{:?}", tj_strcasecmp(Some("hello"), Some("hell")));
-    println!("4.hello 和 hello 比较：{:?}", tj_strcasecmp(Some("hello"), Some("hello")));
-    println!("5.HELLO 和 hello 比较：{:?}", tj_strcasecmp(Some("HELLO"), Some("hello")));
-    println!("6.HeLlO 和 hElLo 比较：{:?}", tj_strcasecmp(Some("HeLlO"), Some("hElLo")));
+    println!(
+        "1.horse 和 house 比较：{:?}",
+        tj_strcasecmp(Some("horse"), Some("house"))
+    );
+    println!(
+        "2.hell 和 hello 比较：{:?}",
+        tj_strcasecmp(Some("hell"), Some("hello"))
+    );
+    println!(
+        "3.hello 和 hell 比较：{:?}",
+        tj_strcasecmp(Some("hello"), Some("hell"))
+    );
+    println!(
+        "4.hello 和 hello 比较：{:?}",
+        tj_strcasecmp(Some("hello"), Some("hello"))
+    );
+    println!(
+        "5.HELLO 和 hello 比较：{:?}",
+        tj_strcasecmp(Some("HELLO"), Some("hello"))
+    );
+    println!(
+        "6.HeLlO 和 hElLo 比较：{:?}",
+        tj_strcasecmp(Some("HeLlO"), Some("hElLo"))
+    );
     println!();
 
     // tj_strncmp() 测试
     println!("tj_strncmp()测试部分：");
-    println!("1.horse 和 house 比较前2个字符：{:?}", tj_strncmp(Some("horse"), Some("house"), 2));
-    println!("2.horse 和 house 比较前3个字符：{:?}", tj_strncmp(Some("horse"), Some("house"), 3));
-    println!("3.hell 和 hello 比较前4个字符：{:?}", tj_strncmp(Some("hell"), Some("hello"), 4));
-    println!("4.hell 和 hello 比较前5个字符：{:?}", tj_strncmp(Some("hell"), Some("hello"), 5));
+    println!(
+        "1.horse 和 house 比较前2个字符：{:?}",
+        tj_strncmp(Some("horse"), Some("house"), 2)
+    );
+    println!(
+        "2.horse 和 house 比较前3个字符：{:?}",
+        tj_strncmp(Some("horse"), Some("house"), 3)
+    );
+    println!(
+        "3.hell 和 hello 比较前4个字符：{:?}",
+        tj_strncmp(Some("hell"), Some("hello"), 4)
+    );
+    println!(
+        "4.hell 和 hello 比较前5个字符：{:?}",
+        tj_strncmp(Some("hell"), Some("hello"), 5)
+    );
     println!();
 
     // tj_strcasencmp() 测试
     println!("tj_strcasencmp()测试部分：");
-    println!("1.HELLO 和 hello 比较前5个字符：{:?}", tj_strcasencmp(Some("HELLO"), Some("hello"), 5));
-    println!("2.HeLlO 和 hElLo 比较前5个字符：{:?}", tj_strcasencmp(Some("HeLlO"), Some("hElLo"), 5));
-    println!("3.horse 和 house 比较前2个字符：{:?}", tj_strcasencmp(Some("horse"), Some("house"), 2));
+    println!(
+        "1.HELLO 和 hello 比较前5个字符：{:?}",
+        tj_strcasencmp(Some("HELLO"), Some("hello"), 5)
+    );
+    println!(
+        "2.HeLlO 和 hElLo 比较前5个字符：{:?}",
+        tj_strcasencmp(Some("HeLlO"), Some("hElLo"), 5)
+    );
+    println!(
+        "3.horse 和 house 比较前2个字符：{:?}",
+        tj_strcasencmp(Some("horse"), Some("house"), 2)
+    );
     println!();
 
     // tj_strupr() 测试
     println!("tj_strupr()测试部分：");
-    println!("1.123horseHELLO*#@ 转大写：{}", tj_strupr(Some("123horseHELLO*#@")).unwrap());
-    println!("2.1A2b3C*d#E@f 转大写：{}", tj_strupr(Some("1A2b3C*d#E@f")).unwrap());
+    println!(
+        "1.123horseHELLO*#@ 转大写：{}",
+        tj_strupr(Some("123horseHELLO*#@")).unwrap()
+    );
+    println!(
+        "2.1A2b3C*d#E@f 转大写：{}",
+        tj_strupr(Some("1A2b3C*d#E@f")).unwrap()
+    );
     println!("3.None 转大写：{:?}", tj_strupr(None));
     println!();
 
     // tj_strlwr() 测试
     println!("tj_strlwr()测试部分：");
-    println!("1.123horseHELLO*#@ 转小写：{}", tj_strlwr(Some("123horseHELLO*#@")).unwrap());
-    println!("2.1A2b3C*d#E@f 转小写：{}", tj_strlwr(Some("1A2b3C*d#E@f")).unwrap());
+    println!(
+        "1.123horseHELLO*#@ 转小写：{}",
+        tj_strlwr(Some("123horseHELLO*#@")).unwrap()
+    );
+    println!(
+        "2.1A2b3C*d#E@f 转小写：{}",
+        tj_strlwr(Some("1A2b3C*d#E@f")).unwrap()
+    );
     println!("3.None 转小写：{:?}", tj_strlwr(None));
     println!();
 
@@ -354,45 +418,101 @@ fn main() {
     println!("1.查找 'T'，应该是1，实际是：{:?}", tj_strchr(Some(s), 'T'));
     println!("2.查找 'i'，应该是3，实际是：{:?}", tj_strchr(Some(s), 'i'));
     println!("3.查找 ' '，应该是5，实际是：{:?}", tj_strchr(Some(s), ' '));
-    println!("4.查找 'x'，应该是None，实际是：{:?}", tj_strchr(Some(s), 'x'));
-    println!("5.None中查找，应该是None，实际是：{:?}", tj_strchr(None, 'a'));
+    println!(
+        "4.查找 'x'，应该是None，实际是：{:?}",
+        tj_strchr(Some(s), 'x')
+    );
+    println!(
+        "5.None中查找，应该是None，实际是：{:?}",
+        tj_strchr(None, 'a')
+    );
     println!();
 
     // tj_strstr() 测试
     println!("tj_strstr()测试部分：");
     let s = "This is a pencil.";
-    println!("1.查找 'T'，应该是1，实际是：{:?}", tj_strstr(Some(s), Some("T")));
-    println!("2.查找 'is'，应该是3，实际是：{:?}", tj_strstr(Some(s), Some("is")));
-    println!("3.查找 'pencil'，应该是11，实际是：{:?}", tj_strstr(Some(s), Some("pencil")));
-    println!("4.查找 'Pencil'，应该是None，实际是：{:?}", tj_strstr(Some(s), Some("Pencil")));
-    println!("5.查找 None，应该是None，实际是：{:?}", tj_strstr(Some(s), None));
+    println!(
+        "1.查找 'T'，应该是1，实际是：{:?}",
+        tj_strstr(Some(s), Some("T"))
+    );
+    println!(
+        "2.查找 'is'，应该是3，实际是：{:?}",
+        tj_strstr(Some(s), Some("is"))
+    );
+    println!(
+        "3.查找 'pencil'，应该是11，实际是：{:?}",
+        tj_strstr(Some(s), Some("pencil"))
+    );
+    println!(
+        "4.查找 'Pencil'，应该是None，实际是：{:?}",
+        tj_strstr(Some(s), Some("Pencil"))
+    );
+    println!(
+        "5.查找 None，应该是None，实际是：{:?}",
+        tj_strstr(Some(s), None)
+    );
     println!();
 
     // tj_strrchr() 测试
     println!("tj_strrchr()测试部分：");
     let s = "This is a pencil.";
-    println!("1.反向查找 'T'，应该是1，实际是：{:?}", tj_strrchr(Some(s), 'T'));
-    println!("2.反向查找 'i'，应该是15，实际是：{:?}", tj_strrchr(Some(s), 'i'));
-    println!("3.反向查找 ' '，应该是10，实际是：{:?}", tj_strrchr(Some(s), ' '));
-    println!("4.反向查找 'x'，应该是None，实际是：{:?}", tj_strrchr(Some(s), 'x'));
+    println!(
+        "1.反向查找 'T'，应该是1，实际是：{:?}",
+        tj_strrchr(Some(s), 'T')
+    );
+    println!(
+        "2.反向查找 'i'，应该是15，实际是：{:?}",
+        tj_strrchr(Some(s), 'i')
+    );
+    println!(
+        "3.反向查找 ' '，应该是10，实际是：{:?}",
+        tj_strrchr(Some(s), ' ')
+    );
+    println!(
+        "4.反向查找 'x'，应该是None，实际是：{:?}",
+        tj_strrchr(Some(s), 'x')
+    );
     println!();
 
     // tj_strrstr() 测试
     println!("tj_strrstr()测试部分：");
     let s = "This is a pencil.";
-    println!("1.反向查找 'T'，应该是1，实际是：{:?}", tj_strrstr(Some(s), Some("T")));
-    println!("2.反向查找 'is'，应该是6，实际是：{:?}", tj_strrstr(Some(s), Some("is")));
-    println!("3.反向查找 'pencil'，应该是11，实际是：{:?}", tj_strrstr(Some(s), Some("pencil")));
+    println!(
+        "1.反向查找 'T'，应该是1，实际是：{:?}",
+        tj_strrstr(Some(s), Some("T"))
+    );
+    println!(
+        "2.反向查找 'is'，应该是6，实际是：{:?}",
+        tj_strrstr(Some(s), Some("is"))
+    );
+    println!(
+        "3.反向查找 'pencil'，应该是11，实际是：{:?}",
+        tj_strrstr(Some(s), Some("pencil"))
+    );
 
     let s2 = "aabbbceddbbbceeeff";
-    println!("4.在 '{}' 中反向查找 'bb'，应该是11，实际是：{:?}", s2, tj_strrstr(Some(s2), Some("bb")));
-    println!("5.在 '{}' 中反向查找 'bbb'，应该是10，实际是：{:?}", s2, tj_strrstr(Some(s2), Some("bbb")));
+    println!(
+        "4.在 '{}' 中反向查找 'bb'，应该是11，实际是：{:?}",
+        s2,
+        tj_strrstr(Some(s2), Some("bb"))
+    );
+    println!(
+        "5.在 '{}' 中反向查找 'bbb'，应该是10，实际是：{:?}",
+        s2,
+        tj_strrstr(Some(s2), Some("bbb"))
+    );
     println!();
 
     // tj_strrev() 测试
     println!("tj_strrev()测试部分：");
-    println!("1.'This is a pencil.' 反转：{}", tj_strrev(Some("This is a pencil.")).unwrap());
-    println!("2.'aabbbceddbbbceeeff' 反转：{}", tj_strrev(Some("aabbbceddbbbceeeff")).unwrap());
+    println!(
+        "1.'This is a pencil.' 反转：{}",
+        tj_strrev(Some("This is a pencil.")).unwrap()
+    );
+    println!(
+        "2.'aabbbceddbbbceeeff' 反转：{}",
+        tj_strrev(Some("aabbbceddbbbceeeff")).unwrap()
+    );
     println!("3.空串反转：-{}-", tj_strrev(Some("")).unwrap());
     println!("4.None反转：{:?}", tj_strrev(None));
 
@@ -457,7 +577,10 @@ mod tests {
         assert_eq!(tj_strcasecmp(Some("HELLO"), Some("hello")), Ordering::Equal);
         assert_eq!(tj_strcasecmp(Some("HeLLo"), Some("hEllO")), Ordering::Equal);
         assert_eq!(tj_strcasecmp(Some("hello"), Some("world")), Ordering::Less);
-        assert_eq!(tj_strcasecmp(Some("WORLD"), Some("hello")), Ordering::Greater);
+        assert_eq!(
+            tj_strcasecmp(Some("WORLD"), Some("hello")),
+            Ordering::Greater
+        );
     }
 
     #[test]
@@ -466,15 +589,30 @@ mod tests {
         assert_eq!(tj_strncmp(Some("hello"), Some("help"), 4), Ordering::Less); // 'l' < 'p'
         assert_eq!(tj_strncmp(Some("hell"), Some("hello"), 4), Ordering::Equal);
         assert_eq!(tj_strncmp(Some("hell"), Some("hello"), 5), Ordering::Less);
-        assert_eq!(tj_strncmp(Some("help"), Some("hello"), 4), Ordering::Greater); // 'p' > 'l'
+        assert_eq!(
+            tj_strncmp(Some("help"), Some("hello"), 4),
+            Ordering::Greater
+        ); // 'p' > 'l'
     }
 
     #[test]
     fn test_tj_strcasencmp() {
-        assert_eq!(tj_strcasencmp(Some("HELLO"), Some("hello"), 5), Ordering::Equal);
-        assert_eq!(tj_strcasencmp(Some("HELLO"), Some("HELP"), 3), Ordering::Equal);
-        assert_eq!(tj_strcasencmp(Some("HELLO"), Some("HELP"), 4), Ordering::Less); // 'L' < 'P'
-        assert_eq!(tj_strcasencmp(Some("HELP"), Some("HELLO"), 4), Ordering::Greater); // 'P' > 'L'
+        assert_eq!(
+            tj_strcasencmp(Some("HELLO"), Some("hello"), 5),
+            Ordering::Equal
+        );
+        assert_eq!(
+            tj_strcasencmp(Some("HELLO"), Some("HELP"), 3),
+            Ordering::Equal
+        );
+        assert_eq!(
+            tj_strcasencmp(Some("HELLO"), Some("HELP"), 4),
+            Ordering::Less
+        ); // 'L' < 'P'
+        assert_eq!(
+            tj_strcasencmp(Some("HELP"), Some("HELLO"), 4),
+            Ordering::Greater
+        ); // 'P' > 'L'
     }
 
     #[test]
@@ -522,7 +660,10 @@ mod tests {
     #[test]
     fn test_tj_strrstr() {
         assert_eq!(tj_strrstr(Some("hello hello"), Some("hello")), Some(7));
-        assert_eq!(tj_strrstr(Some("aabbbceddbbbceeeff"), Some("bbb")), Some(10));
+        assert_eq!(
+            tj_strrstr(Some("aabbbceddbbbceeeff"), Some("bbb")),
+            Some(10)
+        );
         assert_eq!(tj_strrstr(Some("hello world"), Some("xyz")), None);
         assert_eq!(tj_strrstr(Some("hello"), None), None);
         assert_eq!(tj_strrstr(None, Some("hello")), None);

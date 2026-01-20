@@ -99,10 +99,7 @@ pub fn is_perfect_number(n: u32) -> Option<PerfectNumber> {
     let sum: u32 = factors.iter().sum();
 
     if sum == n {
-        Some(PerfectNumber {
-            number: n,
-            factors,
-        })
+        Some(PerfectNumber { number: n, factors })
     } else {
         None
     }
@@ -128,9 +125,7 @@ pub fn is_perfect_number(n: u32) -> Option<PerfectNumber> {
 pub fn find_perfect_numbers(start: u32, end: u32) -> Vec<PerfectNumber> {
     // Rust改进: 使用Iterator链式调用，代码更函数式
     // filter_map会自动过滤None值并解包Some值
-    (start..=end)
-        .filter_map(is_perfect_number)
-        .collect()
+    (start..=end).filter_map(is_perfect_number).collect()
 }
 
 fn main() {

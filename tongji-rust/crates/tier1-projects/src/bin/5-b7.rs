@@ -233,7 +233,11 @@ fn read_tower(prompt: &str, exclude: Option<Tower>) -> Tower {
             if let Some(tower) = Tower::from_char(c) {
                 if let Some(excluded) = exclude {
                     if tower == excluded {
-                        println!("起始柱({})不能与目标柱({})相同", excluded.to_char(), tower.to_char());
+                        println!(
+                            "起始柱({})不能与目标柱({})相同",
+                            excluded.to_char(),
+                            tower.to_char()
+                        );
                         continue;
                     }
                 }
@@ -248,7 +252,11 @@ fn main() {
     let level = read_integer("请输入汉诺塔的层数(1-10)\n", 1, 10) as u8;
     let start = read_tower("请输入起始柱(A-C)\n", None);
     let end = read_tower("请输入目标柱(A-C)\n", Some(start));
-    let speed = read_integer("请输入移动速度(0-5: 0-按回车单步演示 1-延时最长 5-延时最短)\n", 0, 5) as u8;
+    let speed = read_integer(
+        "请输入移动速度(0-5: 0-按回车单步演示 1-延时最长 5-延时最短)\n",
+        0,
+        5,
+    ) as u8;
     let show = read_integer("请输入是否显示内部数组值(0-不显示 1-显示)\n", 0, 1);
 
     let show_array = show == 1;
@@ -256,9 +264,14 @@ fn main() {
 
     // 清屏并初始化
     let _ = cct_cls();
-    println!("从{}移动到{} ,共{}层 ,延时设置为 {} , {}显示内部数组值",
-             start.to_char(), end.to_char(), level, speed,
-             if show_array { "" } else { "不" });
+    println!(
+        "从{}移动到{} ,共{}层 ,延时设置为 {} , {}显示内部数组值",
+        start.to_char(),
+        end.to_char(),
+        level,
+        speed,
+        if show_array { "" } else { "不" }
+    );
 
     HanoiState::print_menu();
     let _ = cct_gotoxy(0, 17);

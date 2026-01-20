@@ -63,11 +63,13 @@ pub struct Move {
 
 impl Move {
     fn format(&self) -> String {
-        format!("{:5}:{:3}# {}-->{}",
+        format!(
+            "{:5}:{:3}# {}-->{}",
             self.step,
             self.disk,
             self.from.to_char(),
-            self.to.to_char())
+            self.to.to_char()
+        )
     }
 }
 
@@ -88,7 +90,14 @@ impl Move {
 /// - 不使用static变量,通过参数传递状态
 /// - 返回步数而非修改全局状态,更函数式
 /// - 使用Vec收集结果,便于测试
-fn hanoi_impl(n: i32, src: Tower, tmp: Tower, dst: Tower, step: usize, moves: &mut Vec<Move>) -> usize {
+fn hanoi_impl(
+    n: i32,
+    src: Tower,
+    tmp: Tower,
+    dst: Tower,
+    step: usize,
+    moves: &mut Vec<Move>,
+) -> usize {
     if n == 1 {
         // 基础情况: 只有一个盘子,直接移动
         moves.push(Move {
@@ -135,7 +144,11 @@ pub fn hanoi(n: i32, src: Tower, dst: Tower) -> Vec<Move> {
 
 /// 验证层数输入(1-16)
 fn validate_level(input: &str) -> Option<i32> {
-    input.trim().parse::<i32>().ok().filter(|&n| (1..=16).contains(&n))
+    input
+        .trim()
+        .parse::<i32>()
+        .ok()
+        .filter(|&n| (1..=16).contains(&n))
 }
 
 /// 验证柱子输入(A/B/C,不区分大小写)
@@ -262,12 +275,15 @@ mod tests {
         // 测试1个盘子
         let moves = hanoi(1, Tower::A, Tower::C);
         assert_eq!(moves.len(), 1);
-        assert_eq!(moves[0], Move {
-            step: 1,
-            disk: 1,
-            from: Tower::A,
-            to: Tower::C,
-        });
+        assert_eq!(
+            moves[0],
+            Move {
+                step: 1,
+                disk: 1,
+                from: Tower::A,
+                to: Tower::C,
+            }
+        );
     }
 
     #[test]

@@ -3,9 +3,9 @@
 /// Difficulty levels for Minesweeper
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Difficulty {
-    Easy,    // 9×9, 10 mines
-    Medium,  // 16×16, 40 mines
-    Hard,    // 16×30, 99 mines
+    Easy,   // 9×9, 10 mines
+    Medium, // 16×16, 40 mines
+    Hard,   // 16×30, 99 mines
 }
 
 impl Difficulty {

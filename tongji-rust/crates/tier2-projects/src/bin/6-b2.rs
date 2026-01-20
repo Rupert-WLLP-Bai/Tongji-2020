@@ -213,7 +213,17 @@ mod tests {
     #[test]
     fn test_mixed_content() {
         // 测试混合内容
-        assert!(is_palindrome("A man a plan a canal Panama".replace(" ", "").to_lowercase().as_str()));
-        assert!(is_palindrome("Was it a car or a cat I saw".replace(" ", "").to_lowercase().as_str()));
+        assert!(is_palindrome(
+            "A man a plan a canal Panama"
+                .replace(" ", "")
+                .to_lowercase()
+                .as_str()
+        ));
+        assert!(is_palindrome(
+            "Was it a car or a cat I saw"
+                .replace(" ", "")
+                .to_lowercase()
+                .as_str()
+        ));
     }
 }

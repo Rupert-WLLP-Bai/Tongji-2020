@@ -14,8 +14,8 @@ use std::io::{self, BufRead};
 /// 扫雷格子类型
 #[derive(Debug, Clone, Copy, PartialEq)]
 enum Cell {
-    Mine,           // 地雷 '*'
-    Number(u8),     // 数字 0-8
+    Mine,       // 地雷 '*'
+    Number(u8), // 数字 0-8
 }
 
 /// 扫雷网格
@@ -226,10 +226,8 @@ mod tests {
     #[test]
     fn test_from_lines_with_spaces() {
         // 测试空格被正确过滤
-        let lines: Vec<String> = vec![
-            "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0".to_string();
-            10
-        ];
+        let lines: Vec<String> =
+            vec!["0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0".to_string(); 10];
         let result = MineGrid::from_lines(&lines);
         assert!(result.is_ok());
         let grid = result.unwrap();

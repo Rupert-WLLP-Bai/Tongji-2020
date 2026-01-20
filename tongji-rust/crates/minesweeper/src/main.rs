@@ -1,5 +1,5 @@
 /// Minesweeper Game - Main Entry Point
-use minesweeper::{Board, Difficulty, generate_mines, flood_fill, validation, display};
+use minesweeper::{display, flood_fill, generate_mines, validation, Board, Difficulty};
 use std::io::{self, Write};
 
 fn main() {

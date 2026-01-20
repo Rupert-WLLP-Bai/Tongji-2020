@@ -9,8 +9,8 @@
 // 5. 使用const定义网格尺寸，便于修改和维护
 // 6. 边界检查使用checked_sub避免溢出，更安全
 
-use std::collections::HashSet;
 use rand::Rng;
+use std::collections::HashSet;
 
 const ROWS: usize = 10;
 const COLS: usize = 26;

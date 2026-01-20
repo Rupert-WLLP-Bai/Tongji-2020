@@ -3,6 +3,10 @@ import { Project } from '../types';
 // All projects from the Rust migration
 export const projects: Project[] = [
   // Tier 1 Projects (3-b*, 4-b*)
+  { id: '3-b2', name: '3-b2', tier: 'tier1', description: 'Geometric calculations (circle, sphere, cylinder)', category: 'Mathematics' },
+  { id: '3-b3', name: '3-b3', tier: 'tier1', description: 'Integer digit extraction (1-30000)', category: 'Fundamentals' },
+  { id: '3-b4', name: '3-b4', tier: 'tier1', description: 'Large number digit extraction (0-10 billion)', category: 'Mathematics' },
+  { id: '3-b5', name: '3-b5', tier: 'tier1', description: 'Triangle area calculation', category: 'Mathematics' },
   { id: '3-b6', name: '3-b6', tier: 'tier1', description: 'Basic I/O and conditionals', category: 'Fundamentals' },
   { id: '3-b7', name: '3-b7', tier: 'tier1', description: 'Control flow', category: 'Fundamentals' },
   { id: '3-b8', name: '3-b8', tier: 'tier1', description: 'Loops', category: 'Fundamentals' },

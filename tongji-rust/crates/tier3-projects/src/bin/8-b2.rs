@@ -297,7 +297,10 @@ mod tests {
         let line = "X12345678900 11 22 33 44 55 66 77   88 99 aa                                                      ";
         assert_eq!(line.len(), 98);
         let result = parse_hex_line(line).unwrap();
-        assert_eq!(result, vec![0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xaa]);
+        assert_eq!(
+            result,
+            vec![0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88, 0x99, 0xaa]
+        );
     }
 
     #[test]
@@ -318,21 +321,20 @@ mod tests {
 
         // 写入测试hex数据
         // "Hello" = 5 bytes, Rust长度 = 1 + 64 + 15 = 80
-        let line1 = "X12345678948 65 6c 6c 6f                                                        ";
+        let line1 =
+            "X12345678948 65 6c 6c 6f                                                        ";
         assert_eq!(line1.len(), 80);
         writeln!(input_file, "{}", line1).unwrap();
 
         // " World" = 6 bytes, Rust长度 = 1 + 64 + 18 = 83
-        let line2 = "X12345678920 57 6f 72 6c 64                                                        ";
+        let line2 =
+            "X12345678920 57 6f 72 6c 64                                                        ";
         assert_eq!(line2.len(), 83);
         writeln!(input_file, "{}", line2).unwrap();
         input_file.flush().unwrap();
 
         // 执行转换
-        let bytes_written = convert_hex_file(
-            input_file.path(),
-            output_file.path()
-        ).unwrap();
+        let bytes_written = convert_hex_file(input_file.path(), output_file.path()).unwrap();
 
         // 验证结果
         assert_eq!(bytes_written, 11); // "Hello World" = 11 bytes
@@ -348,10 +350,7 @@ mod tests {
         let input_file = NamedTempFile::new().unwrap();
         let output_file = NamedTempFile::new().unwrap();
 
-        let bytes_written = convert_hex_file(
-            input_file.path(),
-            output_file.path()
-        ).unwrap();
+        let bytes_written = convert_hex_file(input_file.path(), output_file.path()).unwrap();
 
         assert_eq!(bytes_written, 0);
     }

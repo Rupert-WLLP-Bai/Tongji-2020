@@ -95,9 +95,7 @@ fn validate_and_calculate_day_of_year(year: i32, month: u32, day: u32) -> Result
     }
 
     // Rust改进: 使用迭代器的sum()方法计算前几个月的天数，避免手动循环
-    let days_before_month: u32 = (1..month)
-        .map(|m| days_in_month(year, m))
-        .sum();
+    let days_before_month: u32 = (1..month).map(|m| days_in_month(year, m)).sum();
 
     Ok(days_before_month + day)
 }
@@ -122,7 +120,10 @@ fn main() {
     // Rust改进: 使用match处理Result，代码结构清晰
     match validate_and_calculate_day_of_year(year, month, day) {
         Ok(day_of_year) => {
-            println!("{}-{}-{}是{}年的第{}天", year, month, day, year, day_of_year);
+            println!(
+                "{}-{}-{}是{}年的第{}天",
+                year, month, day, year, day_of_year
+            );
         }
         Err(e) => {
             println!("{}", e);

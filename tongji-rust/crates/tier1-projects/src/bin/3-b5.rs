@@ -30,7 +30,11 @@ use std::io::{self, Write};
 /// let area = calculate_triangle_area(3.0, 4.0, 90.0).unwrap();
 /// assert!((area - 6.0).abs() < 0.001);
 /// ```
-fn calculate_triangle_area(side_a: f64, side_b: f64, angle_degrees: f64) -> Result<f64, &'static str> {
+fn calculate_triangle_area(
+    side_a: f64,
+    side_b: f64,
+    angle_degrees: f64,
+) -> Result<f64, &'static str> {
     // Rust改进: 添加输入验证，确保数据合法性
     if side_a <= 0.0 || side_b <= 0.0 {
         return Err("边长必须为正数");

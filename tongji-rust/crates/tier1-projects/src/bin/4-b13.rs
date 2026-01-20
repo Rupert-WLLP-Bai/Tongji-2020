@@ -76,7 +76,13 @@ fn print_tower_recursive(
     match order {
         TowerOrder::Normal => {
             // 正三角形: 先递归打印上面的行，再打印当前行
-            print_tower_recursive(start_ch, (end_ch as u8 - 1) as char, order, initial_end, output);
+            print_tower_recursive(
+                start_ch,
+                (end_ch as u8 - 1) as char,
+                order,
+                initial_end,
+                output,
+            );
 
             // 计算缩进: 从顶部到当前的距离 = initial_end - end_ch
             // 例如: A到D时，A行缩进3，B行缩进2，C行缩进1，D行缩进0
@@ -101,7 +107,13 @@ fn print_tower_recursive(
             output.push_str(&print_reverse(start_ch, end_ch));
             output.push('\n');
 
-            print_tower_recursive((start_ch as u8 + 1) as char, end_ch, order, initial_end, output);
+            print_tower_recursive(
+                (start_ch as u8 + 1) as char,
+                end_ch,
+                order,
+                initial_end,
+                output,
+            );
         }
     }
 }

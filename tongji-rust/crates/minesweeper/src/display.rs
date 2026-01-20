@@ -3,10 +3,13 @@ use crate::board::{Board, CellState};
 
 /// Display the board in text mode
 pub fn display_board(board: &Board, show_mines: bool) {
-    println!("\n   {}", (0..board.width)
-        .map(|i| format!("{:2}", i))
-        .collect::<Vec<_>>()
-        .join(" "));
+    println!(
+        "\n   {}",
+        (0..board.width)
+            .map(|i| format!("{:2}", i))
+            .collect::<Vec<_>>()
+            .join(" ")
+    );
 
     for y in 0..board.height {
         print!("{:2} ", y);
@@ -39,8 +42,11 @@ pub fn display_board(board: &Board, show_mines: bool) {
     }
 
     println!("\nFlags: {}/{}", board.flag_count, board.mine_count);
-    println!("Revealed: {}/{}", board.count_revealed(),
-             board.width * board.height - board.mine_count);
+    println!(
+        "Revealed: {}/{}",
+        board.count_revealed(),
+        board.width * board.height - board.mine_count
+    );
 }
 
 /// Display game statistics
@@ -50,8 +56,10 @@ pub fn display_stats(board: &Board) {
     println!("Total mines: {}", board.mine_count);
     println!("Flags placed: {}", board.flag_count);
     println!("Cells revealed: {}", board.count_revealed());
-    println!("Cells remaining: {}",
-             board.width * board.height - board.mine_count - board.count_revealed());
+    println!(
+        "Cells remaining: {}",
+        board.width * board.height - board.mine_count - board.count_revealed()
+    );
 }
 
 #[cfg(test)]

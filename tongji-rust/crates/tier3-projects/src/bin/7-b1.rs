@@ -73,13 +73,15 @@ fn tj_time_convert(timestamp: i64) -> Result<TjTime, String> {
 
     // Rust改进: 使用chrono的FixedOffset处理时区转换
     // 原C++手动加8小时，这里使用正确的时区API
-    let beijing_offset = chrono::FixedOffset::east_opt(8 * 3600)
-        .ok_or("无法创建UTC+8时区")?;
+    let beijing_offset = chrono::FixedOffset::east_opt(8 * 3600).ok_or("无法创建UTC+8时区")?;
     let beijing_time = dt.with_timezone(&beijing_offset);
 
-    Ok(TjTime::from_datetime(beijing_time.with_timezone(&Utc).checked_add_signed(
-        chrono::Duration::hours(8)
-    ).ok_or("时间计算溢出")?))
+    Ok(TjTime::from_datetime(
+        beijing_time
+            .with_timezone(&Utc)
+            .checked_add_signed(chrono::Duration::hours(8))
+            .ok_or("时间计算溢出")?,
+    ))
 }
 
 /// 使用系统chrono库转换时间戳（用于对比验证）
@@ -128,19 +130,8 @@ fn wait_for_enter(prompt: Option<&str>) {
 fn main() {
     // 测试时间戳数组（与原C++相同）
     let test_times = [
-        1,
-        123456789,
-        349823021,
-        987654321,
-        1202990407,
-        1216468807,
-        1250312143,
-        1272636353,
-        1326193524,
-        1336549496,
-        1392837128,
-        1625675376,
-        2052743737,
+        1, 123456789, 349823021, 987654321, 1202990407, 1216468807, 1250312143, 1272636353,
+        1326193524, 1336549496, 1392837128, 1625675376, 2052743737,
     ];
 
     // 测试预定义的时间戳
@@ -163,7 +154,10 @@ fn main() {
     // 测试当前系统时间
     let current_timestamp = Utc::now().timestamp();
     println!("当前系统时间    ：{}", current_timestamp);
-    println!("系统转换的结果  ：{}", system_time_output(current_timestamp));
+    println!(
+        "系统转换的结果  ：{}",
+        system_time_output(current_timestamp)
+    );
 
     match tj_time_convert(current_timestamp) {
         Ok(time) => {
@@ -372,19 +366,8 @@ mod tests {
     fn test_tj_time_convert_all_test_cases() {
         // 测试所有原C++测试用例都能成功转换
         let test_times = [
-            1,
-            123456789,
-            349823021,
-            987654321,
-            1202990407,
-            1216468807,
-            1250312143,
-            1272636353,
-            1326193524,
-            1336549496,
-            1392837128,
-            1625675376,
-            2052743737,
+            1, 123456789, 349823021, 987654321, 1202990407, 1216468807, 1250312143, 1272636353,
+            1326193524, 1336549496, 1392837128, 1625675376, 2052743737,
         ];
 
         for &timestamp in &test_times {

@@ -76,14 +76,14 @@ fn main() {
 
     // Rust改进: 使用wrapping版本确保在debug和release模式下行为一致
     // 原C++的有符号溢出是未定义行为，Rust明确定义为wrapping
-    println!("{}", fun_wrapping(s1));   // 期望输出 32640
-    println!("{}", fun_wrapping(s2));   // 期望输出 -32640
-    println!("{}", fun_wrapping(us1));  // 期望输出 32640
-    println!("{}", fun_wrapping(us2));  // 期望输出 32896
-    println!("{}", fun_wrapping(i1));   // 期望输出 2147450880
-    println!("{}", fun_wrapping(i2));   // 期望输出 -2147450880
-    println!("{}", fun_wrapping(ui1));  // 期望输出 2147450880
-    println!("{}", fun_wrapping(ui2));  // 期望输出 2147516416
+    println!("{}", fun_wrapping(s1)); // 期望输出 32640
+    println!("{}", fun_wrapping(s2)); // 期望输出 -32640
+    println!("{}", fun_wrapping(us1)); // 期望输出 32640
+    println!("{}", fun_wrapping(us2)); // 期望输出 32896
+    println!("{}", fun_wrapping(i1)); // 期望输出 2147450880
+    println!("{}", fun_wrapping(i2)); // 期望输出 -2147450880
+    println!("{}", fun_wrapping(ui1)); // 期望输出 2147450880
+    println!("{}", fun_wrapping(ui2)); // 期望输出 2147516416
 }
 
 #[cfg(test)]

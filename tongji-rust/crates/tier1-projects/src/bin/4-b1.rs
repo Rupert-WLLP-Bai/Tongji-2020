@@ -289,7 +289,10 @@ mod tests {
     fn test_yi_section() {
         // 测试亿节
         assert_eq!(to_chinese_currency(100000000.0), "壹亿圆整");
-        assert_eq!(to_chinese_currency(123456789.12), "壹亿贰仟叁佰肆拾伍万陆仟柒佰捌拾玖圆壹角贰分");
+        assert_eq!(
+            to_chinese_currency(123456789.12),
+            "壹亿贰仟叁佰肆拾伍万陆仟柒佰捌拾玖圆壹角贰分"
+        );
     }
 
     #[test]

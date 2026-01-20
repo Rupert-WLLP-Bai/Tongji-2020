@@ -2,7 +2,7 @@
 //!
 //! Demonstrates screen clearing and size detection
 
-use console_tools::{cct_cls, cct_gotoxy, cct_setcolor, cct_getconsoleborder, flush};
+use console_tools::{cct_cls, cct_getconsoleborder, cct_gotoxy, cct_setcolor, flush};
 use std::io;
 
 fn main() -> io::Result<()> {

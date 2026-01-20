@@ -406,9 +406,15 @@ mod tests {
 
     #[test]
     fn test_complex_numbers() {
-        assert_eq!(number_to_chinese(123456789.12), "壹亿贰仟叁佰肆拾伍万陆仟柒佰捌拾玖圆壹角贰分");
+        assert_eq!(
+            number_to_chinese(123456789.12),
+            "壹亿贰仟叁佰肆拾伍万陆仟柒佰捌拾玖圆壹角贰分"
+        );
         assert_eq!(number_to_chinese(1000000001.0), "壹拾亿零壹圆整");
-        assert_eq!(number_to_chinese(1234567890.12), "壹拾贰亿叁仟肆佰伍拾陆万柒仟捌佰玖拾圆壹角贰分");
+        assert_eq!(
+            number_to_chinese(1234567890.12),
+            "壹拾贰亿叁仟肆佰伍拾陆万柒仟捌佰玖拾圆壹角贰分"
+        );
     }
 
     #[test]
@@ -427,6 +433,9 @@ mod tests {
         // 测试边界值
         assert_eq!(number_to_chinese(0.0), "零");
         assert_eq!(number_to_chinese(0.01), "壹分");
-        assert_eq!(number_to_chinese(9999999999.99), "玖拾玖亿玖仟玖佰玖拾玖万玖仟玖佰玖拾玖圆玖角玖分");
+        assert_eq!(
+            number_to_chinese(9999999999.99),
+            "玖拾玖亿玖仟玖佰玖拾玖万玖仟玖佰玖拾玖圆玖角玖分"
+        );
     }
 }

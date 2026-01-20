@@ -53,7 +53,7 @@ pub fn validate_move(state: &GameState, from: Pillar, to: Pillar) -> Result<(), 
 /// Check if a disk can be placed on a pillar
 pub fn can_place_on(state: &GameState, disk: u8, pillar: Pillar) -> bool {
     match state.top(pillar) {
-        None => true, // Empty pillar, can place any disk
+        None => true,            // Empty pillar, can place any disk
         Some(top) => disk < top, // Can only place smaller disk on larger disk
     }
 }

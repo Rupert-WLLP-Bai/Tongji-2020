@@ -7,14 +7,14 @@
 
 pub mod color;
 pub mod cursor;
-pub mod screen;
 pub mod input;
+pub mod screen;
 
 // Re-export commonly used functions
 pub use color::{cct_setcolor, cct_setconsoleborder};
-pub use cursor::{cct_gotoxy, cct_setcursor, cct_getxy};
-pub use screen::{cct_cls, cct_getconsoleborder, cct_setconsoleborder_size};
+pub use cursor::{cct_getxy, cct_gotoxy, cct_setcursor};
 pub use input::{cct_read_keyboard_and_mouse, KeyMouseEvent};
+pub use screen::{cct_cls, cct_getconsoleborder, cct_setconsoleborder_size};
 
 use std::io::{self, Write};
 

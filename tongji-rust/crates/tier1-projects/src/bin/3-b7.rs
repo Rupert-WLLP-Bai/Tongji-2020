@@ -426,14 +426,20 @@ mod tests {
     #[test]
     fn test_convert_wan() {
         assert_eq!(number_to_chinese_currency(10000.0), "壹万圆整");
-        assert_eq!(number_to_chinese_currency(12345.0), "壹万贰仟叁佰肆拾伍圆整");
+        assert_eq!(
+            number_to_chinese_currency(12345.0),
+            "壹万贰仟叁佰肆拾伍圆整"
+        );
         assert_eq!(number_to_chinese_currency(100001.0), "壹拾万零壹圆整");
     }
 
     #[test]
     fn test_convert_yi() {
         assert_eq!(number_to_chinese_currency(100000000.0), "壹亿圆整");
-        assert_eq!(number_to_chinese_currency(123456789.0), "壹亿贰仟叁佰肆拾伍万陆仟柒佰捌拾玖圆整");
+        assert_eq!(
+            number_to_chinese_currency(123456789.0),
+            "壹亿贰仟叁佰肆拾伍万陆仟柒佰捌拾玖圆整"
+        );
         assert_eq!(number_to_chinese_currency(1000000001.0), "壹拾亿零壹圆整");
     }
 
@@ -460,10 +466,7 @@ mod tests {
             number_to_chinese_currency(9876543210.99),
             "玖拾捌亿柒仟陆佰伍拾肆万叁仟贰佰壹拾圆玖角玖分"
         );
-        assert_eq!(
-            number_to_chinese_currency(1000000000.01),
-            "壹拾亿零壹分"
-        );
+        assert_eq!(number_to_chinese_currency(1000000000.01), "壹拾亿零壹分");
     }
 
     #[test]

@@ -217,22 +217,11 @@ mod tests {
 
     #[test]
     fn test_validate_date_invalid_day() {
-        assert_eq!(
-            validate_date(2020, 1, 0),
-            Err("输入错误-日与月的关系非法")
-        );
-        assert_eq!(
-            validate_date(2020, 1, 32),
-            Err("输入错误-日与月的关系非法")
-        );
-        assert_eq!(
-            validate_date(2019, 2, 29),
-            Err("输入错误-日与月的关系非法")
-        ); // 平年2月没有29日
-        assert_eq!(
-            validate_date(2020, 4, 31),
-            Err("输入错误-日与月的关系非法")
-        ); // 4月只有30天
+        assert_eq!(validate_date(2020, 1, 0), Err("输入错误-日与月的关系非法"));
+        assert_eq!(validate_date(2020, 1, 32), Err("输入错误-日与月的关系非法"));
+        assert_eq!(validate_date(2019, 2, 29), Err("输入错误-日与月的关系非法")); // 平年2月没有29日
+        assert_eq!(validate_date(2020, 4, 31), Err("输入错误-日与月的关系非法"));
+        // 4月只有30天
     }
 
     #[test]

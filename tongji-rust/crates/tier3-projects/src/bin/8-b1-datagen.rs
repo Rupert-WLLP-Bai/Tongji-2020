@@ -128,11 +128,7 @@ fn main() {
     const DATA_SIZE: usize = 145_320;
 
     // Rust改进: 使用当前目录而不是硬编码路径
-    let output_files = vec![
-        "hello.docx",
-        "hello.txt",
-        "hello.bin",
-    ];
+    let output_files = vec!["hello.docx", "hello.txt", "hello.bin"];
 
     println!("开始生成随机数据...");
 
@@ -241,7 +237,8 @@ mod tests {
         // 读取并验证
         let mut file = File::open(test_file).expect("Failed to open file");
         let mut read_data = Vec::new();
-        file.read_to_end(&mut read_data).expect("Failed to read file");
+        file.read_to_end(&mut read_data)
+            .expect("Failed to read file");
 
         assert_eq!(read_data, test_data);
 
@@ -267,11 +264,7 @@ mod tests {
     fn test_write_data_to_multiple_files() {
         // 测试写入多个文件
         let test_data = vec![10, 20, 30, 40, 50];
-        let test_files = vec![
-            "test_multi_1.bin",
-            "test_multi_2.bin",
-            "test_multi_3.bin",
-        ];
+        let test_files = vec!["test_multi_1.bin", "test_multi_2.bin", "test_multi_3.bin"];
 
         let result = write_data_to_multiple_files(&test_files, &test_data);
         assert!(result.is_ok());

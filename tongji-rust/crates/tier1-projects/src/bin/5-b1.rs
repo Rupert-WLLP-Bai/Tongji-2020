@@ -58,7 +58,7 @@ fn read_positive_integers(max_count: usize) -> io::Result<Vec<i32>> {
         match token.parse::<i32>() {
             Ok(n) if n > 0 => numbers.push(n),
             Ok(n) if n < 0 => break, // 遇到负数终止
-            _ => continue, // 忽略无效输入
+            _ => continue,           // 忽略无效输入
         }
     }
 

@@ -27,15 +27,15 @@ const MAX_Y: u16 = 17;
 /// 边界处理模式
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum BoundaryMode {
-    Stop,    // 边界停止
-    Wrap,    // 边界回绕
+    Stop, // 边界停止
+    Wrap, // 边界回绕
 }
 
 /// 控制模式
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum ControlMode {
-    IJKL,    // 使用IJKL键
-    Arrow,   // 使用方向键
+    IJKL,  // 使用IJKL键
+    Arrow, // 使用方向键
 }
 
 /// 游戏状态

@@ -37,7 +37,13 @@ const fn days_in_month(year: i32, month: u32) -> u32 {
     match month {
         1 | 3 | 5 | 7 | 8 | 10 | 12 => 31,
         4 | 6 | 9 | 11 => 30,
-        2 => if is_leap_year(year) { 29 } else { 28 },
+        2 => {
+            if is_leap_year(year) {
+                29
+            } else {
+                28
+            }
+        }
         _ => 0, // 不应该到达这里
     }
 }
@@ -154,7 +160,9 @@ fn main() {
             Some((y, m)) => break (y, m),
             None => {
                 // 判断具体错误类型给出提示
-                if let Ok(parts) = input.trim().split_whitespace()
+                if let Ok(parts) = input
+                    .trim()
+                    .split_whitespace()
                     .map(|s| s.parse::<i32>())
                     .collect::<Result<Vec<_>, _>>()
                 {

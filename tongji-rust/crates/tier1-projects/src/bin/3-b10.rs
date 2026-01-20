@@ -21,7 +21,11 @@ fn validate_input(input: &str) -> Option<i32> {
     // Rust改进: 使用链式调用 parse().ok().filter() 更简洁
     // ok()将Result<T,E>转换为Option<T>
     // filter()检查范围，不符合则返回None
-    input.trim().parse::<i32>().ok().filter(|&n| n >= 0 && n <= 100)
+    input
+        .trim()
+        .parse::<i32>()
+        .ok()
+        .filter(|&n| n >= 0 && n <= 100)
 }
 
 fn main() {
@@ -95,4 +99,3 @@ mod tests {
         assert_eq!(validate_input("5 0"), None);
     }
 }
-
