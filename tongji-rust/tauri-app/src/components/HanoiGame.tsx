@@ -27,6 +27,9 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
 
   // Initialize game
   const initGame = () => {
+    // Stop any ongoing animation first
+    setShouldStop(true);
+
     const stacks: number[][] = [[], [], []];
     const pillarIndex = startPillar === 'A' ? 0 : startPillar === 'B' ? 1 : 2;
 
@@ -43,11 +46,15 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       targetPillar,
     });
     setSelectedDisk(null);
-    setAutoSolving(false);
     setMoveHistory([]);
     setCurrentStep('');
     setAnimatingDisk(null);
-    setShouldStop(false);
+
+    // Reset flags after a short delay to allow animation to stop
+    setTimeout(() => {
+      setAutoSolving(false);
+      setShouldStop(false);
+    }, 100);
   };
 
   // Reset game when parameters change
@@ -97,12 +104,13 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       const diskWidth = (disk / diskCount) * maxDiskWidth;
       const hue = (disk / diskCount) * 360;
 
-      ctx.fillStyle = isSelected || isAnimating ? '#fbbf24' : `hsl(${hue}, 70%, 50%)`;
+      // Only highlight selected disks (manual selection), not animating disks
+      ctx.fillStyle = isSelected ? '#fbbf24' : `hsl(${hue}, 70%, 50%)`;
       ctx.fillRect(x - diskWidth / 2, y, diskWidth, diskHeight - 2);
 
-      // Disk border
-      ctx.strokeStyle = '#000';
-      ctx.lineWidth = 2;
+      // Disk border - slightly thicker for animating disks to show movement
+      ctx.strokeStyle = isAnimating ? '#fbbf24' : '#000';
+      ctx.lineWidth = isAnimating ? 3 : 2;
       ctx.strokeRect(x - diskWidth / 2, y, diskWidth, diskHeight - 2);
 
       // Disk number
@@ -415,25 +423,32 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
 
           <button
             onClick={initGame}
-            disabled={autoSolving}
-            className="px-4 py-1 bg-green-600 hover:bg-green-700 rounded transition-colors disabled:opacity-50"
+            className="px-4 py-1 bg-green-600 hover:bg-green-700 rounded transition-colors"
           >
             Reset
           </button>
 
-          {autoSolving ? (
+          <button
+            onClick={autoSolve}
+            disabled={autoSolving}
+            className="px-4 py-1 bg-purple-600 hover:bg-purple-700 rounded transition-colors disabled:opacity-50 flex items-center gap-2"
+          >
+            {autoSolving ? (
+              <>
+                <span className="animate-spin">⚙️</span>
+                Auto Solving...
+              </>
+            ) : (
+              '🤖 Auto Solve'
+            )}
+          </button>
+
+          {autoSolving && (
             <button
               onClick={stopAutoSolve}
               className="px-4 py-1 bg-red-600 hover:bg-red-700 rounded transition-colors flex items-center gap-2"
             >
               ⏹️ Stop
-            </button>
-          ) : (
-            <button
-              onClick={autoSolve}
-              className="px-4 py-1 bg-purple-600 hover:bg-purple-700 rounded transition-colors flex items-center gap-2"
-            >
-              🤖 Auto Solve
             </button>
           )}
         </div>
