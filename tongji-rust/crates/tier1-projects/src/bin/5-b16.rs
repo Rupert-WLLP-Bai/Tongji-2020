@@ -185,9 +185,21 @@ mod tests {
     #[test]
     fn test_sort_by_score() {
         let mut students = vec![
-            Student { id: "001".to_string(), name: "A".to_string(), score: 70 },
-            Student { id: "002".to_string(), name: "B".to_string(), score: 90 },
-            Student { id: "003".to_string(), name: "C".to_string(), score: 80 },
+            Student {
+                id: "001".to_string(),
+                name: "A".to_string(),
+                score: 70,
+            },
+            Student {
+                id: "002".to_string(),
+                name: "B".to_string(),
+                score: 90,
+            },
+            Student {
+                id: "003".to_string(),
+                name: "C".to_string(),
+                score: 80,
+            },
         ];
 
         sort_by_score(&mut students);
@@ -200,10 +212,26 @@ mod tests {
     #[test]
     fn test_get_failing_students() {
         let students = vec![
-            Student { id: "001".to_string(), name: "A".to_string(), score: 70 },
-            Student { id: "002".to_string(), name: "B".to_string(), score: 50 },
-            Student { id: "003".to_string(), name: "C".to_string(), score: 80 },
-            Student { id: "004".to_string(), name: "D".to_string(), score: 45 },
+            Student {
+                id: "001".to_string(),
+                name: "A".to_string(),
+                score: 70,
+            },
+            Student {
+                id: "002".to_string(),
+                name: "B".to_string(),
+                score: 50,
+            },
+            Student {
+                id: "003".to_string(),
+                name: "C".to_string(),
+                score: 80,
+            },
+            Student {
+                id: "004".to_string(),
+                name: "D".to_string(),
+                score: 45,
+            },
         ];
 
         let failing = get_failing_students(&students);
@@ -216,8 +244,16 @@ mod tests {
     #[test]
     fn test_get_failing_students_all_passing() {
         let students = vec![
-            Student { id: "001".to_string(), name: "A".to_string(), score: 70 },
-            Student { id: "002".to_string(), name: "B".to_string(), score: 80 },
+            Student {
+                id: "001".to_string(),
+                name: "A".to_string(),
+                score: 70,
+            },
+            Student {
+                id: "002".to_string(),
+                name: "B".to_string(),
+                score: 80,
+            },
         ];
 
         let failing = get_failing_students(&students);
@@ -227,8 +263,16 @@ mod tests {
     #[test]
     fn test_get_failing_students_all_failing() {
         let students = vec![
-            Student { id: "001".to_string(), name: "A".to_string(), score: 50 },
-            Student { id: "002".to_string(), name: "B".to_string(), score: 40 },
+            Student {
+                id: "001".to_string(),
+                name: "A".to_string(),
+                score: 50,
+            },
+            Student {
+                id: "002".to_string(),
+                name: "B".to_string(),
+                score: 40,
+            },
         ];
 
         let failing = get_failing_students(&students);

@@ -188,12 +188,7 @@ mod tests {
     #[test]
     fn test_is_convex_square() {
         // 正方形是凸多边形
-        let square = vec![
-            (0.0, 0.0),
-            (1.0, 0.0),
-            (1.0, 1.0),
-            (0.0, 1.0),
-        ];
+        let square = vec![(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)];
         assert!(is_convex(&square));
     }
 
@@ -215,7 +210,7 @@ mod tests {
         let concave = vec![
             (0.0, 0.0),
             (2.0, 0.0),
-            (1.0, 1.0),  // 凹进去的点
+            (1.0, 1.0), // 凹进去的点
             (2.0, 2.0),
             (0.0, 2.0),
         ];
@@ -225,12 +220,7 @@ mod tests {
     #[test]
     fn test_calculate_area_square() {
         // 单位正方形面积为1
-        let square = vec![
-            (0.0, 0.0),
-            (1.0, 0.0),
-            (1.0, 1.0),
-            (0.0, 1.0),
-        ];
+        let square = vec![(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)];
         let area = calculate_area(&square);
         assert!((area - 1.0).abs() < 1e-10);
     }
@@ -238,11 +228,7 @@ mod tests {
     #[test]
     fn test_calculate_area_triangle() {
         // 直角三角形面积 = 底 * 高 / 2 = 2 * 3 / 2 = 3
-        let triangle = vec![
-            (0.0, 0.0),
-            (2.0, 0.0),
-            (0.0, 3.0),
-        ];
+        let triangle = vec![(0.0, 0.0), (2.0, 0.0), (0.0, 3.0)];
         let area = calculate_area(&triangle);
         assert!((area - 3.0).abs() < 1e-10);
     }
@@ -250,12 +236,7 @@ mod tests {
     #[test]
     fn test_calculate_area_rectangle() {
         // 矩形面积 = 长 * 宽 = 3 * 2 = 6
-        let rectangle = vec![
-            (0.0, 0.0),
-            (3.0, 0.0),
-            (3.0, 2.0),
-            (0.0, 2.0),
-        ];
+        let rectangle = vec![(0.0, 0.0), (3.0, 0.0), (3.0, 2.0), (0.0, 2.0)];
         let area = calculate_area(&rectangle);
         assert!((area - 6.0).abs() < 1e-10);
     }

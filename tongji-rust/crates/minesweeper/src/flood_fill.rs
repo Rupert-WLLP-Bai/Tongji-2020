@@ -72,8 +72,7 @@ mod tests {
         // All cells should be revealed
         for y in 0..board.height {
             for x in 0..board.width {
-                assert!(board.is_revealed(x, y),
-                        "Cell ({}, {}) not revealed", x, y);
+                assert!(board.is_revealed(x, y), "Cell ({}, {}) not revealed", x, y);
             }
         }
     }
@@ -91,7 +90,8 @@ mod tests {
         for y in 0..board.height {
             for x in 0..board.width {
                 if !board.has_mine(x, y) {
-                    let count = board.get_neighbors(x, y)
+                    let count = board
+                        .get_neighbors(x, y)
                         .iter()
                         .filter(|(nx, ny)| board.has_mine(*nx, *ny))
                         .count() as u8;
@@ -190,7 +190,8 @@ mod tests {
         for y in 0..board.height {
             for x in 0..board.width {
                 if !board.has_mine(x, y) {
-                    let count = board.get_neighbors(x, y)
+                    let count = board
+                        .get_neighbors(x, y)
                         .iter()
                         .filter(|(nx, ny)| board.has_mine(*nx, *ny))
                         .count() as u8;

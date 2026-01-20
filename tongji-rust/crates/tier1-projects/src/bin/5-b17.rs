@@ -47,7 +47,8 @@ impl PasswordConfig {
             return Err(format!("其他符号个数[{}]不正确", self.special_count));
         }
 
-        let total = self.uppercase_count + self.lowercase_count + self.digit_count + self.special_count;
+        let total =
+            self.uppercase_count + self.lowercase_count + self.digit_count + self.special_count;
         if total > self.length {
             return Err(format!(
                 "所有字符类型之和[{}+{}+{}+{}]大于总密码长度[{}]",
@@ -347,7 +348,9 @@ mod tests {
             special_count: 2,
         };
         let password = generate_password(&config);
-        assert!(password.chars().all(|c| c.is_ascii() && !c.is_ascii_control()));
+        assert!(password
+            .chars()
+            .all(|c| c.is_ascii() && !c.is_ascii_control()));
     }
 
     #[test]

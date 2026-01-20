@@ -2,7 +2,7 @@
 //!
 //! Demonstrates cursor movement and visibility control
 
-use console_tools::{cct_cls, cct_gotoxy, cct_setcursor, cct_setcolor, flush};
+use console_tools::{cct_cls, cct_gotoxy, cct_setcolor, cct_setcursor, flush};
 use std::io;
 use std::thread;
 use std::time::Duration;

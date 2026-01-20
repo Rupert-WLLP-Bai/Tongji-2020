@@ -40,11 +40,13 @@ pub fn display_vertical(state: &GameState) {
 
 /// Display a simple text representation
 pub fn display_simple(state: &GameState) {
-    println!("A: {:?}  B: {:?}  C: {:?}  (Moves: {})",
-             state.stack(Pillar::A),
-             state.stack(Pillar::B),
-             state.stack(Pillar::C),
-             state.move_count);
+    println!(
+        "A: {:?}  B: {:?}  C: {:?}  (Moves: {})",
+        state.stack(Pillar::A),
+        state.stack(Pillar::B),
+        state.stack(Pillar::C),
+        state.move_count
+    );
 }
 
 #[cfg(test)]

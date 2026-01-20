@@ -2,7 +2,7 @@
 //!
 //! Demonstrates the color functions of console-tools
 
-use console_tools::{cct_cls, cct_setcolor, cct_gotoxy, flush};
+use console_tools::{cct_cls, cct_gotoxy, cct_setcolor, flush};
 use std::io;
 
 fn main() -> io::Result<()> {

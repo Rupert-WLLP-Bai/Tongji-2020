@@ -47,7 +47,11 @@ fn extract_digits(num: i32) -> [i32; 5] {
 /// * `None` - 如果输入无效或超出范围
 fn validate_input(input: &str) -> Option<i32> {
     // Rust改进: 链式调用parse().ok().filter()更简洁
-    input.trim().parse::<i32>().ok().filter(|&n| n >= 1 && n <= 30000)
+    input
+        .trim()
+        .parse::<i32>()
+        .ok()
+        .filter(|&n| n >= 1 && n <= 30000)
 }
 
 fn main() {
@@ -166,8 +170,8 @@ mod tests {
         // 综合测试：验证提取的数字可以重建原数字
         for num in [1, 99, 123, 1234, 12345, 30000] {
             let digits = extract_digits(num);
-            let reconstructed = digits[0] + digits[1] * 10 + digits[2] * 100
-                              + digits[3] * 1000 + digits[4] * 10000;
+            let reconstructed =
+                digits[0] + digits[1] * 10 + digits[2] * 100 + digits[3] * 1000 + digits[4] * 10000;
             assert_eq!(reconstructed, num, "Failed to reconstruct {}", num);
         }
     }

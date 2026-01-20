@@ -1,468 +1,214 @@
 import { useState, useEffect } from 'react';
+import { invoke } from '@tauri-apps/api/core';
 
 interface MinesweeperGameProps {
   onBack: () => void;
 }
 
-type Difficulty = 'easy' | 'medium' | 'hard';
+type Difficulty = 'Easy' | 'Medium' | 'Hard';
 
-interface CellState {
+interface CellInfo {
   hasMine: boolean;
   isRevealed: boolean;
   isFlagged: boolean;
   adjacentMines: number;
 }
 
-interface GameState {
-  board: CellState[][];
+interface GameStateInfo {
+  board: CellInfo[][];
   width: number;
   height: number;
   mineCount: number;
-  revealedCount: number;
   flagCount: number;
   gameOver: boolean;
   gameWon: boolean;
-  firstClick: boolean;
 }
 
 export default function MinesweeperGame({ onBack }: MinesweeperGameProps) {
-  const [difficulty, setDifficulty] = useState<Difficulty>('easy');
-  const [gameState, setGameState] = useState<GameState | null>(null);
-  const [autoPlaying, setAutoPlaying] = useState(false);
-  const [moveHistory, setMoveHistory] = useState<string[]>([]);
+  const [difficulty, setDifficulty] = useState<Difficulty>('Easy');
+  const [gameState, setGameState] = useState<GameStateInfo | null>(null);
 
-  // Difficulty settings
-  const getDifficultySettings = (diff: Difficulty) => {
-    switch (diff) {
-      case 'easy':
-        return { width: 9, height: 9, mines: 10 };
-      case 'medium':
-        return { width: 16, height: 16, mines: 40 };
-      case 'hard':
-        return { width: 30, height: 16, mines: 99 };
+  const [autoSolving, setAutoSolving] = useState(false);
+
+  const initGame = async () => {
+    setAutoSolving(false);
+    try {
+      const state = await invoke<GameStateInfo>('init_minesweeper', { difficulty });
+      setGameState(state);
+    } catch (error) {
+      console.error('Failed to init game:', error);
     }
   };
 
-  // Initialize game
-  const initGame = () => {
-    const { width, height, mines } = getDifficultySettings(difficulty);
-    const board: CellState[][] = [];
-
-    for (let y = 0; y < height; y++) {
-      board[y] = [];
-      for (let x = 0; x < width; x++) {
-        board[y][x] = {
-          hasMine: false,
-          isRevealed: false,
-          isFlagged: false,
-          adjacentMines: 0,
-        };
-      }
-    }
-
-    setGameState({
-      board,
-      width,
-      height,
-      mineCount: mines,
-      revealedCount: 0,
-      flagCount: 0,
-      gameOver: false,
-      gameWon: false,
-      firstClick: true,
-    });
-    setMoveHistory([]);
-    setAutoPlaying(false);
-  };
-
-  // Initialize on mount and difficulty change
   useEffect(() => {
     initGame();
   }, [difficulty]);
 
-  // Generate mines (called after first click)
-  const generateMines = (state: GameState, safeX: number, safeY: number) => {
-    const newBoard = state.board.map(row => row.map(cell => ({ ...cell })));
-    let minesPlaced = 0;
-
-    while (minesPlaced < state.mineCount) {
-      const x = Math.floor(Math.random() * state.width);
-      const y = Math.floor(Math.random() * state.height);
-
-      // Skip if already has mine or in safe zone (3x3 around first click)
-      if (newBoard[y][x].hasMine) continue;
-      if (Math.abs(x - safeX) <= 1 && Math.abs(y - safeY) <= 1) continue;
-
-      newBoard[y][x].hasMine = true;
-      minesPlaced++;
-    }
-
-    // Calculate adjacent mine counts
-    for (let y = 0; y < state.height; y++) {
-      for (let x = 0; x < state.width; x++) {
-        if (!newBoard[y][x].hasMine) {
-          newBoard[y][x].adjacentMines = countAdjacentMines(newBoard, x, y, state.width, state.height);
+  useEffect(() => {
+    let timer: number;
+    if (autoSolving && gameState && !gameState.gameOver && !gameState.gameWon) {
+      timer = window.setTimeout(async () => {
+        try {
+          const state = await invoke<GameStateInfo>('auto_solve_step');
+          setGameState(state);
+        } catch (error) {
+          console.error('Auto solve error:', error);
+          setAutoSolving(false);
         }
-      }
+      }, 200);
+    } else if (gameState?.gameOver || gameState?.gameWon) {
+      setAutoSolving(false);
     }
+    return () => clearTimeout(timer);
+  }, [autoSolving, gameState]);
 
-    return newBoard;
+  const handleCellClick = async (x: number, y: number) => {
+    if (!gameState || gameState.gameOver || gameState.gameWon || autoSolving) return;
+    try {
+      const state = await invoke<GameStateInfo>('handle_click', { x, y });
+      setGameState(state);
+    } catch (error) {
+      console.error('Failed to handle click:', error);
+    }
   };
 
-  // Count adjacent mines
-  const countAdjacentMines = (board: CellState[][], x: number, y: number, width: number, height: number): number => {
-    let count = 0;
-    for (let dy = -1; dy <= 1; dy++) {
-      for (let dx = -1; dx <= 1; dx++) {
-        if (dx === 0 && dy === 0) continue;
-        const nx = x + dx;
-        const ny = y + dy;
-        if (nx >= 0 && nx < width && ny >= 0 && ny < height && board[ny][nx].hasMine) {
-          count++;
-        }
-      }
-    }
-    return count;
-  };
-
-  // Flood fill reveal
-  const floodFill = (board: CellState[][], x: number, y: number, width: number, height: number): number => {
-    if (x < 0 || x >= width || y < 0 || y >= height) return 0;
-    if (board[y][x].isRevealed || board[y][x].isFlagged || board[y][x].hasMine) return 0;
-
-    board[y][x].isRevealed = true;
-    let revealed = 1;
-
-    // If no adjacent mines, recursively reveal neighbors
-    if (board[y][x].adjacentMines === 0) {
-      for (let dy = -1; dy <= 1; dy++) {
-        for (let dx = -1; dx <= 1; dx++) {
-          if (dx === 0 && dy === 0) continue;
-          revealed += floodFill(board, x + dx, y + dy, width, height);
-        }
-      }
-    }
-
-    return revealed;
-  };
-
-  // Handle cell click
-  const handleCellClick = (x: number, y: number) => {
-    if (!gameState || gameState.gameOver || gameState.gameWon || autoPlaying) return;
-    if (gameState.board[y][x].isRevealed || gameState.board[y][x].isFlagged) return;
-
-    let newBoard = gameState.board.map(row => row.map(cell => ({ ...cell })));
-    let newState = { ...gameState };
-
-    // First click: generate mines
-    if (gameState.firstClick) {
-      newBoard = generateMines(gameState, x, y);
-      newState.firstClick = false;
-    }
-
-    // Check if clicked on mine
-    if (newBoard[y][x].hasMine) {
-      newBoard[y][x].isRevealed = true;
-      newState.board = newBoard;
-      newState.gameOver = true;
-      setGameState(newState);
-      setMoveHistory(prev => [...prev, `💥 Hit mine at (${x}, ${y})`]);
-      return;
-    }
-
-    // Reveal cell(s)
-    const revealed = floodFill(newBoard, x, y, gameState.width, gameState.height);
-    newState.board = newBoard;
-    newState.revealedCount += revealed;
-
-    // Check win condition
-    const totalCells = gameState.width * gameState.height;
-    if (newState.revealedCount === totalCells - gameState.mineCount) {
-      newState.gameWon = true;
-    }
-
-    setGameState(newState);
-    setMoveHistory(prev => [...prev, `✓ Revealed (${x}, ${y}) - ${revealed} cells`]);
-  };
-
-  // Handle right click (flag)
-  const handleCellRightClick = (e: React.MouseEvent, x: number, y: number) => {
+  const handleCellRightClick = async (e: React.MouseEvent, x: number, y: number) => {
     e.preventDefault();
-    if (!gameState || gameState.gameOver || gameState.gameWon || autoPlaying) return;
-    if (gameState.board[y][x].isRevealed) return;
-
-    const newBoard = gameState.board.map(row => row.map(cell => ({ ...cell })));
-    const cell = newBoard[y][x];
-
-    if (cell.isFlagged) {
-      cell.isFlagged = false;
-      setGameState({
-        ...gameState,
-        board: newBoard,
-        flagCount: gameState.flagCount - 1,
-      });
-      setMoveHistory(prev => [...prev, `🚩 Unflagged (${x}, ${y})`]);
-    } else {
-      cell.isFlagged = true;
-      setGameState({
-        ...gameState,
-        board: newBoard,
-        flagCount: gameState.flagCount + 1,
-      });
-      setMoveHistory(prev => [...prev, `🚩 Flagged (${x}, ${y})`]);
+    if (!gameState || gameState.gameOver || gameState.gameWon || autoSolving) return;
+    try {
+      const state = await invoke<GameStateInfo>('handle_flag', { x, y });
+      setGameState(state);
+    } catch (error) {
+      console.error('Failed to handle flag:', error);
     }
   };
 
-  // Auto play using simple strategy
-  const autoPlay = async () => {
-    if (!gameState || autoPlaying) return;
-
-    setAutoPlaying(true);
-    let currentState = { ...gameState };
-
-    // First click: click center
-    if (currentState.firstClick) {
-      const centerX = Math.floor(currentState.width / 2);
-      const centerY = Math.floor(currentState.height / 2);
-
-      let newBoard = generateMines(currentState, centerX, centerY);
-      const revealed = floodFill(newBoard, centerX, centerY, currentState.width, currentState.height);
-
-      currentState = {
-        ...currentState,
-        board: newBoard,
-        firstClick: false,
-        revealedCount: revealed,
-      };
-
-      setGameState(currentState);
-      setMoveHistory(prev => [...prev, `🤖 Auto: First click (${centerX}, ${centerY})`]);
-      await new Promise(resolve => setTimeout(resolve, 500));
-    }
-
-    // Simple strategy: reveal safe cells and flag obvious mines
-    while (!currentState.gameOver && !currentState.gameWon) {
-      let madeMove = false;
-
-      // Strategy 1: Find cells with all neighbors flagged, reveal remaining
-      for (let y = 0; y < currentState.height && !madeMove; y++) {
-        for (let x = 0; x < currentState.width && !madeMove; x++) {
-          const cell = currentState.board[y][x];
-          if (!cell.isRevealed || cell.adjacentMines === 0) continue;
-
-          // Count flagged and hidden neighbors
-          let flaggedCount = 0;
-          let hiddenCells: [number, number][] = [];
-
-          for (let dy = -1; dy <= 1; dy++) {
-            for (let dx = -1; dx <= 1; dx++) {
-              if (dx === 0 && dy === 0) continue;
-              const nx = x + dx;
-              const ny = y + dy;
-              if (nx >= 0 && nx < currentState.width && ny >= 0 && ny < currentState.height) {
-                const neighbor = currentState.board[ny][nx];
-                if (neighbor.isFlagged) flaggedCount++;
-                else if (!neighbor.isRevealed) hiddenCells.push([nx, ny]);
-              }
-            }
-          }
-
-          // If all mines are flagged, reveal remaining hidden cells
-          if (flaggedCount === cell.adjacentMines && hiddenCells.length > 0) {
-            const [revealX, revealY] = hiddenCells[0];
-            const newBoard = currentState.board.map(row => row.map(c => ({ ...c })));
-
-            if (newBoard[revealY][revealX].hasMine) {
-              newBoard[revealY][revealX].isRevealed = true;
-              currentState = { ...currentState, board: newBoard, gameOver: true };
-              setGameState(currentState);
-              setMoveHistory(prev => [...prev, `💥 Auto: Hit mine at (${revealX}, ${revealY})`]);
-              setAutoPlaying(false);
-              return;
-            }
-
-            const revealed = floodFill(newBoard, revealX, revealY, currentState.width, currentState.height);
-            currentState = {
-              ...currentState,
-              board: newBoard,
-              revealedCount: currentState.revealedCount + revealed,
-            };
-
-            setGameState(currentState);
-            setMoveHistory(prev => [...prev, `🤖 Auto: Revealed (${revealX}, ${revealY})`]);
-            madeMove = true;
-            await new Promise(resolve => setTimeout(resolve, 300));
-          }
-
-          // If hidden cells equal remaining mines, flag them
-          if (hiddenCells.length > 0 && flaggedCount + hiddenCells.length === cell.adjacentMines) {
-            const [flagX, flagY] = hiddenCells[0];
-            const newBoard = currentState.board.map(row => row.map(c => ({ ...c })));
-            newBoard[flagY][flagX].isFlagged = true;
-
-            currentState = {
-              ...currentState,
-              board: newBoard,
-              flagCount: currentState.flagCount + 1,
-            };
-
-            setGameState(currentState);
-            setMoveHistory(prev => [...prev, `🤖 Auto: Flagged (${flagX}, ${flagY})`]);
-            madeMove = true;
-            await new Promise(resolve => setTimeout(resolve, 300));
-          }
-        }
-      }
-
-      // If no logical move found, make a random safe guess
-      if (!madeMove) {
-        const hiddenCells: [number, number][] = [];
-        for (let y = 0; y < currentState.height; y++) {
-          for (let x = 0; x < currentState.width; x++) {
-            if (!currentState.board[y][x].isRevealed && !currentState.board[y][x].isFlagged) {
-              hiddenCells.push([x, y]);
-            }
-          }
-        }
-
-        if (hiddenCells.length === 0) break;
-
-        const [guessX, guessY] = hiddenCells[Math.floor(Math.random() * hiddenCells.length)];
-        const newBoard = currentState.board.map(row => row.map(c => ({ ...c })));
-
-        if (newBoard[guessY][guessX].hasMine) {
-          newBoard[guessY][guessX].isRevealed = true;
-          currentState = { ...currentState, board: newBoard, gameOver: true };
-          setGameState(currentState);
-          setMoveHistory(prev => [...prev, `💥 Auto: Hit mine at (${guessX}, ${guessY})`]);
-          setAutoPlaying(false);
-          return;
-        }
-
-        const revealed = floodFill(newBoard, guessX, guessY, currentState.width, currentState.height);
-        currentState = {
-          ...currentState,
-          board: newBoard,
-          revealedCount: currentState.revealedCount + revealed,
-        };
-
-        setGameState(currentState);
-        setMoveHistory(prev => [...prev, `🤖 Auto: Guessed (${guessX}, ${guessY})`]);
-        await new Promise(resolve => setTimeout(resolve, 300));
-      }
-
-      // Check win condition
-      const totalCells = currentState.width * currentState.height;
-      if (currentState.revealedCount === totalCells - currentState.mineCount) {
-        currentState.gameWon = true;
-        setGameState(currentState);
-        break;
-      }
-    }
-
-    setAutoPlaying(false);
+  const handleAutoSolve = () => {
+    if (!gameState || gameState.gameOver || gameState.gameWon) return;
+    setAutoSolving(!autoSolving);
   };
 
-  // Get cell display
-  const getCellDisplay = (cell: CellState) => {
-    if (cell.isFlagged) return '🚩';
+  const getCellDisplay = (cell: CellInfo) => {
+    if (cell.isRevealed && cell.hasMine) return '💣';
+    if (cell.isFlagged) return 'F';
     if (!cell.isRevealed) return '';
-    if (cell.hasMine) return '💣';
     if (cell.adjacentMines === 0) return '';
     return cell.adjacentMines.toString();
   };
 
-  // Get cell color
-  const getCellColor = (cell: CellState) => {
-    if (!cell.isRevealed) return 'bg-gray-600 hover:bg-gray-500';
-    if (cell.hasMine) return 'bg-red-600';
-    if (cell.adjacentMines === 0) return 'bg-gray-800';
+  const getCellStyles = (cell: CellInfo) => {
+    const isGameEnded = gameState?.gameOver || gameState?.gameWon;
+
+    // At game end, show incorrectly flagged cells in yellow
+    if (isGameEnded && cell.isFlagged && !cell.hasMine) {
+      return 'bg-yellow-500 text-white shadow-inner';
+    }
+
+    if (!cell.isRevealed) {
+      // If flagged, show the flag with visible text
+      if (cell.isFlagged) {
+        return 'bg-slate-200 hover:bg-slate-300 text-red-600 font-black shadow-[inset_-3px_-3px_0px_rgba(0,0,0,0.08),inset_3px_3px_0px_rgba(255,255,255,0.6)]';
+      }
+      return 'bg-slate-200 hover:bg-slate-300 text-transparent shadow-[inset_-3px_-3px_0px_rgba(0,0,0,0.08),inset_3px_3px_0px_rgba(255,255,255,0.6)]';
+    }
+
+    // At game end, distinguish between correctly flagged and unflagged mines
+    if (cell.hasMine && cell.isFlagged) {
+      return 'bg-green-500 text-white shadow-inner';
+    }
+    if (cell.hasMine) {
+      return 'bg-red-500 text-white shadow-inner';
+    }
 
     const colors = [
-      '', // 0
-      'text-blue-400', // 1
-      'text-green-400', // 2
-      'text-red-400', // 3
-      'text-purple-400', // 4
-      'text-yellow-400', // 5
-      'text-cyan-400', // 6
-      'text-pink-400', // 7
-      'text-gray-400', // 8
+      'text-transparent',
+      'text-[#0000FF]',
+      'text-[#008000]',
+      'text-[#FF0000]',
+      'text-[#000080]',
+      'text-[#800000]',
+      'text-[#008080]',
+      'text-[#000000]',
+      'text-[#808080]',
     ];
-    return `bg-gray-800 ${colors[cell.adjacentMines]}`;
+
+    if (cell.adjacentMines === 0) {
+      return `bg-slate-50 ${colors[0]} shadow-inner`;
+    }
+
+    return `bg-white ${colors[cell.adjacentMines]} shadow-sm`;
   };
 
   if (!gameState) return null;
 
-  const cellSize = difficulty === 'hard' ? 20 : difficulty === 'medium' ? 25 : 30;
+  const cellSize = difficulty === 'Hard' ? 24 : difficulty === 'Medium' ? 32 : 40;
+  const fontSize = difficulty === 'Hard' ? 'text-2xl' : difficulty === 'Medium' ? 'text-3xl' : 'text-4xl';
 
   return (
-    <div className="flex flex-col h-full bg-gray-900 text-white">
-      {/* Header */}
-      <div className="p-4 bg-gray-800 border-b border-gray-700">
-        <div className="flex items-center justify-between mb-4">
-          <button
-            onClick={onBack}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
-          >
-            ← Back
-          </button>
-          <h1 className="text-2xl font-bold">Minesweeper</h1>
-          <div className="text-right">
-            <div className="text-sm text-gray-400">Mines</div>
-            <div className="text-2xl font-bold">{gameState.mineCount - gameState.flagCount}</div>
-            <div className="text-xs text-gray-500">Revealed: {gameState.revealedCount}</div>
+    <div className="flex flex-col h-full bg-slate-50 text-slate-900 font-sans">
+      <div className="py-8 px-10 bg-white border-b border-slate-200">
+        <div className="max-w-5xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <button
+              onClick={onBack}
+              className="p-3 hover:bg-slate-50 rounded-none transition-all text-slate-400 hover:text-blue-600 border border-transparent hover:border-slate-100"
+              title="Back"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <div>
+              <h1 className="text-3xl font-black tracking-tight text-slate-900 uppercase">Minesweeper</h1>
+              <p className="text-slate-400 text-sm font-bold uppercase tracking-widest">Backend Logic Powered</p>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-3 bg-slate-900 px-8 py-4 shadow-xl shadow-slate-900/10 border border-slate-900">
+            <div className="text-center">
+              <div className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-500 mb-1">Mines Left</div>
+              <div className="text-3xl font-black text-white tabular-nums leading-none">
+                {String(Math.max(0, gameState.mineCount - gameState.flagCount)).padStart(2, '0')}
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Controls */}
-        <div className="flex gap-4 items-center flex-wrap">
-          <div className="flex items-center gap-2">
-            <label className="text-sm">Difficulty:</label>
-            <select
-              value={difficulty}
-              onChange={(e) => setDifficulty(e.target.value as Difficulty)}
-              disabled={autoPlaying}
-              className="px-3 py-1 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="easy">Easy (9×9)</option>
-              <option value="medium">Medium (16×16)</option>
-              <option value="hard">Hard (30×16)</option>
-            </select>
-          </div>
+        <div className="mt-10 flex gap-0 items-center justify-center max-w-5xl mx-auto">
+          <select
+            value={difficulty}
+            onChange={(e) => setDifficulty(e.target.value as Difficulty)}
+            className="px-8 py-4 bg-slate-50 border border-slate-200 text-base font-bold focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all shadow-sm cursor-pointer appearance-none min-w-[160px] text-center"
+          >
+            <option value="Easy">Beginner</option>
+            <option value="Medium">Intermediate</option>
+            <option value="Hard">Expert</option>
+          </select>
 
           <button
             onClick={initGame}
-            disabled={autoPlaying}
-            className="px-4 py-1 bg-green-600 hover:bg-green-700 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-10 py-4 bg-white hover:bg-slate-50 text-slate-900 text-base font-black shadow-lg transition-all active:scale-95 flex items-center gap-3 border border-slate-200"
           >
-            Reset
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+            New Game
           </button>
 
           <button
-            onClick={autoPlay}
-            disabled={autoPlaying || gameState.gameOver || gameState.gameWon}
-            className="px-4 py-1 bg-purple-600 hover:bg-purple-700 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+            onClick={handleAutoSolve}
+            className="px-10 py-4 bg-slate-900 hover:bg-black text-white text-base font-black shadow-lg shadow-blue-600/20 transition-all active:scale-95 flex items-center gap-3 border border-slate-900"
           >
-            {autoPlaying ? (
-              <>
-                <span className="animate-spin">⚙️</span>
-                Auto Playing...
-              </>
-            ) : (
-              '🤖 Auto Play'
-            )}
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg>
+            Auto Solve {autoSolving ? '(Running...)' : ''}
           </button>
         </div>
       </div>
 
-      {/* Game Board */}
-      <div className="flex-1 flex items-stretch p-4 gap-4 overflow-auto">
-        {/* Board Container */}
-        <div className="flex-1 flex items-center justify-center">
-          <div className="relative">
+      <div className="flex-1 overflow-auto py-16 px-10 flex items-center justify-center bg-slate-50">
+        <div className="relative group">
+          <div 
+            className="bg-white p-6 shadow-2xl border border-slate-200"
+            style={{ display: 'inline-block' }}
+          >
             <div
-              className="inline-grid gap-0.5 bg-gray-700 p-1 rounded"
+              className="grid gap-0 bg-slate-300 border border-slate-300"
               style={{
                 gridTemplateColumns: `repeat(${gameState.width}, ${cellSize}px)`,
               }}
@@ -473,17 +219,23 @@ export default function MinesweeperGame({ onBack }: MinesweeperGameProps) {
                     key={`${x}-${y}`}
                     onClick={() => handleCellClick(x, y)}
                     onContextMenu={(e) => handleCellRightClick(e, x, y)}
-                    disabled={autoPlaying}
                     className={`
-                      ${getCellColor(cell)}
-                      border border-gray-700
-                      font-bold text-sm
-                      transition-colors
-                      disabled:cursor-not-allowed
+                      ${getCellStyles(cell)}
+                      ${fontSize}
+                      flex items-center justify-center
+                      transition-all duration-75
+                      select-none
+                      border border-slate-800
+                      active:scale-90
+                      font-[Arial,sans-serif] font-[900]
                     `}
                     style={{
                       width: `${cellSize}px`,
                       height: `${cellSize}px`,
+                      WebkitTextStroke: '0',
+                      letterSpacing: '-0.02em',
+                      lineHeight: 1,
+                      fontSize: difficulty === 'Hard' ? '18px' : difficulty === 'Medium' ? '24px' : '30px'
                     }}
                   >
                     {getCellDisplay(cell)}
@@ -492,56 +244,41 @@ export default function MinesweeperGame({ onBack }: MinesweeperGameProps) {
               )}
             </div>
 
-            {/* Game Over Overlay */}
-            {(gameState.gameOver || gameState.gameWon) && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-75 rounded-lg">
-                <div className="text-center">
-                  <h2 className={`text-4xl font-bold mb-4 ${gameState.gameWon ? 'text-green-400' : 'text-red-400'}`}>
-                    {gameState.gameWon ? '🎉 You Won!' : '💥 Game Over!'}
-                  </h2>
-                  <p className="text-xl mb-2">Revealed: {gameState.revealedCount} cells</p>
-                  <p className="text-sm text-gray-400 mb-4">
-                    {gameState.gameWon ? 'All mines avoided!' : 'Hit a mine!'}
-                  </p>
-                  <button
-                    onClick={initGame}
-                    className="px-6 py-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors"
-                  >
-                    Play Again
-                  </button>
-                </div>
-              </div>
-            )}
           </div>
-        </div>
 
-        {/* Move History Panel */}
-        {moveHistory.length > 0 && (
-          <div className="w-64 bg-gray-800 border border-gray-700 rounded-lg p-4 flex flex-col max-h-full">
-            <h3 className="text-lg font-bold mb-3 text-gray-300">Move History</h3>
-            <div className="flex-1 overflow-y-auto space-y-1 text-sm font-mono min-h-0">
-              {moveHistory.map((move, index) => (
-                <div
-                  key={index}
-                  className={`p-2 rounded ${
-                    index === moveHistory.length - 1
-                      ? 'bg-blue-900/50 text-blue-300 border border-blue-700'
-                      : 'bg-gray-700/50 text-gray-400'
-                  }`}
-                >
-                  {move}
+          {(gameState.gameOver || gameState.gameWon) && (
+            <div className="absolute inset-0 z-10 flex items-center justify-center animate-in fade-in zoom-in duration-500">
+              <div className="absolute inset-0 bg-white/40 backdrop-blur-md" />
+              <div className="relative bg-white p-12 shadow-2xl border border-slate-900 text-center max-w-sm mx-auto overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-2 bg-blue-600" />
+                <div className="text-7xl mb-6 scale-125">
+                  {gameState.gameWon ? '🏆' : '💥'}
                 </div>
-              ))}
+                <h2 className={`text-4xl font-black mb-3 tracking-tight ${gameState.gameWon ? 'text-green-600' : 'text-red-600'}`}>
+                  {gameState.gameWon ? 'VICTORY' : 'GAME OVER'}
+                </h2>
+                <p className="text-slate-500 font-bold text-lg mb-10 leading-relaxed uppercase tracking-widest">
+                  {gameState.gameWon ? 'Operation Successful' : 'System compromised'}
+                </p>
+                <button
+                  onClick={initGame}
+                  className="w-full py-5 bg-slate-900 hover:bg-black text-white font-black text-lg transition-all active:scale-95 shadow-xl border border-slate-900 uppercase tracking-[0.2em]"
+                >
+                  Initialize New Session
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
-      {/* Instructions */}
-      <div className="p-4 bg-gray-800 border-t border-gray-700">
-        <div className="text-sm text-gray-400 text-center">
-          <span>
-            Left click to reveal, right click to flag. 🚩 = Flag, 💣 = Mine. Numbers show adjacent mines.
+      <div className="py-8 bg-white border-t border-slate-100 text-center">
+        <div className="text-[10px] font-black text-slate-300 uppercase tracking-[0.3em] flex items-center justify-center gap-12">
+          <span className="flex items-center gap-3">
+            <span className="w-6 h-6 bg-slate-200 shadow-[inset_-2px_-2px_0px_rgba(0,0,0,0.05)] border border-slate-300" /> Left Click to Reveal
+          </span>
+          <span className="flex items-center gap-3">
+            <span className="w-6 h-6 bg-slate-200 flex items-center justify-center text-[10px] shadow-[inset_-2px_-2px_0px_rgba(0,0,0,0.05)] border border-slate-300">🚩</span> Right Click to Flag
           </span>
         </div>
       </div>

@@ -87,9 +87,7 @@ impl HanoiState {
         let dst_idx = Self::tower_index(dst);
 
         // Rust改进: 使用Option的expect提供清晰的错误信息
-        let disk = self.towers[src_idx]
-            .pop()
-            .expect("源柱子不应该为空");
+        let disk = self.towers[src_idx].pop().expect("源柱子不应该为空");
 
         self.towers[dst_idx].push(disk);
     }
@@ -156,7 +154,12 @@ fn read_level() -> io::Result<i32> {
         io::stdin().read_line(&mut input)?;
 
         // Rust改进: 使用filter验证范围
-        if let Some(level) = input.trim().parse::<i32>().ok().filter(|&n| (1..=10).contains(&n)) {
+        if let Some(level) = input
+            .trim()
+            .parse::<i32>()
+            .ok()
+            .filter(|&n| (1..=10).contains(&n))
+        {
             return Ok(level);
         }
     }

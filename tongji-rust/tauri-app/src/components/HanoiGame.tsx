@@ -61,14 +61,13 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Clear canvas
-    ctx.fillStyle = '#1f2937';
+    ctx.fillStyle = '#f8fafc';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     const pillarWidth = canvas.width / 3;
     const pillarHeight = canvas.height - 100;
     const baseY = canvas.height - 50;
-    const diskHeight = 20;
+    const diskHeight = 24;
     const maxDiskWidth = pillarWidth * 0.8;
 
     // Draw pillars
@@ -76,16 +75,16 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       const x = pillarWidth * index + pillarWidth / 2;
 
       // Draw pillar base
-      ctx.fillStyle = '#4b5563';
-      ctx.fillRect(x - 5, baseY - pillarHeight, 10, pillarHeight);
+      ctx.fillStyle = '#e2e8f0';
+      ctx.fillRect(x - 4, baseY - pillarHeight, 8, pillarHeight);
 
       // Draw base platform
-      ctx.fillStyle = '#6b7280';
-      ctx.fillRect(x - pillarWidth / 3, baseY, pillarWidth * 2 / 3, 10);
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillRect(x - pillarWidth / 3, baseY, pillarWidth * 2 / 3, 8);
 
       // Draw pillar label
-      ctx.fillStyle = '#fff';
-      ctx.font = 'bold 24px sans-serif';
+      ctx.fillStyle = '#475569';
+      ctx.font = 'black 20px sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText(pillar, x, baseY + 40);
     });
@@ -93,22 +92,36 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     // Helper function to draw a disk
     const drawDisk = (disk: number, x: number, y: number, isSelected: boolean, isAnimating: boolean) => {
       const diskWidth = (disk / diskCount) * maxDiskWidth;
-      const hue = (disk / diskCount) * 360;
+      
+      const diskColors = [
+        '#3b82f6',
+        '#10b981',
+        '#f43f5e',
+        '#8b5cf6',
+        '#f59e0b',
+        '#06b6d4',
+        '#ec4899',
+        '#6366f1',
+        '#14b8a6',
+        '#f97316',
+      ];
+      
+      const color = diskColors[(disk - 1) % diskColors.length];
 
-      // Only highlight selected disks (manual selection), not animating disks
-      ctx.fillStyle = isSelected ? '#fbbf24' : `hsl(${hue}, 70%, 50%)`;
-      ctx.fillRect(x - diskWidth / 2, y, diskWidth, diskHeight - 2);
+      ctx.fillStyle = isSelected ? '#000' : color;
+      ctx.fillRect(x - diskWidth / 2, y, diskWidth, diskHeight - 4);
 
-      // Disk border - slightly thicker for animating disks to show movement
-      ctx.strokeStyle = isAnimating ? '#fbbf24' : '#000';
-      ctx.lineWidth = isAnimating ? 3 : 2;
-      ctx.strokeRect(x - diskWidth / 2, y, diskWidth, diskHeight - 2);
+      if (isSelected) {
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(x - diskWidth / 2 - 2, y - 2, diskWidth + 4, diskHeight);
+      }
 
       // Disk number
       ctx.fillStyle = '#fff';
-      ctx.font = 'bold 14px sans-serif';
+      ctx.font = 'bold 12px monospace';
       ctx.textAlign = 'center';
-      ctx.fillText(disk.toString(), x, y + diskHeight / 2 + 5);
+      ctx.fillText(disk.toString(), x, y + diskHeight / 2 + 2);
     };
 
     // Draw static disks (not animating)
@@ -116,7 +129,6 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       const x = pillarWidth * pillarIndex + pillarWidth / 2;
 
       stack.forEach((disk, stackIndex) => {
-        // Skip if this disk is currently animating
         if (animatingDisk && animatingDisk.disk === disk) {
           return;
         }
@@ -137,36 +149,25 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       const fromX = pillarWidth * fromIndex + pillarWidth / 2;
       const toX = pillarWidth * toIndex + pillarWidth / 2;
 
-      // Calculate source and destination heights
       const fromStack = gameState.stacks[fromIndex];
       const toStack = gameState.stacks[toIndex];
 
-      // Source Y (top of source stack before removal)
       const fromY = baseY - (fromStack.length + 1) * diskHeight;
-      // Destination Y (top of destination stack after placement)
       const toY = baseY - (toStack.length + 1) * diskHeight;
-
-      // Animation has 3 phases:
-      // Phase 1 (0-0.33): Move up from source
-      // Phase 2 (0.33-0.67): Move horizontally
-      // Phase 3 (0.67-1.0): Move down to destination
 
       let currentX = fromX;
       let currentY = fromY;
-      const topY = 50; // Height to lift disk to
+      const topY = 50;
 
       if (animatingDisk.progress < 0.33) {
-        // Phase 1: Moving up
         const phase1Progress = animatingDisk.progress / 0.33;
         currentX = fromX;
         currentY = fromY + (topY - fromY) * phase1Progress;
       } else if (animatingDisk.progress < 0.67) {
-        // Phase 2: Moving horizontally
         const phase2Progress = (animatingDisk.progress - 0.33) / 0.34;
         currentX = fromX + (toX - fromX) * phase2Progress;
         currentY = topY;
       } else {
-        // Phase 3: Moving down
         const phase3Progress = (animatingDisk.progress - 0.67) / 0.33;
         currentX = toX;
         currentY = topY + (toY - topY) * phase3Progress;
@@ -185,30 +186,25 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     const stack = gameState.stacks[pillarIndex];
 
     if (!selectedDisk) {
-      // Select disk from this pillar
       if (stack.length > 0) {
         const topDisk = stack[stack.length - 1];
         setSelectedDisk({ pillar, disk: topDisk });
       }
     } else {
-      // Try to move selected disk to this pillar
       if (selectedDisk.pillar === pillar) {
-        // Deselect if clicking same pillar
         setSelectedDisk(null);
       } else {
-        // Validate move
         const fromIndex = selectedDisk.pillar === 'A' ? 0 : selectedDisk.pillar === 'B' ? 1 : 2;
         const toIndex = pillarIndex;
         const toStack = gameState.stacks[toIndex];
 
         if (toStack.length === 0 || toStack[toStack.length - 1] > selectedDisk.disk) {
-          // Valid move
           const newStacks = gameState.stacks.map(s => [...s]);
           newStacks[fromIndex].pop();
           newStacks[toIndex].push(selectedDisk.disk);
 
           const moveCount = gameState.moveCount + 1;
-          const stepMsg = `Step ${moveCount}: ${selectedDisk.pillar} → ${pillar}`;
+          const stepMsg = `MOVE: ${selectedDisk.pillar} -> ${pillar}`;
 
           setGameState({
             ...gameState,
@@ -217,10 +213,7 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
           });
           setSelectedDisk(null);
           setCurrentStep(stepMsg);
-          setMoveHistory(prev => [...prev, stepMsg]);
-        } else {
-          // Invalid move - show error briefly
-          alert('Cannot place larger disk on smaller disk!');
+          setMoveHistory(prev => [stepMsg, ...prev]);
         }
       }
     }
@@ -228,7 +221,7 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
 
   // Animate a single move
   const animateMove = async (from: Pillar, to: Pillar, disk: number) => {
-    const animationDuration = 800; // Total animation time in ms
+    const animationDuration = 500;
     const fps = 60;
     const frames = (animationDuration / 1000) * fps;
 
@@ -246,7 +239,6 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     setAnimatingDisk(null);
   };
 
-  // Auto solve function using recursive algorithm
   const autoSolve = async () => {
     if (!gameState || autoSolving) return;
 
@@ -254,11 +246,9 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     setMoveHistory([]);
     setCurrentStep('');
 
-    // Reset game state manually without calling initGame
     const stacks: number[][] = [[], [], []];
     const pillarIndex = startPillar === 'A' ? 0 : startPillar === 'B' ? 1 : 2;
 
-    // Place disks on starting pillar (largest at bottom)
     for (let i = diskCount; i >= 1; i--) {
       stacks[pillarIndex].push(i);
     }
@@ -275,10 +265,8 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     setSelectedDisk(null);
     setAnimatingDisk(null);
 
-    // Wait a bit for reset to complete
     await new Promise(resolve => setTimeout(resolve, 500));
 
-    // Generate move sequence
     const moves: { from: Pillar; to: Pillar }[] = [];
 
     const hanoi = (n: number, from: Pillar, to: Pillar, aux: Pillar) => {
@@ -291,13 +279,11 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       }
     };
 
-    // Get auxiliary pillar
     const pillars: Pillar[] = ['A', 'B', 'C'];
     const auxPillar = pillars.find(p => p !== startPillar && p !== targetPillar)!;
 
     hanoi(diskCount, startPillar, targetPillar, auxPillar);
 
-    // Execute moves with animation
     let currentState = initialState;
     for (let i = 0; i < moves.length; i++) {
       const { from, to } = moves[i];
@@ -306,16 +292,13 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
 
       const disk = currentState.stacks[fromIndex][currentState.stacks[fromIndex].length - 1];
       const moveCount = i + 1;
-      const stepMsg = `Step ${moveCount}: ${from} → ${to}`;
+      const stepMsg = `AUTO: ${from} -> ${to}`;
 
-      // Update step info before animation
       setCurrentStep(stepMsg);
-      setMoveHistory(prev => [...prev, stepMsg]);
+      setMoveHistory(prev => [stepMsg, ...prev]);
 
-      // Animate the move
       await animateMove(from, to, disk);
 
-      // Update game state after animation
       const newStacks = currentState.stacks.map(s => [...s]);
       newStacks[fromIndex].pop();
       newStacks[toIndex].push(disk);
@@ -327,9 +310,7 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       };
 
       setGameState(currentState);
-
-      // Small delay between moves
-      await new Promise(resolve => setTimeout(resolve, 200));
+      await new Promise(resolve => setTimeout(resolve, 100));
     }
 
     setAutoSolving(false);
@@ -339,140 +320,111 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
   const isWon = gameState &&
     gameState.stacks[targetPillar === 'A' ? 0 : targetPillar === 'B' ? 1 : 2].length === diskCount;
 
-  // Calculate minimum moves
   const minMoves = Math.pow(2, diskCount) - 1;
 
   return (
-    <div className="flex flex-col h-full bg-gray-900 text-white">
+    <div className="flex flex-col h-full bg-white text-slate-900 font-sans">
       {/* Header */}
-      <div className="p-4 bg-gray-800 border-b border-gray-700">
-        <div className="flex items-center justify-between mb-4">
-          <button
-            onClick={onBack}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
-          >
-            ← Back
-          </button>
-          <h1 className="text-2xl font-bold">Hanoi Tower</h1>
-          <div className="text-right">
-            <div className="text-sm text-gray-400">Moves</div>
-            <div className="text-2xl font-bold">{gameState?.moveCount || 0}</div>
-            <div className="text-xs text-gray-500">Min: {minMoves}</div>
+      <div className="py-8 px-10 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-5xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <button
+              onClick={onBack}
+              className="p-3 hover:bg-white rounded-none transition-all text-slate-400 hover:text-blue-600 border border-transparent hover:border-slate-200"
+              title="Back"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <div>
+              <h1 className="text-3xl font-black tracking-tight text-slate-900">HANOI TOWER</h1>
+              <p className="text-slate-400 text-sm font-bold uppercase tracking-widest">Mathematical Puzzle</p>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-10">
+            <div className="text-center">
+              <div className="text-[10px] uppercase tracking-[0.3em] font-black text-slate-400 mb-1">Moves</div>
+              <div className="text-3xl font-black text-slate-900 tabular-nums leading-none">
+                {String(gameState?.moveCount || 0).padStart(2, '0')}
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-[10px] uppercase tracking-[0.3em] font-black text-slate-400 mb-1">Target</div>
+              <div className="text-3xl font-black text-blue-600 tabular-nums leading-none">
+                {String(minMoves).padStart(2, '0')}
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Controls */}
-        <div className="flex gap-4 items-center flex-wrap">
-          <div className="flex items-center gap-2">
-            <label className="text-sm">Disks:</label>
-            <select
-              value={diskCount}
-              onChange={(e) => setDiskCount(Number(e.target.value))}
+        <div className="mt-10 flex gap-0 items-center justify-center max-w-5xl mx-auto">
+          <div className="flex border border-slate-200">
+            <div className="px-6 py-4 bg-white border-r border-slate-200 flex items-center gap-3">
+              <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Disks</span>
+              <select
+                value={diskCount}
+                onChange={(e) => setDiskCount(Number(e.target.value))}
+                disabled={autoSolving}
+                className="bg-transparent font-bold focus:outline-none cursor-pointer"
+              >
+                {[3, 4, 5, 6, 7, 8].map(n => (
+                  <option key={n} value={n}>{n}</option>
+                ))}
+              </select>
+            </div>
+            
+            <button
+              onClick={initGame}
               disabled={autoSolving}
-              className="px-3 py-1 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-8 py-4 bg-white hover:bg-slate-50 font-black uppercase tracking-widest text-xs border-r border-slate-200 transition-all disabled:opacity-30"
             >
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
-                <option key={n} value={n}>{n}</option>
-              ))}
-            </select>
-          </div>
+              Reset
+            </button>
 
-          <div className="flex items-center gap-2">
-            <label className="text-sm">Start:</label>
-            <select
-              value={startPillar}
-              onChange={(e) => setStartPillar(e.target.value as Pillar)}
-              disabled={autoSolving}
-              className="px-3 py-1 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            <button
+              onClick={autoSolve}
+              disabled={autoSolving || isWon}
+              className="px-8 py-4 bg-slate-900 text-white hover:bg-black font-black uppercase tracking-widest text-xs transition-all disabled:opacity-30 flex items-center gap-3"
             >
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-            </select>
+              {autoSolving ? 'Solving...' : 'Auto Solve'}
+            </button>
           </div>
-
-          <div className="flex items-center gap-2">
-            <label className="text-sm">Target:</label>
-            <select
-              value={targetPillar}
-              onChange={(e) => setTargetPillar(e.target.value as Pillar)}
-              disabled={autoSolving}
-              className="px-3 py-1 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-            </select>
-          </div>
-
-          <button
-            onClick={initGame}
-            disabled={autoSolving}
-            className="px-4 py-1 bg-green-600 hover:bg-green-700 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Reset
-          </button>
-
-          <button
-            onClick={autoSolve}
-            disabled={autoSolving}
-            className="px-4 py-1 bg-purple-600 hover:bg-purple-700 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-          >
-            {autoSolving ? (
-              <>
-                <span className="animate-spin">⚙️</span>
-                Auto Solving...
-              </>
-            ) : (
-              '🤖 Auto Solve'
-            )}
-          </button>
         </div>
-
-        {/* Current Step Display */}
-        {currentStep && (
-          <div className="mt-3 p-2 bg-blue-900/50 border border-blue-700 rounded text-center">
-            <span className="text-blue-300 font-mono">{currentStep}</span>
-          </div>
-        )}
       </div>
 
-      {/* Game Canvas */}
-      <div className="flex-1 flex items-stretch p-4 gap-4">
-        {/* Canvas Container */}
+      <div className="flex-1 flex flex-col md:flex-row items-stretch p-10 gap-10 overflow-hidden bg-white">
         <div className="flex-1 flex items-center justify-center">
-          <div className="relative">
+          <div className="relative border border-slate-200 p-8 bg-slate-50 shadow-2xl shadow-slate-100">
             <canvas
               ref={canvasRef}
-              width={800}
+              width={700}
               height={400}
-              className="border border-gray-700 rounded-lg cursor-pointer"
+              className="cursor-pointer"
               onClick={(e) => {
                 const rect = canvasRef.current?.getBoundingClientRect();
                 if (!rect) return;
-
                 const x = e.clientX - rect.left;
-                const pillarWidth = 800 / 3;
-
+                const pillarWidth = 700 / 3;
                 if (x < pillarWidth) handlePillarClick('A');
                 else if (x < pillarWidth * 2) handlePillarClick('B');
                 else handlePillarClick('C');
               }}
             />
 
-            {isWon && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-75 rounded-lg">
-                <div className="text-center">
-                  <h2 className="text-4xl font-bold text-green-400 mb-4">🎉 You Won!</h2>
-                  <p className="text-xl mb-2">Moves: {gameState?.moveCount}</p>
-                  <p className="text-sm text-gray-400 mb-4">
-                    {gameState?.moveCount === minMoves ? 'Perfect! Minimum moves!' : `Minimum was ${minMoves}`}
+            {isWon && !autoSolving && (
+              <div className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm animate-in fade-in duration-500">
+                <div className="bg-white p-12 border border-slate-900 shadow-2xl text-center max-w-sm">
+                  <div className="text-6xl mb-6">🏆</div>
+                  <h2 className="text-4xl font-black text-slate-900 mb-2 tracking-tighter uppercase">Puzzle Solved</h2>
+                  <p className="text-slate-500 font-bold mb-8 uppercase tracking-widest text-sm">
+                    Completed in {gameState?.moveCount} moves
                   </p>
                   <button
                     onClick={initGame}
-                    className="px-6 py-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors"
+                    className="w-full py-4 bg-slate-900 text-white font-black uppercase tracking-widest text-sm hover:bg-black transition-all"
                   >
-                    Play Again
+                    Start Over
                   </button>
                 </div>
               </div>
@@ -480,43 +432,29 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
           </div>
         </div>
 
-        {/* Move History Panel */}
-        {moveHistory.length > 0 && (
-          <div className="w-64 bg-gray-800 border border-gray-700 rounded-lg p-4 flex flex-col max-h-full">
-            <h3 className="text-lg font-bold mb-3 text-gray-300">Move History</h3>
-            <div className="flex-1 overflow-y-auto space-y-1 text-sm font-mono min-h-0">
-              {moveHistory.map((move, index) => (
-                <div
-                  key={index}
-                  className={`p-2 rounded ${
-                    index === moveHistory.length - 1
-                      ? 'bg-blue-900/50 text-blue-300 border border-blue-700'
-                      : 'bg-gray-700/50 text-gray-400'
-                  }`}
-                >
-                  {move}
-                </div>
-              ))}
-            </div>
+        {/* Move History */}
+        <div className="w-80 border border-slate-200 bg-slate-50 flex flex-col">
+          <div className="p-6 border-b border-slate-200 bg-white">
+            <h3 className="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Activity Log</h3>
           </div>
-        )}
-      </div>
-
-      {/* Instructions */}
-      <div className="p-4 bg-gray-800 border-t border-gray-700">
-        <div className="text-sm text-gray-400 text-center">
-          {selectedDisk ? (
-            <span className="text-yellow-400">
-              Disk {selectedDisk.disk} selected from pillar {selectedDisk.pillar}. Click another pillar to move it.
-            </span>
-          ) : (
-            <span>
-              Click on a pillar to select the top disk, then click another pillar to move it.
-              Goal: Move all disks from {startPillar} to {targetPillar}.
-            </span>
-          )}
+          <div className="flex-1 overflow-y-auto p-4 space-y-2 font-mono text-[10px] font-bold">
+            {moveHistory.length === 0 && (
+              <div className="text-slate-300 py-4 text-center italic">No activity recorded</div>
+            )}
+            {moveHistory.map((move, index) => (
+              <div
+                key={index}
+                className={`p-3 border ${
+                  index === 0 ? 'bg-blue-600 border-blue-600 text-white' : 'bg-white border-slate-200 text-slate-400'
+                }`}
+              >
+                {move}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
 }
+

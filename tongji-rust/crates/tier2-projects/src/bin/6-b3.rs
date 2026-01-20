@@ -63,8 +63,7 @@ fn binary_to_decimal_stdlib(binary_str: &str) -> Result<u32, String> {
 
     // Rust改进: 使用标准库u32::from_str_radix()，安全且高效
     // 比手动计算pow(2, n)更可靠，避免浮点精度问题
-    u32::from_str_radix(binary_str, 2)
-        .map_err(|e| format!("解析失败: {}", e))
+    u32::from_str_radix(binary_str, 2).map_err(|e| format!("解析失败: {}", e))
 }
 
 /// 手动实现二进制到十进制的转换（用于教学和测试）
@@ -91,14 +90,12 @@ fn binary_to_decimal_manual(binary_str: &str) -> Result<u32, String> {
 
     // Rust改进: 使用fold迭代器实现累加，比C++的循环更函数式
     // fold从初始值0开始，对每个字符执行: acc * 2 + digit
-    let result = binary_str
-        .chars()
-        .try_fold(0u32, |acc, c| {
-            let digit = c.to_digit(10).ok_or("无效字符")?;
-            acc.checked_mul(2)
-                .and_then(|v| v.checked_add(digit))
-                .ok_or("数值溢出")
-        })?;
+    let result = binary_str.chars().try_fold(0u32, |acc, c| {
+        let digit = c.to_digit(10).ok_or("无效字符")?;
+        acc.checked_mul(2)
+            .and_then(|v| v.checked_add(digit))
+            .ok_or("数值溢出")
+    })?;
 
     Ok(result)
 }
@@ -125,14 +122,12 @@ fn binary_to_decimal_bitwise(binary_str: &str) -> Result<u32, String> {
     }
 
     // Rust改进: 使用位运算，性能最优
-    let result = binary_str
-        .chars()
-        .try_fold(0u32, |acc, c| {
-            let bit = if c == '1' { 1 } else { 0 };
-            acc.checked_shl(1)
-                .and_then(|v| v.checked_add(bit))
-                .ok_or("数值溢出")
-        })?;
+    let result = binary_str.chars().try_fold(0u32, |acc, c| {
+        let bit = if c == '1' { 1 } else { 0 };
+        acc.checked_shl(1)
+            .and_then(|v| v.checked_add(bit))
+            .ok_or("数值溢出")
+    })?;
 
     Ok(result)
 }
@@ -253,8 +248,16 @@ mod tests {
     fn test_all_implementations_match() {
         // 测试三种实现方式结果一致
         let test_cases = vec![
-            "0", "1", "10", "11", "101", "1010", "11111111",
-            "10101010", "11110000", "100000001",
+            "0",
+            "1",
+            "10",
+            "11",
+            "101",
+            "1010",
+            "11111111",
+            "10101010",
+            "11110000",
+            "100000001",
         ];
 
         for binary_str in test_cases {

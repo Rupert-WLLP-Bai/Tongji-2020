@@ -2,7 +2,9 @@
 //!
 //! Provides functions for reading keyboard and mouse input.
 
-use crossterm::event::{self, Event, KeyCode, KeyEvent, KeyModifiers, MouseButton, MouseEvent, MouseEventKind};
+use crossterm::event::{
+    self, Event, KeyCode, KeyEvent, KeyModifiers, MouseButton, MouseEvent, MouseEventKind,
+};
 use std::io;
 
 /// Key and mouse event types
@@ -14,16 +16,9 @@ pub enum KeyMouseEvent {
         modifiers: KeyModifiers,
     },
     /// Mouse click
-    MouseClick {
-        button: MouseButton,
-        x: u16,
-        y: u16,
-    },
+    MouseClick { button: MouseButton, x: u16, y: u16 },
     /// Mouse movement
-    MouseMove {
-        x: u16,
-        y: u16,
-    },
+    MouseMove { x: u16, y: u16 },
     /// No event (timeout)
     None,
 }
@@ -58,10 +53,7 @@ pub enum KeyMouseEvent {
 /// ```
 pub fn cct_read_keyboard_and_mouse(timeout_ms: u64) -> io::Result<KeyMouseEvent> {
     // Enable mouse capture
-    crossterm::execute!(
-        io::stdout(),
-        event::EnableMouseCapture
-    )?;
+    crossterm::execute!(io::stdout(), event::EnableMouseCapture)?;
 
     let result = if timeout_ms == 0 {
         // No timeout - wait indefinitely
@@ -91,10 +83,7 @@ pub fn cct_read_keyboard_and_mouse(timeout_ms: u64) -> io::Result<KeyMouseEvent>
     };
 
     // Disable mouse capture
-    crossterm::execute!(
-        io::stdout(),
-        event::DisableMouseCapture
-    )?;
+    crossterm::execute!(io::stdout(), event::DisableMouseCapture)?;
 
     result
 }
@@ -102,19 +91,15 @@ pub fn cct_read_keyboard_and_mouse(timeout_ms: u64) -> io::Result<KeyMouseEvent>
 /// Parse mouse event into KeyMouseEvent
 fn parse_mouse_event(event: MouseEvent) -> KeyMouseEvent {
     match event.kind {
-        MouseEventKind::Down(button) | MouseEventKind::Up(button) => {
-            KeyMouseEvent::MouseClick {
-                button,
-                x: event.column,
-                y: event.row,
-            }
-        }
-        MouseEventKind::Drag(_) | MouseEventKind::Moved => {
-            KeyMouseEvent::MouseMove {
-                x: event.column,
-                y: event.row,
-            }
-        }
+        MouseEventKind::Down(button) | MouseEventKind::Up(button) => KeyMouseEvent::MouseClick {
+            button,
+            x: event.column,
+            y: event.row,
+        },
+        MouseEventKind::Drag(_) | MouseEventKind::Moved => KeyMouseEvent::MouseMove {
+            x: event.column,
+            y: event.row,
+        },
         _ => KeyMouseEvent::None,
     }
 }
@@ -129,7 +114,11 @@ fn parse_mouse_event(event: MouseEvent) -> KeyMouseEvent {
 /// ```
 pub fn read_char() -> io::Result<char> {
     loop {
-        if let Event::Key(KeyEvent { code: KeyCode::Char(c), .. }) = event::read()? {
+        if let Event::Key(KeyEvent {
+            code: KeyCode::Char(c),
+            ..
+        }) = event::read()?
+        {
             return Ok(c);
         }
     }

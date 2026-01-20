@@ -37,41 +37,165 @@ struct SpecialCombo {
 
 /// KFC 2020冬季菜单
 const MENU: &[MenuItem] = &[
-    MenuItem { choice: 'A', name: "香辣鸡腿堡", price: 18.0 },
-    MenuItem { choice: 'B', name: "劲脆鸡腿堡", price: 18.0 },
-    MenuItem { choice: 'C', name: "新奥尔良烤鸡腿堡", price: 18.5 },
-    MenuItem { choice: 'D', name: "鸡肉火腿帕尼尼", price: 14.0 },
-    MenuItem { choice: 'E', name: "老北京鸡肉卷", price: 16.5 },
-    MenuItem { choice: 'F', name: "川辣嫩牛卷", price: 19.0 },
-    MenuItem { choice: 'G', name: "吮指原味鸡(1块)", price: 11.5 },
-    MenuItem { choice: 'H', name: "热辣薯片脆皮鸡", price: 12.5 },
-    MenuItem { choice: 'I', name: "新奥尔良烤翅(2块)", price: 12.0 },
-    MenuItem { choice: 'J', name: "劲爆鸡米花", price: 10.5 },
-    MenuItem { choice: 'K', name: "香辣鸡翅(2块)", price: 11.0 },
-    MenuItem { choice: 'L', name: "热辣香骨鸡(3块)", price: 11.0 },
-    MenuItem { choice: 'M', name: "鲜蔬色拉", price: 12.5 },
-    MenuItem { choice: 'N', name: "薯条(小)", price: 8.0 },
-    MenuItem { choice: 'O', name: "薯条(中)", price: 11.0 },
-    MenuItem { choice: 'P', name: "薯条(大)", price: 13.0 },
-    MenuItem { choice: 'Q', name: "芙蓉蔬荟汤", price: 8.0 },
-    MenuItem { choice: 'R', name: "原味花筒冰激凌", price: 6.0 },
-    MenuItem { choice: 'S', name: "醇香土豆泥", price: 6.5 },
-    MenuItem { choice: 'T', name: "香甜粟米棒", price: 8.0 },
-    MenuItem { choice: 'U', name: "葡式蛋挞", price: 7.5 },
-    MenuItem { choice: 'V', name: "百事可乐(小)", price: 7.0 },
-    MenuItem { choice: 'W', name: "百事可乐(中)", price: 9.5 },
-    MenuItem { choice: 'X', name: "百事可乐(大)", price: 11.5 },
-    MenuItem { choice: 'Y', name: "九珍果汁饮料", price: 12.0 },
-    MenuItem { choice: 'Z', name: "纯纯玉米饮", price: 11.0 },
+    MenuItem {
+        choice: 'A',
+        name: "香辣鸡腿堡",
+        price: 18.0,
+    },
+    MenuItem {
+        choice: 'B',
+        name: "劲脆鸡腿堡",
+        price: 18.0,
+    },
+    MenuItem {
+        choice: 'C',
+        name: "新奥尔良烤鸡腿堡",
+        price: 18.5,
+    },
+    MenuItem {
+        choice: 'D',
+        name: "鸡肉火腿帕尼尼",
+        price: 14.0,
+    },
+    MenuItem {
+        choice: 'E',
+        name: "老北京鸡肉卷",
+        price: 16.5,
+    },
+    MenuItem {
+        choice: 'F',
+        name: "川辣嫩牛卷",
+        price: 19.0,
+    },
+    MenuItem {
+        choice: 'G',
+        name: "吮指原味鸡(1块)",
+        price: 11.5,
+    },
+    MenuItem {
+        choice: 'H',
+        name: "热辣薯片脆皮鸡",
+        price: 12.5,
+    },
+    MenuItem {
+        choice: 'I',
+        name: "新奥尔良烤翅(2块)",
+        price: 12.0,
+    },
+    MenuItem {
+        choice: 'J',
+        name: "劲爆鸡米花",
+        price: 10.5,
+    },
+    MenuItem {
+        choice: 'K',
+        name: "香辣鸡翅(2块)",
+        price: 11.0,
+    },
+    MenuItem {
+        choice: 'L',
+        name: "热辣香骨鸡(3块)",
+        price: 11.0,
+    },
+    MenuItem {
+        choice: 'M',
+        name: "鲜蔬色拉",
+        price: 12.5,
+    },
+    MenuItem {
+        choice: 'N',
+        name: "薯条(小)",
+        price: 8.0,
+    },
+    MenuItem {
+        choice: 'O',
+        name: "薯条(中)",
+        price: 11.0,
+    },
+    MenuItem {
+        choice: 'P',
+        name: "薯条(大)",
+        price: 13.0,
+    },
+    MenuItem {
+        choice: 'Q',
+        name: "芙蓉蔬荟汤",
+        price: 8.0,
+    },
+    MenuItem {
+        choice: 'R',
+        name: "原味花筒冰激凌",
+        price: 6.0,
+    },
+    MenuItem {
+        choice: 'S',
+        name: "醇香土豆泥",
+        price: 6.5,
+    },
+    MenuItem {
+        choice: 'T',
+        name: "香甜粟米棒",
+        price: 8.0,
+    },
+    MenuItem {
+        choice: 'U',
+        name: "葡式蛋挞",
+        price: 7.5,
+    },
+    MenuItem {
+        choice: 'V',
+        name: "百事可乐(小)",
+        price: 7.0,
+    },
+    MenuItem {
+        choice: 'W',
+        name: "百事可乐(中)",
+        price: 9.5,
+    },
+    MenuItem {
+        choice: 'X',
+        name: "百事可乐(大)",
+        price: 11.5,
+    },
+    MenuItem {
+        choice: 'Y',
+        name: "九珍果汁饮料",
+        price: 12.0,
+    },
+    MenuItem {
+        choice: 'Z',
+        name: "纯纯玉米饮",
+        price: 11.0,
+    },
 ];
 
 /// 优惠套餐列表
 const SPECIALS: &[SpecialCombo] = &[
-    SpecialCombo { combo: "ANV", name: "香辣鸡腿堡工作日午餐", price: 22.0 },
-    SpecialCombo { combo: "BMV", name: "劲脆鸡腿堡超值套餐", price: 24.0 },
-    SpecialCombo { combo: "ABCGGIIKKOUWWW", name: "超值全家桶", price: 100.0 },
-    SpecialCombo { combo: "KIIRRJUWW", name: "缤纷小吃桶", price: 65.0 },
-    SpecialCombo { combo: "JJ", name: "劲爆鸡米花(2份小)", price: 9.5 },
+    SpecialCombo {
+        combo: "ANV",
+        name: "香辣鸡腿堡工作日午餐",
+        price: 22.0,
+    },
+    SpecialCombo {
+        combo: "BMV",
+        name: "劲脆鸡腿堡超值套餐",
+        price: 24.0,
+    },
+    SpecialCombo {
+        combo: "ABCGGIIKKOUWWW",
+        name: "超值全家桶",
+        price: 100.0,
+    },
+    SpecialCombo {
+        combo: "KIIRRJUWW",
+        name: "缤纷小吃桶",
+        price: 65.0,
+    },
+    SpecialCombo {
+        combo: "JJ",
+        name: "劲爆鸡米花(2份小)",
+        price: 9.5,
+    },
 ];
 
 /// 验证输入是否只包含字母
@@ -158,7 +282,8 @@ fn try_subtract_combo(order_count: &mut HashMap<char, usize>, combo: &str) -> bo
 /// * f64 - 套餐原价
 fn calc_combo_original_price(combo: &str) -> f64 {
     // Rust改进: 使用迭代器sum()，比手动循环累加更简洁
-    combo.chars()
+    combo
+        .chars()
         .filter_map(|ch| MENU.iter().find(|item| item.choice == ch))
         .map(|item| item.price)
         .sum()
@@ -266,10 +391,17 @@ fn print_menu() {
 
     // 两列显示菜单
     for i in (0..MENU.len()).step_by(2) {
-        print!("{} {:20} {:>7.1}", MENU[i].choice, MENU[i].name, MENU[i].price);
+        print!(
+            "{} {:20} {:>7.1}",
+            MENU[i].choice, MENU[i].name, MENU[i].price
+        );
         if i + 1 < MENU.len() {
-            println!(" | {} {:20} {:>7.1}",
-                MENU[i + 1].choice, MENU[i + 1].name, MENU[i + 1].price);
+            println!(
+                " | {} {:20} {:>7.1}",
+                MENU[i + 1].choice,
+                MENU[i + 1].name,
+                MENU[i + 1].price
+            );
         } else {
             println!();
         }

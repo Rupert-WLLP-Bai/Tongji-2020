@@ -26,7 +26,8 @@ const QUARTER_TITLES: [&str; 4] = [
 ];
 
 /// 星期标题
-const WEEK_HEADER: &str = "Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat";
+const WEEK_HEADER: &str =
+    "Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat";
 
 /// 判断是否为闰年
 ///
@@ -79,7 +80,11 @@ impl Calendar {
     /// 创建指定年份的日历
     fn new(year: i32) -> Self {
         let is_leap = is_leap_year(year);
-        let days_array = if is_leap { &DAYS_IN_MONTH_LEAP } else { &DAYS_IN_MONTH };
+        let days_array = if is_leap {
+            &DAYS_IN_MONTH_LEAP
+        } else {
+            &DAYS_IN_MONTH
+        };
 
         // Rust改进: 使用Vec动态分配，避免固定大小数组浪费空间
         let mut month_days = Vec::with_capacity(12);
@@ -98,10 +103,7 @@ impl Calendar {
             month_days.push(month_vec);
         }
 
-        Calendar {
-            year,
-            month_days,
-        }
+        Calendar { year, month_days }
     }
 
     /// 获取指定月份的天数
@@ -225,7 +227,12 @@ fn read_year() -> i32 {
         }
 
         // Rust改进: 使用链式调用和filter进行验证
-        if let Some(year) = input.trim().parse::<i32>().ok().filter(|&y| y >= 1900 && y <= 2100) {
+        if let Some(year) = input
+            .trim()
+            .parse::<i32>()
+            .ok()
+            .filter(|&y| y >= 1900 && y <= 2100)
+        {
             return year;
         }
     }

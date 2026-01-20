@@ -37,7 +37,7 @@ fn is_power(num: i32, base: i32) -> bool {
 
     // Rust改进: 使用match表达式，更清晰的逻辑分支
     match num {
-        1 => true, // 任何数的0次幂都是1
+        1 => true,                                      // 任何数的0次幂都是1
         n if n % base == 0 => is_power(n / base, base), // 尾递归
         _ => false,
     }

@@ -175,9 +175,9 @@ mod tests {
         let counts = count_chars("Hello World 123!");
         assert_eq!(counts.uppercase, 2); // H, W
         assert_eq!(counts.lowercase, 8); // e,l,l,o,o,r,l,d
-        assert_eq!(counts.digits, 3);    // 1,2,3
-        assert_eq!(counts.spaces, 2);    // two spaces
-        assert_eq!(counts.others, 1);    // !
+        assert_eq!(counts.digits, 3); // 1,2,3
+        assert_eq!(counts.spaces, 2); // two spaces
+        assert_eq!(counts.others, 1); // !
     }
 
     #[test]
@@ -186,7 +186,7 @@ mod tests {
         let counts = count_chars("你好World");
         assert_eq!(counts.uppercase, 1); // W
         assert_eq!(counts.lowercase, 4); // o,r,l,d
-        assert_eq!(counts.others, 2);    // 你,好
+        assert_eq!(counts.others, 2); // 你,好
     }
 
     #[test]

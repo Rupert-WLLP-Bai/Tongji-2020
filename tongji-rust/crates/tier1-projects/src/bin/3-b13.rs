@@ -91,7 +91,9 @@ fn find_combinations(target_sum: i32) -> Vec<(i32, i32, i32)> {
                 continue;
             }
 
-            let Some(mask_k) = masks[k as usize] else { continue };
+            let Some(mask_k) = masks[k as usize] else {
+                continue;
+            };
 
             // Rust改进: 使用位运算检查所有9个数字是否唯一
             if masks_are_disjoint(mask_i, mask_j, mask_k) {

@@ -13,16 +13,16 @@ use std::io::{self, Write};
 /// 找零结果结构体
 #[derive(Debug, PartialEq, Eq)]
 struct ChangeResult {
-    fifty_yuan: u32,      // 50元
-    twenty_yuan: u32,     // 20元
-    ten_yuan: u32,        // 10元
-    five_yuan: u32,       // 5元
-    one_yuan: u32,        // 1元
-    five_jiao: u32,       // 5角
-    one_jiao: u32,        // 1角
-    five_fen: u32,        // 5分
-    two_fen: u32,         // 2分
-    one_fen: u32,         // 1分
+    fifty_yuan: u32,  // 50元
+    twenty_yuan: u32, // 20元
+    ten_yuan: u32,    // 10元
+    five_yuan: u32,   // 5元
+    one_yuan: u32,    // 1元
+    five_jiao: u32,   // 5角
+    one_jiao: u32,    // 1角
+    five_fen: u32,    // 5分
+    two_fen: u32,     // 2分
+    one_fen: u32,     // 1分
 }
 
 impl ChangeResult {

@@ -55,7 +55,8 @@ fn calculate_counts(board: &mut Board) {
 /// Count mines adjacent to a cell
 fn count_adjacent_mines(board: &Board, x: usize, y: usize) -> u8 {
     let neighbors = board.get_neighbors(x, y);
-    neighbors.iter()
+    neighbors
+        .iter()
         .filter(|(nx, ny)| board.has_mine(*nx, *ny))
         .count() as u8
 }
@@ -95,8 +96,12 @@ mod tests {
         // Check that safe zone has no mines
         assert!(!board.has_mine(safe_x, safe_y));
         for (nx, ny) in board.get_neighbors(safe_x, safe_y) {
-            assert!(!board.has_mine(nx, ny),
-                    "Mine found in safe zone at ({}, {})", nx, ny);
+            assert!(
+                !board.has_mine(nx, ny),
+                "Mine found in safe zone at ({}, {})",
+                nx,
+                ny
+            );
         }
     }
 
