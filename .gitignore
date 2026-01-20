@@ -1,0 +1,26 @@
+# Visual Studio 编译产物
+*.exe
+*.obj
+*.pdb
+*.idb
+*.ilk
+*.log
+
+# 编译目录
+Debug/
+Release/
+x64/
+x86/
+.vs/
+
+# Visual Studio 项目文件（保留源代码相关的）
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+
+# 临时文件
+*.tmp
+*.temp

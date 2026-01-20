@@ -1,0 +1,90 @@
+/*2052526 信15 白俊豪*/
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+extern double a, b, c, delta;
+
+void f1()	//非二次方程
+{
+	cout << "不是一元二次方程" << endl;
+}
+
+void f2()	//两共轭复根
+{
+	double delta = b * b - 4 * a * c;
+	cout << "有两个虚根:" << endl;
+	if (fabs(b) < 1e-6)//无实数部分
+	{
+		if (a >= 1e-6)
+		{
+			if (fabs((sqrt(-delta) / (2 * a) - 1)) >= 1e-6)
+			{
+				cout << "x1=" << sqrt(-delta) / (2 * a) << "i" << endl;
+				cout << "x2=" << -sqrt(-delta) / (2 * a) << "i" << endl;
+			}
+			else
+			{
+				cout << "x1=" << "i" << endl;
+				cout << "x2=" << "-i" << endl;
+			}
+		}
+		else
+		{
+			if (fabs((sqrt(-delta) / (2 * a) + 1)) >= 1e-6)
+			{
+				cout << "x1=" << sqrt(-delta) / (2 * a) << "i" << endl;
+				cout << "x2=" << -sqrt(-delta) / (2 * a) << "i" << endl;
+			}
+			else
+			{
+				cout << "x1=" << "i" << endl;
+				cout << "x2=" << "-i" << endl;
+			}
+		}
+	}
+	else//有实数部分
+	{
+		if (a >= 1e-6)
+		{
+			if (fabs((sqrt(-delta) / (2 * a) - 1)) >= 1e-6)
+			{
+				cout << "x1=" << -b / (2 * a) << "+" << sqrt(-delta) / (2 * a) << "i" << endl;
+				cout << "x2=" << -b / (2 * a) << -sqrt(-delta) / (2 * a) << "i" << endl;
+			}
+			else
+			{
+				cout << "x1=" << -b / (2 * a) << "+i" << endl;
+				cout << "x2=" << -b / (2 * a) << "-i" << endl;
+			}
+		}
+		else
+		{
+			if (fabs((sqrt(-delta) / (2 * a) + 1)) >= 1e-6)
+			{
+				cout << "x1=" << -b / (2 * a) << sqrt(-delta) / (2 * a) << "i" << endl;
+				cout << "x2=" << -b / (2 * a) << "+" << -sqrt(-delta) / (2 * a) << "i" << endl;
+			}
+			else
+			{
+				cout << "x1=" << -b / (2 * a) << "+i" << endl;
+				cout << "x2=" << -b / (2 * a) << "-i" << endl;
+			}
+		}
+
+	}
+}
+
+void f3()//两不等实根
+{
+	double delta = b * b - 4 * a * c;
+	cout << "有两个不等实根:" << endl;
+	cout << "x1=" << -b / (2 * a) + sqrt(delta) / (2 * a) << endl;
+	cout << "x2=" << -b / (2 * a) - sqrt(delta) / (2 * a) << endl;
+}
+
+void f4()
+{
+	cout << "有两个相等实根:" << endl;
+	cout << "x1=x2=" << -b / (2 * a) << endl;
+}
