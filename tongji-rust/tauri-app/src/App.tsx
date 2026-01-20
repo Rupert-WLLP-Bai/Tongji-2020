@@ -44,9 +44,6 @@ function App() {
           {/* Content */}
           <div className="flex-1 overflow-auto p-20 bg-white">
             <div className="max-w-4xl">
-              <h2 className="text-6xl font-black mb-6 text-slate-900 tracking-tighter uppercase leading-none">{selectedProject.name}</h2>
-              <p className="text-2xl text-slate-500 mb-16 leading-relaxed border-l-4 border-slate-200 pl-10 font-medium">{selectedProject.description}</p>
-              
               <div className="border border-slate-200 p-16 bg-slate-50 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-slate-100 -mr-16 -mt-16 rotate-45" />
                 
