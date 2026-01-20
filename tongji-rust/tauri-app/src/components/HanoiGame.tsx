@@ -275,8 +275,26 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     setMoveHistory([]);
     setCurrentStep('');
 
-    // Reset to initial state
-    initGame();
+    // Reset game state manually without calling initGame
+    const stacks: number[][] = [[], [], []];
+    const pillarIndex = startPillar === 'A' ? 0 : startPillar === 'B' ? 1 : 2;
+
+    // Place disks on starting pillar (largest at bottom)
+    for (let i = diskCount; i >= 1; i--) {
+      stacks[pillarIndex].push(i);
+    }
+
+    const initialState = {
+      stacks,
+      moveCount: 0,
+      diskCount,
+      startPillar,
+      targetPillar,
+    };
+
+    setGameState(initialState);
+    setSelectedDisk(null);
+    setAnimatingDisk(null);
 
     // Wait a bit for reset to complete
     await new Promise(resolve => setTimeout(resolve, 500));
@@ -306,7 +324,7 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     hanoi(diskCount, startPillar, targetPillar, auxPillar);
 
     // Execute moves with animation
-    let currentState = gameState;
+    let currentState = initialState;
     for (let i = 0; i < moves.length; i++) {
       if (shouldStop) {
         break;
