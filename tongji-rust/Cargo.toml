@@ -1,0 +1,25 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "crates/console-tools",
+    "crates/tier1-projects",
+    "crates/tier2-projects",
+    "crates/tier3-projects",
+    "crates/hanoi",
+    "crates/minesweeper",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Tongji-2020 Rust Migration"]
+license = "MIT"
+
+[workspace.dependencies]
+crossterm = "0.28"
+rand = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+chrono = "0.4"
+clap = { version = "4.5", features = ["derive"] }
+anyhow = "1.0"
