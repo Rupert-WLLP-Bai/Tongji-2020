@@ -39,7 +39,9 @@ function App() {
           <div className="p-10 bg-slate-50 border-b border-slate-200">
             <div className="mt-8">
               <h1 className="text-4xl font-black text-slate-900 tracking-tighter uppercase">{selectedProject.name}</h1>
-              <span className="text-slate-400 font-mono text-xs font-bold tracking-widest">{selectedProject.description}</span>
+              <span className="text-slate-400 font-mono text-xs font-bold tracking-widest">
+                {selectedProject.description.split('| Rust改进:')[0].trim()}
+              </span>
             </div>
           </div>
 
