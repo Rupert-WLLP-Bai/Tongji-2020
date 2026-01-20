@@ -23,6 +23,7 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     toPillar: Pillar;
     progress: number; // 0-1, animation progress
   } | null>(null);
+  const [shouldStop, setShouldStop] = useState(false);
 
   // Initialize game
   const initGame = () => {
@@ -46,6 +47,7 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     setMoveHistory([]);
     setCurrentStep('');
     setAnimatingDisk(null);
+    setShouldStop(false);
   };
 
   // Reset game when parameters change
@@ -232,6 +234,11 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     const frames = (animationDuration / 1000) * fps;
 
     for (let frame = 0; frame <= frames; frame++) {
+      if (shouldStop) {
+        setAnimatingDisk(null);
+        return false; // Animation was stopped
+      }
+
       const progress = frame / frames;
       setAnimatingDisk({
         disk,
@@ -243,6 +250,12 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     }
 
     setAnimatingDisk(null);
+    return true; // Animation completed
+  };
+
+  // Stop auto-solve
+  const stopAutoSolve = () => {
+    setShouldStop(true);
   };
 
   // Auto solve function using recursive algorithm
@@ -250,6 +263,7 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     if (!gameState || autoSolving) return;
 
     setAutoSolving(true);
+    setShouldStop(false);
     setMoveHistory([]);
     setCurrentStep('');
 
@@ -258,6 +272,11 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
 
     // Wait a bit for reset to complete
     await new Promise(resolve => setTimeout(resolve, 500));
+
+    if (shouldStop) {
+      setAutoSolving(false);
+      return;
+    }
 
     // Generate move sequence
     const moves: { from: Pillar; to: Pillar }[] = [];
@@ -281,6 +300,10 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     // Execute moves with animation
     let currentState = gameState;
     for (let i = 0; i < moves.length; i++) {
+      if (shouldStop) {
+        break;
+      }
+
       const { from, to } = moves[i];
       const fromIndex = from === 'A' ? 0 : from === 'B' ? 1 : 2;
       const toIndex = to === 'A' ? 0 : to === 'B' ? 1 : 2;
@@ -294,7 +317,10 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       setMoveHistory(prev => [...prev, stepMsg]);
 
       // Animate the move
-      await animateMove(from, to, disk);
+      const completed = await animateMove(from, to, disk);
+      if (!completed) {
+        break; // Animation was stopped
+      }
 
       // Update game state after animation
       const newStacks = currentState.stacks.map(s => [...s]);
@@ -314,6 +340,7 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     }
 
     setAutoSolving(false);
+    setShouldStop(false);
   };
 
   // Check win condition
@@ -394,20 +421,21 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
             Reset
           </button>
 
-          <button
-            onClick={autoSolve}
-            disabled={autoSolving}
-            className="px-4 py-1 bg-purple-600 hover:bg-purple-700 rounded transition-colors disabled:opacity-50 flex items-center gap-2"
-          >
-            {autoSolving ? (
-              <>
-                <span className="animate-spin">⚙️</span>
-                Auto Solving...
-              </>
-            ) : (
-              '🤖 Auto Solve'
-            )}
-          </button>
+          {autoSolving ? (
+            <button
+              onClick={stopAutoSolve}
+              className="px-4 py-1 bg-red-600 hover:bg-red-700 rounded transition-colors flex items-center gap-2"
+            >
+              ⏹️ Stop
+            </button>
+          ) : (
+            <button
+              onClick={autoSolve}
+              className="px-4 py-1 bg-purple-600 hover:bg-purple-700 rounded transition-colors flex items-center gap-2"
+            >
+              🤖 Auto Solve
+            </button>
+          )}
         </div>
 
         {/* Current Step Display */}
@@ -463,9 +491,9 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
 
         {/* Move History Panel */}
         {moveHistory.length > 0 && (
-          <div className="w-64 bg-gray-800 border border-gray-700 rounded-lg p-4 flex flex-col">
+          <div className="w-64 bg-gray-800 border border-gray-700 rounded-lg p-4 flex flex-col max-h-full">
             <h3 className="text-lg font-bold mb-3 text-gray-300">Move History</h3>
-            <div className="flex-1 overflow-y-auto space-y-1 text-sm font-mono">
+            <div className="flex-1 overflow-y-auto space-y-1 text-sm font-mono min-h-0">
               {moveHistory.map((move, index) => (
                 <div
                   key={index}
