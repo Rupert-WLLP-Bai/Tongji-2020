@@ -8,6 +8,7 @@ members = [
     "crates/tier3-projects",
     "crates/hanoi",
     "crates/minesweeper",
+    "tauri-app/src-tauri",
 ]
 
 [workspace.package]
