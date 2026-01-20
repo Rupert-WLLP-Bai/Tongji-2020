@@ -1,5 +1,5 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
-/*ÒÑÑéÖ¤ 2052312 ĞíÖ¾¿µ¡¢2052538 ³ÂÅµ¡¢2052539 Åí¿¡Ïè¡¢2051500 ¶ÅÆæÎµ¡¢2052521 ÕÅÒ«Òü¡¢2051837 ñûÕşµÄhexÎÄ¼şÉú³É*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
+/*å·²éªŒè¯ 2052312 è®¸å¿—åº·ã€2052538 é™ˆè¯ºã€2052539 å½­ä¿Šç¿”ã€2051500 æœå¥‡è”šã€2052521 å¼ è€€å°¹ã€2051837 è¦ƒæ”¿çš„hexæ–‡ä»¶ç”Ÿæˆ*/
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<stdlib.h>
@@ -8,21 +8,21 @@
 
 void input_file(char* name)
 {
-	fprintf(stderr, "ÎÄ¼şÃûÒÔÏÂĞÎÊ½¾ù¿ÉÒÔ£º\na.txt£º²»´øÂ·¾¶ĞÎÊ½\n..\\data\\b.dat£ºÏà¶ÔÂ·¾¶ĞÎÊ½\nC : \\Windows\\System32\\c.dat£º¾ø¶ÔÏà¶ÔÂ·¾¶ĞÎÊ½\nÇëÊäÈëÒª×ª»»µÄhex¸ñÊ½ÎÄ¼şÃû : ");
+	fprintf(stderr, "æ–‡ä»¶åä»¥ä¸‹å½¢å¼å‡å¯ä»¥ï¼š\na.txtï¼šä¸å¸¦è·¯å¾„å½¢å¼\n..\\data\\b.datï¼šç›¸å¯¹è·¯å¾„å½¢å¼\nC : \\Windows\\System32\\c.datï¼šç»å¯¹ç›¸å¯¹è·¯å¾„å½¢å¼\nè¯·è¾“å…¥è¦è½¬æ¢çš„hexæ ¼å¼æ–‡ä»¶å : ");
 	fgets(name, SIZE, stdin);
-	if (name[strlen(name) - 1] == '\n')//É¾È¥Ä©Î²µÄ\n
+	if (name[strlen(name) - 1] == '\n')//åˆ å»æœ«å°¾çš„\n
 		name[strlen(name) - 1] = '\0';
 }
 
 void output_file(char* name)
 {
-	fprintf(stderr, "ÇëÊäÈë×ª»»ºóµÄÎÄ¼şÃû : ");
+	fprintf(stderr, "è¯·è¾“å…¥è½¬æ¢åçš„æ–‡ä»¶å : ");
 	fgets(name, SIZE, stdin);
-	if (name[strlen(name) - 1] == '\n')//É¾È¥Ä©Î²µÄ\n
+	if (name[strlen(name) - 1] == '\n')//åˆ å»æœ«å°¾çš„\n
 		name[strlen(name) - 1] = '\0';
 }
 
-/*½«2Î»Ê®Áù½øÖÆ×Ö·ûÊı×é×ªÎªÊ®Áù½øÖÆµÄÊı*/
+/*å°†2ä½åå…­è¿›åˆ¶å­—ç¬¦æ•°ç»„è½¬ä¸ºåå…­è¿›åˆ¶çš„æ•°*/
 int convert_hex(char ch1, char ch2)
 {
 	int a;
@@ -49,14 +49,14 @@ int convert_hex(char ch1, char ch2)
 	return a;
 }
 
-/*¶ÁÈëÒ»ĞĞ£¬´¦ÀíÒ»ĞĞ*/
-/*Ç°Ê®¸ö×Ö·ûÎªĞòºÅ£¬¶ÁÍê¶ªÆú*/
-/*ÔÙ¶ÁÖĞ¼äµÄÄÚÈİ*/
-/*×îºóµÄ*/
+/*è¯»å…¥ä¸€è¡Œï¼Œå¤„ç†ä¸€è¡Œ*/
+/*å‰åä¸ªå­—ç¬¦ä¸ºåºå·ï¼Œè¯»å®Œä¸¢å¼ƒ*/
+/*å†è¯»ä¸­é—´çš„å†…å®¹*/
+/*æœ€åçš„*/
 void read_input_file(char* input, char* output)
 {
-	char line[82];//¶ÁÒ»ĞĞ
-	int ch;//ÖĞ¼äµÄ×Ö·û
+	char line[82];//è¯»ä¸€è¡Œ
+	int ch;//ä¸­é—´çš„å­—ç¬¦
 	char sh;
 	int count = 0;
 
@@ -65,13 +65,13 @@ void read_input_file(char* input, char* output)
 	fp2 = fopen(output, "wb");
 	if (fp1 == NULL)
 	{
-		fprintf(stderr, "ÎÄ¼ş%s´ò¿ªÊ§°Ü!\n", input);
+		fprintf(stderr, "æ–‡ä»¶%sæ‰“å¼€å¤±è´¥!\n", input);
 		exit(EXIT_FAILURE);
 	}
 	if (fp2 == NULL)
 	{
 		fclose(fp1);
-		fprintf(stderr, "ÎÄ¼ş%s´ò¿ªÊ§°Ü!\n", input);
+		fprintf(stderr, "æ–‡ä»¶%sæ‰“å¼€å¤±è´¥!\n", input);
 		exit(EXIT_FAILURE);
 	}
 
@@ -79,11 +79,11 @@ void read_input_file(char* input, char* output)
 	while (1)
 	{
 		static int i = 1;
-		if (getc(fp1) == EOF)//ÅĞ¶ÏÊÇ·ñµ½ÎÄ¼şÄ©Î²
+		if (getc(fp1) == EOF)//åˆ¤æ–­æ˜¯å¦åˆ°æ–‡ä»¶æœ«å°¾
 			break;
-		fgets(line, 81, fp1);//strlen(line)×î´óÊÇ80£¬×îĞ¡ÊÇ65£¬¶ÁÍêÇ°8¸öÊÇ72
-		//fprintf(stderr, "µÚ%dĞĞ³¤Îª%d\n",i++, strlen(line));
-		/*µÚÒ»¸öÊ®Áù½øÖÆÊıµÄÎ»ÖÃÊÇ9,10*/
+		fgets(line, 81, fp1);//strlen(line)æœ€å¤§æ˜¯80ï¼Œæœ€å°æ˜¯65ï¼Œè¯»å®Œå‰8ä¸ªæ˜¯72
+		//fprintf(stderr, "ç¬¬%dè¡Œé•¿ä¸º%d\n",i++, strlen(line));
+		/*ç¬¬ä¸€ä¸ªåå…­è¿›åˆ¶æ•°çš„ä½ç½®æ˜¯9,10*/
 		count = strlen(line) - 64;
 
 		if (count <= 8)
@@ -119,10 +119,10 @@ void read_input_file(char* input, char* output)
 
 int main()
 {
-	char input[SIZE];//ÊäÈëÎÄ¼şµÄÎÄ¼şÃû
-	char output[SIZE];//Êä³öÎÄ¼şµÄÎÄ¼şÃû
-	input_file(input);//»ñÈ¡ÊäÈëÎÄ¼şµÄÎÄ¼şÃû
-	output_file(output);//»ñÈ¡Êä³öÎÄ¼şµÄÎÄ¼şÃû
-	read_input_file(input, output);//¶ÁÈëÄÚÈİ²¢×ö×ª»»
+	char input[SIZE];//è¾“å…¥æ–‡ä»¶çš„æ–‡ä»¶å
+	char output[SIZE];//è¾“å‡ºæ–‡ä»¶çš„æ–‡ä»¶å
+	input_file(input);//è·å–è¾“å…¥æ–‡ä»¶çš„æ–‡ä»¶å
+	output_file(output);//è·å–è¾“å‡ºæ–‡ä»¶çš„æ–‡ä»¶å
+	read_input_file(input, output);//è¯»å…¥å†…å®¹å¹¶åšè½¬æ¢
 	return 0;
 }

@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <cmath>
 #include <iomanip>
@@ -12,17 +12,17 @@ int main()
     double temp_1;
     double num, num_int;
     double num_decimal_part;
-    cout << "ÇëÊäÈë[0-100ÒÚ)Ö®¼äµÄÊý×Ö,Ð¡Êýµãºó×î¶àÁ½Î»£º" << endl;
+    cout << "è¯·è¾“å…¥[0-100äº¿)ä¹‹é—´çš„æ•°å­—,å°æ•°ç‚¹åŽæœ€å¤šä¸¤ä½ï¼š" << endl;
     cin >> num;
     num_int = num - fmod(num, 1);
     cout << setiosflags(ios::fixed) << setprecision(2);
 
-    /*²âÊÔ´úÂë
+    /*æµ‹è¯•ä»£ç 
     cout << num << endl;
     cout << num_int <<endl;
     */
 
-    //ÕûÊý²¿·ÖµÄ¼ÆËã£º
+    //æ•´æ•°éƒ¨åˆ†çš„è®¡ç®—ï¼š
     i1 = int(fmod(num_int, 10));
     temp1 = int(num_int / 10);
     i2 = temp1 % 10;
@@ -43,27 +43,27 @@ int main()
     temp9 = temp8 / 10;
     i10 = temp9 % 10;
 
-    //Ð¡Êý²¿·ÖµÄ¼ÆËã£º
+    //å°æ•°éƒ¨åˆ†çš„è®¡ç®—ï¼š
     num_decimal_part = fmod(num, 1);
-    i_1 = int((num_decimal_part * 10) + 1e-4); //Èç¹ûÖ»ÊäÈëÒ»Î»Ð¡Êý,ÓÃÓÚÅÅ³ýÎó²î
-    temp_1 = num_decimal_part * 100 + 1e-3;    //Í¬ÑùµÄ·½·¨µ÷Õûtemp_1,ÅÅ³ýÎ²ÊýÎªÁãÊ±¿ÉÄÜ³öÏÖµÄbug
+    i_1 = int((num_decimal_part * 10) + 1e-4); //å¦‚æžœåªè¾“å…¥ä¸€ä½å°æ•°,ç”¨äºŽæŽ’é™¤è¯¯å·®
+    temp_1 = num_decimal_part * 100 + 1e-3;    //åŒæ ·çš„æ–¹æ³•è°ƒæ•´temp_1,æŽ’é™¤å°¾æ•°ä¸ºé›¶æ—¶å¯èƒ½å‡ºçŽ°çš„bug
     i_2 = fmod(temp_1, 10);
-    //·½°¸¶þ£º½«Î²Êý¼ÓÉÏÒ»¸ö½ÏÐ¡µÄÊý£¬ÔÙÏòÏÂÈ¡Õû(ÓÃÓÚÅÅ³ý×îºóÒ»Î»¸³Öµ²»×¼È·µÄÎó²î)
+    //æ–¹æ¡ˆäºŒï¼šå°†å°¾æ•°åŠ ä¸Šä¸€ä¸ªè¾ƒå°çš„æ•°ï¼Œå†å‘ä¸‹å–æ•´(ç”¨äºŽæŽ’é™¤æœ€åŽä¸€ä½èµ‹å€¼ä¸å‡†ç¡®çš„è¯¯å·®)
     i_2 = int(i_2 + 1e-4);
 
-    //Êä³ö²¿·Ö£º
-    cout << "Ê®ÒÚÎ»  : " << i10 << endl;
-    cout << "ÒÚÎ»    : " << i9 << endl;
-    cout << "Ç§ÍòÎ»  : " << i8 << endl;
-    cout << "°ÙÍòÎ»  : " << i7 << endl;
-    cout << "Ê®ÍòÎ»  : " << i6 << endl;
-    cout << "ÍòÎ»    : " << i5 << endl;
-    cout << "Ç§Î»    : " << i4 << endl;
-    cout << "°ÙÎ»    : " << i3 << endl;
-    cout << "Ê®Î»    : " << i2 << endl;
-    cout << "Ô²      : " << i1 << endl;
-    cout << "½Ç      : " << i_1 << endl;
-    cout << "·Ö      : " << int(i_2) << endl;
+    //è¾“å‡ºéƒ¨åˆ†ï¼š
+    cout << "åäº¿ä½  : " << i10 << endl;
+    cout << "äº¿ä½    : " << i9 << endl;
+    cout << "åƒä¸‡ä½  : " << i8 << endl;
+    cout << "ç™¾ä¸‡ä½  : " << i7 << endl;
+    cout << "åä¸‡ä½  : " << i6 << endl;
+    cout << "ä¸‡ä½    : " << i5 << endl;
+    cout << "åƒä½    : " << i4 << endl;
+    cout << "ç™¾ä½    : " << i3 << endl;
+    cout << "åä½    : " << i2 << endl;
+    cout << "åœ†      : " << i1 << endl;
+    cout << "è§’      : " << i_1 << endl;
+    cout << "åˆ†      : " << int(i_2) << endl;
 
     return 0;
 }

@@ -1,9 +1,9 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <cmath>
 using namespace std;
 
-void f1()	//·Ç¶ş´Î·½³Ì
+void f1()	//éäºŒæ¬¡æ–¹ç¨‹
 {
-	cout << "²»ÊÇÒ»Ôª¶ş´Î·½³Ì" << endl;
+	cout << "ä¸æ˜¯ä¸€å…ƒäºŒæ¬¡æ–¹ç¨‹" << endl;
 }

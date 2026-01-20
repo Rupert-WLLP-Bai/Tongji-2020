@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
@@ -7,14 +7,14 @@ int zeller(int y, int m, int d)
 	int w, c, y1, start;
 	if (m >= 3 && m <= 14)
 	{
-		y1 = y % 100; //µÃµ½¹«Ê½ÖĞYµÄÖµ
-		c = y / 100;  //µÃµ½¹«Ê½ÖĞCµÄÖµ
+		y1 = y % 100; //å¾—åˆ°å…¬å¼ä¸­Yçš„å€¼
+		c = y / 100;  //å¾—åˆ°å…¬å¼ä¸­Cçš„å€¼
 	}
 	else
 	{
 		m += 12;
-		y1 = (y - 1) % 100; //µÃµ½¹«Ê½ÖĞYµÄÖµ
-		c = (y - 1) / 100;  //µÃµ½¹«Ê½ÖĞCµÄÖµ
+		y1 = (y - 1) % 100; //å¾—åˆ°å…¬å¼ä¸­Yçš„å€¼
+		c = (y - 1) / 100;  //å¾—åˆ°å…¬å¼ä¸­Cçš„å€¼
 	}
 	w = y1 + y1 / 4 + c / 4 - 2 * c + (13 * (m + 1) / 5) + d - 1;
 	while (w <= 0)
@@ -27,12 +27,12 @@ int calendar(int year, int month, int row)
 {
 	int spaces;
 	int day = 1;
-	printf("%dÄê%dÔÂ\n", year, month);
+	printf("%då¹´%dæœˆ\n", year, month);
 	printf("======================================================\n");
-	printf("ĞÇÆÚÈÕ  ĞÇÆÚÒ»  ĞÇÆÚ¶ş  ĞÇÆÚÈı  ĞÇÆÚËÄ  ĞÇÆÚÎå  ĞÇÆÚÁù\n");
+	printf("æ˜ŸæœŸæ—¥  æ˜ŸæœŸä¸€  æ˜ŸæœŸäºŒ  æ˜ŸæœŸä¸‰  æ˜ŸæœŸå››  æ˜ŸæœŸäº”  æ˜ŸæœŸå…­\n");
 	printf("======================================================\n");
 
-	if (row != 0) //²¹³äÇ°ÖÃ¿Õ¸ñ
+	if (row != 0) //è¡¥å……å‰ç½®ç©ºæ ¼
 	{
 		for (spaces = row; spaces > 1; spaces--)
 		{
@@ -41,7 +41,7 @@ int calendar(int year, int month, int row)
 		printf("    ");
 	}
 
-	if ((year % 100 != 0 && year % 4 == 0) || year % 400 == 0) //ÈòÄê
+	if ((year % 100 != 0 && year % 4 == 0) || year % 400 == 0) //é—°å¹´
 	{
 		switch (month)
 		{
@@ -58,7 +58,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -80,7 +80,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -101,7 +101,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -122,7 +122,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -143,7 +143,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -163,7 +163,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -184,7 +184,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -205,7 +205,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -226,7 +226,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -247,7 +247,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -268,7 +268,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -289,7 +289,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -300,7 +300,7 @@ int calendar(int year, int month, int row)
 		}
 	}
 
-	else //Æ½Äê
+	else //å¹³å¹´
 	{
 		switch (month)
 		{
@@ -317,7 +317,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -339,7 +339,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -360,7 +360,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -381,7 +381,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -402,7 +402,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -422,7 +422,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -443,7 +443,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -464,7 +464,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -485,7 +485,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -506,7 +506,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -527,7 +527,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -548,7 +548,7 @@ int calendar(int year, int month, int row)
 						printf("%8d", day);
 						row++;
 					}
-					if (row > 6) //»»ĞĞÖØÖÃrowµÄÖµ
+					if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
 					{
 						row = 0;
 						printf("\n");
@@ -566,16 +566,16 @@ int main()
 	int y, m;
 	int row;
 	int _return;
-	//ÊäÈëÒÔ¼°ÅĞ¶ÏºÏ·¨ĞÔ(1.Æ½Äê,ÈòÄê 2.·Ç·¨×Ö·û)
+	//è¾“å…¥ä»¥åŠåˆ¤æ–­åˆæ³•æ€§(1.å¹³å¹´,é—°å¹´ 2.éæ³•å­—ç¬¦)
 	while (1)
 	{
-		printf("ÊäÈëÄêÔÂ,·¶Î§ÊÇ(1900.1-2099.12) : \n");
+		printf("è¾“å…¥å¹´æœˆ,èŒƒå›´æ˜¯(1900.1-2099.12) : \n");
 		_return = scanf("%d%d", &y, &m);
 		while (_return != 2)
 		{
 			rewind(stdin);
-			printf("ÊäÈë·Ç·¨,ÇëÖØĞÂÊäÈë\n");
-			printf("ÊäÈëÄêÔÂ,·¶Î§ÊÇ(1900.1-2099.12) : \n");
+			printf("è¾“å…¥éæ³•,è¯·é‡æ–°è¾“å…¥\n");
+			printf("è¾“å…¥å¹´æœˆ,èŒƒå›´æ˜¯(1900.1-2099.12) : \n");
 			_return = scanf("%d%d", &y, &m);
 		}
 
@@ -585,13 +585,13 @@ int main()
 				break;
 			else
 			{
-				printf("ÔÂ·İ´íÎó,ÇëÖØĞÂÊäÈë\n");
+				printf("æœˆä»½é”™è¯¯,è¯·é‡æ–°è¾“å…¥\n");
 				rewind(stdin);
 			}
 		}
 		else
 		{
-			printf("Äê·İ´íÎó,ÇëÖØĞÂÊäÈë\n");
+			printf("å¹´ä»½é”™è¯¯,è¯·é‡æ–°è¾“å…¥\n");
 			rewind(stdin);
 		}
 	}

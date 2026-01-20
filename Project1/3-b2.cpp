@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <iomanip>
 #define pi 3.14159
@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     double r, h, c, s1, s2, v1, v2;
-    cout << "ÇëÊäÈë°ë¾¶ºÍ¸ß¶È£º" << endl;
+    cout << "è¯·è¾“å…¥åŠå¾„å’Œé«˜åº¦ï¼š" << endl;
     cin >> r >> h;
     c = 2 * pi * r;
     s1 = pi * r * r;
@@ -15,15 +15,15 @@ int main()
     v1 = 4 / 3 * pi * r * r * r;
     v2 = pi * r * r * h;
     cout << setiosflags(ios::fixed) << setprecision(2);
-    cout << "Ô²ÖÜ³¤    "
+    cout << "åœ†å‘¨é•¿    "
         << " : " << c << endl;
-    cout << "Ô²Ãæ»ý    "
+    cout << "åœ†é¢ç§¯    "
         << " : " << s1 << endl;
-    cout << "Ô²Çò±íÃæ»ý"
+    cout << "åœ†çƒè¡¨é¢ç§¯"
         << " : " << s2 << endl;
-    cout << "Ô²ÇòÌå»ý  "
+    cout << "åœ†çƒä½“ç§¯  "
         << " : " << v1 << endl;
-    cout << "Ô²ÖùÌå»ý  "
+    cout << "åœ†æŸ±ä½“ç§¯  "
         << " : " << v2 << endl;
     return 0;
 }

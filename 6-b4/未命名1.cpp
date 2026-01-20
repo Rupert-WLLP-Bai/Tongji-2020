@@ -1,11 +1,11 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<stdlib.h>
 #define SIZE 80
 inline void input(char *name)
 {
-	printf("ÎÄ¼şÃûÒÔÏÂĞÎÊ½¾ù¿ÉÒÔ£º\na.txt£º²»´øÂ·¾¶ĞÎÊ½\n..\\data\\b.dat£ºÏà¶ÔÂ·¾¶ĞÎÊ½\nC : \\Windows\\System32\\c.dat£º¾ø¶ÔÏà¶ÔÂ·¾¶ĞÎÊ½\nÇëÊäÈëÎÄ¼şÃû : ");
+	printf("æ–‡ä»¶åä»¥ä¸‹å½¢å¼å‡å¯ä»¥ï¼š\na.txtï¼šä¸å¸¦è·¯å¾„å½¢å¼\n..\\data\\b.datï¼šç›¸å¯¹è·¯å¾„å½¢å¼\nC : \\Windows\\System32\\c.datï¼šç»å¯¹ç›¸å¯¹è·¯å¾„å½¢å¼\nè¯·è¾“å…¥æ–‡ä»¶å : ");
 #if __GNUC__
 		scanf("%s", name);
 #elif _MSC_VER
@@ -30,7 +30,7 @@ void output(char* name)
 	fp1 = fopen(name, "r");
 	if (fp1 == NULL)
 	{
-		printf("ÎÄ¼ş%s´ò¿ªÊ§°Ü!\n",name);
+		printf("æ–‡ä»¶%sæ‰“å¼€å¤±è´¥!\n",name);
 		exit(EXIT_FAILURE);
 	}
 	while ((ch = fgetc(fp1)) != EOF)
@@ -53,7 +53,7 @@ void output(char* name)
 
 int main()
 {
-	char name[SIZE];//´¢´æÎÄ¼şÃû
+	char name[SIZE];//å‚¨å­˜æ–‡ä»¶å
 	input(name);
 	output(name);
 	return 0;

@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <iomanip>
 #include<Windows.h>
@@ -6,23 +6,23 @@ using namespace std;
 
 int day[366];
 int M[12][31];
-int k;//ÈÕÆÚ
+int k;//æ—¥æœŸ
 int num_of_day_leap[12] = { 31,29,31,30,31,30,31,31,30,31,30,31 };
 int num_of_day_plain[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
-/*µÃµ½Ä³Äê1ÔÂ1ÈÕÊÇÐÇÆÚ¼¸*/
+/*å¾—åˆ°æŸå¹´1æœˆ1æ—¥æ˜¯æ˜ŸæœŸå‡ */
 int zeller(int y, int m, int d)
 {
 	int w, c, y1, start;
 	if (m >= 3 && m <= 14)
 	{
-		y1 = y % 100; //µÃµ½¹«Ê½ÖÐYµÄÖµ
-		c = y / 100;  //µÃµ½¹«Ê½ÖÐCµÄÖµ
+		y1 = y % 100; //å¾—åˆ°å…¬å¼ä¸­Yçš„å€¼
+		c = y / 100;  //å¾—åˆ°å…¬å¼ä¸­Cçš„å€¼
 	}
 	else
 	{
 		m += 12;
-		y1 = (y - 1) % 100; //µÃµ½¹«Ê½ÖÐYµÄÖµ
-		c = (y - 1) / 100;  //µÃµ½¹«Ê½ÖÐCµÄÖµ
+		y1 = (y - 1) % 100; //å¾—åˆ°å…¬å¼ä¸­Yçš„å€¼
+		c = (y - 1) / 100;  //å¾—åˆ°å…¬å¼ä¸­Cçš„å€¼
 	}
 	w = y1 + y1 / 4 + c / 4 - 2 * c + (13 * (m + 1) / 5) + d - 1;
 	while (w <= 0)
@@ -31,7 +31,7 @@ int zeller(int y, int m, int d)
 	return start;
 }
 
-/*ÅÐ¶ÏÈòÄê*/
+/*åˆ¤æ–­é—°å¹´*/
 bool leap_year(int year)
 {
 	if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
@@ -40,11 +40,11 @@ bool leap_year(int year)
 		return 0;
 }
 
-/*¼ÆËãÄ³ÔÂÄ³ÈÕÊÇÐÇÆÚ¼¸*/
+/*è®¡ç®—æŸæœˆæŸæ—¥æ˜¯æ˜ŸæœŸå‡ */
 void calc_start_day(int year)
 {
 	int count = 1;
-	//¼ÆËãÃ¿Ò»ÌìÊÇÐÇÆÚ¼¸
+	//è®¡ç®—æ¯ä¸€å¤©æ˜¯æ˜ŸæœŸå‡ 
 	day[0] = zeller(year, 1, 1);
 	for (int i = 0; i < 366; i++)
 	{
@@ -53,7 +53,7 @@ void calc_start_day(int year)
 		else
 			day[i + 1] = day[i] - 6;
 	}
-	//½«ÕâÐ©Öµ´æÈëÄ³ÔÂÄ³ÈÕ
+	//å°†è¿™äº›å€¼å­˜å…¥æŸæœˆæŸæ—¥
 	if (leap_year(year))
 	{
 		int count = 0;
@@ -80,25 +80,25 @@ void calc_start_day(int year)
 	}
 }
 
-/*Êä³ö¹Ì¶¨¸ñÊ½*/
+/*è¾“å‡ºå›ºå®šæ ¼å¼*/
 void print_title(int quarter)
 {
 	switch (quarter)
 	{
 		case 1:
-			cout << "            1ÔÂ                             2ÔÂ                             3ÔÂ" << endl;
+			cout << "            1æœˆ                             2æœˆ                             3æœˆ" << endl;
 			cout << "Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat" << endl;
 			break;
 		case 2:
-			cout << "            4ÔÂ                             5ÔÂ                             6ÔÂ" << endl;
+			cout << "            4æœˆ                             5æœˆ                             6æœˆ" << endl;
 			cout << "Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat" << endl;
 			break;
 		case 3:
-			cout << "            7ÔÂ                             8ÔÂ                             9ÔÂ" << endl;
+			cout << "            7æœˆ                             8æœˆ                             9æœˆ" << endl;
 			cout << "Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat" << endl;
 			break;
 		case 4:
-			cout << "           10ÔÂ                            11ÔÂ                            12ÔÂ" << endl;
+			cout << "           10æœˆ                            11æœˆ                            12æœˆ" << endl;
 			cout << "Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat     Sun Mon Tue Wed Thu Fri Sat" << endl;
 			break;
 		default:
@@ -106,11 +106,11 @@ void print_title(int quarter)
 	}
 }
 
-/*Êä³öÃ¿ÔÂµÄµÚÒ»ÐÐ*/
+/*è¾“å‡ºæ¯æœˆçš„ç¬¬ä¸€è¡Œ*/
 void print_first_line(int month)
 {
 	k = 0;
-	for (int i = 0; i < M[month - 1][0]; i++)//²¹¿Õ¸ñ
+	for (int i = 0; i < M[month - 1][0]; i++)//è¡¥ç©ºæ ¼
 	{
 		Sleep(50);
 		cout << "    ";
@@ -235,7 +235,7 @@ int main()
 	int year;
 	while (1)
 	{
-		cout << "ÇëÊäÈëÄê·Ý[1900-2100]" << endl;
+		cout << "è¯·è¾“å…¥å¹´ä»½[1900-2100]" << endl;
 		cin >> year;
 		if (!cin.fail() && year >= 1900 && year <= 2100)
 			break;
@@ -245,7 +245,7 @@ int main()
 			cin.ignore(65536, '\n');
 		}
 	}
-	cout << year << "ÄêµÄÈÕÀú:" << endl;
+	cout << year << "å¹´çš„æ—¥åŽ†:" << endl;
 	calc_start_day(year);
 
 	print_title(1);

@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -11,7 +11,7 @@ int main()
         for (j = 1; j <= i; j++)
         {
             result = i * j;
-            cout<< j << "¡Á" << i << "=" << setiosflags(ios::left)<<setw(4)<<result;
+            cout<< j << "Ã—" << i << "=" << setiosflags(ios::left)<<setw(4)<<result;
         }
         cout << endl;
     }

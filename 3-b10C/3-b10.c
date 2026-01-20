@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 int main()
@@ -6,12 +6,12 @@ int main()
 	int x;
 	int _return;
 	while (1) {
-		printf("ÇëÊäÈëxµÄÖµ(0-100)£º");
-		_return=scanf("%d", &x); //¶ÁÈëxµÄ·½Ê½scanfÇÒ¸ñÊ½·ûÎª%d
+		printf("è¯·è¾“å…¥xçš„å€¼(0-100)ï¼š");
+		_return=scanf("%d", &x); //è¯»å…¥xçš„æ–¹å¼scanfä¸”æ ¼å¼ç¬¦ä¸º%d
 		while(_return==0)
 		{
 			rewind(stdin);
-			printf("ÇëÊäÈëxµÄÖµ(0-100)£º");
+			printf("è¯·è¾“å…¥xçš„å€¼(0-100)ï¼š");
 			_return = scanf("%d", &x);
 		}
 		if (x >= 0 && x <= 100)

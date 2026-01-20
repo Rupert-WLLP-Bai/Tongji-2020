@@ -1,11 +1,11 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <iomanip>
 #include <windows.h>
 #include<conio.h>
 #include"5-b7.h"
 using namespace std;
-int i = 0;//¼Ç²½Êý
+int i = 0;//è®°æ­¥æ•°
 int a[10]; 
 int b[10];
 int c[10];
@@ -14,10 +14,10 @@ static int speed, show;
 
 void print_start(char start, char end, int level,int speed, int show)
 {
-	cout << "´Ó" << start << "ÒÆ¶¯µ½" << end << " ,¹²" << level << "²ã" << " ,ÑÓÊ±ÉèÖÃÎª " << speed << ", ";
+	cout << "ä»Ž" << start << "ç§»åŠ¨åˆ°" << end << " ,å…±" << level << "å±‚" << " ,å»¶æ—¶è®¾ç½®ä¸º " << speed << ", ";
 	if (!show)
-		cout << "²»";
-	cout << "ÏÔÊ¾ÄÚ²¿Êý×éÖµ" << endl;
+		cout << "ä¸";
+	cout << "æ˜¾ç¤ºå†…éƒ¨æ•°ç»„å€¼" << endl;
 }
 
 void print_vertical()
@@ -25,7 +25,7 @@ void print_vertical()
 	int x = 10;
 	int y = 11;
 	
-	cct_gotoxy(x,y);//AÖù
+	cct_gotoxy(x,y);//AæŸ±
 	for (int j = 0; j < 10; j++)
 	{
 		if (a[j] == 10)
@@ -42,7 +42,7 @@ void print_vertical()
 			cout << "  ";
 	}
 
-	x = 20, y = 11;//BÖù
+	x = 20, y = 11;//BæŸ±
 	cct_gotoxy(x, y);
 	for (int j = 0; j < 10; j++)
 	{
@@ -60,7 +60,7 @@ void print_vertical()
 			cout << "  ";
 	}
 
-	x = 30, y = 11;//CÖù
+	x = 30, y = 11;//CæŸ±
 	cct_gotoxy(x, y);
 	for (int j = 0; j < 10; j++)
 	{
@@ -83,11 +83,11 @@ void spawn(char start, int level)
 {
 	for (int i = 0; i < 10; i++)
 	{
-		a[i] = b[i] = c[i] = 0;//³õÊ¼»¯
+		a[i] = b[i] = c[i] = 0;//åˆå§‹åŒ–
 	}
 
 	top_A = top_B = top_C = 0;
-	switch (start)//¿ªÊ¼µÄÊý×é×´Ì¬
+	switch (start)//å¼€å§‹çš„æ•°ç»„çŠ¶æ€
 	{
 		case 'A':
 		{
@@ -127,7 +127,7 @@ void spawn(char start, int level)
 		}
 	if (show)
 	{
-		cout << "³õÊ¼:                ";
+		cout << "åˆå§‹:                ";
 		cout << "A:";
 		if (a[0] != 10)
 			cout << " ";
@@ -189,7 +189,7 @@ void hanoi(int n, char src, char tmp, char dst)
 		i++;
 		print_menu();
 		cct_gotoxy(0, 17);
-		cout << "µÚ" << setw(4) << i << " ²½";
+		cout << "ç¬¬" << setw(4) << i << " æ­¥";
 		move(n, src, dst);
 		if (speed)
 			Sleep(800 - speed * 160);
@@ -208,7 +208,7 @@ void hanoi(int n, char src, char tmp, char dst)
 		i++;
 		print_menu();
 		cct_gotoxy(0, 17);
-		cout << "µÚ" << setw(4) << i << " ²½";
+		cout << "ç¬¬" << setw(4) << i << " æ­¥";
 		move(n, src, dst);
 		if (!speed)
 			while (1)
@@ -228,7 +228,7 @@ void move(int n, char x, char y)
 {
 	cout << "(" << setw(2) << n << "): ";
 	cout << x << "-->" << y << " ";
-	//½øÕ»,³öÕ»
+	//è¿›æ ˆ,å‡ºæ ˆ
 	int temp;
 	switch (x)
 	{
@@ -282,7 +282,7 @@ void move(int n, char x, char y)
 			break;
 	}
 
-	//Êä³ö
+	//è¾“å‡º
 	if (show)
 	{
 		cout << "A:";
@@ -351,13 +351,13 @@ int main()
 	char start, mid, end;
 	while (1)
 	{
-		cout << "ÇëÊäÈëººÅµËþµÄ²ãÊý(1-10)" << endl;
+		cout << "è¯·è¾“å…¥æ±‰è¯ºå¡”çš„å±‚æ•°(1-10)" << endl;
 		cin >> level;
 		while (cin.fail())
 		{
 			cin.clear();
 			cin.ignore(1024, '\n');
-			cout << "ÇëÊäÈëººÅµËþµÄ²ãÊý(1-10)" << endl;
+			cout << "è¯·è¾“å…¥æ±‰è¯ºå¡”çš„å±‚æ•°(1-10)" << endl;
 			cin >> level;
 		}
 		if (level >= 1 && level <= 10)
@@ -367,13 +367,13 @@ int main()
 	cin.ignore(1024, '\n');
 	while (1)
 	{
-		cout << "ÇëÊäÈëÆðÊ¼Öù(A-C)" << endl;
+		cout << "è¯·è¾“å…¥èµ·å§‹æŸ±(A-C)" << endl;
 		cin >> start;
 		while (cin.fail())
 		{
 			cin.clear();
 			cin.ignore(1024, '\n');
-			cout << "ÇëÊäÈëÆðÊ¼Öù(A-C)" << endl;
+			cout << "è¯·è¾“å…¥èµ·å§‹æŸ±(A-C)" << endl;
 			cin >> start;
 		}
 		if (start == 'A' || start == 'B' || start == 'C')
@@ -390,20 +390,20 @@ int main()
 	cin.ignore(1024, '\n');
 	while (1)
 	{
-		cout << "ÇëÊäÈëÄ¿±êÖù(A-C)" << endl;
+		cout << "è¯·è¾“å…¥ç›®æ ‡æŸ±(A-C)" << endl;
 		cin >> end;
 		while (cin.fail())
 		{
 			cin.clear();
 			cin.ignore(1024, '\n');
-			cout << "ÇëÊäÈëÄ¿±êÖù(A-C)" << endl;
+			cout << "è¯·è¾“å…¥ç›®æ ‡æŸ±(A-C)" << endl;
 			cin >> end;
 		}
 		if (end == start || end == start + 32 || end == start - 32)
 		{
 			cin.clear();
 			cin.ignore();
-			cout << "ÆðÊ¼Öù(" << start << ")²»ÄÜÓëÄ¿±êÖù(" << end << ")ÏàÍ¬" << endl;
+			cout << "èµ·å§‹æŸ±(" << start << ")ä¸èƒ½ä¸Žç›®æ ‡æŸ±(" << end << ")ç›¸åŒ" << endl;
 			continue;
 		}
 		if (end == 'A' || end == 'B' || end == 'C')
@@ -418,7 +418,7 @@ int main()
 	}
 	while (1)
 	{
-		cout << "ÇëÊäÈëÒÆ¶¯ËÙ¶È(0-5: 0-°´»Ø³µµ¥²½ÑÝÊ¾ 1-ÑÓÊ±×î³¤ 5-ÑÓÊ±×î¶Ì)" << endl;
+		cout << "è¯·è¾“å…¥ç§»åŠ¨é€Ÿåº¦(0-5: 0-æŒ‰å›žè½¦å•æ­¥æ¼”ç¤º 1-å»¶æ—¶æœ€é•¿ 5-å»¶æ—¶æœ€çŸ­)" << endl;
 		cin >> speed;
 		if (!cin.fail() && speed >= 0 && speed <= 5)
 			break;
@@ -430,7 +430,7 @@ int main()
 	}
 	while (1)
 	{
-		cout << "ÇëÊäÈëÊÇ·ñÏÔÊ¾ÄÚ²¿Êý×éÖµ(0-²»ÏÔÊ¾ 1-ÏÔÊ¾)" << endl;
+		cout << "è¯·è¾“å…¥æ˜¯å¦æ˜¾ç¤ºå†…éƒ¨æ•°ç»„å€¼(0-ä¸æ˜¾ç¤º 1-æ˜¾ç¤º)" << endl;
 		cin >> show;
 		if (!cin.fail() && show >= 0 && show <= 1)
 			break;

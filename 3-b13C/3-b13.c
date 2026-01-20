@@ -1,12 +1,12 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <stdio.h>
-#include <windows.h> //È¡ÏµÍ³Ê±¼ä
+#include <windows.h> //å–ç³»ç»Ÿæ—¶é—´
 int main()
 {
     LARGE_INTEGER tick, begin, end;
 
-    QueryPerformanceFrequency(&tick); //»ñµÃ¼ÆÊıÆ÷ÆµÂÊ
-    QueryPerformanceCounter(&begin);  //»ñµÃ³õÊ¼Ó²¼ş¼ÆÊıÆ÷¼ÆÊı
+    QueryPerformanceFrequency(&tick); //è·å¾—è®¡æ•°å™¨é¢‘ç‡
+    QueryPerformanceCounter(&begin);  //è·å¾—åˆå§‹ç¡¬ä»¶è®¡æ•°å™¨è®¡æ•°
 
     int i, j, k;
     int i1, i2, i3, j1, j2, j3, k1, k2, k3;
@@ -49,11 +49,11 @@ int main()
         }
     }
     printf("total =  %d\n", count);
-    QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¼ÆÊıÆ÷¼ÆÊı
+    QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶è®¡æ•°å™¨è®¡æ•°
 
-    printf("¼ÆÊıÆ÷ÆµÂÊ : %lld Hz\n", tick.QuadPart);
-    printf("¼ÆÊıÆ÷¼ÆÊı : %lld\n", end.QuadPart - begin.QuadPart);
-    printf("%6lfÃë\n", (double)(end.QuadPart - begin.QuadPart) / tick.QuadPart);
+    printf("è®¡æ•°å™¨é¢‘ç‡ : %lld Hz\n", tick.QuadPart);
+    printf("è®¡æ•°å™¨è®¡æ•° : %lld\n", end.QuadPart - begin.QuadPart);
+    printf("%6lfç§’\n", (double)(end.QuadPart - begin.QuadPart) / tick.QuadPart);
 
     return 0;
 }

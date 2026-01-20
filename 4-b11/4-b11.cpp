@@ -1,15 +1,15 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <iomanip>
 #include <Windows.h>
 using namespace std;
 
 /***************************************************************************
-  º¯ÊıÃû³Æ£º
-  ¹¦    ÄÜ£º·µ»ØfibonacciÊıÁĞµÄµÚnÏîµÄÖµ
-  ÊäÈë²ÎÊı£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šè¿”å›fibonacciæ•°åˆ—çš„ç¬¬né¡¹çš„å€¼
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  è¯´    æ˜ï¼š
 ***************************************************************************/
 int fibonacci(int n)
 {
@@ -20,28 +20,28 @@ int fibonacci(int n)
 }
 
 /***************************************************************************
-  º¯ÊıÃû³Æ£º
-  ¹¦    ÄÜ£º
-  ÊäÈë²ÎÊı£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºmainº¯Êı²»ÔÊĞíĞŞ¸Ä
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼š
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  è¯´    æ˜ï¼šmainå‡½æ•°ä¸å…è®¸ä¿®æ”¹
 ***************************************************************************/
 int main()
 {
     int n, f;
-    cout << "ÇëÊäÈëFibonacciÊıÁĞµÄÏîÊı[1-46]" << endl;
+    cout << "è¯·è¾“å…¥Fibonacciæ•°åˆ—çš„é¡¹æ•°[1-46]" << endl;
     cin >> n;
 
     LARGE_INTEGER tick, begin, end;
-    QueryPerformanceFrequency(&tick); //»ñµÃÊ±ÖÓÆµÂÊ
-    QueryPerformanceCounter(&begin);  //»ñµÃ³õÊ¼Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
+    QueryPerformanceFrequency(&tick); //è·å¾—æ—¶é’Ÿé¢‘ç‡
+    QueryPerformanceCounter(&begin);  //è·å¾—åˆå§‹ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
     f = fibonacci(n);
-    cout << "FibonacciÊıÁĞµÚ" << n << "ÏîµÄÖµ : " << f << endl;
+    cout << "Fibonacciæ•°åˆ—ç¬¬" << n << "é¡¹çš„å€¼ : " << f << endl;
 
-    QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
-    cout << "¼ÆÊıÆ÷ÆµÂÊ : " << tick.QuadPart << "Hz" << endl;
-    cout << "¼ÆÊıÆ÷¼ÆÊı : " << end.QuadPart - begin.QuadPart << endl;
-    cout << setiosflags(ios::fixed) << setprecision(6) << double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+    QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+    cout << "è®¡æ•°å™¨é¢‘ç‡ : " << tick.QuadPart << "Hz" << endl;
+    cout << "è®¡æ•°å™¨è®¡æ•° : " << end.QuadPart - begin.QuadPart << endl;
+    cout << setiosflags(ios::fixed) << setprecision(6) << double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 
     return 0;
 }

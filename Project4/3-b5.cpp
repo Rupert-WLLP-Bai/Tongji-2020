@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <cmath>
 #include <iomanip>
@@ -8,10 +8,10 @@ int main()
 {
     int a, b, angle;
     double S;
-    cout << "ÇëÊäÈëÈý½ÇÐÎµÄÁ½±ß¼°Æä¼Ð½Ç£¨½Ç¶È£© :  " << endl;
+    cout << "è¯·è¾“å…¥ä¸‰è§’å½¢çš„ä¸¤è¾¹åŠå…¶å¤¹è§’ï¼ˆè§’åº¦ï¼‰ :  " << endl;
     cin >> a >> b >> angle;
     S = a * b * sin(angle * pi / 180) / 2;
-    cout << setiosflags(ios::fixed) << setprecision(3) << "Èý½ÇÐÎÃæ»ýÎª £º " << S << endl;
+    cout << setiosflags(ios::fixed) << setprecision(3) << "ä¸‰è§’å½¢é¢ç§¯ä¸º ï¼š " << S << endl;
 
     return 0;
 }

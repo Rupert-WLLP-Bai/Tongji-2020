@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 using namespace std;
 int is_power(int num, int base)
@@ -14,11 +14,11 @@ int is_power(int num, int base)
 int main()
 { 
     int num, base;
-    cout << "ÇëÊäÈëÕûÊýnum¼°»ùÊýbase(2ÒÔÉÏµÄÕýÕûÊý)" << endl;
+    cout << "è¯·è¾“å…¥æ•´æ•°numåŠåŸºæ•°base(2ä»¥ä¸Šçš„æ­£æ•´æ•°)" << endl;
     cin >> num >> base;
     if (is_power(num, base))
-        cout << num << "ÊÇ" << base << "µÄÃÝ" << endl;
+        cout << num << "æ˜¯" << base << "çš„å¹‚" << endl;
     else
-        cout << num << "²»ÊÇ" << base << "µÄÃÝ" << endl;
+        cout << num << "ä¸æ˜¯" << base << "çš„å¹‚" << endl;
     return 0;
 }

@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<stdlib.h>
@@ -7,19 +7,19 @@
 
 void input(char* name)
 {
-	fprintf(stderr,"ÎÄ¼şÃûÒÔÏÂĞÎÊ½¾ù¿ÉÒÔ£º\na.txt£º²»´øÂ·¾¶ĞÎÊ½\n..\\data\\b.dat£ºÏà¶ÔÂ·¾¶ĞÎÊ½\nC : \\Windows\\System32\\c.dat£º¾ø¶ÔÏà¶ÔÂ·¾¶ĞÎÊ½\nÇëÊäÈëÎÄ¼şÃû : ");
+	fprintf(stderr,"æ–‡ä»¶åä»¥ä¸‹å½¢å¼å‡å¯ä»¥ï¼š\na.txtï¼šä¸å¸¦è·¯å¾„å½¢å¼\n..\\data\\b.datï¼šç›¸å¯¹è·¯å¾„å½¢å¼\nC : \\Windows\\System32\\c.datï¼šç»å¯¹ç›¸å¯¹è·¯å¾„å½¢å¼\nè¯·è¾“å…¥æ–‡ä»¶å : ");
 	fgets(name, SIZE, stdin);
-	if (name[strlen(name) - 1] == '\n')//É¾È¥Ä©Î²µÄ\n
+	if (name[strlen(name) - 1] == '\n')//åˆ å»æœ«å°¾çš„\n
 		name[strlen(name) - 1] = '\0';
 }
 
-/*Êä³öÒ»ĞĞµÄÄÚÈİ*/
+/*è¾“å‡ºä¸€è¡Œçš„å†…å®¹*/
 void print_line(char* sh, int count)
 {
 	printf("    ");
 	for (int i = 0; i <= count % 16; i++)
 	{
-		if (sh[i] < 33 || sh[i]>126)//¿Õ¸ñÈÔÈ»Êä³ö "."
+		if (sh[i] < 33 || sh[i]>126)//ç©ºæ ¼ä»ç„¶è¾“å‡º "."
 			printf(".");
 		else
 			printf("%c", sh[i]);
@@ -32,35 +32,35 @@ void output(char* name)
 	fp1 = fopen(name, "rb");
 	if (fp1 == NULL)
 	{
-		fprintf(stderr,"ÎÄ¼ş%s´ò¿ªÊ§°Ü!\n", name);
+		fprintf(stderr,"æ–‡ä»¶%sæ‰“å¼€å¤±è´¥!\n", name);
 		exit(EXIT_FAILURE);
 	}
 
 	int count = 0;
 	int ch;
 	char sh[16];
-	while ((ch = fgetc(fp1)) != EOF)//ÓÃintĞÍµÄÔ­ÒòÊÇÇø·Ö Ê®Áù½øÖÆµÄFF ºÍ EOF
+	while ((ch = fgetc(fp1)) != EOF)//ç”¨intå‹çš„åŸå› æ˜¯åŒºåˆ† åå…­è¿›åˆ¶çš„FF å’Œ EOF
 	{
 		sh[count % 16] = ch;
 		if (count % 16 == 0)
 		{
 			if (count >= 16)
 				printf("\n");
-			printf("%08x  ", count);//´òÓ¡ĞòºÅ
+			printf("%08x  ", count);//æ‰“å°åºå·
 		}
 		if (count % 16 == 8)
 			printf("- ");
-		printf("%02x ", (unsigned char)ch);//Ç¿ÖÆÀàĞÍ×ª»»,ÓÃ0²¹Æë
+		printf("%02x ", (unsigned char)ch);//å¼ºåˆ¶ç±»å‹è½¬æ¢,ç”¨0è¡¥é½
 		if ((count + 1) % 16 == 0)
 		{
 			print_line(sh, count);
 		}
 		count++;
 	}
-	//Ìø³öÑ­»·ºóÅĞ¶ÏÊÇ·ñĞèÒªÔÙÊä³öÒ»ĞĞ
-	if (count % 16 != 0)//²¹Æë¿Õ¸ñ
+	//è·³å‡ºå¾ªç¯ååˆ¤æ–­æ˜¯å¦éœ€è¦å†è¾“å‡ºä¸€è¡Œ
+	if (count % 16 != 0)//è¡¥é½ç©ºæ ¼
 	{
-		if (count % 16 <= 8)//ÔÙ²¹Á½¸ö¿Õ¸ñ
+		if (count % 16 <= 8)//å†è¡¥ä¸¤ä¸ªç©ºæ ¼
 			printf("  ");
 		for (int i = count % 16; i < 16; i++)
 			printf("   ");
@@ -73,7 +73,7 @@ void output(char* name)
 
 int main()
 {
-	char name[SIZE];//´¢´æÎÄ¼şÃû
+	char name[SIZE];//å‚¨å­˜æ–‡ä»¶å
 	input(name);
 	output(name);
 	return 0;

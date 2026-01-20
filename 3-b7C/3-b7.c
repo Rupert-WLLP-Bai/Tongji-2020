@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <math.h>
@@ -8,7 +8,7 @@ int main()
     int i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i_1, i_2, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9;
     double temp_1, num, num_int, num_decimal_part;
     bool i10_19_exist = 1, zero_1_exist = 0, zero_2_exist = 0, zheng_exist = 0;
-    printf("ÇëÊäÈë[0-100ÒÚ)Ö®¼äµÄÊı×Ö,Ğ¡Êıµãºó×î¶àÁ½Î»£º\n");
+    printf("è¯·è¾“å…¥[0-100äº¿)ä¹‹é—´çš„æ•°å­—,å°æ•°ç‚¹åæœ€å¤šä¸¤ä½ï¼š\n");
     scanf("%lf", &num);
     num_int = num - fmod(num, 1);
     i1 = (int)(fmod(num_int, 10));
@@ -34,423 +34,423 @@ int main()
     i_1 = (int)((num_decimal_part * 10) + 1e-4);
     temp_1 = num_decimal_part * 100 + 1e-3;
     i_2 = (int)(fmod(temp_1, 10) + 1e-4);
-    switch (i10) //Ê®ÒÚÎ»
+    switch (i10) //åäº¿ä½
     {
         case 1:
-            printf("Ò¼Ê°");
+            printf("å£¹æ‹¾");
             break;
         case 2:
-            printf("·¡Ê°");
+            printf("è´°æ‹¾");
             break;
         case 3:
-            printf("ÈşÊ°");
+            printf("åæ‹¾");
             break;
         case 4:
-            printf("ËÁÊ°");
+            printf("è‚†æ‹¾");
             break;
         case 5:
-            printf("ÎéÊ°");
+            printf("ä¼æ‹¾");
             break;
         case 6:
-            printf("Â½Ê°");
+            printf("é™†æ‹¾");
             break;
         case 7:
-            printf("ÆâÊ°");
+            printf("æŸ’æ‹¾");
             break;
         case 8:
-            printf("°ÆÊ°");
+            printf("æŒæ‹¾");
             break;
         case 9:
-            printf("¾ÁÊ°");
+            printf("ç–æ‹¾");
             break;
     }
-    switch (i9) //ÒÚÎ»
+    switch (i9) //äº¿ä½
     {
         case 1:
-            printf("Ò¼");
+            printf("å£¹");
             break;
         case 2:
-            printf("·¡");
+            printf("è´°");
             break;
         case 3:
-            printf("Èş");
+            printf("å");
             break;
         case 4:
-            printf("ËÁ");
+            printf("è‚†");
             break;
         case 5:
-            printf("Îé");
+            printf("ä¼");
             break;
         case 6:
-            printf("Â½");
+            printf("é™†");
             break;
         case 7:
-            printf("Æâ");
+            printf("æŸ’");
             break;
         case 8:
-            printf("°Æ");
+            printf("æŒ");
             break;
         case 9:
-            printf("¾Á");
+            printf("ç–");
             break;
     }
     if (i10 != 0 || i9 != 0)
-        printf("ÒÚ");
+        printf("äº¿");
     else
         i10_19_exist = 0;
-    switch (i8) //Ç§ÍòÎ»
+    switch (i8) //åƒä¸‡ä½
     {
         case 1:
-            printf("Ò¼Çª");
+            printf("å£¹ä»Ÿ");
             break;
         case 2:
-            printf("·¡Çª");
+            printf("è´°ä»Ÿ");
             break;
         case 3:
-            printf("ÈşÇª");
+            printf("åä»Ÿ");
             break;
         case 4:
-            printf("ËÁÇª");
+            printf("è‚†ä»Ÿ");
             break;
         case 5:
-            printf("ÎéÇª");
+            printf("ä¼ä»Ÿ");
             break;
         case 6:
-            printf("Â½Çª");
+            printf("é™†ä»Ÿ");
             break;
         case 7:
-            printf("ÆâÇª");
+            printf("æŸ’ä»Ÿ");
             break;
         case 8:
-            printf("°ÆÊ°");
+            printf("æŒæ‹¾");
             break;
         case 9:
-            printf("¾ÁÊ°");
+            printf("ç–æ‹¾");
             break;
     }
     if (!(i8 || i7 || i6 || i5))
         zero_1_exist = 1;
     if (!zero_1_exist && i10_19_exist && !i8)
     {
-        printf("Áã");
+        printf("é›¶");
         zero_1_exist = 1;
     }
-    switch (i7) //°ÙÍòÎ»
+    switch (i7) //ç™¾ä¸‡ä½
     {
         case 1:
-            printf("Ò¼°Û");
+            printf("å£¹ä½°");
             break;
         case 2:
-            printf("·¡°Û");
+            printf("è´°ä½°");
             break;
         case 3:
-            printf("Èş°Û");
+            printf("åä½°");
             break;
         case 4:
-            printf("ËÁ°Û");
+            printf("è‚†ä½°");
             break;
         case 5:
-            printf("Îé°Û");
+            printf("ä¼ä½°");
             break;
         case 6:
-            printf("Â½°Û");
+            printf("é™†ä½°");
             break;
         case 7:
-            printf("Æâ°Û");
+            printf("æŸ’ä½°");
             break;
         case 8:
-            printf("°Æ°Û");
+            printf("æŒä½°");
             break;
         case 9:
-            printf("¾Á°Û");
+            printf("ç–ä½°");
             break;
     }
     if (!zero_1_exist && !i7 && i6 && num >= 1000000)
     {
-        printf("Áã");
+        printf("é›¶");
         zero_1_exist = 1;
     }
-    switch (i6) //Ê®ÍòÎ»
+    switch (i6) //åä¸‡ä½
     {
         case 1:
-            printf("Ò¼Ê°");
+            printf("å£¹æ‹¾");
             break;
         case 2:
-            printf("·¡Ê°");
+            printf("è´°æ‹¾");
             break;
         case 3:
-            printf("ÈşÊ°");
+            printf("åæ‹¾");
             break;
         case 4:
-            printf("ËÁÊ°");
+            printf("è‚†æ‹¾");
             break;
         case 5:
-            printf("ÎéÊ°");
+            printf("ä¼æ‹¾");
             break;
         case 6:
-            printf("Â½Ê°");
+            printf("é™†æ‹¾");
             break;
         case 7:
-            printf("ÆâÊ°");
+            printf("æŸ’æ‹¾");
             break;
         case 8:
-            printf("°ÆÊ°");
+            printf("æŒæ‹¾");
             break;
         case 9:
-            printf("¾ÁÊ°");
+            printf("ç–æ‹¾");
             break;
     }
     if (i7 && !i6 && i5 && num >= 100000)
     {
-        printf("Áã");
+        printf("é›¶");
         zero_1_exist = 1;
     }
-    switch (i5) //ÍòÎ»
+    switch (i5) //ä¸‡ä½
     {
         case 1:
-            printf("Ò¼");
+            printf("å£¹");
             break;
         case 2:
-            printf("·¡");
+            printf("è´°");
             break;
         case 3:
-            printf("Èş");
+            printf("å");
             break;
         case 4:
-            printf("ËÁ");
+            printf("è‚†");
             break;
         case 5:
-            printf("Îé");
+            printf("ä¼");
             break;
         case 6:
-            printf("Â½");
+            printf("é™†");
             break;
         case 7:
-            printf("Æâ");
+            printf("æŸ’");
             break;
         case 8:
-            printf("°Æ");
+            printf("æŒ");
             break;
         case 9:
-            printf("¾Á");
+            printf("ç–");
             break;
     }
     if (i5 != 0 || i6 != 0 || i7 != 0 || i8 != 0)
-        printf("Íò");
-    switch (i4) //Ç§Î»
+        printf("ä¸‡");
+    switch (i4) //åƒä½
     {
         case 1:
-            printf("Ò¼Çª");
+            printf("å£¹ä»Ÿ");
             break;
         case 2:
-            printf("·¡Çª");
+            printf("è´°ä»Ÿ");
             break;
         case 3:
-            printf("ÈşÇª");
+            printf("åä»Ÿ");
             break;
         case 4:
-            printf("ËÁÇª");
+            printf("è‚†ä»Ÿ");
             break;
         case 5:
-            printf("ÎéÇª");
+            printf("ä¼ä»Ÿ");
             break;
         case 6:
-            printf("Â½Çª");
+            printf("é™†ä»Ÿ");
             break;
         case 7:
-            printf("ÆâÇª");
+            printf("æŸ’ä»Ÿ");
             break;
         case 8:
-            printf("°ÆÇª");
+            printf("æŒä»Ÿ");
             break;
         case 9:
-            printf("¾ÁÇª");
+            printf("ç–ä»Ÿ");
             break;
     }
     if (!(i4 || i3 || i2 || i1))
         zero_2_exist = 1;
     if (!zero_2_exist && !i4 && num >= 1000)
     {
-        printf("Áã");
+        printf("é›¶");
         zero_2_exist = 1;
     }
-    switch (i3) //°ÙÎ»
+    switch (i3) //ç™¾ä½
     {
         case 1:
-            printf("Ò¼°Û");
+            printf("å£¹ä½°");
             break;
         case 2:
-            printf("·¡°Û");
+            printf("è´°ä½°");
             break;
         case 3:
-            printf("Èş°Û");
+            printf("åä½°");
             break;
         case 4:
-            printf("ËÁ°Û");
+            printf("è‚†ä½°");
             break;
         case 5:
-            printf("Îé°Û");
+            printf("ä¼ä½°");
             break;
         case 6:
-            printf("Â½°Û");
+            printf("é™†ä½°");
             break;
         case 7:
-            printf("Æâ°Û");
+            printf("æŸ’ä½°");
             break;
         case 8:
-            printf("°Æ°Û");
+            printf("æŒä½°");
             break;
         case 9:
-            printf("¾Á°Û");
+            printf("ç–ä½°");
             break;
     }
     if (!zero_2_exist && !i3 && (i2 || i1) && num >= 100)
     {
-        printf("Áã");
+        printf("é›¶");
         zero_2_exist = 1;
     }
-    switch (i2) //Ê®Î»
+    switch (i2) //åä½
     {
         case 1:
-            printf("Ò¼Ê°");
+            printf("å£¹æ‹¾");
             break;
         case 2:
-            printf("·¡Ê°");
+            printf("è´°æ‹¾");
             break;
         case 3:
-            printf("ÈşÊ°");
+            printf("åæ‹¾");
             break;
         case 4:
-            printf("ËÁÊ°");
+            printf("è‚†æ‹¾");
             break;
         case 5:
-            printf("ÎéÊ°");
+            printf("ä¼æ‹¾");
             break;
         case 6:
-            printf("Â½Ê°");
+            printf("é™†æ‹¾");
             break;
         case 7:
-            printf("ÆâÊ°");
+            printf("æŸ’æ‹¾");
             break;
         case 8:
-            printf("°ÆÊ°");
+            printf("æŒæ‹¾");
             break;
         case 9:
-            printf("¾ÁÊ°");
+            printf("ç–æ‹¾");
             break;
     }
     if (!i2 && i3 && i1)
     {
-        printf("Áã");
+        printf("é›¶");
         zero_2_exist = 1;
     }
-    switch (i1) //Ô²
+    switch (i1) //åœ†
     {
         case 1:
-            printf("Ò¼");
+            printf("å£¹");
             break;
         case 2:
-            printf("·¡");
+            printf("è´°");
             break;
         case 3:
-            printf("Èş");
+            printf("å");
             break;
         case 4:
-            printf("ËÁ");
+            printf("è‚†");
             break;
         case 5:
-            printf("Îé");
+            printf("ä¼");
             break;
         case 6:
-            printf("Â½");
+            printf("é™†");
             break;
         case 7:
-            printf("Æâ");
+            printf("æŸ’");
             break;
         case 8:
-            printf("°Æ");
+            printf("æŒ");
             break;
         case 9:
-            printf("¾Á");
+            printf("ç–");
             break;
     }
     if (num >= 1)
-        printf("Ô²");
+        printf("åœ†");
     if (i_1 == 0 && i_2 == 0 && num >= 1)
     {
-        printf("Õû");
+        printf("æ•´");
         zheng_exist = 1;
     }
-    switch (i_1) //½Ç
+    switch (i_1) //è§’
     {
         case 1:
-            printf("Ò¼½Ç");
+            printf("å£¹è§’");
             break;
         case 2:
-            printf("·¡½Ç");
+            printf("è´°è§’");
             break;
         case 3:
-            printf("Èş½Ç");
+            printf("åè§’");
             break;
         case 4:
-            printf("ËÁ½Ç");
+            printf("è‚†è§’");
             break;
         case 5:
-            printf("Îé½Ç");
+            printf("ä¼è§’");
             break;
         case 6:
-            printf("Â½½Ç");
+            printf("é™†è§’");
             break;
         case 7:
-            printf("Æâ½Ç");
+            printf("æŸ’è§’");
             break;
         case 8:
-            printf("°Æ½Ç");
+            printf("æŒè§’");
             break;
         case 9:
-            printf("¾Á½Ç");
+            printf("ç–è§’");
             break;
         default:
             if (i_2 != 0 && num >= 0.1)
-                printf("Áã");
+                printf("é›¶");
             break;
     }
     if (i_2 == 0 && num >= 0.1 && !zheng_exist)
-        printf("Õû");
-    switch (i_2) //·Ö
+        printf("æ•´");
+    switch (i_2) //åˆ†
     {
         case 1:
-            printf("Ò¼");
+            printf("å£¹");
             break;
         case 2:
-            printf("·¡");
+            printf("è´°");
             break;
         case 3:
-            printf("Èş");
+            printf("å");
             break;
         case 4:
-            printf("ËÁ");
+            printf("è‚†");
             break;
         case 5:
-            printf("Îé");
+            printf("ä¼");
             break;
         case 6:
-            printf("Â½");
+            printf("é™†");
             break;
         case 7:
-            printf("Æâ");
+            printf("æŸ’");
             break;
         case 8:
-            printf("°Æ");
+            printf("æŒ");
             break;
         case 9:
-            printf("¾Á");
+            printf("ç–");
             break;
     }
     if (i_2 != 0)
-        printf("·Ö");
+        printf("åˆ†");
     if (num == 0)
-        printf("Áã");
+        printf("é›¶");
     printf("\n");
     return 0;
 }

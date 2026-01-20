@@ -1,6 +1,6 @@
 #pragma once
 
-/* 函数的原型定义不准变 */
+/* 鍑芥暟鐨勫師鍨嬪畾涔変笉鍑嗗彉 */
 int   tj_strlen(const char* str);
 char* tj_strcat(char* s1, const char* s2);
 char* tj_strncat(char* s1, const char* s2, const int len);

@@ -1,4 +1,4 @@
-/*2052521 ÐÅ13 ÕÅÒ«Òü*/
+/*2052521 ä¿¡13 å¼ è€€å°¹*/
 #include<iostream>
 #include<iomanip>
 #include<Windows.h>
@@ -110,9 +110,9 @@ void open_check(int open_or_not[18][32], int base[18][32], int flag[18][32], int
 		return;
 	else
 	{
-		if (base[m1 - 1][m2 - 1] == 0 )//×óÉÏ½ÇÎª¼ÆÊýÊÇ0Âð ÊÇµÄ»° ÖÜÎ§´ò¿ª 
+		if (base[m1 - 1][m2 - 1] == 0 )//å·¦ä¸Šè§’ä¸ºè®¡æ•°æ˜¯0å— æ˜¯çš„è¯ å‘¨å›´æ‰“å¼€ 
 			open_check(open_or_not, base, flag, m1 - 1, m2 - 1, xx, yy, y_base1, y_base2);
-		if (base[m1 - 1][m2] == 0 )//Èç¹û²»ÊÇ¾Í²»ÓÃ¹Ü×óÉÏ½Ç ¿´ÕýÉÏ·½
+		if (base[m1 - 1][m2] == 0 )//å¦‚æžœä¸æ˜¯å°±ä¸ç”¨ç®¡å·¦ä¸Šè§’ çœ‹æ­£ä¸Šæ–¹
 			open_check(open_or_not, base, flag, m1 - 1, m2, xx, yy, y_base1, y_base2);
 		if (base[m1 - 1][m2 + 1] == 0 )
 			open_check(open_or_not, base, flag, m1 - 1, m2 + 1, xx, yy, y_base1, y_base2);
@@ -130,15 +130,15 @@ void open_check(int open_or_not[18][32], int base[18][32], int flag[18][32], int
 }
 /*void open_check(int open_or_not[18][32], int base[18][32], int flag[18][32], int m1, int m2, int xx, int yy, int y_base1, int y_base2)
 {
-	if (m1 >= 1 && m2 >= 1 && m1 <= y_base1 && m2 <= y_base2)//ÏÈ°ÑÒÔ¼ì²éÄ¿±êÎªÖÐÐÄµÄ¾Å¹¬¸ñÈ«¼ÇÎª1
+	if (m1 >= 1 && m2 >= 1 && m1 <= y_base1 && m2 <= y_base2)//å…ˆæŠŠä»¥æ£€æŸ¥ç›®æ ‡ä¸ºä¸­å¿ƒçš„ä¹å®«æ ¼å…¨è®°ä¸º1
 	{
 		for (int t = m1 - 1; t <= m1 + 1; t++)
 			for (int j = m2 - 1; j <= m2 + 1; j++)
 				open_or_not[t][j] = 1;
 		flag[m1][m2] = 1;
-		if (base[m1 - 1][m2 - 1] == 0 && flag[m1 - 1][m2 - 1] == 0)//×óÉÏ½ÇÎª¼ÆÊýÊÇ0Âð ÊÇµÄ»° ÖÜÎ§´ò¿ª 
+		if (base[m1 - 1][m2 - 1] == 0 && flag[m1 - 1][m2 - 1] == 0)//å·¦ä¸Šè§’ä¸ºè®¡æ•°æ˜¯0å— æ˜¯çš„è¯ å‘¨å›´æ‰“å¼€ 
 			open_check(open_or_not, base, flag, m1 - 1, m2 - 1, xx, yy, y_base1, y_base2);
-		if (base[m1 - 1][m2] == 0 && flag[m1 - 1][m2] == 0)//Èç¹û²»ÊÇ¾Í²»ÓÃ¹Ü×óÉÏ½Ç ¿´ÕýÉÏ·½
+		if (base[m1 - 1][m2] == 0 && flag[m1 - 1][m2] == 0)//å¦‚æžœä¸æ˜¯å°±ä¸ç”¨ç®¡å·¦ä¸Šè§’ çœ‹æ­£ä¸Šæ–¹
 			open_check(open_or_not, base, flag, m1 - 1, m2, xx, yy, y_base1, y_base2);
 		if (base[m1 - 1][m2 + 1] == 0 && flag[m1 - 1][m2 + 1] == 0)
 			open_check(open_or_not, base, flag, m1 - 1, m2 + 1, xx, yy, y_base1, y_base2);
@@ -321,7 +321,7 @@ void fun1(char choice)
 	sub_menu(ch);
 	mine_keep(choice, ch);
 	cout << endl << endl << endl;
-	cout << "°´»Ø³µ¼ü¼ÌÐø!";
+	cout << "æŒ‰å›žè½¦é”®ç»§ç»­!";
 }
 void fun2(char choice)
 {
@@ -329,56 +329,56 @@ void fun2(char choice)
 	sub_menu(ch);
 	mine_hide(choice, ch);
 	cout << endl << endl << endl;
-	cout << "ÊäÈë·ÇÀ×Î»ÖÃµÄÐÐÁÐ×ø±ê£¨ÏÈÐÐºóÁÐ£¬ÑÏ¸ñÇø·Ö´óÐ¡Ð´£¬Àý£ºG1/Af£¬°´Q/qÍË³ö£©£º";
+	cout << "è¾“å…¥éžé›·ä½ç½®çš„è¡Œåˆ—åæ ‡ï¼ˆå…ˆè¡ŒåŽåˆ—ï¼Œä¸¥æ ¼åŒºåˆ†å¤§å°å†™ï¼Œä¾‹ï¼šG1/Afï¼ŒæŒ‰Q/qé€€å‡ºï¼‰ï¼š";
 	first_input(choice, ch, fstx, secx);
 	if (fstx != 'Q' && fstx != 'q')
 	{
-		cout << endl << endl << "µã¿ªºóµÄÊý×é£º" << endl;
+		cout << endl << endl << "ç‚¹å¼€åŽçš„æ•°ç»„ï¼š" << endl;
 		mine_open(choice, ch, fstx, secx);
 		getchar();
 	}
 	cout << endl;
-	cout << "°´»Ø³µ¼ü¼ÌÐø!";
+	cout << "æŒ‰å›žè½¦é”®ç»§ç»­!";
 }
 void fun3(char choice)
 {
 	cout << "ABCDE" << endl;
 	cout << endl;
-	cout << "°´»Ø³µ¼ü¼ÌÐø!";
+	cout << "æŒ‰å›žè½¦é”®ç»§ç»­!";
 }
 void fun4(char choice)
 {
 	cout << "ABCDE" << endl;
 	cout << endl;
-	cout << "°´»Ø³µ¼ü¼ÌÐø!";
+	cout << "æŒ‰å›žè½¦é”®ç»§ç»­!";
 }
 void fun5(char choice)
 {
 	cout << "ABCDE" << endl;
 	cout << endl;
-	cout << "°´»Ø³µ¼ü¼ÌÐø!";
+	cout << "æŒ‰å›žè½¦é”®ç»§ç»­!";
 }
 void fun6(char choice)
 {
 	cout << "ABCDE" << endl;
 	cout << endl;
-	cout << "°´»Ø³µ¼ü¼ÌÐø!";
+	cout << "æŒ‰å›žè½¦é”®ç»§ç»­!";
 }
 void fun7(char choice)
 {
 	cout << "ABCDE" << endl;
 	cout << endl;
-	cout << "°´»Ø³µ¼ü¼ÌÐø!";
+	cout << "æŒ‰å›žè½¦é”®ç»§ç»­!";
 }
 void fun8(char choice)
 {
 	cout << "ABCDE" << endl;
 	cout << endl;
-	cout << "°´»Ø³µ¼ü¼ÌÐø!";
+	cout << "æŒ‰å›žè½¦é”®ç»§ç»­!";
 }
 void fun9(char choice)
 {
 	cout << "ABCDE" << endl;
 	cout << endl;
-	cout << "°´»Ø³µ¼ü¼ÌÐø!";
+	cout << "æŒ‰å›žè½¦é”®ç»§ç»­!";
 }

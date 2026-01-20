@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 using namespace std;
 int main()
@@ -6,7 +6,7 @@ int main()
     int i;
     int temp1, temp2, temp3, temp4;
     int i1, i2, i3, i4, i5;
-    cout << "ÇëÊäÈëÒ»¸ö[1..30000]¼äµÄÕûÊý£º" << endl;
+    cout << "è¯·è¾“å…¥ä¸€ä¸ª[1..30000]é—´çš„æ•´æ•°ï¼š" << endl;
     cin >> i;
     i1 = i % 10;
     temp1 = i / 10;
@@ -18,11 +18,11 @@ int main()
     temp4 = temp3 / 10;
     i5 = temp4 % 10;
 
-    cout << "ÍòÎ» : " << i5 << endl;
-    cout << "Ç§Î» : " << i4 << endl;
-    cout << "°ÙÎ» : " << i3 << endl;
-    cout << "Ê®Î» : " << i2 << endl;
-    cout << "¸öÎ» : " << i1 << endl;
+    cout << "ä¸‡ä½ : " << i5 << endl;
+    cout << "åƒä½ : " << i4 << endl;
+    cout << "ç™¾ä½ : " << i3 << endl;
+    cout << "åä½ : " << i2 << endl;
+    cout << "ä¸ªä½ : " << i1 << endl;
 
     return 0;
 }

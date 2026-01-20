@@ -5,8 +5,8 @@
 using namespace std;
 
 int TEST = 1;
-/*ÎÊÌâ1µÄ²âÊÔº¯Êı*/
+/*é—®é¢˜1çš„æµ‹è¯•å‡½æ•°*/
 void f1()
 {
-	cout << "²âÊÔ1" << endl;	
+	cout << "æµ‹è¯•1" << endl;	
 }

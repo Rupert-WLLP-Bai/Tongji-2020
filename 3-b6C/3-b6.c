@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 int main()
@@ -6,12 +6,12 @@ int main()
     int year, month, day;
     int order;
     int is_leap_year = 0;
-    printf("ÇëÊäÈëÄê,ÔÂ,ÈÕ : \n");
+    printf("è¯·è¾“å…¥å¹´,æœˆ,æ—¥ : \n");
     scanf("%d%d%d", &year, &month, &day);
-    //ÅÐ¶ÏÈòÄê
+    //åˆ¤æ–­é—°å¹´
     if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
         is_leap_year = 1;
-    //ÅÐ¶ÏÔÂ·Ý,ÔÂ·ÝÓëÈÕÆÚµÄ¹ØÏµÊÇ·ñºÏ·¨\n
+    //åˆ¤æ–­æœˆä»½,æœˆä»½ä¸Žæ—¥æœŸçš„å…³ç³»æ˜¯å¦åˆæ³•\n
     if (is_leap_year == 1) // leap year
     {
         switch (month)
@@ -20,11 +20,11 @@ int main()
                 if (day >= 1 && day <= 31)
                 {
                     order = day;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
 
@@ -32,125 +32,125 @@ int main()
                 if (day >= 1 && day <= 29)
                 {
                     order = day + 31;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 3:
                 if (day >= 1 && day <= 31)
                 {
                     order = day + 31 + 29;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 4:
                 if (day >= 1 && day <= 30)
                 {
                     order = day + 31 + 29 + 31;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 5:
                 if (day >= 1 && day <= 31)
                 {
                     order = day + 31 + 29 + 31 + 30;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 6:
                 if (day >= 1 && day <= 30)
                 {
                     order = day + 31 + 29 + 31 + 30 + 31;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 7:
                 if (day >= 1 && day <= 31)
                 {
                     order = day + 31 + 29 + 31 + 30 + 31 + 30;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 8:
                 if (day >= 1 && day <= 31)
                 {
                     order = day + 31 + 29 + 31 + 30 + 31 + 30 + 31;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 9:
                 if (day >= 1 && day <= 30)
                 {
                     order = day + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 10:
                 if (day >= 1 && day <= 31)
                 {
                     order = day + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 11:
                 if (day >= 1 && day <= 30)
                 {
                     order = day + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 12:
                 if (day >= 1 && day <= 31)
                 {
                     order = day + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             default:
-                printf("ÔÂ·Ý²»ÕýÈ·");
+                printf("æœˆä»½ä¸æ­£ç¡®");
                 break;
         }
     }
@@ -162,11 +162,11 @@ int main()
                 if (day >= 1 && day <= 31)
                 {
                     order = day;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
 
@@ -174,125 +174,125 @@ int main()
                 if (day >= 1 && day <= 28)
                 {
                     order = day + 31;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 3:
                 if (day >= 1 && day <= 31)
                 {
                     order = day + 31 + 28;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 4:
                 if (day >= 1 && day <= 30)
                 {
                     order = day + 31 + 28 + 31;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 5:
                 if (day >= 1 && day <= 31)
                 {
                     order = day + 31 + 28 + 31 + 30;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 6:
                 if (day >= 1 && day <= 30)
                 {
                     order = day + 31 + 28 + 31 + 30 + 31;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 7:
                 if (day >= 1 && day <= 31)
                 {
                     order = day + 31 + 28 + 31 + 30 + 31 + 30;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 8:
                 if (day >= 1 && day <= 31)
                 {
                     order = day + 31 + 28 + 31 + 30 + 31 + 30 + 31;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 9:
                 if (day >= 1 && day <= 30)
                 {
                     order = day + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 10:
                 if (day >= 1 && day <= 31)
                 {
                     order = day + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 11:
                 if (day >= 1 && day <= 30)
                 {
                     order = day + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             case 12:
                 if (day >= 1 && day <= 31)
                 {
                     order = day + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30;
-                    printf("%d-%d-%dÊÇ%dÄêµÄµÚ%dÌì\n", year, month, day, year, order);
+                    printf("%d-%d-%dæ˜¯%då¹´çš„ç¬¬%då¤©\n", year, month, day, year, order);
                 }
                 else
                 {
-                    printf("ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨\n");
+                    printf("è¾“å…¥é”™è¯¯-æ—¥ä¸Žæœˆçš„å…³ç³»éžæ³•\n");
                 }
                 break;
             default:
-                printf("ÔÂ·Ý²»ÕýÈ·");
+                printf("æœˆä»½ä¸æ­£ç¡®");
                 break;
         }
     }

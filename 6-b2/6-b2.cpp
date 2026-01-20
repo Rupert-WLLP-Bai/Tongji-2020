@@ -1,4 +1,4 @@
- /*2052526 ÐÅ15 °×¿¡ºÀ*/
+ /*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <cstring>
 #define SIZE 81
@@ -20,7 +20,7 @@ bool f(char* a)
 int main()
 {
 	char a[SIZE];
-	cout << "ÇëÊäÈëÒ»¸ö³¤¶ÈÐ¡ÓÚ80µÄ×Ö·û´®£¨»ØÎÄ´®£©" << endl;
+	cout << "è¯·è¾“å…¥ä¸€ä¸ªé•¿åº¦å°äºŽ80çš„å­—ç¬¦ä¸²ï¼ˆå›žæ–‡ä¸²ï¼‰" << endl;
 	fgets(a, SIZE,stdin);
 	a[strlen(a) - 1] = '\0';
 	if (f(a))

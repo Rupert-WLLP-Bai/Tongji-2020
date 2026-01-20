@@ -1,14 +1,14 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include<cmath>
 #include <string>
-//¿É°´ĞèÔö¼ÓĞèÒªµÄÍ·ÎÄ¼ş
+//å¯æŒ‰éœ€å¢åŠ éœ€è¦çš„å¤´æ–‡ä»¶
 using namespace std;
 
-const char chistr[] = "ÁãÒ¼·¡ÈşËÁÎéÂ½Æâ°Æ¾Á"; /* ËùÓĞÊä³ö´óĞ´ "Áã" ~ "¾Á" µÄµØ·½£¬Ö»ÔÊĞí´ÓÕâ¸öÊı×éÖĞÈ¡Öµ */
-string result;  /* ³ıresultÍâ£¬²»ÔÙÔÊĞí¶¨ÒåÈÎºÎĞÎÊ½µÄÈ«¾Ö±äÁ¿ */
+const char chistr[] = "é›¶å£¹è´°åè‚†ä¼é™†æŸ’æŒç–"; /* æ‰€æœ‰è¾“å‡ºå¤§å†™ "é›¶" ~ "ç–" çš„åœ°æ–¹ï¼Œåªå…è®¸ä»è¿™ä¸ªæ•°ç»„ä¸­å–å€¼ */
+string result;  /* é™¤resultå¤–ï¼Œä¸å†å…è®¸å®šä¹‰ä»»ä½•å½¢å¼çš„å…¨å±€å˜é‡ */
 
-/* --ÔÊĞíÌí¼ÓĞèÒªµÄº¯Êı --*/
+/* --å…è®¸æ·»åŠ éœ€è¦çš„å‡½æ•° --*/
 
 
 void add_result(int num)
@@ -20,18 +20,18 @@ void add_result(int num)
 	}
 }
 /***************************************************************************
-  º¯ÊıÃû³Æ£º
-  ¹¦    ÄÜ£º
-  ÊäÈë²ÎÊı£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼š
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  è¯´    æ˜ï¼š
 ***************************************************************************/
 int main()
 {
 	int i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i_1, i_2, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9;
 	double temp_1, num, num_int, num_decimal_part;
 	bool i10_19_exist = 1, zero_1_exist = 0, zero_2_exist = 0, zheng_exist = 0;
-	cout << "ÇëÊäÈë[0-100ÒÚ)Ö®¼äµÄÊı×Ö,Ğ¡Êıµãºó×î¶àÁ½Î»£º" << endl;
+	cout << "è¯·è¾“å…¥[0-100äº¿)ä¹‹é—´çš„æ•°å­—,å°æ•°ç‚¹åæœ€å¤šä¸¤ä½ï¼š" << endl;
 	cin >> num;
 	num_int = num - fmod(num, 1);
 	i1 = int(fmod(num_int, 10));
@@ -59,17 +59,17 @@ int main()
 	i_2 = int(fmod(temp_1, 10) + 1e-4);
 
 	add_result(i10);
-	if (i10) //Ê®ÒÚÎ»
-		result += "Ê°";
+	if (i10) //åäº¿ä½
+		result += "æ‹¾";
 	add_result(i9);
 	if (i10 != 0 || i9 != 0)
-		result += "ÒÚ";
+		result += "äº¿";
 	else
 		i10_19_exist = 0;
 
 	add_result(i8);
-	if (i8)//Ç§ÍòÎ»
-		result += "Çª";
+	if (i8)//åƒä¸‡ä½
+		result += "ä»Ÿ";
 
 	if (!(i8 || i7 || i6 || i5))
 		zero_1_exist = 1;
@@ -81,8 +81,8 @@ int main()
 	}
 
 	add_result(i7);
-	if (i7)//°ÙÍòÎ»
-		result += "°Û";
+	if (i7)//ç™¾ä¸‡ä½
+		result += "ä½°";
 
 	if (!zero_1_exist && !i7 && i6 && num >= 1000000)
 	{
@@ -92,8 +92,8 @@ int main()
 	}
 
 	add_result(i6);
-	if (i6)//Ê®ÍòÎ»
-		result += "Ê°";
+	if (i6)//åä¸‡ä½
+		result += "æ‹¾";
 	if (i7 && !i6 && i5 && num >= 100000)
 	{
 		result += chistr[0];
@@ -103,11 +103,11 @@ int main()
 
 	add_result(i5);
 	if (i5 != 0 || i6 != 0 || i7 != 0 || i8 != 0)
-		result += "Íò";
+		result += "ä¸‡";
 
 	add_result(i4);
-	if (i4)//Ç§Î»
-		result += "Çª";
+	if (i4)//åƒä½
+		result += "ä»Ÿ";
 
 	if (!(i4 || i3 || i2 || i1))
 		zero_2_exist = 1;
@@ -119,8 +119,8 @@ int main()
 	}
 
 	add_result(i3);
-	if (i3)//°ÙÎ»
-		result += "°Û";
+	if (i3)//ç™¾ä½
+		result += "ä½°";
 
 	if (!zero_2_exist && !i3 && (i2 || i1) && num >= 100)
 	{
@@ -130,8 +130,8 @@ int main()
 	}
 
 	add_result(i2);
-	if (i2)//Ê®Î»
-		result += "Ê°";
+	if (i2)//åä½
+		result += "æ‹¾";
 
 	if (!i2 && i3 && i1)
 	{
@@ -140,20 +140,20 @@ int main()
 		zero_2_exist = 1;
 	}
 
-	add_result(i1);//¸öÎ»
+	add_result(i1);//ä¸ªä½
 
 
 	if (num >= 1)
-		result += "Ô²";
+		result += "åœ†";
 	if (i_1 == 0 && i_2 == 0 && num >= 1)
 	{
-		result += "Õû";
+		result += "æ•´";
 		zheng_exist = 1;
 	}
 
 	add_result(i_1);
 	if (i_1)
-		result += "½Ç";
+		result += "è§’";
 	if (!i_1)
 	{
 		if (i_2 != 0 && num >= 0.1)
@@ -164,12 +164,12 @@ int main()
 	}
 
 	if (i_2 == 0 && num >= 0.1 && !zheng_exist)
-		result += "Õû";
+		result += "æ•´";
 
 	add_result(i_2);
 
 	if (i_2 != 0)
-		result+= "·Ö";
+		result+= "åˆ†";
 	if (num == 0)
 	{
 		result += chistr[0];

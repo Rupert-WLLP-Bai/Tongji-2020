@@ -1,15 +1,15 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include<iostream>
 #include<string.h>
 using namespace std;
 
 int main()
 {
-	int cnt[5] = { 0 };//¼ÆÊı,3×é,5ÖÖÀàĞÍ
+	int cnt[5] = { 0 };//è®¡æ•°,3ç»„,5ç§ç±»å‹
 	char str[3][128];
 	for (int i = 0; i < 3; i++)
 	{
-		cout << "ÇëÊäÈëµÚ" << i + 1 << "ĞĞ" << endl;
+		cout << "è¯·è¾“å…¥ç¬¬" << i + 1 << "è¡Œ" << endl;
 		fgets(str[i], 128, stdin);
 	}
 
@@ -17,37 +17,37 @@ int main()
 	{
 		for (unsigned int j = 0; j < strlen(str[i]); j++)
 		{
-			if (str[i][j] >= 'A' && str[i][j] <= 'Z')//´óĞ´	
+			if (str[i][j] >= 'A' && str[i][j] <= 'Z')//å¤§å†™	
 			{
 				cnt[0]++;
 				continue;
 			}
-			else if (str[i][j] >= 'a' && str[i][j] <= 'z')//Ğ¡Ğ´
+			else if (str[i][j] >= 'a' && str[i][j] <= 'z')//å°å†™
 			{
 				cnt[1]++;
 				continue;
 			}
-			else if (str[i][j] >= '0' && str[i][j] <= '9')//Êı×Ö	
+			else if (str[i][j] >= '0' && str[i][j] <= '9')//æ•°å­—	
 			{
 				cnt[2]++;
 				continue;
 			}
-			else if (str[i][j] == ' ')//¿Õ¸ñ	
+			else if (str[i][j] == ' ')//ç©ºæ ¼	
 			{
 				cnt[3]++;
 				continue;
 			}
-			else if (str[i][j] < 0XFF && str[i][j]>0X80)//ºº×Ö¼ÆÈëÆäËû
+			else if (str[i][j] < 0XFF && str[i][j]>0X80)//æ±‰å­—è®¡å…¥å…¶ä»–
 			{
 				if (str[i][j + 1] > 0X40)
 					if (str[i][j + 1] != 0X7F && str[i][j + 1] != 0XFF)
 					{
-						cnt[4]++;//ºº×ÖÕ¼Á½¸öÎ»ÖÃ
+						cnt[4]++;//æ±‰å­—å ä¸¤ä¸ªä½ç½®
 						j++;
 						continue;
 					}
 			}
-			else//³ıºº×ÖÒÔÍâµÄÆäËû×Ö·û(ÂËÈ¥»»ĞĞ·û)
+			else//é™¤æ±‰å­—ä»¥å¤–çš„å…¶ä»–å­—ç¬¦(æ»¤å»æ¢è¡Œç¬¦)
 			{
 				if (str[i][j] != '\n')
 				{
@@ -58,11 +58,11 @@ int main()
 		}
 	}
 
-	cout << "´óĞ´ : " << cnt[0] << endl;
-	cout << "Ğ¡Ğ´ : " << cnt[1] << endl;
-	cout << "Êı×Ö : " << cnt[2] << endl;
-	cout << "¿Õ¸ñ : " << cnt[3] << endl;
-	cout << "ÆäËû £º" << cnt[4] << endl;
+	cout << "å¤§å†™ : " << cnt[0] << endl;
+	cout << "å°å†™ : " << cnt[1] << endl;
+	cout << "æ•°å­— : " << cnt[2] << endl;
+	cout << "ç©ºæ ¼ : " << cnt[3] << endl;
+	cout << "å…¶ä»– ï¼š" << cnt[4] << endl;
 
 	return 0;
 }

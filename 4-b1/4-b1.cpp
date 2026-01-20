@@ -1,52 +1,52 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <cmath>
 using namespace std;
 
-/* ¿É¸ù¾İĞèÒªÌí¼ÓÏàÓ¦µÄÄÚÈİ */
+/* å¯æ ¹æ®éœ€è¦æ·»åŠ ç›¸åº”çš„å†…å®¹ */
 
 /***************************************************************************
-  º¯ÊıÃû³Æ£º
-  ¹¦    ÄÜ£ºÊä³ö´óĞ´µÄ0~9
-  ÊäÈë²ÎÊı£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º³ı±¾º¯ÊıÍâ£¬²»ÔÊĞíÈÎºÎº¯ÊıÖĞÊä³ö¡°Áã¡±-¡°¾Á¡±!!!!!!
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šè¾“å‡ºå¤§å†™çš„0~9
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  è¯´    æ˜ï¼šé™¤æœ¬å‡½æ•°å¤–ï¼Œä¸å…è®¸ä»»ä½•å‡½æ•°ä¸­è¾“å‡ºâ€œé›¶â€-â€œç–â€!!!!!!
 ***************************************************************************/
 void daxie(int num, int flag_of_zero)
 {
-    /* ²»ÔÊĞí¶Ô±¾º¯Êı×öÈÎºÎĞŞ¸Ä */
+    /* ä¸å…è®¸å¯¹æœ¬å‡½æ•°åšä»»ä½•ä¿®æ”¹ */
     switch (num)
     {
         case 0:
-            if (flag_of_zero) //´Ë±ê¼ÇÊ²Ã´ÒâË¼Çë×ÔĞĞË¼¿¼
-                cout << "Áã";
+            if (flag_of_zero) //æ­¤æ ‡è®°ä»€ä¹ˆæ„æ€è¯·è‡ªè¡Œæ€è€ƒ
+                cout << "é›¶";
             break;
         case 1:
-            cout << "Ò¼";
+            cout << "å£¹";
             break;
         case 2:
-            cout << "·¡";
+            cout << "è´°";
             break;
         case 3:
-            cout << "Èş";
+            cout << "å";
             break;
         case 4:
-            cout << "ËÁ";
+            cout << "è‚†";
             break;
         case 5:
-            cout << "Îé";
+            cout << "ä¼";
             break;
         case 6:
-            cout << "Â½";
+            cout << "é™†";
             break;
         case 7:
-            cout << "Æâ";
+            cout << "æŸ’";
             break;
         case 8:
-            cout << "°Æ";
+            cout << "æŒ";
             break;
         case 9:
-            cout << "¾Á";
+            cout << "ç–";
             break;
         default:
             cout << "error";
@@ -54,14 +54,14 @@ void daxie(int num, int flag_of_zero)
     }
 }
 
-/* ¿É¸ù¾İĞèÒª×Ô¶¨ÒåÆäËüº¯Êı(Ò²¿ÉÒÔ²»¶¨Òå) */
+/* å¯æ ¹æ®éœ€è¦è‡ªå®šä¹‰å…¶å®ƒå‡½æ•°(ä¹Ÿå¯ä»¥ä¸å®šä¹‰) */
 
 /***************************************************************************
-  º¯ÊıÃû³Æ£º
-  ¹¦    ÄÜ£º
-  ÊäÈë²ÎÊı£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼š
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  è¯´    æ˜ï¼š
 ***************************************************************************/
 
 int main()
@@ -69,7 +69,7 @@ int main()
     int i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i_1, i_2, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9;
     double temp_1, num, num_int, num_decimal_part;
     bool i10_19_exist = 1, zero_1_exist = 0, zero_2_exist = 0, zheng_exist = 0;
-    cout << "ÇëÊäÈë[0-100ÒÚ)Ö®¼äµÄÊı×Ö,Ğ¡Êıµãºó×î¶àÁ½Î»£º" << endl;
+    cout << "è¯·è¾“å…¥[0-100äº¿)ä¹‹é—´çš„æ•°å­—,å°æ•°ç‚¹åæœ€å¤šä¸¤ä½ï¼š" << endl;
     cin >> num;
     num_int = num - fmod(num, 1);
     i1 = int(fmod(num_int, 10));
@@ -96,17 +96,17 @@ int main()
     temp_1 = num_decimal_part * 100 + 1e-3;
     i_2 = int(fmod(temp_1, 10) + 1e-4);
 
-    daxie(i10, 0); //Ê®ÒÚÎ»
+    daxie(i10, 0); //åäº¿ä½
     if (i10)
-        cout << "Ê°";
+        cout << "æ‹¾";
 
-    daxie(i9, 0); //ÒÚÎ»
+    daxie(i9, 0); //äº¿ä½
 
     if (i10 || i9)
-        cout << "ÒÚ";
+        cout << "äº¿";
     else
         i10_19_exist = 0;
-    daxie(i8, 0); //Ç§ÍòÎ»
+    daxie(i8, 0); //åƒä¸‡ä½
     if (!(i8 || i7 || i6 || i5))
 
         zero_1_exist = 1;
@@ -116,8 +116,8 @@ int main()
         zero_1_exist = 1;
     }
     if (i8)
-        cout << "Çª";
-    daxie(i7, 0); //°ÙÍòÎ»
+        cout << "ä»Ÿ";
+    daxie(i7, 0); //ç™¾ä¸‡ä½
 
     if (!zero_1_exist && !i7 && i6 && num >= 1000000)
     {
@@ -125,21 +125,21 @@ int main()
         zero_1_exist = 1;
     }
     if (i7)
-        cout << "°Û";
-    daxie(i6, 0); //Ê®ÍòÎ»
+        cout << "ä½°";
+    daxie(i6, 0); //åä¸‡ä½
     if (i7 && !i6 && i5 && num >= 100000)
     {
         daxie(0, 1);
         zero_1_exist = 1;
     }
     if (i6)
-        cout << "Ê°";
-    daxie(i5, 0); //ÍòÎ»
+        cout << "æ‹¾";
+    daxie(i5, 0); //ä¸‡ä½
 
     if (i5 != 0 || i6 != 0 || i7 != 0 || i8 != 0)
-        cout << "Íò";
+        cout << "ä¸‡";
 
-    daxie(i4, 0); //Ç§Î»
+    daxie(i4, 0); //åƒä½
     if (!(i4 || i3 || i2 || i1))
         zero_2_exist = 1;
     if (!zero_2_exist && !i4 && num >= 1000)
@@ -148,8 +148,8 @@ int main()
         zero_2_exist = 1;
     }
     if (i4)
-        cout << "Çª";
-    daxie(i3, 0); //°ÙÎ»
+        cout << "ä»Ÿ";
+    daxie(i3, 0); //ç™¾ä½
 
     if (!zero_2_exist && !i3 && (i2 || i1) && num >= 100)
     {
@@ -157,33 +157,33 @@ int main()
         zero_2_exist = 1;
     }
     if (i3)
-        cout << "°Û";
-    daxie(i2, 0); //Ê®Î»
+        cout << "ä½°";
+    daxie(i2, 0); //åä½
     if (!i2 && i3 && i1)
     {
         daxie(0, 1);
         zero_2_exist = 1;
     }
     if (i2)
-        cout << "Ê°";
-    daxie(i1, 0); //Ô²
+        cout << "æ‹¾";
+    daxie(i1, 0); //åœ†
     if (num >= 1)
-        cout << "Ô²";
+        cout << "åœ†";
     if (i_1 == 0 && i_2 == 0 && num >= 1)
     {
-        cout << "Õû";
+        cout << "æ•´";
         zheng_exist = 1;
     }
-    daxie(i_1, 0); //½Ç
+    daxie(i_1, 0); //è§’
     if (i_1 == 0 && i_2 != 0 && num >= 0.1)
         daxie(0, 1);
     if (i_1)
-        cout << "½Ç";
+        cout << "è§’";
     if (i_2 == 0 && num >= 0.1 && !zheng_exist)
-        cout << "Õû";
-    daxie(i_2, 0); //·Ö
+        cout << "æ•´";
+    daxie(i_2, 0); //åˆ†
     if (i_2 != 0)
-        cout << "·Ö";
+        cout << "åˆ†";
     if (num == 0)
         daxie(0, 1);
     cout << endl;

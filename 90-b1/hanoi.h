@@ -1,48 +1,48 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #pragma once
 
 /* -----------------------------------------
 
-	 ±¾ÎÄ¼ş¹¦ÄÜ£º
-	1¡¢ÎªÁË±£Ö¤ hanoi_main.cpp/hanoi_menu.cpp/hanoi_multiple_solutions.cpp ÄÜÏà»¥·ÃÎÊº¯ÊıµÄº¯ÊıÉùÃ÷
-	2¡¢Ò»¸öÒÔÉÏµÄcppÖĞÓÃµ½µÄºê¶¨Òå£¨#define£©»òÈ«¾ÖÖ»¶Á£¨const£©±äÁ¿£¬¸öÊı²»ÏŞ
-	3¡¢¿ÉÒÔ²Î¿¼ cmd_console_tools.h µÄĞ´·¨£¨ÈÏÕæÔÄ¶Á²¢Ìå»á£©
+	 æœ¬æ–‡ä»¶åŠŸèƒ½ï¼š
+	1ã€ä¸ºäº†ä¿è¯ hanoi_main.cpp/hanoi_menu.cpp/hanoi_multiple_solutions.cpp èƒ½ç›¸äº’è®¿é—®å‡½æ•°çš„å‡½æ•°å£°æ˜
+	2ã€ä¸€ä¸ªä»¥ä¸Šçš„cppä¸­ç”¨åˆ°çš„å®å®šä¹‰ï¼ˆ#defineï¼‰æˆ–å…¨å±€åªè¯»ï¼ˆconstï¼‰å˜é‡ï¼Œä¸ªæ•°ä¸é™
+	3ã€å¯ä»¥å‚è€ƒ cmd_console_tools.h çš„å†™æ³•ï¼ˆè®¤çœŸé˜…è¯»å¹¶ä½“ä¼šï¼‰
    ----------------------------------------- */
 
-extern int speed;//ËÙ¶È
-extern int i;//²½Êı
-extern int top_A;//AÖùµÄÕ»¶¥Ö¸Õë
-extern int top_B;//BÖùµÄÕ»¶¥Ö¸Õë
-extern int top_C;//CÖùµÄÕ»¶¥Ö¸Õë
-extern int a[10];//AÖù
-extern int b[10];//BÖù
-extern int c[10];//CÖù
+extern int speed;//é€Ÿåº¦
+extern int i;//æ­¥æ•°
+extern int top_A;//AæŸ±çš„æ ˆé¡¶æŒ‡é’ˆ
+extern int top_B;//BæŸ±çš„æ ˆé¡¶æŒ‡é’ˆ
+extern int top_C;//CæŸ±çš„æ ˆé¡¶æŒ‡é’ˆ
+extern int a[10];//AæŸ±
+extern int b[10];//BæŸ±
+extern int c[10];//CæŸ±
 
 
 
-/*²Ëµ¥Ïà¹Ø*/
+/*èœå•ç›¸å…³*/
 void wait_for_enter();
 void print_menu();
 void menu(int n, char start, char mid, char end, int select);
 
-/*ººÅµËşµÄÖ÷Ìå*/
+/*æ±‰è¯ºå¡”çš„ä¸»ä½“*/
 void hanoi(int n, char src, char tmp, char dst, int select);
 void move(int n, char x, char y, int select);
 void spawn(char start, int level);
 
-/*ººÅµËşµÄÊä³öÏà¹Ø*/
+/*æ±‰è¯ºå¡”çš„è¾“å‡ºç›¸å…³*/
 void print_vertical_menu(int select);
 void print_vertical(int select);
 void print_cross_stack(int show);
 void print_start_group(int, int select);
 void print_cross(int n, char x, char y, int select);
 
-/*ÅĞ¶ÏÓÎÏ·ÊÇ·ñ½áÊø£¬²Ù×÷ÊÇ·ñÎ¥¹æ*/
+/*åˆ¤æ–­æ¸¸æˆæ˜¯å¦ç»“æŸï¼Œæ“ä½œæ˜¯å¦è¿è§„*/
 int column_empty(int input);
 int large_over_small(int input);
 int Game_over(int n, char end);
 
-/*»ñÈ¡ÊäÈëµÄ²ÎÊı*/
+/*è·å–è¾“å…¥çš„å‚æ•°*/
 void get_choice(int* select, char* start, char* mid, char* end, int* level);
 int get_speed();
 int get_level();

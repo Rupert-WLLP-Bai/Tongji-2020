@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include<iostream>
 #include<time.h>
 using namespace std;
@@ -9,14 +9,14 @@ int get_length_of_password()
 	cin >> i;
 	if (cin.fail())
 	{
-		cout << "ÊäÈëº¬ÓÐ·Ç·¨×Ö·û" << endl;
+		cout << "è¾“å…¥å«æœ‰éžæ³•å­—ç¬¦" << endl;
 		cin.clear();
 		cin.ignore(65536, '\n');
-		return 0;//·µ»Ø0¾ÍÍË³ö
+		return 0;//è¿”å›ž0å°±é€€å‡º
 	}
 	else if (i <= 11 || i >= 17)
 	{
-		cout << "ÃÜÂë³¤¶È[" << i << "]²»ÕýÈ·" << endl;
+		cout << "å¯†ç é•¿åº¦[" << i << "]ä¸æ­£ç¡®" << endl;
 		return 0;
 	}
 	return i;
@@ -28,14 +28,14 @@ int get_num_of_capital_letter()
 	cin >> i;
 	if (cin.fail())
 	{
-		cout << "ÊäÈëº¬ÓÐ·Ç·¨×Ö·û" << endl;
+		cout << "è¾“å…¥å«æœ‰éžæ³•å­—ç¬¦" << endl;
 		cin.clear();
 		cin.ignore(65536, '\n');
-		return 0;//·µ»Ø0¾ÍÍË³ö
+		return 0;//è¿”å›ž0å°±é€€å‡º
 	}
 	else if (i <= 1)
 	{
-		cout << "´óÐ´×ÖÄ¸¸öÊý[" << i << "]²»ÕýÈ·" << endl;
+		cout << "å¤§å†™å­—æ¯ä¸ªæ•°[" << i << "]ä¸æ­£ç¡®" << endl;
 		return 0;
 	}
 	return i;
@@ -47,14 +47,14 @@ int get_num_of_lowercase_letter()
 	cin >> i;
 	if (cin.fail())
 	{
-		cout << "ÊäÈëº¬ÓÐ·Ç·¨×Ö·û" << endl;
+		cout << "è¾“å…¥å«æœ‰éžæ³•å­—ç¬¦" << endl;
 		cin.clear();
 		cin.ignore(65536, '\n');
-		return 0;//·µ»Ø0¾ÍÍË³ö
+		return 0;//è¿”å›ž0å°±é€€å‡º
 	}
 	else if (i <= 1)
 	{
-		cout << "Ð¡Ð´×ÖÄ¸¸öÊý[" << i << "]²»ÕýÈ·" << endl;
+		cout << "å°å†™å­—æ¯ä¸ªæ•°[" << i << "]ä¸æ­£ç¡®" << endl;
 		return 0;
 	}
 	return i;
@@ -66,14 +66,14 @@ int get_num_of_num()
 	cin >> i;
 	if (cin.fail())
 	{
-		cout << "ÊäÈëº¬ÓÐ·Ç·¨×Ö·û" << endl;
+		cout << "è¾“å…¥å«æœ‰éžæ³•å­—ç¬¦" << endl;
 		cin.clear();
 		cin.ignore(65536, '\n');
-		return 0;//·µ»Ø0¾ÍÍË³ö
+		return 0;//è¿”å›ž0å°±é€€å‡º
 	}
 	else if (i <= 1)
 	{
-		cout << "Êý×Ö¸öÊý[" << i << "]²»ÕýÈ·" << endl;
+		cout << "æ•°å­—ä¸ªæ•°[" << i << "]ä¸æ­£ç¡®" << endl;
 		return 0;
 	}
 	return i;
@@ -85,26 +85,26 @@ int get_num_of_other()
 	cin >> i;
 	if (cin.fail())
 	{
-		cout << "ÊäÈëº¬ÓÐ·Ç·¨×Ö·û" << endl;
+		cout << "è¾“å…¥å«æœ‰éžæ³•å­—ç¬¦" << endl;
 		cin.clear();
 		cin.ignore(65536, '\n');
-		return 0;//·µ»Ø0¾ÍÍË³ö
+		return 0;//è¿”å›ž0å°±é€€å‡º
 	}
 	else if (i <= 1)
 	{
-		cout << "ÆäËû·ûºÅ¸öÊý[" << i << "]²»ÕýÈ·" << endl;
+		cout << "å…¶ä»–ç¬¦å·ä¸ªæ•°[" << i << "]ä¸æ­£ç¡®" << endl;
 		return 0;
 	}
 	return i;
 }
 
-/*Éú³É²¢Êä³öÃÜÂë*/
-void keygen(int a, int b, int c, int d, int length, long long cnt)//cntÓÃÓÚÃ¿´ÎÉú³É²»Í¬µÄËæ»úÊý
+/*ç”Ÿæˆå¹¶è¾“å‡ºå¯†ç */
+void keygen(int a, int b, int c, int d, int length, long long cnt)//cntç”¨äºŽæ¯æ¬¡ç”Ÿæˆä¸åŒçš„éšæœºæ•°
 {
 	srand((unsigned int)(time(0)));
 	char a1;
 	char Password[16] = { 0 };
-	char ch[5][10];//ËÄÖÖÀàÐÍµÄ×Ö·û: 1.´óÐ´×ÖÄ¸(65-90) 2.Ð¡Ð´×ÖÄ¸(97-122) 3.Êý×Ö(48-57) 4.ÆäËû×Ö·û ch[4]ÓÃÓÚ²¹ÆëÃÜÂëµÄÎ»Êý
+	char ch[5][10];//å››ç§ç±»åž‹çš„å­—ç¬¦: 1.å¤§å†™å­—æ¯(65-90) 2.å°å†™å­—æ¯(97-122) 3.æ•°å­—(48-57) 4.å…¶ä»–å­—ç¬¦ ch[4]ç”¨äºŽè¡¥é½å¯†ç çš„ä½æ•°
 	int miss = length - a - b - c - d;
 	for (int i = 0; i < a; i++)
 		ch[0][i] = rand() % 26 + 65;
@@ -119,7 +119,7 @@ void keygen(int a, int b, int c, int d, int length, long long cnt)//cntÓÃÓÚÃ¿´ÎÉ
 			a1 = rand() % 94 + 33;
 			if (!((a1 >= 'A' && a1 <= 'Z') ||
 				(a1 >= 'a' && a1 <= 'z') ||
-				(a1 >= '0' && a1 <= '9')))//ÆäËû¿É¼û×Ö·û
+				(a1 >= '0' && a1 <= '9')))//å…¶ä»–å¯è§å­—ç¬¦
 			{
 				ch[3][i] = a1;
 				break;
@@ -129,7 +129,7 @@ void keygen(int a, int b, int c, int d, int length, long long cnt)//cntÓÃÓÚÃ¿´ÎÉ
 	for (int i = 0; i < miss; i++)
 		ch[4][i] = rand() % 94 + 33;
 
-	//½«ÕâÐ©×Ö·û·ÅÈëPasswordÊý×é
+	//å°†è¿™äº›å­—ç¬¦æ”¾å…¥Passwordæ•°ç»„
 	int j = 0;
 	for (int i = 0; i < a; i++, j++)
 		Password[j] = ch[0][i];
@@ -141,7 +141,7 @@ void keygen(int a, int b, int c, int d, int length, long long cnt)//cntÓÃÓÚÃ¿´ÎÉ
 		Password[j] = ch[3][i];
 	for (int i = 0; i < miss; i++, j++)
 		Password[j] = ch[4][i];
-	//ÔÙËæ»úÊýÒ»´Î´òÂÒË³Ðò
+	//å†éšæœºæ•°ä¸€æ¬¡æ‰“ä¹±é¡ºåº
 
 	srand((unsigned int)(2 * time(NULL) * (cnt + 1)));
 	for (int i = 0; i < 100; i++)
@@ -161,7 +161,7 @@ void keygen(int a, int b, int c, int d, int length, long long cnt)//cntÓÃÓÚÃ¿´ÎÉ
 		}
 	}
 
-	//Êä³ö½á¹û
+	//è¾“å‡ºç»“æžœ
 	for (int i = 0; i < length; i++)
 		cout << Password[i];
 
@@ -171,12 +171,12 @@ void keygen(int a, int b, int c, int d, int length, long long cnt)//cntÓÃÓÚÃ¿´ÎÉ
 
 int main()
 {
-	int length;//ÃÜÂëµÄ³¤¶ÈÎª12-16
-	int num_of_capital_letter;//ÖÁÉÙÎª2
-	int num_of_lowercase_letter;//ÖÁÉÙÎª2
-	int num_of_num;//ÖÁÉÙÎª2
-	int num_of_other;//ÖÁÉÙÎª2
-	cout << "ÊäÈëÇëÊäÈëÃÜÂë³¤¶È(12-16)£¬´óÐ´×ÖÄ¸¸öÊý(¡Ý2)£¬Ð¡Ð´×ÖÄ¸¸öÊý(¡Ý2)£¬Êý×Ö¸öÊý(¡Ý2)£¬ÆäËü·ûºÅ¸öÊý(¡Ý2)" << endl;
+	int length;//å¯†ç çš„é•¿åº¦ä¸º12-16
+	int num_of_capital_letter;//è‡³å°‘ä¸º2
+	int num_of_lowercase_letter;//è‡³å°‘ä¸º2
+	int num_of_num;//è‡³å°‘ä¸º2
+	int num_of_other;//è‡³å°‘ä¸º2
+	cout << "è¾“å…¥è¯·è¾“å…¥å¯†ç é•¿åº¦(12-16)ï¼Œå¤§å†™å­—æ¯ä¸ªæ•°(â‰¥2)ï¼Œå°å†™å­—æ¯ä¸ªæ•°(â‰¥2)ï¼Œæ•°å­—ä¸ªæ•°(â‰¥2)ï¼Œå…¶å®ƒç¬¦å·ä¸ªæ•°(â‰¥2)" << endl;
 	while (1)
 	{
 		length = get_length_of_password();
@@ -201,14 +201,14 @@ int main()
 
 		if (num_of_capital_letter + num_of_lowercase_letter + num_of_num + num_of_other > length)
 		{
-			cout << "ËùÓÐ×Ö·ûÀàÐÍÖ®ºÍ[" << num_of_capital_letter << "+"
+			cout << "æ‰€æœ‰å­—ç¬¦ç±»åž‹ä¹‹å’Œ[" << num_of_capital_letter << "+"
 				<< num_of_lowercase_letter << "+" << num_of_num
-				<< "+" << num_of_other << "]´óÓÚ×ÜÃÜÂë³¤¶È[" << length << "]" << endl;
+				<< "+" << num_of_other << "]å¤§äºŽæ€»å¯†ç é•¿åº¦[" << length << "]" << endl;
 			break;
 		}
 
-		//ÔËÐÐµ½¸Ã´¦ËµÃ÷ÊäÈëÕýÈ·,ÒÔÏÂÊÇÃÜÂëÉú³É²¿·Ö(²ÎÊýÎª£º 4ÖÖ×Ö·ûµÄ×îÉÙ¸öÊý,ÃÜÂëµÄ³¤¶Èlength)
-		//Éú³ÉÊ®´®ÃÜÂë
+		//è¿è¡Œåˆ°è¯¥å¤„è¯´æ˜Žè¾“å…¥æ­£ç¡®,ä»¥ä¸‹æ˜¯å¯†ç ç”Ÿæˆéƒ¨åˆ†(å‚æ•°ä¸ºï¼š 4ç§å­—ç¬¦çš„æœ€å°‘ä¸ªæ•°,å¯†ç çš„é•¿åº¦length)
+		//ç”Ÿæˆåä¸²å¯†ç 
 		cout << length << " " << num_of_capital_letter << " " << num_of_lowercase_letter << " " << num_of_num << " " << num_of_other << endl;
 		for (int i = 0; i < 10; i++)
 			keygen(num_of_capital_letter, num_of_lowercase_letter, num_of_num, num_of_other, length, i);

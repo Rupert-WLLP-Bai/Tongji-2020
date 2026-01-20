@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <iomanip>
@@ -10,18 +10,18 @@ using namespace std;
 
 /* -----------------------------------------
 
-	 ±¾ÎÄ¼ş¹¦ÄÜ£º
-	1¡¢·Å±» hanoi_main.cpp/hanoi_menu.cpp ÖĞµÄ¸÷º¯Êıµ÷ÓÃµÄ²Ëµ¥¸÷Ïî¶ÔÓ¦µÄÖ´ĞĞº¯Êı
+	 æœ¬æ–‡ä»¶åŠŸèƒ½ï¼š
+	1ã€æ”¾è¢« hanoi_main.cpp/hanoi_menu.cpp ä¸­çš„å„å‡½æ•°è°ƒç”¨çš„èœå•å„é¡¹å¯¹åº”çš„æ‰§è¡Œå‡½æ•°
 
-	 ±¾ÎÄ¼şÒªÇó£º
-	1¡¢²»ÔÊĞí¶¨ÒåÍâ²¿È«¾Ö±äÁ¿£¨const¼°#define²»ÔÚÏŞÖÆ·¶Î§ÄÚ£©
-	2¡¢²»ÔÊĞí¶¨Òå¾²Ì¬È«¾Ö±äÁ¿£¨È«¾Ö±äÁ¿µÄÊ¹ÓÃ×¼ÔòÊÇ£ºÉÙÓÃ¡¢É÷ÓÃ¡¢ÄÜ²»ÓÃ¾¡Á¿²»ÓÃ£©
-	3¡¢¾²Ì¬¾Ö²¿±äÁ¿µÄÊıÁ¿²»ÏŞÖÆ£¬µ«Ê¹ÓÃ×¼ÔòÒ²ÊÇ£ºÉÙÓÃ¡¢É÷ÓÃ¡¢ÄÜ²»ÓÃ¾¡Á¿²»ÓÃ
-	4¡¢°´Ğè¼ÓÈëÏµÍ³Í·ÎÄ¼ş¡¢×Ô¶¨ÒåÍ·ÎÄ¼ş¡¢ÃüÃû¿Õ¼äµÈ
+	 æœ¬æ–‡ä»¶è¦æ±‚ï¼š
+	1ã€ä¸å…è®¸å®šä¹‰å¤–éƒ¨å…¨å±€å˜é‡ï¼ˆconståŠ#defineä¸åœ¨é™åˆ¶èŒƒå›´å†…ï¼‰
+	2ã€ä¸å…è®¸å®šä¹‰é™æ€å…¨å±€å˜é‡ï¼ˆå…¨å±€å˜é‡çš„ä½¿ç”¨å‡†åˆ™æ˜¯ï¼šå°‘ç”¨ã€æ…ç”¨ã€èƒ½ä¸ç”¨å°½é‡ä¸ç”¨ï¼‰
+	3ã€é™æ€å±€éƒ¨å˜é‡çš„æ•°é‡ä¸é™åˆ¶ï¼Œä½†ä½¿ç”¨å‡†åˆ™ä¹Ÿæ˜¯ï¼šå°‘ç”¨ã€æ…ç”¨ã€èƒ½ä¸ç”¨å°½é‡ä¸ç”¨
+	4ã€æŒ‰éœ€åŠ å…¥ç³»ç»Ÿå¤´æ–‡ä»¶ã€è‡ªå®šä¹‰å¤´æ–‡ä»¶ã€å‘½åç©ºé—´ç­‰
 
    ----------------------------------------- */
 
-//´òÓ¡³¤¶ÈÎª (²ãÊı*2+1) µÄÑÕÉ«²»Í¬µÄÅÌ(µÚi²ã¶ÔÓ¦µÄÑÕÉ«ÊÇi)
+//æ‰“å°é•¿åº¦ä¸º (å±‚æ•°*2+1) çš„é¢œè‰²ä¸åŒçš„ç›˜(ç¬¬iå±‚å¯¹åº”çš„é¢œè‰²æ˜¯i)
 void print_plate(int n, int x, int y)
 {
 	int color = n;
@@ -33,7 +33,7 @@ void print_plate(int n, int x, int y)
 	cct_setcolor(COLOR_BLACK, COLOR_WHITE);
 }
 
-//´òÓ¡ 1-10 ¸öÅÌ
+//æ‰“å° 1-10 ä¸ªç›˜
 void print_plates(int n, char start)
 {
 	int X_A = 12;
@@ -55,7 +55,7 @@ void print_plates(int n, char start)
 	}
 }
 
-//´òÓ¡Èı¸ùÖù×Ó£¨ºáÏò£©
+//æ‰“å°ä¸‰æ ¹æŸ±å­ï¼ˆæ¨ªå‘ï¼‰
 void print_pillar_cross()
 {
 	int START_X = 1;
@@ -77,10 +77,10 @@ void print_pillar_cross()
 	cct_showch(START_X, START_Y, ' ', COLOR_HYELLOW, COLOR_BLACK, 23);
 }
 
-//´òÓ¡Èı¸ùÖù×Ó(ÊúÏò)
+//æ‰“å°ä¸‰æ ¹æŸ±å­(ç«–å‘)
 void print_pillar_vertical()
 {
-	const int Y_MAX = 3;//ÉÏÏŞÎ»ÖÃ
+	const int Y_MAX = 3;//ä¸Šé™ä½ç½®
 	const int X_A = 12;
 	const int X_B = 44;
 	const int X_C = 76;
@@ -95,7 +95,7 @@ void print_pillar_vertical()
 	}
 }
 
-//´òÓ¡Èı¸ùÖù×Ó
+//æ‰“å°ä¸‰æ ¹æŸ±å­
 void print_pillar()
 {
 	cct_setcursor(CURSOR_INVISIBLE);
@@ -106,55 +106,55 @@ void print_pillar()
 	cct_gotoxy(0, 30);
 }
 
-//´òÓ¡ººÅµËşµÄÉèÖÃ²ÎÊı
+//æ‰“å°æ±‰è¯ºå¡”çš„è®¾ç½®å‚æ•°
 void print_start(char start, char end, int level, bool show)
 {
-	cout << "´Ó " << start << " ÒÆ¶¯µ½ " << end << " , ¹² " << level << " ²ã";
+	cout << "ä» " << start << " ç§»åŠ¨åˆ° " << end << " , å…± " << level << " å±‚";
 	if (show)
-		cout << ", ÑÓÊ±ÉèÖÃÎª " << speed;
+		cout << ", å»¶æ—¶è®¾ç½®ä¸º " << speed;
 }
 
-//µÈ´ıÊäÈë»Ø³µ,·ÅÔÚÖ÷º¯ÊıÑ­»·µÄ×îºó£¬»Ø³µ·µ»Ø²Ëµ¥¿ªÍ·
+//ç­‰å¾…è¾“å…¥å›è½¦,æ”¾åœ¨ä¸»å‡½æ•°å¾ªç¯çš„æœ€åï¼Œå›è½¦è¿”å›èœå•å¼€å¤´
 void wait_for_enter()
 {
-	cout << endl << "°´»Ø³µ¼ü¼ÌĞø";
+	cout << endl << "æŒ‰å›è½¦é”®ç»§ç»­";
 	while (_getch() != '\r')
 		;
 	cout << endl << endl;
 	cct_cls();
 }
 
-//´òÓ¡³õÊ¼²Ëµ¥
+//æ‰“å°åˆå§‹èœå•
 void print_menu()
 {
 	cout << "---------------------------------" << endl;
-	cout << "1.»ù±¾½â" << endl;
-	cout << "2.»ù±¾½â(²½Êı¼ÇÂ¼)" << endl;
-	cout << "3.ÄÚ²¿Êı×éÏÔÊ¾(ºáÏò)" << endl;
-	cout << "4.ÄÚ²¿Êı×éÏÔÊ¾(×İÏò + ºáÏò)" << endl;
-	cout << "5.Í¼ĞÎ½â - Ô¤±¸ - »­Èı¸öÔ²Öù" << endl;
-	cout << "6.Í¼ĞÎ½â - Ô¤±¸ - ÔÚÆğÊ¼ÖùÉÏ»­n¸öÅÌ×Ó" << endl;
-	cout << "7.Í¼ĞÎ½â - Ô¤±¸ - µÚÒ»´ÎÒÆ¶¯" << endl;
-	cout << "8.Í¼ĞÎ½â - ×Ô¶¯ÒÆ¶¯°æ±¾" << endl;
-	cout << "9.Í¼ĞÎ½â - ÓÎÏ·°æ" << endl;
-	cout << "0.ÍË³ö" << endl;
+	cout << "1.åŸºæœ¬è§£" << endl;
+	cout << "2.åŸºæœ¬è§£(æ­¥æ•°è®°å½•)" << endl;
+	cout << "3.å†…éƒ¨æ•°ç»„æ˜¾ç¤º(æ¨ªå‘)" << endl;
+	cout << "4.å†…éƒ¨æ•°ç»„æ˜¾ç¤º(çºµå‘ + æ¨ªå‘)" << endl;
+	cout << "5.å›¾å½¢è§£ - é¢„å¤‡ - ç”»ä¸‰ä¸ªåœ†æŸ±" << endl;
+	cout << "6.å›¾å½¢è§£ - é¢„å¤‡ - åœ¨èµ·å§‹æŸ±ä¸Šç”»nä¸ªç›˜å­" << endl;
+	cout << "7.å›¾å½¢è§£ - é¢„å¤‡ - ç¬¬ä¸€æ¬¡ç§»åŠ¨" << endl;
+	cout << "8.å›¾å½¢è§£ - è‡ªåŠ¨ç§»åŠ¨ç‰ˆæœ¬" << endl;
+	cout << "9.å›¾å½¢è§£ - æ¸¸æˆç‰ˆ" << endl;
+	cout << "0.é€€å‡º" << endl;
 	cout << "-------------------------------- -" << endl;
-	cout << "[ÇëÑ¡Ôñ:]  ";
+	cout << "[è¯·é€‰æ‹©:]  ";
 }
 
-//µÃµ½ººÅµËş²ãÊı
+//å¾—åˆ°æ±‰è¯ºå¡”å±‚æ•°
 int get_level()
 {
 	int level;
 	while (1)
 	{
-		cout << "ÇëÊäÈëººÅµËşµÄ²ãÊı(1-10)" << endl;
+		cout << "è¯·è¾“å…¥æ±‰è¯ºå¡”çš„å±‚æ•°(1-10)" << endl;
 		cin >> level;
 		while (cin.fail())
 		{
 			cin.clear();
 			cin.ignore(1024, '\n');
-			cout << "ÇëÊäÈëººÅµËşµÄ²ãÊı(1-10)" << endl;
+			cout << "è¯·è¾“å…¥æ±‰è¯ºå¡”çš„å±‚æ•°(1-10)" << endl;
 			cin >> level;
 		}
 		if (level >= 1 && level <= 10)
@@ -165,19 +165,19 @@ int get_level()
 	return level;
 }
 
-//µÃµ½ÆğÊ¼Öù
+//å¾—åˆ°èµ·å§‹æŸ±
 char get_start()
 {
 	char start;
 	while (1)
 	{
-		cout << "ÇëÊäÈëÆğÊ¼Öù(A-C)" << endl;
+		cout << "è¯·è¾“å…¥èµ·å§‹æŸ±(A-C)" << endl;
 		cin >> start;
 		while (cin.fail())
 		{
 			cin.clear();
 			cin.ignore(1024, '\n');
-			cout << "ÇëÊäÈëÆğÊ¼Öù(A-C)" << endl;
+			cout << "è¯·è¾“å…¥èµ·å§‹æŸ±(A-C)" << endl;
 			cin >> start;
 		}
 		if (start == 'A' || start == 'B' || start == 'C')
@@ -195,26 +195,26 @@ char get_start()
 	return start;
 }
 
-//µÃµ½Ä¿±êÖù
+//å¾—åˆ°ç›®æ ‡æŸ±
 char get_end(char start)
 {
 	char end;
 	while (1)
 	{
-		cout << "ÇëÊäÈëÄ¿±êÖù(A-C)" << endl;
+		cout << "è¯·è¾“å…¥ç›®æ ‡æŸ±(A-C)" << endl;
 		cin >> end;
 		while (cin.fail())
 		{
 			cin.clear();
 			cin.ignore(1024, '\n');
-			cout << "ÇëÊäÈëÄ¿±êÖù(A-C)" << endl;
+			cout << "è¯·è¾“å…¥ç›®æ ‡æŸ±(A-C)" << endl;
 			cin >> end;
 		}
 		if (end == start || end == start + 32 || end == start - 32)
 		{
 			cin.clear();
 			cin.ignore();
-			cout << "ÆğÊ¼Öù(" << start << ")²»ÄÜÓëÄ¿±êÖù(" << end << ")ÏàÍ¬" << endl;
+			cout << "èµ·å§‹æŸ±(" << start << ")ä¸èƒ½ä¸ç›®æ ‡æŸ±(" << end << ")ç›¸åŒ" << endl;
 			continue;
 		}
 		if (end == 'A' || end == 'B' || end == 'C')
@@ -232,7 +232,7 @@ char get_end(char start)
 	return end;
 }
 
-//ÊäÈë²¢¸Ä±äselect,level,start,mid,endµÄÖµ
+//è¾“å…¥å¹¶æ”¹å˜select,level,start,mid,endçš„å€¼
 void get_choice(int* select, char* start, char* mid, char* end, int* level)
 {
 	*select = _getch();
@@ -250,12 +250,12 @@ void get_choice(int* select, char* start, char* mid, char* end, int* level)
 	*mid = 'A' + 'B' + 'C' - *start - *end;
 }
 
-//µÃµ½ÑÓÊ±Öµ
+//å¾—åˆ°å»¶æ—¶å€¼
 int get_speed()
 {
 	while (1)
 	{
-		cout << "ÇëÊäÈëÒÆ¶¯ËÙ¶È(0-5: 0-°´»Ø³µµ¥²½ÑİÊ¾ 1-ÑÓÊ±×î³¤ 5-ÑÓÊ±×î¶Ì)" << endl;
+		cout << "è¯·è¾“å…¥ç§»åŠ¨é€Ÿåº¦(0-5: 0-æŒ‰å›è½¦å•æ­¥æ¼”ç¤º 1-å»¶æ—¶æœ€é•¿ 5-å»¶æ—¶æœ€çŸ­)" << endl;
 		cin >> speed;
 		if (!cin.fail() && speed >= 0 && speed <= 5)
 			break;
@@ -268,10 +268,10 @@ int get_speed()
 	return speed;
 }
 
-//ÊäÈëÃüÁî²¢×öÏàÓ¦µÄ²Ù×÷(·ÖÇé¿ö·µ»Ø²»Í¬µÄÖµAB,AC,BA,BC,CA,CB)
+//è¾“å…¥å‘½ä»¤å¹¶åšç›¸åº”çš„æ“ä½œ(åˆ†æƒ…å†µè¿”å›ä¸åŒçš„å€¼AB,AC,BA,BC,CA,CB)
 int fetch_instruction()
 {
-	char ch[20];//ÊäÈëµÄ×Ö·û³¬¹ı19¸ö×Ô¶¯Çå¿Õ
+	char ch[20];//è¾“å…¥çš„å­—ç¬¦è¶…è¿‡19ä¸ªè‡ªåŠ¨æ¸…ç©º
 	char ch1;
 	int i;
 	while (1)
@@ -284,9 +284,9 @@ int fetch_instruction()
 		for (i = 0; i < 20; i++)
 		{
 			char temp = _getch();
-			if (!temp||temp==-32)//¶Áµ½ÁË·½Ïò¼üÖ®ÀàµÄ°´¼ü
+			if (!temp||temp==-32)//è¯»åˆ°äº†æ–¹å‘é”®ä¹‹ç±»çš„æŒ‰é”®
 			{
-				ch1 = _getch();//¶ÁµôÏÂÒ»¸öÖµ
+				ch1 = _getch();//è¯»æ‰ä¸‹ä¸€ä¸ªå€¼
 				i--;
 				continue;
 			}
@@ -303,13 +303,13 @@ int fetch_instruction()
 				cout << ch[i];
 			}
 		}
-		if (i == 20)//ÊäÈë Âú20¸ö×Ö·ûÇå¿Õ
+		if (i == 20)//è¾“å…¥ æ»¡20ä¸ªå­—ç¬¦æ¸…ç©º
 			continue;
-		if (ch[0] == 'Q' || ch[0] == 'q')//ÊäÈëQ·µ»Ø0 ÍË³ö
+		if (ch[0] == 'Q' || ch[0] == 'q')//è¾“å…¥Qè¿”å›0 é€€å‡º
 			if (ch[1] == '\r')
 				return 0;
 
-		if (strlen(ch) == 2 + 1)//ÊäÈëÁ½¸öÅĞ¶ÏÓĞĞ§ĞÔºóÌø³ö
+		if (strlen(ch) == 2 + 1)//è¾“å…¥ä¸¤ä¸ªåˆ¤æ–­æœ‰æ•ˆæ€§åè·³å‡º
 			if (ch[0] == 'A' || ch[0] == 'a' || ch[0] == 'B' || ch[0] == 'b' || ch[0] == 'C' || ch[0] == 'c')
 				if (ch[1] == 'A' || ch[1] == 'a' || ch[1] == 'B' || ch[1] == 'b' || ch[1] == 'C' || ch[1] == 'c')
 					if (ch[0] != ch[1] && ch[0] != ch[1] + 32 && ch[0] != ch[1] - 32)
@@ -345,10 +345,10 @@ int fetch_instruction()
 	return -1;
 }
 
-//¸ù¾İselectµÄÖµ²»Í¬Ñ¡Ôñ²»Í¬µÄ³ö¿Ú£¬µ÷ÓÃ¶ÔÓ¦µÄhanoiº¯Êı
+//æ ¹æ®selectçš„å€¼ä¸åŒé€‰æ‹©ä¸åŒçš„å‡ºå£ï¼Œè°ƒç”¨å¯¹åº”çš„hanoiå‡½æ•°
 void menu(int n, char start, char mid, char end, int select)
 {
-	int input = 0;//¼ì²é9µÄÊäÈëÊÇ·ñÓĞĞ§
+	int input = 0;//æ£€æŸ¥9çš„è¾“å…¥æ˜¯å¦æœ‰æ•ˆ
 
 
 	switch (select)
@@ -393,10 +393,10 @@ void menu(int n, char start, char mid, char end, int select)
 			print_pillar();
 			cct_setcursor(CURSOR_INVISIBLE);
 			print_plates(n, start);
-			//Ä¿±êÖùÎ»ÖÃ(ÆæÊı²ã´Óstartµ½end,Å¼Êı²ã´Óstartµ½mid)
-			if (select % 2 == 0)//Å¼Êı
+			//ç›®æ ‡æŸ±ä½ç½®(å¥‡æ•°å±‚ä»startåˆ°end,å¶æ•°å±‚ä»startåˆ°mid)
+			if (select % 2 == 0)//å¶æ•°
 				move(1, start, mid, 7);
-			else//ÆæÊı
+			else//å¥‡æ•°
 				move(1, start, end, 7);
 
 
@@ -422,7 +422,7 @@ void menu(int n, char start, char mid, char end, int select)
 
 			break;
 
-		case 9://ÓÎÏ·°æ
+		case 9://æ¸¸æˆç‰ˆ
 			speed = 5;
 			spawn(start, n);
 			cct_cls();
@@ -435,48 +435,48 @@ void menu(int n, char start, char mid, char end, int select)
 			print_start_group(5, 8);
 			cct_gotoxy(0, 34);
 			cct_setcursor(CURSOR_VISIBLE_NORMAL);
-			cout << "ÇëÊäÈëÒÆ¶¯µÄÖùºÅ(ÃüÁîĞÎÊ½£ºAC=A¶¥¶ËµÄÅÌ×ÓÒÆ¶¯µ½C£¬Q=ÍË³ö) £º ";
-			while (1)//½øÈëÓÎÏ·
+			cout << "è¯·è¾“å…¥ç§»åŠ¨çš„æŸ±å·(å‘½ä»¤å½¢å¼ï¼šAC=Aé¡¶ç«¯çš„ç›˜å­ç§»åŠ¨åˆ°Cï¼ŒQ=é€€å‡º) ï¼š ";
+			while (1)//è¿›å…¥æ¸¸æˆ
 			{
-				while (1)//ÊäÈë²¿·Ö
+				while (1)//è¾“å…¥éƒ¨åˆ†
 				{
-					input = fetch_instruction();//»ñÈ¡ÊäÈë
+					input = fetch_instruction();//è·å–è¾“å…¥
 
-					//ÊäÈëÎªQÔòÍË³öÓÎÏ·
+					//è¾“å…¥ä¸ºQåˆ™é€€å‡ºæ¸¸æˆ
 					if (input == 0)
 					{
 						cct_gotoxy(0, 35);
-						cout << "ÓÎÏ·ÖĞÖ¹!!!!!";
+						cout << "æ¸¸æˆä¸­æ­¢!!!!!";
 						return;
 					}
 
 
-					//Ô´ÖùÎª¿Õ
+					//æºæŸ±ä¸ºç©º
 					if (!column_empty(input))
 					{
 						cct_gotoxy(0, 35);
-						cout << "Ô´ÖùÎª¿Õ!";
+						cout << "æºæŸ±ä¸ºç©º!";
 						Sleep(1000);
 						cct_showch(0, 35, ' ', COLOR_BLACK, COLOR_WHITE, 50);
 
 						continue;
 					}
 
-					//´óÅÌÑ¹Ğ¡ÅÌ
+					//å¤§ç›˜å‹å°ç›˜
 					if (!large_over_small(input))
 					{
 						cct_gotoxy(0, 35);
-						cout << "´óÅÌÑ¹Ğ¡ÅÌ£¬·Ç·¨ÒÆ¶¯!";
+						cout << "å¤§ç›˜å‹å°ç›˜ï¼Œéæ³•ç§»åŠ¨!";
 						Sleep(1000);
 						cct_showch(0, 35, ' ', COLOR_BLACK, COLOR_WHITE, 50);
 
 						continue;
 					}
 
-					//ÓĞĞ§ÔòÌø³öÊäÈë²¿·Ö
+					//æœ‰æ•ˆåˆ™è·³å‡ºè¾“å…¥éƒ¨åˆ†
 					break;
 				}
-				//ÒÆ¶¯
+				//ç§»åŠ¨
 				switch (input)
 				{
 					case 1:
@@ -500,16 +500,16 @@ void menu(int n, char start, char mid, char end, int select)
 
 
 				}
-				//ÅĞ¶ÏÊÇ·ñÓÎÏ·½áÊø(ÅĞ¶ÏendÖùµÄÕ»¶¥Ö¸ÕëÊÇ·ñÎªn)
+				//åˆ¤æ–­æ˜¯å¦æ¸¸æˆç»“æŸ(åˆ¤æ–­endæŸ±çš„æ ˆé¡¶æŒ‡é’ˆæ˜¯å¦ä¸ºn)
 				if (Game_over(n, end))
 				{
 					cct_gotoxy(0, 35);
-					cout << "ÓÎÏ·½áÊø!!!!!";
+					cout << "æ¸¸æˆç»“æŸ!!!!!";
 					break;
 				}
 			}
 			cct_setcursor(CURSOR_VISIBLE_NORMAL);
 			cct_gotoxy(0, 37);
-			break;//¶ÔÓ¦case 9 µÄbreak
+			break;//å¯¹åº”case 9 çš„break
 	}
 }

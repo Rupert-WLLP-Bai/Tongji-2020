@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -11,11 +11,11 @@ void spawn(char start,int level)
 {
 	for (int i = 0; i < 10; i++)
 	{
-		a[i] = b[i] = c[i] = 0;//³õÊ¼»¯
+		a[i] = b[i] = c[i] = 0;//åˆå§‹åŒ–
 	}
 
 	top_A = top_B = top_C = 0;
-	switch (start)//¿ªÊ¼µÄÊý×é×´Ì¬
+	switch (start)//å¼€å§‹çš„æ•°ç»„çŠ¶æ€
 	{
 		case 'A':
 		{
@@ -46,7 +46,7 @@ void spawn(char start,int level)
 		}
 	}
 
-	cout << "³õÊ¼:                ";
+	cout << "åˆå§‹:                ";
 	cout << "A:";
 	if (a[0] != 10)
 		cout << " ";
@@ -104,14 +104,14 @@ void haoni(int n, char src, char tmp, char dst)
 	if (n == 1)
 	{
 		i++;
-		cout << "µÚ" << setw(4) << i << " ²½";
+		cout << "ç¬¬" << setw(4) << i << " æ­¥";
 		move(n, src, dst);
 	}
 	else
 	{
 		haoni(n - 1, src, dst, tmp);
 		i++;
-		cout << "µÚ" << setw(4) << i << " ²½";
+		cout << "ç¬¬" << setw(4) << i << " æ­¥";
 		move(n, src, dst);
 		haoni(n - 1, tmp, src, dst);
 
@@ -122,7 +122,7 @@ void move(int n, char x, char y)
 {
 	cout << "(" << setw(2) << n << "): ";
 	cout << x << "-->" << y << " ";
-	//½øÕ»,³öÕ»
+	//è¿›æ ˆ,å‡ºæ ˆ
 	int temp;
 	switch (x)
 	{
@@ -176,7 +176,7 @@ void move(int n, char x, char y)
 			break;
 	}
 
-	//Êä³ö
+	//è¾“å‡º
 	cout << "A:";
 	if (a[0] != 10)
 		cout << " ";
@@ -228,11 +228,11 @@ void move(int n, char x, char y)
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£º
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºÍê³ÉÊäÈë(»òµ÷ÓÃÊäÈëº¯Êý)¡¢µ÷ÓÃµÝ¹éº¯Êý
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼š
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šå®Œæˆè¾“å…¥(æˆ–è°ƒç”¨è¾“å…¥å‡½æ•°)ã€è°ƒç”¨é€’å½’å‡½æ•°
 ***************************************************************************/
 int main()
 {
@@ -240,13 +240,13 @@ int main()
 	char start, mid, end;
 	while (1)
 	{
-		cout << "ÇëÊäÈëººÅµËþµÄ²ãÊý(1-10)" << endl;
+		cout << "è¯·è¾“å…¥æ±‰è¯ºå¡”çš„å±‚æ•°(1-10)" << endl;
 		cin >> level;
 		while (cin.fail())
 		{
 			cin.clear();
 			cin.ignore(1024, '\n');
-			cout << "ÇëÊäÈëººÅµËþµÄ²ãÊý(1-10)" << endl;
+			cout << "è¯·è¾“å…¥æ±‰è¯ºå¡”çš„å±‚æ•°(1-10)" << endl;
 			cin >> level;
 		}
 		if (level >= 1 && level <= 10)
@@ -256,13 +256,13 @@ int main()
 	cin.ignore(1024, '\n');
 	while (1)
 	{
-		cout << "ÇëÊäÈëÆðÊ¼Öù(A-C)" << endl;
+		cout << "è¯·è¾“å…¥èµ·å§‹æŸ±(A-C)" << endl;
 		cin >> start;
 		while (cin.fail())
 		{
 			cin.clear();
 			cin.ignore(1024, '\n');
-			cout << "ÇëÊäÈëÆðÊ¼Öù(A-C)" << endl;
+			cout << "è¯·è¾“å…¥èµ·å§‹æŸ±(A-C)" << endl;
 			cin >> start;
 		}
 		if (start == 'A' || start == 'B' || start == 'C')
@@ -279,20 +279,20 @@ int main()
 	cin.ignore(1024, '\n');
 	while (1)
 	{
-		cout << "ÇëÊäÈëÄ¿±êÖù(A-C)" << endl;
+		cout << "è¯·è¾“å…¥ç›®æ ‡æŸ±(A-C)" << endl;
 		cin >> end;
 		while (cin.fail())
 		{
 			cin.clear();
 			cin.ignore(1024, '\n');
-			cout << "ÇëÊäÈëÄ¿±êÖù(A-C)" << endl;
+			cout << "è¯·è¾“å…¥ç›®æ ‡æŸ±(A-C)" << endl;
 			cin >> end;
 		}
 		if (end == start || end == start + 32 || end == start - 32)
 		{
 			cin.clear();
 			cin.ignore();
-			cout << "ÆðÊ¼Öù²»ÄÜÓëÄ¿±êÖùÏàÍ¬" << endl;
+			cout << "èµ·å§‹æŸ±ä¸èƒ½ä¸Žç›®æ ‡æŸ±ç›¸åŒ" << endl;
 			continue;
 		}
 		if (end == 'A' || end == 'B' || end == 'C')

@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <cstdio>
@@ -7,15 +7,15 @@
 #include <windows.h>
 using namespace std;
 
-const int MAX_X = 69; //¶¨Òå*×é³ÉµÄ±ß¿òµÄ¿í¶È
-const int MAX_Y = 17; //¶¨Òå*×é³ÉµÄ±ß¿òµÄ¸ß¶È
+const int MAX_X = 69; //å®šä¹‰*ç»„æˆçš„è¾¹æ¡†çš„å®½åº¦
+const int MAX_Y = 17; //å®šä¹‰*ç»„æˆçš„è¾¹æ¡†çš„é«˜åº¦
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£ºÍê³ÉÓësystem("cls")Ò»ÑùµÄ¹¦ÄÜ£¬µ«Ð§ÂÊ¸ß
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºÇå³ýÕû¸öÆÁÄ»»º³åÇø£¬²»½ö½öÊÇ¿É¼û´°¿ÚÇøÓò(Ê¹ÓÃµ±Ç°ÑÕÉ«)
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šå®Œæˆä¸Žsystem("cls")ä¸€æ ·çš„åŠŸèƒ½ï¼Œä½†æ•ˆçŽ‡é«˜
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šæ¸…é™¤æ•´ä¸ªå±å¹•ç¼“å†²åŒºï¼Œä¸ä»…ä»…æ˜¯å¯è§çª—å£åŒºåŸŸ(ä½¿ç”¨å½“å‰é¢œè‰²)
 ***************************************************************************/
 void cls(const HANDLE hout)
 {
@@ -23,26 +23,26 @@ void cls(const HANDLE hout)
 	CONSOLE_SCREEN_BUFFER_INFO binfo; /* to get buffer info */
 	DWORD num;
 
-	/* È¡µ±Ç°»º³åÇøÐÅÏ¢ */
+	/* å–å½“å‰ç¼“å†²åŒºä¿¡æ¯ */
 	GetConsoleScreenBufferInfo(hout, &binfo);
-	/* Ìî³ä×Ö·û */
+	/* å¡«å……å­—ç¬¦ */
 	FillConsoleOutputCharacter(hout, (TCHAR)' ', binfo.dwSize.X * binfo.dwSize.Y, coord, &num);
-	/* Ìî³äÊôÐÔ */
+	/* å¡«å……å±žæ€§ */
 	FillConsoleOutputAttribute(hout, binfo.wAttributes, binfo.dwSize.X * binfo.dwSize.Y, coord, &num);
 
-	/* ¹â±ê»Øµ½(0,0) */
+	/* å…‰æ ‡å›žåˆ°(0,0) */
 	SetConsoleCursorPosition(hout, coord);
 	return;
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£ºgotoxy
-  ¹¦    ÄÜ£º½«¹â±êÒÆ¶¯µ½Ö¸¶¨Î»ÖÃ
-  ÊäÈë²ÎÊý£ºHANDLE hout £ºÊä³öÉè±¸¾ä±ú
-			int X       £ºÖ¸¶¨Î»ÖÃµÄx×ø±ê
-			int Y       £ºÖ¸¶¨Î»ÖÃµÄy×ø±ê
-  ·µ »Ø Öµ£ºÎÞ
-  Ëµ    Ã÷£º´Ëº¯Êý²»×¼ÐÞ¸Ä
+  å‡½æ•°åç§°ï¼šgotoxy
+  åŠŸ    èƒ½ï¼šå°†å…‰æ ‡ç§»åŠ¨åˆ°æŒ‡å®šä½ç½®
+  è¾“å…¥å‚æ•°ï¼šHANDLE hout ï¼šè¾“å‡ºè®¾å¤‡å¥æŸ„
+			int X       ï¼šæŒ‡å®šä½ç½®çš„xåæ ‡
+			int Y       ï¼šæŒ‡å®šä½ç½®çš„yåæ ‡
+  è¿” å›ž å€¼ï¼šæ— 
+  è¯´    æ˜Žï¼šæ­¤å‡½æ•°ä¸å‡†ä¿®æ”¹
 ***************************************************************************/
 void gotoxy(const HANDLE hout, const int X, const int Y)
 {
@@ -53,14 +53,14 @@ void gotoxy(const HANDLE hout, const int X, const int Y)
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£ºshowch
-  ¹¦    ÄÜ£ºÔÚÖ¸¶¨Î»ÖÃ´¦´òÓ¡Ò»¸öÖ¸¶¨µÄ×Ö·û
-  ÊäÈë²ÎÊý£ºHANDLE hout £ºÊä³öÉè±¸¾ä±ú
-			int X       £ºÖ¸¶¨Î»ÖÃµÄx×ø±ê
-			int Y       £ºÖ¸¶¨Î»ÖÃµÄy×ø±ê
-			char ch     £ºÒª´òÓ¡µÄ×Ö·û
-  ·µ »Ø Öµ£ºÎÞ
-  Ëµ    Ã÷£º´Ëº¯Êý²»×¼ÐÞ¸Ä
+  å‡½æ•°åç§°ï¼šshowch
+  åŠŸ    èƒ½ï¼šåœ¨æŒ‡å®šä½ç½®å¤„æ‰“å°ä¸€ä¸ªæŒ‡å®šçš„å­—ç¬¦
+  è¾“å…¥å‚æ•°ï¼šHANDLE hout ï¼šè¾“å‡ºè®¾å¤‡å¥æŸ„
+			int X       ï¼šæŒ‡å®šä½ç½®çš„xåæ ‡
+			int Y       ï¼šæŒ‡å®šä½ç½®çš„yåæ ‡
+			char ch     ï¼šè¦æ‰“å°çš„å­—ç¬¦
+  è¿” å›ž å€¼ï¼šæ— 
+  è¯´    æ˜Žï¼šæ­¤å‡½æ•°ä¸å‡†ä¿®æ”¹
 ***************************************************************************/
 void showch(const HANDLE hout, const int X, const int Y, const char ch)
 {
@@ -69,15 +69,15 @@ void showch(const HANDLE hout, const int X, const int Y, const char ch)
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£ºinit_border
-  ¹¦    ÄÜ£ºÏÔÊ¾³õÊ¼µÄ±ß¿ò¼°Ëæ»ú×Ö·û
-  ÊäÈë²ÎÊý£ºHANDLE hout£ºÊä³öÉè±¸¾ä±ú
-  ·µ »Ø Öµ£ºÎÞ
-  Ëµ    Ã÷£º´Ëº¯Êý²»×¼ÐÞ¸Ä
+  å‡½æ•°åç§°ï¼šinit_border
+  åŠŸ    èƒ½ï¼šæ˜¾ç¤ºåˆå§‹çš„è¾¹æ¡†åŠéšæœºå­—ç¬¦
+  è¾“å…¥å‚æ•°ï¼šHANDLE houtï¼šè¾“å‡ºè®¾å¤‡å¥æŸ„
+  è¿” å›ž å€¼ï¼šæ— 
+  è¯´    æ˜Žï¼šæ­¤å‡½æ•°ä¸å‡†ä¿®æ”¹
 ***************************************************************************/
 void init_border(const HANDLE hout)
 {
-	gotoxy(hout, 0, 0); //¹â±êÒÆ»Ø×óÉÏ½Ç(0,0)
+	gotoxy(hout, 0, 0); //å…‰æ ‡ç§»å›žå·¦ä¸Šè§’(0,0)
 	cout << "***********************************************************************" << endl;
 	cout << "*                                                                     *" << endl;
 	cout << "*                                                                     *" << endl;
@@ -98,9 +98,9 @@ void init_border(const HANDLE hout)
 	cout << "*                                                                     *" << endl;
 	cout << "***********************************************************************" << endl;
 
-	/* Ëæ»úÏÔÊ¾20¸ö´óÐ´×ÖÄ¸£¬×ÖÄ¸µÄÖµ¡¢XY×ø±ê¶¼Ëæ»úÏÔÊ¾
-	   rand()º¯ÊýµÄ¹¦ÄÜ£ºËæ»úÉú³ÉÒ»¸öÔÚ 0-32767 Ö®¼äµÄÕûÊý
-	   Ë¼¿¼£ºÔÚÊ²Ã´Çé¿öÏÂ£¬ÏÂÃæÕâ¸öÑ­»·Ö´ÐÐÉú³Éºó£¬Äã¿´µ½µÄÊµ¼Ê×ÖÄ¸¸öÊý²»×ã20¸ö£¿ */
+	/* éšæœºæ˜¾ç¤º20ä¸ªå¤§å†™å­—æ¯ï¼Œå­—æ¯çš„å€¼ã€XYåæ ‡éƒ½éšæœºæ˜¾ç¤º
+	   rand()å‡½æ•°çš„åŠŸèƒ½ï¼šéšæœºç”Ÿæˆä¸€ä¸ªåœ¨ 0-32767 ä¹‹é—´çš„æ•´æ•°
+	   æ€è€ƒï¼šåœ¨ä»€ä¹ˆæƒ…å†µä¸‹ï¼Œä¸‹é¢è¿™ä¸ªå¾ªçŽ¯æ‰§è¡Œç”ŸæˆåŽï¼Œä½ çœ‹åˆ°çš„å®žé™…å­—æ¯ä¸ªæ•°ä¸è¶³20ä¸ªï¼Ÿ */
 	int i;
 	for (i = 0; i < 20; i++)
 		showch(hout, rand() % MAX_X + 1, rand() % MAX_Y + 1, 'A' + rand() % 26);
@@ -108,17 +108,17 @@ void init_border(const HANDLE hout)
 	return;
 }
 
-/* -- °´ÐèÔö¼ÓµÄÈô¸Éº¯Êý¿ÉÒÔ·ÅÔÚ´Ë´¦ --*/
+/* -- æŒ‰éœ€å¢žåŠ çš„è‹¥å¹²å‡½æ•°å¯ä»¥æ”¾åœ¨æ­¤å¤„ --*/
 /***************************************************************************
-  º¯ÊýÃû³Æ£ºmove_by_ijkl
-  ¹¦    ÄÜ£º
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼šmove_by_ijkl
+  åŠŸ    èƒ½ï¼š
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼š
 ***************************************************************************/
 int move_by_arrow(int huirao)
 {
-	const HANDLE hout = GetStdHandle(STD_OUTPUT_HANDLE); //È¡±ê×¼Êä³öÉè±¸¶ÔÓ¦µÄ¾ä±ú
+	const HANDLE hout = GetStdHandle(STD_OUTPUT_HANDLE); //å–æ ‡å‡†è¾“å‡ºè®¾å¤‡å¯¹åº”çš„å¥æŸ„
 	int x = 34, y = 8;
 	gotoxy(hout, x, y);
 	int move = 0;
@@ -130,28 +130,28 @@ int move_by_arrow(int huirao)
 		{
 			move = _getch();
 
-			if (move == 72) //ÏòÉÏÒÆ¶¯
+			if (move == 72) //å‘ä¸Šç§»åŠ¨
 			{
 				if (huirao)
 					y > 1 ? y-- : y += 16;
 				else if (y > 1)
 					y--;
 			}
-			if (move == 75) //Ïò×óÒÆ¶¯
+			if (move == 75) //å‘å·¦ç§»åŠ¨
 			{
 				if (huirao)
 					x > 1 ? x-- : x += 68;
 				else if (x > 1)
 					x--;
 			}
-			if (move == 80) //ÏòÏÂÒÆ¶¯
+			if (move == 80) //å‘ä¸‹ç§»åŠ¨
 			{
 				if (huirao)
 					y < 17 ? y++ : y -= 16;
 				else if (y < 17)
 					y++;
 			}
-			if (move == 77) //ÏòÓÒÒÆ¶¯
+			if (move == 77) //å‘å³ç§»åŠ¨
 			{
 				if (huirao)
 					x < 69 ? x++ : x -= 68;
@@ -168,7 +168,7 @@ int move_by_arrow(int huirao)
 				showch(hout, x, y, ' ');
 				gotoxy(hout, x, y);
 			}
-			if (ch == 113 || ch == 81) //Q»òqÍË³ömove_by_ijkl
+			if (ch == 113 || ch == 81) //Qæˆ–qé€€å‡ºmove_by_ijkl
 				break;
 		}
 		
@@ -177,15 +177,15 @@ int move_by_arrow(int huirao)
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£ºmove_by_ijkl
-  ¹¦    ÄÜ£º
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º×ó¼ü¶ÔÓ¦ÏÈºóµÃµ½Á½¸öÖµ224 75
+  å‡½æ•°åç§°ï¼šmove_by_ijkl
+  åŠŸ    èƒ½ï¼š
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šå·¦é”®å¯¹åº”å…ˆåŽå¾—åˆ°ä¸¤ä¸ªå€¼224 75
 ***************************************************************************/
 int move_by_ijkl(int huirao)
 {
-	const HANDLE hout = GetStdHandle(STD_OUTPUT_HANDLE); //È¡±ê×¼Êä³öÉè±¸¶ÔÓ¦µÄ¾ä±ú
+	const HANDLE hout = GetStdHandle(STD_OUTPUT_HANDLE); //å–æ ‡å‡†è¾“å‡ºè®¾å¤‡å¯¹åº”çš„å¥æŸ„
 	int x = 34, y = 8;
 	gotoxy(hout, x, y);
 	int move = 0;
@@ -193,30 +193,30 @@ int move_by_ijkl(int huirao)
 	{
 		move = _getch();
 
-		if (move == 113 || move == 81) //Q»òqÍË³ömove_by_ijkl
+		if (move == 113 || move == 81) //Qæˆ–qé€€å‡ºmove_by_ijkl
 			break;
-		if (move == 73 || move == 105) //ÏòÉÏÒÆ¶¯
+		if (move == 73 || move == 105) //å‘ä¸Šç§»åŠ¨
 		{
 			if (huirao)
 				y > 1 ? y-- : y += 16;
 			else if (y > 1)
 				y--;
 		}
-		if (move == 74 || move == 106) //Ïò×óÒÆ¶¯
+		if (move == 74 || move == 106) //å‘å·¦ç§»åŠ¨
 		{
 			if (huirao)
 				x > 1 ? x-- : x += 68;
 			else if (x > 1)
 				x--;
 		}
-		if (move == 75 || move == 107) //ÏòÏÂÒÆ¶¯
+		if (move == 75 || move == 107) //å‘ä¸‹ç§»åŠ¨
 		{
 			if (huirao)
 				y < 17 ? y++ : y -= 16;
 			else if (y < 17)
 				y++;
 		}
-		if (move == 76 || move == 108) //ÏòÓÒÒÆ¶¯
+		if (move == 76 || move == 108) //å‘å³ç§»åŠ¨
 		{
 			if (huirao)
 				x < 69 ? x++ : x -= 68;
@@ -233,23 +233,23 @@ int move_by_ijkl(int huirao)
 	return 0;
 }
 /***************************************************************************
-  º¯ÊýÃû³Æ£ºmenu
-  ¹¦    ÄÜ£º²Ëµ¥Ñ¡Ôñ
-  ÊäÈë²ÎÊý£ºÑ¡Ôñ²Ëµ¥µÄºÅÊý
-  ·µ »Ø Öµ£ºÊäÈëÖµµÄASCIIÂë
-  Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼šmenu
+  åŠŸ    èƒ½ï¼šèœå•é€‰æ‹©
+  è¾“å…¥å‚æ•°ï¼šé€‰æ‹©èœå•çš„å·æ•°
+  è¿” å›ž å€¼ï¼šè¾“å…¥å€¼çš„ASCIIç 
+  è¯´    æ˜Žï¼š
 ***************************************************************************/
 int menu()
 {
-	//cout<<"5.ÓÃ¼ýÍ·¼ü¿ØÖÆÉÏÏÂ×óÓÒ(±ß½çÍ£Ö¹£¬ÑÝÊ¾HPKM¿ÉÒÆ¶¯µÄ´íÎó£¬´ËÏî²»ÐèÒªÊµÏÖ)"<<endl;
-	//cout<<"6.ÓÃ¼ýÍ·¼ü¿ØÖÆÉÏÏÂ×óÓÒ(±ß½ç»ØÈÆ£¬ÑÝÊ¾HPKM¿ÉÒÆ¶¯µÄ´íÎó£¬´ËÏî²»ÐèÒªÊµÏÖ)"<<endl;
+	//cout<<"5.ç”¨ç®­å¤´é”®æŽ§åˆ¶ä¸Šä¸‹å·¦å³(è¾¹ç•Œåœæ­¢ï¼Œæ¼”ç¤ºHPKMå¯ç§»åŠ¨çš„é”™è¯¯ï¼Œæ­¤é¡¹ä¸éœ€è¦å®žçŽ°)"<<endl;
+	//cout<<"6.ç”¨ç®­å¤´é”®æŽ§åˆ¶ä¸Šä¸‹å·¦å³(è¾¹ç•Œå›žç»•ï¼Œæ¼”ç¤ºHPKMå¯ç§»åŠ¨çš„é”™è¯¯ï¼Œæ­¤é¡¹ä¸éœ€è¦å®žçŽ°)"<<endl;
 	int a;
-	cout << "1.ÓÃI¡¢J¡¢K¡¢L¼ü¿ØÖÆÉÏÏÂ×óÓÒ(´óÐ¡Ð´¾ù¿É£¬±ß½çÍ£Ö¹)" << endl;
-	cout << "2.ÓÃI¡¢J¡¢K¡¢L¼ü¿ØÖÆÉÏÏÂ×óÓÒ(´óÐ¡Ð´¾ù¿É£¬±ß½ç»ØÈÆ)" << endl;
-	cout << "3.ÓÃ¼ýÍ·¼ü¿ØÖÆÉÏÏÂ×óÓÒ£¬±ß½çÍ£Ö¹" << endl;
-	cout << "4.ÓÃ¼ýÍ·¼ü¿ØÖÆÉÏÏÂ×óÓÒ£¬±ß½ç»ØÈÆ" << endl;
-	cout << "0.ÍË³ö" << endl;
-	cout << "[ÇëÑ¡Ôñ0-4]";
+	cout << "1.ç”¨Iã€Jã€Kã€Lé”®æŽ§åˆ¶ä¸Šä¸‹å·¦å³(å¤§å°å†™å‡å¯ï¼Œè¾¹ç•Œåœæ­¢)" << endl;
+	cout << "2.ç”¨Iã€Jã€Kã€Lé”®æŽ§åˆ¶ä¸Šä¸‹å·¦å³(å¤§å°å†™å‡å¯ï¼Œè¾¹ç•Œå›žç»•)" << endl;
+	cout << "3.ç”¨ç®­å¤´é”®æŽ§åˆ¶ä¸Šä¸‹å·¦å³ï¼Œè¾¹ç•Œåœæ­¢" << endl;
+	cout << "4.ç”¨ç®­å¤´é”®æŽ§åˆ¶ä¸Šä¸‹å·¦å³ï¼Œè¾¹ç•Œå›žç»•" << endl;
+	cout << "0.é€€å‡º" << endl;
+	cout << "[è¯·é€‰æ‹©0-4]";
 	while (1)
 	{
 		a = _getch();
@@ -268,11 +268,11 @@ int menu()
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£º
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºmainº¯Êý½öÓÃÓÚ³õÊ¼ÑÝÊ¾£¬¿ÉÒÔ°´ÌâÄ¿ÒªÇóÈ«²¿ÍÆ·­ÖØÐ´
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼š
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šmainå‡½æ•°ä»…ç”¨äºŽåˆå§‹æ¼”ç¤ºï¼Œå¯ä»¥æŒ‰é¢˜ç›®è¦æ±‚å…¨éƒ¨æŽ¨ç¿»é‡å†™
 ***************************************************************************/
 int main()
 {
@@ -281,80 +281,80 @@ int main()
 	while (1)
 	{
 		select = menu();
-		if (select == 48) //ÊäÈë0£¬ÍË³ö³ÌÐò
+		if (select == 48) //è¾“å…¥0ï¼Œé€€å‡ºç¨‹åº
 			break;
 
-		if (select == 49) //¶ÔÓ¦Çé¿ö1
+		if (select == 49) //å¯¹åº”æƒ…å†µ1
 		{
-			cls(hout);           //ÇåÆÁ
-			init_border(hout);   //³õÊ¼»¯
-			move_by_ijkl(0);     //ÒÆ¶¯(²»»ØÈÆ)
-			gotoxy(hout, 0, 23); //¹â±ê»ØÎ»
-			cout << "ÓÎÏ·½áÊø,Çë°´»Ø³µ¼ü·µ»Ø²Ëµ¥";
+			cls(hout);           //æ¸…å±
+			init_border(hout);   //åˆå§‹åŒ–
+			move_by_ijkl(0);     //ç§»åŠ¨(ä¸å›žç»•)
+			gotoxy(hout, 0, 23); //å…‰æ ‡å›žä½
+			cout << "æ¸¸æˆç»“æŸ,è¯·æŒ‰å›žè½¦é”®è¿”å›žèœå•";
 			while (1)
 			{
 				int ch;
 				ch = _getch();
 				if (ch == 13)
 				{
-					cls(hout); //ÇåÆÁ
+					cls(hout); //æ¸…å±
 					break;
 				}
 			}
 		}
 
-		if (select == 50) //¶ÔÓ¦Çé¿ö2
+		if (select == 50) //å¯¹åº”æƒ…å†µ2
 		{
-			cls(hout);           //ÇåÆÁ
-			init_border(hout);   //³õÊ¼»¯
-			move_by_ijkl(1);     //ÒÆ¶¯(»ØÈÆ)
-			gotoxy(hout, 0, 23); //¹â±ê»ØÎ»
-			cout << "ÓÎÏ·½áÊø,Çë°´»Ø³µ¼ü·µ»Ø²Ëµ¥";
+			cls(hout);           //æ¸…å±
+			init_border(hout);   //åˆå§‹åŒ–
+			move_by_ijkl(1);     //ç§»åŠ¨(å›žç»•)
+			gotoxy(hout, 0, 23); //å…‰æ ‡å›žä½
+			cout << "æ¸¸æˆç»“æŸ,è¯·æŒ‰å›žè½¦é”®è¿”å›žèœå•";
 			while (1)
 			{
 				int ch;
 				ch = _getch();
 				if (ch == 13)
 				{
-					cls(hout); //ÇåÆÁ
+					cls(hout); //æ¸…å±
 					break;
 				}
 			}
 		}
 
-		if (select == 51) //¶ÔÓ¦Çé¿ö3
+		if (select == 51) //å¯¹åº”æƒ…å†µ3
 		{
-			cls(hout);           //ÇåÆÁ
-			init_border(hout);   //³õÊ¼»¯
-			move_by_arrow(0);     //ÒÆ¶¯(²»»ØÈÆ)
-			gotoxy(hout, 0, 23); //¹â±ê»ØÎ»
-			cout << "ÓÎÏ·½áÊø,Çë°´»Ø³µ¼ü·µ»Ø²Ëµ¥";
+			cls(hout);           //æ¸…å±
+			init_border(hout);   //åˆå§‹åŒ–
+			move_by_arrow(0);     //ç§»åŠ¨(ä¸å›žç»•)
+			gotoxy(hout, 0, 23); //å…‰æ ‡å›žä½
+			cout << "æ¸¸æˆç»“æŸ,è¯·æŒ‰å›žè½¦é”®è¿”å›žèœå•";
 			while (1)
 			{
 				int ch;
 				ch = _getch();
 				if (ch == 13)
 				{
-					cls(hout); //ÇåÆÁ
+					cls(hout); //æ¸…å±
 					break;
 				}
 			}
 		}
 
-		if (select == 52) //¶ÔÓ¦Çé¿ö4
+		if (select == 52) //å¯¹åº”æƒ…å†µ4
 		{
-			cls(hout);           //ÇåÆÁ
-			init_border(hout);   //³õÊ¼»¯
-			move_by_arrow(1);   //ÒÆ¶¯(»ØÈÆ)
-			gotoxy(hout, 0, 23); //¹â±ê»ØÎ»
-			cout << "ÓÎÏ·½áÊø,Çë°´»Ø³µ¼ü·µ»Ø²Ëµ¥";
+			cls(hout);           //æ¸…å±
+			init_border(hout);   //åˆå§‹åŒ–
+			move_by_arrow(1);   //ç§»åŠ¨(å›žç»•)
+			gotoxy(hout, 0, 23); //å…‰æ ‡å›žä½
+			cout << "æ¸¸æˆç»“æŸ,è¯·æŒ‰å›žè½¦é”®è¿”å›žèœå•";
 			while (1)
 			{
 				int ch;
 				ch = _getch();
 				if (ch == 13)
 				{
-					cls(hout); //ÇåÆÁ
+					cls(hout); //æ¸…å±
 					break;
 				}
 			}

@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -8,7 +8,7 @@ int main()
     double x;
     double x_decimal_part;
     int count;
-    cout << "ÇëÊäÈëÕÒÁãÖµ : " << endl;
+    cout << "è¯·è¾“å…¥æ‰¾é›¶å€¼ : " << endl;
     cin >> x;
 
     fifty = (int)(x / 50);
@@ -25,27 +25,27 @@ int main()
     cent_one = (int)((x_decimal_part - 0.5 * point_five - 0.1 * point_one - 0.05 * cent_five - 0.02 * cent_two + 1e-5) / 0.01);
 
     count = fifty + twenty + ten + five + one + point_five + point_one + cent_five + cent_two + cent_one;
-    cout << "¹²" << count << "ÕÅÕÒÁã£¬¾ßÌåÈçÏÂ : " << endl;
+    cout << "å…±" << count << "å¼ æ‰¾é›¶ï¼Œå…·ä½“å¦‚ä¸‹ : " << endl;
     if (fifty != 0)
-        cout << "50Ôª : " << fifty << "ÕÅ" << endl;
+        cout << "50å…ƒ : " << fifty << "å¼ " << endl;
     if (twenty != 0)
-        cout << "20Ôª : " << twenty << "ÕÅ" << endl;
+        cout << "20å…ƒ : " << twenty << "å¼ " << endl;
     if (ten != 0)
-        cout << "10Ôª : " << ten << "ÕÅ" << endl;
+        cout << "10å…ƒ : " << ten << "å¼ " << endl;
     if (five != 0)
-        cout << "5Ôª  : " << five << "ÕÅ" << endl;
+        cout << "5å…ƒ  : " << five << "å¼ " << endl;
     if (one != 0)
-        cout << "1Ôª  : " << one << "ÕÅ" << endl;
+        cout << "1å…ƒ  : " << one << "å¼ " << endl;
     if (point_five != 0)
-        cout << "5½Ç  : " << point_five << "ÕÅ" << endl;
+        cout << "5è§’  : " << point_five << "å¼ " << endl;
     if (point_one != 0)
-        cout << "1½Ç  : " << point_one << "ÕÅ" << endl;
+        cout << "1è§’  : " << point_one << "å¼ " << endl;
     if (cent_five != 0)
-        cout << "5·Ö  : " << cent_five << "ÕÅ" << endl;
+        cout << "5åˆ†  : " << cent_five << "å¼ " << endl;
     if (cent_two != 0)
-        cout << "2·Ö  : " << cent_two << "ÕÅ" << endl;
+        cout << "2åˆ†  : " << cent_two << "å¼ " << endl;
     if (cent_one != 0)
-        cout << "1·Ö  : " << cent_one << "ÕÅ" << endl;
+        cout << "1åˆ†  : " << cent_one << "å¼ " << endl;
 
     return 0;
 }

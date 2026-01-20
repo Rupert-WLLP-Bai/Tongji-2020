@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <iomanip>
@@ -9,35 +9,35 @@
 using namespace std;
 /* -----------------------------------------
 
-	 ±¾ÎÄ¼ş¹¦ÄÜ£º
-	1¡¢·Å±» hanoi_main.cpp/hanoi_menu.cpp ÖĞµÄ¸÷º¯Êıµ÷ÓÃµÄ²Ëµ¥¸÷Ïî¶ÔÓ¦µÄÖ´ĞĞº¯Êı
+	 æœ¬æ–‡ä»¶åŠŸèƒ½ï¼š
+	1ã€æ”¾è¢« hanoi_main.cpp/hanoi_menu.cpp ä¸­çš„å„å‡½æ•°è°ƒç”¨çš„èœå•å„é¡¹å¯¹åº”çš„æ‰§è¡Œå‡½æ•°
 
-	 ±¾ÎÄ¼şÒªÇó£º
-	1¡¢²»ÔÊĞí¶¨ÒåÍâ²¿È«¾Ö±äÁ¿£¨const¼°#define²»ÔÚÏŞÖÆ·¶Î§ÄÚ£©
-	2¡¢ÔÊĞí¶¨Òå¾²Ì¬È«¾Ö±äÁ¿£¨¾ßÌåĞèÒªµÄÊıÁ¿²»Òª³¬¹ıÎÄµµÏÔÊ¾£¬È«¾Ö±äÁ¿µÄÊ¹ÓÃ×¼ÔòÊÇ£ºÉÙÓÃ¡¢É÷ÓÃ¡¢ÄÜ²»ÓÃ¾¡Á¿²»ÓÃ£©
-	3¡¢¾²Ì¬¾Ö²¿±äÁ¿µÄÊıÁ¿²»ÏŞÖÆ£¬µ«Ê¹ÓÃ×¼ÔòÒ²ÊÇ£ºÉÙÓÃ¡¢É÷ÓÃ¡¢ÄÜ²»ÓÃ¾¡Á¿²»ÓÃ
-	4¡¢°´Ğè¼ÓÈëÏµÍ³Í·ÎÄ¼ş¡¢×Ô¶¨ÒåÍ·ÎÄ¼ş¡¢ÃüÃû¿Õ¼äµÈ
+	 æœ¬æ–‡ä»¶è¦æ±‚ï¼š
+	1ã€ä¸å…è®¸å®šä¹‰å¤–éƒ¨å…¨å±€å˜é‡ï¼ˆconståŠ#defineä¸åœ¨é™åˆ¶èŒƒå›´å†…ï¼‰
+	2ã€å…è®¸å®šä¹‰é™æ€å…¨å±€å˜é‡ï¼ˆå…·ä½“éœ€è¦çš„æ•°é‡ä¸è¦è¶…è¿‡æ–‡æ¡£æ˜¾ç¤ºï¼Œå…¨å±€å˜é‡çš„ä½¿ç”¨å‡†åˆ™æ˜¯ï¼šå°‘ç”¨ã€æ…ç”¨ã€èƒ½ä¸ç”¨å°½é‡ä¸ç”¨ï¼‰
+	3ã€é™æ€å±€éƒ¨å˜é‡çš„æ•°é‡ä¸é™åˆ¶ï¼Œä½†ä½¿ç”¨å‡†åˆ™ä¹Ÿæ˜¯ï¼šå°‘ç”¨ã€æ…ç”¨ã€èƒ½ä¸ç”¨å°½é‡ä¸ç”¨
+	4ã€æŒ‰éœ€åŠ å…¥ç³»ç»Ÿå¤´æ–‡ä»¶ã€è‡ªå®šä¹‰å¤´æ–‡ä»¶ã€å‘½åç©ºé—´ç­‰
 
    ----------------------------------------- */
 
-int i;//¼Ç²½Êı
-int a[10];//aÖù
-int b[10];//bÖù
-int c[10];//cÖù
-int top_A, top_B, top_C;//Èı¸öÕ»¶¥Ö¸Õë
-int speed;//ËÙ¶È
+int i;//è®°æ­¥æ•°
+int a[10];//aæŸ±
+int b[10];//bæŸ±
+int c[10];//cæŸ±
+int top_A, top_B, top_C;//ä¸‰ä¸ªæ ˆé¡¶æŒ‡é’ˆ
+int speed;//é€Ÿåº¦
 
 
 /*
-ÒÆ¶¯ÅÌ×Ó(xÆğÊ¼Î»ÖÃ,yÖÕÖ¹Î»ÖÃ,Õ»¶¥Ö¸Õë¶¨Î»ÒÆ³öµÄÎ»ÖÃ,ÓÃb[top_B]´«ÈëÒÆ¶¯¿éµÄ²ãÊı,²ãÊı¶ÔÓ¦ÏàÓ¦µÄÑÕÉ«,¼´µÚi²ãµÄÑÕÉ«¶ÔÓ¦µÄcolorÖµÎªi)
-¸ù¾İfrom/to£¬top_from¶¨Î»µ½Ä³¸öÖùµÄÖĞ¼äÎ»ÖÃ,»ñµÃÕâ¸öÎ»ÖÃÉÏµÄÉ«¿éÑÕÉ«
-×óÓÒ·Ö±ğ²Á³ı³¤¶ÈÎªÒÆ¶¯¿é³¤¶ÈµÄÉ«¿é
-ÉÏÒÆ,²Á³ı(Ö±µ½ÉÏÏŞÎ»ÖÃ)
-·ÖÇé¿ö×óÒÆ»òÓÒÒÆ,Ö±µ½É«¿éÖĞ¼äÎ»ÖÃ´ïµ½A/B/C
-ÏÂÒÆÖÁtop_toµÄÎ»ÖÃ
+ç§»åŠ¨ç›˜å­(xèµ·å§‹ä½ç½®,yç»ˆæ­¢ä½ç½®,æ ˆé¡¶æŒ‡é’ˆå®šä½ç§»å‡ºçš„ä½ç½®,ç”¨b[top_B]ä¼ å…¥ç§»åŠ¨å—çš„å±‚æ•°,å±‚æ•°å¯¹åº”ç›¸åº”çš„é¢œè‰²,å³ç¬¬iå±‚çš„é¢œè‰²å¯¹åº”çš„colorå€¼ä¸ºi)
+æ ¹æ®from/toï¼Œtop_fromå®šä½åˆ°æŸä¸ªæŸ±çš„ä¸­é—´ä½ç½®,è·å¾—è¿™ä¸ªä½ç½®ä¸Šçš„è‰²å—é¢œè‰²
+å·¦å³åˆ†åˆ«æ“¦é™¤é•¿åº¦ä¸ºç§»åŠ¨å—é•¿åº¦çš„è‰²å—
+ä¸Šç§»,æ“¦é™¤(ç›´åˆ°ä¸Šé™ä½ç½®)
+åˆ†æƒ…å†µå·¦ç§»æˆ–å³ç§»,ç›´åˆ°è‰²å—ä¸­é—´ä½ç½®è¾¾åˆ°A/B/C
+ä¸‹ç§»è‡³top_toçš„ä½ç½®
 */
 
-//ÅĞ¶ÏÓÎÏ·ÊÇ·ñ½áÊø
+//åˆ¤æ–­æ¸¸æˆæ˜¯å¦ç»“æŸ
 int Game_over(int n, char end)
 {
 	switch (end)
@@ -113,10 +113,10 @@ void print_cross_stack(int show)
 	}
 }
 
-//ÏòÉÏÎª1,ÏòÏÂÎª2,Ïò×óÎª3,ÏòÓÒÎª4
+//å‘ä¸Šä¸º1,å‘ä¸‹ä¸º2,å‘å·¦ä¸º3,å‘å³ä¸º4
 void clean_print(int color, int x, int y, int WASD)
 {
-	cct_showch(x - color, y, ' ', COLOR_BLACK, COLOR_BLACK, 2 * color + 1);//¸²¸ÇÔ­ÓĞÎ»ÖÃ
+	cct_showch(x - color, y, ' ', COLOR_BLACK, COLOR_BLACK, 2 * color + 1);//è¦†ç›–åŸæœ‰ä½ç½®
 	if (WASD == 1)
 		y--;
 	if (WASD == 2)
@@ -125,20 +125,20 @@ void clean_print(int color, int x, int y, int WASD)
 		x--;
 	if (WASD == 4)
 		x++;
-	cct_showch(x - color, y, ' ', color, COLOR_BLACK, 2 * color + 1);//ÔÚÏÂÒ»¸öÎ»ÖÃÉú³É
+	cct_showch(x - color, y, ' ', color, COLOR_BLACK, 2 * color + 1);//åœ¨ä¸‹ä¸€ä¸ªä½ç½®ç”Ÿæˆ
 	Sleep(50 - speed * 10);
 	cct_setcolor(COLOR_BLACK, COLOR_WHITE);
 }
 
-//ÒÆ¶¯ÅÌ×Ó
+//ç§»åŠ¨ç›˜å­
 void move_plate(char start, char end, int top_from, int top_to, int change)
 {
 	int DEBUG = 0;
-	const int Y_MAX = 2;//ÉÏÒÆµÄÉÏÏŞÎ»ÖÃ
-	const int X_A = 12;//AÖùÕıÖĞ¼ä
-	const int X_B = 44;//BÖùÕıÖĞ¼ä
-	const int X_C = 76;//CÖùÕıÖĞ¼ä
-	int X, Y;//¼ÇÂ¼¿éµÄÎ»ÖÃ
+	const int Y_MAX = 2;//ä¸Šç§»çš„ä¸Šé™ä½ç½®
+	const int X_A = 12;//AæŸ±æ­£ä¸­é—´
+	const int X_B = 44;//BæŸ±æ­£ä¸­é—´
+	const int X_C = 76;//CæŸ±æ­£ä¸­é—´
+	int X, Y;//è®°å½•å—çš„ä½ç½®
 	switch (start)
 	{
 		case 'A':
@@ -146,19 +146,19 @@ void move_plate(char start, char end, int top_from, int top_to, int change)
 			{
 				X = X_A;
 				Y = 15 - top_from;
-				while (Y > Y_MAX)//ÉÏÒÆ
+				while (Y > Y_MAX)//ä¸Šç§»
 				{
 					clean_print(change, X_A, Y, 1);
 					cct_showch(X_A, Y, ' ', COLOR_HYELLOW, COLOR_BLACK, 1);
 					Y--;
 				}
-				while (X < X_B)//ÓÒÒÆ
+				while (X < X_B)//å³ç§»
 				{
 					clean_print(change, X, Y_MAX, 4);
 					//cct_showch(0, Y_MAX, ' ', COLOR_BLACK, COLOR_BLACK, 80);
 					X++;
 				}
-				while (Y < 14 - top_to)//ÏÂÒÆ
+				while (Y < 14 - top_to)//ä¸‹ç§»
 				{
 					clean_print(change, X_B, Y, 2);
 					if (DEBUG > 0)
@@ -171,19 +171,19 @@ void move_plate(char start, char end, int top_from, int top_to, int change)
 			{
 				X = X_A;
 				Y = 15 - top_from;
-				while (Y > Y_MAX)//ÉÏÒÆ
+				while (Y > Y_MAX)//ä¸Šç§»
 				{
 					clean_print(change, X_A, Y, 1);
 					cct_showch(X_A, Y, ' ', COLOR_HYELLOW, COLOR_BLACK, 1);
 					Y--;
 				}
-				while (X < X_C)//ÓÒÒÆ
+				while (X < X_C)//å³ç§»
 				{
 					clean_print(change, X, Y_MAX, 4);
 					//cct_showch(0, Y_MAX, ' ', COLOR_BLACK, COLOR_BLACK, 80);
 					X++;
 				}
-				while (Y < 14 - top_to)//ÏÂÒÆ
+				while (Y < 14 - top_to)//ä¸‹ç§»
 				{
 					clean_print(change, X_C, Y, 2);
 					if (DEBUG > 0)
@@ -198,19 +198,19 @@ void move_plate(char start, char end, int top_from, int top_to, int change)
 			{
 				X = X_B;
 				Y = 15 - top_from;
-				while (Y > Y_MAX)//ÉÏÒÆ
+				while (Y > Y_MAX)//ä¸Šç§»
 				{
 					clean_print(change, X_B, Y, 1);
 					cct_showch(X_B, Y, ' ', COLOR_HYELLOW, COLOR_BLACK, 1);
 					Y--;
 				}
-				while (X > X_A)//×óÒÆ
+				while (X > X_A)//å·¦ç§»
 				{
 					clean_print(change, X, Y_MAX, 3);
 					//cct_showch(0, Y_MAX, ' ', COLOR_BLACK, COLOR_BLACK, 80);
 					X--;
 				}
-				while (Y < 14 - top_to)//ÏÂÒÆ
+				while (Y < 14 - top_to)//ä¸‹ç§»
 				{
 					clean_print(change, X_A, Y, 2);
 					if (DEBUG > 0)
@@ -223,19 +223,19 @@ void move_plate(char start, char end, int top_from, int top_to, int change)
 			{
 				X = X_B;
 				Y = 15 - top_from;
-				while (Y > Y_MAX)//ÉÏÒÆ
+				while (Y > Y_MAX)//ä¸Šç§»
 				{
 					clean_print(change, X_B, Y, 1);
 					cct_showch(X_B, Y, ' ', COLOR_HYELLOW, COLOR_BLACK, 1);
 					Y--;
 				}
-				while (X < X_C)//ÓÒÒÆ
+				while (X < X_C)//å³ç§»
 				{
 					clean_print(change, X, Y_MAX, 4);
 					//cct_showch(0, Y_MAX, ' ', COLOR_BLACK, COLOR_BLACK, 80);
 					X++;
 				}
-				while (Y < 14 - top_to)//ÏÂÒÆ
+				while (Y < 14 - top_to)//ä¸‹ç§»
 				{
 					clean_print(change, X_C, Y, 2);
 					if (DEBUG > 0)
@@ -251,19 +251,19 @@ void move_plate(char start, char end, int top_from, int top_to, int change)
 			{
 				X = X_C;
 				Y = 15 - top_from;
-				while (Y > Y_MAX)//ÉÏÒÆ
+				while (Y > Y_MAX)//ä¸Šç§»
 				{
 					clean_print(change, X_C, Y, 1);
 					cct_showch(X_C, Y, ' ', COLOR_HYELLOW, COLOR_BLACK, 1);
 					Y--;
 				}
-				while (X > X_A)//×óÒÆ
+				while (X > X_A)//å·¦ç§»
 				{
 					clean_print(change, X, Y_MAX, 3);
 					//cct_showch(0, Y_MAX, ' ', COLOR_BLACK, COLOR_BLACK, 80);
 					X--;
 				}
-				while (Y < 14 - top_to)//ÏÂÒÆ
+				while (Y < 14 - top_to)//ä¸‹ç§»
 				{
 					clean_print(change, X_A, Y, 2);
 					if (DEBUG > 0)
@@ -276,19 +276,19 @@ void move_plate(char start, char end, int top_from, int top_to, int change)
 			{
 				X = X_C;
 				Y = 15 - top_from;
-				while (Y > Y_MAX)//ÉÏÒÆ
+				while (Y > Y_MAX)//ä¸Šç§»
 				{
 					clean_print(change, X_C, Y, 1);
 					cct_showch(X_C, Y, ' ', COLOR_HYELLOW, COLOR_BLACK, 1);
 					Y--;
 				}
-				while (X > X_B)//×óÒÆ
+				while (X > X_B)//å·¦ç§»
 				{
 					clean_print(change, X, Y_MAX, 3);
 					//cct_showch(0, Y_MAX, ' ', COLOR_BLACK, COLOR_BLACK, 80);
 					X--;
 				}
-				while (Y < 14 - top_to)//ÏÂÒÆ
+				while (Y < 14 - top_to)//ä¸‹ç§»
 				{
 					clean_print(change, X_B, Y, 2);
 					if (DEBUG > 0)
@@ -303,7 +303,7 @@ void move_plate(char start, char end, int top_from, int top_to, int change)
 	cct_gotoxy(0, 32);
 }
 
-//ÑÓÊ±ÉèÖÃÏà¹Ø(SpeedÎª0Ê±,µÈ´ı»Ø³µ)
+//å»¶æ—¶è®¾ç½®ç›¸å…³(Speedä¸º0æ—¶,ç­‰å¾…å›è½¦)
 void delay(int SPEED)
 {
 	if (SPEED)
@@ -315,7 +315,7 @@ void delay(int SPEED)
 	}
 }
 
-//Êä³ö³õÊ¼µÄÊı×éÄÚÈİ
+//è¾“å‡ºåˆå§‹çš„æ•°ç»„å†…å®¹
 void print_start_group(int speed, int select)
 {
 	if (select == 4)
@@ -323,7 +323,7 @@ void print_start_group(int speed, int select)
 	if (select == 8)
 		cct_gotoxy(0, 32);
 
-	cout << "³õÊ¼:                  ";
+	cout << "åˆå§‹:                  ";
 	cout << "A:";
 	if (a[0] != 10)
 		cout << " ";
@@ -374,14 +374,14 @@ void print_start_group(int speed, int select)
 	delay(speed);
 }
 
-//¸Ä±äÊı×éÄÚÈİ,Êä³öÄÚÈİ
+//æ”¹å˜æ•°ç»„å†…å®¹,è¾“å‡ºå†…å®¹
 void stack(char x, char y, int show, bool moveplate, int n, int seven)
 {
 	void print_with_step(int, char, char);
 	if (moveplate)
 		cct_gotoxy(0, 32);
 
-	//½øÕ»,³öÕ»
+	//è¿›æ ˆ,å‡ºæ ˆ
 	int temp;
 	switch (x)
 	{
@@ -510,7 +510,7 @@ void stack(char x, char y, int show, bool moveplate, int n, int seven)
 }
 
 
-//ÅĞ¶ÏÔ´ÖùÊÇ·ñÎª¿Õ
+//åˆ¤æ–­æºæŸ±æ˜¯å¦ä¸ºç©º
 int column_empty(int input)
 {
 	switch (input)
@@ -534,7 +534,7 @@ int column_empty(int input)
 	return 1;
 }
 
-//ÅĞ¶ÏÊÇ·ñ´óÅÌÑ¹Ğ¡ÅÌ
+//åˆ¤æ–­æ˜¯å¦å¤§ç›˜å‹å°ç›˜
 int large_over_small(int input)
 {
 	switch (input)
@@ -591,16 +591,16 @@ int large_over_small(int input)
 	return -1;
 }
 
-//³õÊ¼»¯Êı×é
+//åˆå§‹åŒ–æ•°ç»„
 void spawn(char start, int level)
 {
 	for (int i = 0; i < 10; i++)
 	{
-		a[i] = b[i] = c[i] = 0;//³õÊ¼»¯
+		a[i] = b[i] = c[i] = 0;//åˆå§‹åŒ–
 	}
 
 	top_A = top_B = top_C = 0;
-	switch (start)//¿ªÊ¼µÄÊı×é×´Ì¬
+	switch (start)//å¼€å§‹çš„æ•°ç»„çŠ¶æ€
 	{
 		case 'A':
 		{
@@ -633,23 +633,23 @@ void spawn(char start, int level)
 
 }
 
-//Çé¿ö1(»ù±¾½â)µÄÊä³ö
+//æƒ…å†µ1(åŸºæœ¬è§£)çš„è¾“å‡º
 void print_1(int n, char x, char y)
 {
 	cout << n << "# ";
 	cout << x << "--->" << y << " " << endl;
 }
 
-//´ø²½ÊıµÄÊä³ö(Çé¿ö2)
+//å¸¦æ­¥æ•°çš„è¾“å‡º(æƒ…å†µ2)
 void print_with_step(int n, char x, char y)
 {
 	i++;
-	cout << "µÚ" << setw(4) << i << " ²½";
+	cout << "ç¬¬" << setw(4) << i << " æ­¥";
 	cout << "(" << setw(2) << n << "#: ";
 	cout << x << "-->" << y << ")   ";
 }
 
-//Çé¿ö3,4,8µÄÊä³ö
+//æƒ…å†µ3,4,8çš„è¾“å‡º
 void print_cross(int n, char x, char y, int select)
 {
 	if (select == 3)
@@ -686,14 +686,14 @@ void print_cross(int n, char x, char y, int select)
 	}
 }
 
-//ÊúÏò´òÓ¡(4,8¹²ÓÃ)
+//ç«–å‘æ‰“å°(4,8å…±ç”¨)
 void print_vertical(int select)
 {
 	int x = 10;
 	int y = 11;
 	if (select == 8)
 		y += 15;
-	cct_gotoxy(x, y);//AÖù
+	cct_gotoxy(x, y);//AæŸ±
 	for (int j = 0; j < 10; j++)
 	{
 		if (a[j] == 10)
@@ -713,7 +713,7 @@ void print_vertical(int select)
 		}
 	}
 
-	x = 20, y = 11;//BÖù
+	x = 20, y = 11;//BæŸ±
 	if (select == 8)
 		y += 15;
 
@@ -737,7 +737,7 @@ void print_vertical(int select)
 		}
 	}
 
-	x = 30, y = 11;//CÖù
+	x = 30, y = 11;//CæŸ±
 	if (select == 8)
 		y += 15;
 	cct_gotoxy(x, y);
@@ -763,7 +763,7 @@ void print_vertical(int select)
 	cct_gotoxy(90, 15);
 }
 
-//ÊúÏò´òÓ¡±³¾°(4,8¹²ÓÃ)
+//ç«–å‘æ‰“å°èƒŒæ™¯(4,8å…±ç”¨)
 void print_vertical_menu(int select)
 {
 	if (select == 4)
@@ -784,7 +784,7 @@ void print_vertical_menu(int select)
 	}
 }
 
-//ÒÆ¶¯(¸ù¾İselect½øĞĞ·ÖÀà)
+//ç§»åŠ¨(æ ¹æ®selectè¿›è¡Œåˆ†ç±»)
 void move(int n, char x, char y, int select)
 {
 	switch (select)
@@ -796,11 +796,11 @@ void move(int n, char x, char y, int select)
 			print_with_step(n, x, y);
 			cout << endl;
 			break;
-		case 3://3,4¹²ÓÃ
+		case 3://3,4å…±ç”¨
 		case 4:
 			print_cross(n, x, y, select);
 			break;
-		case 5://5,6,7¶¼²»Êä³öÄÚ²¿Êı×é
+		case 5://5,6,7éƒ½ä¸è¾“å‡ºå†…éƒ¨æ•°ç»„
 		case 6:
 			break;
 		case 7:
@@ -815,7 +815,7 @@ void move(int n, char x, char y, int select)
 	}
 }
 
-//ººÅµËşµİ¹éº¯Êı
+//æ±‰è¯ºå¡”é€’å½’å‡½æ•°
 void hanoi(int n, char src, char tmp, char dst, int select)
 {
 	if (n == 1)

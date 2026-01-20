@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 
 #include<iostream>
 #include<Windows.h>
@@ -7,7 +7,7 @@
 #include"mine_sweeper.h"
 using namespace std;
 
-/*»ñÈ¡Ö÷²Ëµ¥ÖĞµÄÑ¡Ïî*/
+/*è·å–ä¸»èœå•ä¸­çš„é€‰é¡¹*/
 void get_choice(int* select)
 {
 	while (1)
@@ -18,7 +18,7 @@ void get_choice(int* select)
 	}
 }
 
-/*»ñÈ¡ÄÑ¶È*/
+/*è·å–éš¾åº¦*/
 void get_difficulty(int* d)
 {
 	while (1)
@@ -29,29 +29,29 @@ void get_difficulty(int* d)
 	}
 }
 
-/*»ñÈ¡ÃüÁî,¶ÔÓ¦ÏàÓ¦µÄÊı×éÏÂ±ê*//*·ÖÈıÖÖÇé¿ö·Ö±ğÉè¶¨·¶Î§*/
-/*MARK±íÊ¾ÊÇ·ñ¿ªÆô!,&,#¶ÔÓ¦µÄ¹¦ÄÜ*//*´«ÈëÁ½¸ö×ø±êÖµ*/
-/*·µ»ØÖµ: 0ÍË³öÓÎÏ·,1´ò¿ªÀ×Õó,2±ê¼ÇÀ×Õó,-1È¡Ïû±ê¼Ç,-2ÏÔÊ¾Ê±¼ä*/
+/*è·å–å‘½ä»¤,å¯¹åº”ç›¸åº”çš„æ•°ç»„ä¸‹æ ‡*//*åˆ†ä¸‰ç§æƒ…å†µåˆ†åˆ«è®¾å®šèŒƒå›´*/
+/*MARKè¡¨ç¤ºæ˜¯å¦å¼€å¯!,&,#å¯¹åº”çš„åŠŸèƒ½*//*ä¼ å…¥ä¸¤ä¸ªåæ ‡å€¼*/
+/*è¿”å›å€¼: 0é€€å‡ºæ¸¸æˆ,1æ‰“å¼€é›·é˜µ,2æ ‡è®°é›·é˜µ,-1å–æ¶ˆæ ‡è®°,-2æ˜¾ç¤ºæ—¶é—´*/
 int fetch_instruction(int* x, int* y, int select, bool MARK)
 {
 
 	char temp1;
 	char temp2;
 
-	/*×î¶àµÄÊäÈëÊÇÈı¸ö×Ö·û*/
-	if (MARK)/*±ê¼Ç,ÏÔÊ¾Ê±¼ä¹¦ÄÜ¿ªÆô*/
+	/*æœ€å¤šçš„è¾“å…¥æ˜¯ä¸‰ä¸ªå­—ç¬¦*/
+	if (MARK)/*æ ‡è®°,æ˜¾ç¤ºæ—¶é—´åŠŸèƒ½å¼€å¯*/
 	{
 		cout << endl << endl
-			<< "ÌØÊâÊäÈëËµÃ÷£º& - ÓÎÏ·ÒÑÔËĞĞÊ±¼ä(µ¥×Ö·û¼´¿É£¬²»ĞèÒª¼Ó×ø±ê)" << endl
-			<< "              ! - ±ê¼Ç¸Ã×ø±êÎªÀ×(Àı£º!E3)" << endl
-			<< "              # - È¡Ïû±ê¼Ç      (Àı£º#E3)" << endl
-			<< "ÇëÊäÈë£¨×ø±ê±ØĞëÏÈĞĞºóÁĞ£¬ÑÏ¸ñÇø·Ö´óĞ¡Ğ´£¬Àı£ºG1 / Af£¬°´Q / qÍË³ö£©£º ";
+			<< "ç‰¹æ®Šè¾“å…¥è¯´æ˜ï¼š& - æ¸¸æˆå·²è¿è¡Œæ—¶é—´(å•å­—ç¬¦å³å¯ï¼Œä¸éœ€è¦åŠ åæ ‡)" << endl
+			<< "              ! - æ ‡è®°è¯¥åæ ‡ä¸ºé›·(ä¾‹ï¼š!E3)" << endl
+			<< "              # - å–æ¶ˆæ ‡è®°      (ä¾‹ï¼š#E3)" << endl
+			<< "è¯·è¾“å…¥ï¼ˆåæ ‡å¿…é¡»å…ˆè¡Œååˆ—ï¼Œä¸¥æ ¼åŒºåˆ†å¤§å°å†™ï¼Œä¾‹ï¼šG1 / Afï¼ŒæŒ‰Q / qé€€å‡ºï¼‰ï¼š ";
 		int j = 0;
 		char ch[3];
 		while (j < 3)
 		{
 			temp1 = _getch();
-			if (temp1 == 0 || temp1 == -32)//·½Ïò¼ü
+			if (temp1 == 0 || temp1 == -32)//æ–¹å‘é”®
 			{
 				temp1 = _getch();
 				continue;
@@ -59,25 +59,25 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 			if (temp1 == 'q' || temp1 == 'Q')
 			{
 				cout << temp1;
-				return 0;//ÍË³öÓÎÏ·
+				return 0;//é€€å‡ºæ¸¸æˆ
 			}
 			else if (temp1 == '&')
 			{
 				cout << temp1;
-				return -2;//ÏÔÊ¾Ê±¼ä
+				return -2;//æ˜¾ç¤ºæ—¶é—´
 			}
-			else if (temp1 == '!')//±ê¼Ç
+			else if (temp1 == '!')//æ ‡è®°
 			{
 				ch[j++] = temp1;
 				cout << ch[0];
 				while (j < 3)
 				{
 					temp1 = _getch();
-					//ÊäÈë²¿·Ö
+					//è¾“å…¥éƒ¨åˆ†
 					switch (select)
 					{
-						case '1'://ĞĞµÄ×ø±êÎªA-I,ÁĞµÄ×ø±êÎª1-9
-							if (j == 1)//ÊäÈëĞĞ
+						case '1'://è¡Œçš„åæ ‡ä¸ºA-I,åˆ—çš„åæ ‡ä¸º1-9
+							if (j == 1)//è¾“å…¥è¡Œ
 							{
 								if (temp1 >= 'A' && temp1 <= 'I')
 								{
@@ -87,7 +87,7 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							if (j == 2)//ÊäÈëÁĞ
+							if (j == 2)//è¾“å…¥åˆ—
 							{
 								temp2 = _getch();
 								if (temp2 >= '1' && temp2 <= '9')
@@ -98,12 +98,12 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							//µÃµ½×ø±ê
+							//å¾—åˆ°åæ ‡
 							*x = ch[1] - 'A' + 1;
 							*y = ch[2] - '0';
 							break;
-						case '2'://ĞĞµÄ×ø±êÎªA-P,ÁĞµÄ×ø±êÎª1-9,a-g
-							if (j == 1)//ÊäÈëĞĞ
+						case '2'://è¡Œçš„åæ ‡ä¸ºA-P,åˆ—çš„åæ ‡ä¸º1-9,a-g
+							if (j == 1)//è¾“å…¥è¡Œ
 							{
 								if (temp1 >= 'A' && temp1 <= 'P')
 								{
@@ -113,7 +113,7 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							if (j == 2)//ÊäÈëÁĞ
+							if (j == 2)//è¾“å…¥åˆ—
 							{
 								temp2 = _getch();
 								if (temp2 >= '1' && temp2 <= '9')
@@ -131,11 +131,11 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							//µÃµ½×ø±ê
+							//å¾—åˆ°åæ ‡
 							*x = ch[1] - 'A' + 1;
 							break;
-						case '3'://ĞĞµÄ×ø±êÎªA-P,ÁĞµÄ×ø±êÎª1-9,a-u
-							if (j == 1)//ÊäÈëĞĞ
+						case '3'://è¡Œçš„åæ ‡ä¸ºA-P,åˆ—çš„åæ ‡ä¸º1-9,a-u
+							if (j == 1)//è¾“å…¥è¡Œ
 							{
 								if (temp1 >= 'A' && temp1 <= 'P')
 								{
@@ -145,7 +145,7 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							if (j == 2)//ÊäÈëÁĞ
+							if (j == 2)//è¾“å…¥åˆ—
 							{
 								temp2 = _getch();
 								if (temp2 >= '1' && temp2 <= '9')
@@ -163,26 +163,26 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							//µÃµ½×ø±ê
+							//å¾—åˆ°åæ ‡
 							*x = ch[1] - 'A' + 1;
 							break;
 
 					}
 				}
-				return 2;//±ê¼ÇÀ×Õó
+				return 2;//æ ‡è®°é›·é˜µ
 			}
-			else if (temp1 == '#')//È¡Ïû±ê¼Ç
+			else if (temp1 == '#')//å–æ¶ˆæ ‡è®°
 			{
 				ch[j++] = temp1;
 				cout << ch[0];
 				while (j < 3)
 				{
 					temp1 = _getch();
-					//ÊäÈë²¿·Ö
+					//è¾“å…¥éƒ¨åˆ†
 					switch (select)
 					{
-						case '1'://ĞĞµÄ×ø±êÎªA-I,ÁĞµÄ×ø±êÎª1-9
-							if (j == 1)//ÊäÈëĞĞ
+						case '1'://è¡Œçš„åæ ‡ä¸ºA-I,åˆ—çš„åæ ‡ä¸º1-9
+							if (j == 1)//è¾“å…¥è¡Œ
 							{
 								if (temp1 >= 'A' && temp1 <= 'I')
 								{
@@ -192,7 +192,7 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							if (j == 2)//ÊäÈëÁĞ
+							if (j == 2)//è¾“å…¥åˆ—
 							{
 								temp2 = _getch();
 								if (temp2 >= '1' && temp2 <= '9')
@@ -203,12 +203,12 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							//µÃµ½×ø±ê
+							//å¾—åˆ°åæ ‡
 							*x = ch[1] - 'A' + 1;
 							*y = ch[2] - '0';
 							break;
-						case '2'://ĞĞµÄ×ø±êÎªA-P,ÁĞµÄ×ø±êÎª1-9,a-g
-							if (j == 1)//ÊäÈëĞĞ
+						case '2'://è¡Œçš„åæ ‡ä¸ºA-P,åˆ—çš„åæ ‡ä¸º1-9,a-g
+							if (j == 1)//è¾“å…¥è¡Œ
 							{
 								if (temp1 >= 'A' && temp1 <= 'P')
 								{
@@ -218,7 +218,7 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							if (j == 2)//ÊäÈëÁĞ
+							if (j == 2)//è¾“å…¥åˆ—
 							{
 								temp2 = _getch();
 								if (temp2 >= '1' && temp2 <= '9')
@@ -236,11 +236,11 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							//µÃµ½×ø±ê
+							//å¾—åˆ°åæ ‡
 							*x = ch[1] - 'A' + 1;
 							break;
-						case '3'://ĞĞµÄ×ø±êÎªA-P,ÁĞµÄ×ø±êÎª1-9,a-u
-							if (j == 1)//ÊäÈëĞĞ
+						case '3'://è¡Œçš„åæ ‡ä¸ºA-P,åˆ—çš„åæ ‡ä¸º1-9,a-u
+							if (j == 1)//è¾“å…¥è¡Œ
 							{
 								if (temp1 >= 'A' && temp1 <= 'P')
 								{
@@ -250,7 +250,7 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							if (j == 2)//ÊäÈëÁĞ
+							if (j == 2)//è¾“å…¥åˆ—
 							{
 								temp2 = _getch();
 								if (temp2 >= '1' && temp2 <= '9')
@@ -268,25 +268,25 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							//µÃµ½×ø±ê
+							//å¾—åˆ°åæ ‡
 							*x = ch[1] - 'A' + 1;
 							break;
 
 					}
 				}
-				return -1;//È¡Ïû±ê¼Ç
+				return -1;//å–æ¶ˆæ ‡è®°
 			}
-			//´ò¿ªÀ×Õó
+			//æ‰“å¼€é›·é˜µ
 			else
 			{
 				j = 1;
 				while (j < 3)
 				{
-					//ÊäÈë²¿·Ö
+					//è¾“å…¥éƒ¨åˆ†
 					switch (select)
 					{
-						case '1'://ĞĞµÄ×ø±êÎªA-I,ÁĞµÄ×ø±êÎª1-9
-							if (j == 1)//ÊäÈëĞĞ
+						case '1'://è¡Œçš„åæ ‡ä¸ºA-I,åˆ—çš„åæ ‡ä¸º1-9
+							if (j == 1)//è¾“å…¥è¡Œ
 							{
 								if (temp1 >= 'A' && temp1 <= 'I')
 								{
@@ -296,7 +296,7 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							if (j == 2)//ÊäÈëÁĞ
+							if (j == 2)//è¾“å…¥åˆ—
 							{
 								temp2 = _getch();
 								if (temp2 >= '1' && temp2 <= '9')
@@ -307,12 +307,12 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							//µÃµ½×ø±ê
+							//å¾—åˆ°åæ ‡
 							*x = ch[1] - 'A' + 1;
 							*y = ch[2] - '0';
 							break;
-						case '2'://ĞĞµÄ×ø±êÎªA-P,ÁĞµÄ×ø±êÎª1-9,a-g
-							if (j == 1)//ÊäÈëĞĞ
+						case '2'://è¡Œçš„åæ ‡ä¸ºA-P,åˆ—çš„åæ ‡ä¸º1-9,a-g
+							if (j == 1)//è¾“å…¥è¡Œ
 							{
 								if (temp1 >= 'A' && temp1 <= 'P')
 								{
@@ -322,7 +322,7 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							if (j == 2)//ÊäÈëÁĞ
+							if (j == 2)//è¾“å…¥åˆ—
 							{
 								temp2 = _getch();
 								if (temp2 >= '1' && temp2 <= '9')
@@ -340,11 +340,11 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							//µÃµ½×ø±ê
+							//å¾—åˆ°åæ ‡
 							*x = ch[1] - 'A' + 1;
 							break;
-						case '3'://ĞĞµÄ×ø±êÎªA-P,ÁĞµÄ×ø±êÎª1-9,a-u
-							if (j == 1)//ÊäÈëĞĞ
+						case '3'://è¡Œçš„åæ ‡ä¸ºA-P,åˆ—çš„åæ ‡ä¸º1-9,a-u
+							if (j == 1)//è¾“å…¥è¡Œ
 							{
 								if (temp1 >= 'A' && temp1 <= 'P')
 								{
@@ -354,7 +354,7 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							if (j == 2)//ÊäÈëÁĞ
+							if (j == 2)//è¾“å…¥åˆ—
 							{
 								temp2 = _getch();
 								if (temp2 >= '1' && temp2 <= '9')
@@ -372,7 +372,7 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 								else
 									continue;
 							}
-							//µÃµ½×ø±ê
+							//å¾—åˆ°åæ ‡
 							*x = ch[1] - 'A' + 1;
 							break;
 
@@ -384,16 +384,16 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 
 	}
 
-	else/*»ù´¡¹¦ÄÜ,Ö»ĞèÒª»ñÈ¡Á½¸ö×Ö·û,·µ»ØÆä¶ÔÓ¦µÄ*/
+	else/*åŸºç¡€åŠŸèƒ½,åªéœ€è¦è·å–ä¸¤ä¸ªå­—ç¬¦,è¿”å›å…¶å¯¹åº”çš„*/
 	{
 		cout << endl << endl
-			<< "ÊäÈë·ÇÀ×Î»ÖÃµÄĞĞÁĞ×ø±ê£¨ÏÈĞĞºóÁĞ£¬ÑÏ¸ñÇø·Ö´óĞ¡Ğ´£¬Àı£ºG1/Af£¬°´Q/qÍË³ö£©£º";
+			<< "è¾“å…¥éé›·ä½ç½®çš„è¡Œåˆ—åæ ‡ï¼ˆå…ˆè¡Œååˆ—ï¼Œä¸¥æ ¼åŒºåˆ†å¤§å°å†™ï¼Œä¾‹ï¼šG1/Afï¼ŒæŒ‰Q/qé€€å‡ºï¼‰ï¼š";
 		char sh[2];
 		int i = 0;
 		while (i < 2)
 		{
 			temp1 = _getch();
-			if (temp1 == 0 || temp1 == -32)//·½Ïò¼ü
+			if (temp1 == 0 || temp1 == -32)//æ–¹å‘é”®
 			{
 				temp1 = _getch();
 				continue;
@@ -401,13 +401,13 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 			if (temp1 == 'q' || temp1 == 'Q')
 			{
 				cout << temp1;
-				return 0;//ÍË³öÓÎÏ·
+				return 0;//é€€å‡ºæ¸¸æˆ
 			}
-			//ÊäÈë²¿·Ö
+			//è¾“å…¥éƒ¨åˆ†
 			switch (select)
 			{
-				case '1'://ĞĞµÄ×ø±êÎªA-I,ÁĞµÄ×ø±êÎª1-9
-					if (i == 0)//ÊäÈëĞĞ
+				case '1'://è¡Œçš„åæ ‡ä¸ºA-I,åˆ—çš„åæ ‡ä¸º1-9
+					if (i == 0)//è¾“å…¥è¡Œ
 					{
 						if (temp1 >= 'A' && temp1 <= 'I')
 						{
@@ -417,7 +417,7 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 						else
 							continue;
 					}
-					if (i == 1)//ÊäÈëÁĞ
+					if (i == 1)//è¾“å…¥åˆ—
 					{
 						temp2 = _getch();
 						if (temp2 >= '1' && temp2 <= '9')
@@ -428,12 +428,12 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 						else
 							continue;
 					}
-					//µÃµ½×ø±ê
+					//å¾—åˆ°åæ ‡
 					*x = sh[0] - 'A' + 1;
 					*y = sh[1] - '0';
 					break;
-				case '2'://ĞĞµÄ×ø±êÎªA-P,ÁĞµÄ×ø±êÎª1-9,a-g
-					if (i == 0)//ÊäÈëĞĞ
+				case '2'://è¡Œçš„åæ ‡ä¸ºA-P,åˆ—çš„åæ ‡ä¸º1-9,a-g
+					if (i == 0)//è¾“å…¥è¡Œ
 					{
 						if (temp1 >= 'A' && temp1 <= 'P')
 						{
@@ -443,7 +443,7 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 						else
 							continue;
 					}
-					if (i == 1)//ÊäÈëÁĞ
+					if (i == 1)//è¾“å…¥åˆ—
 					{
 						temp2 = _getch();
 						if (temp2 >= '1' && temp2 <= '9')
@@ -461,11 +461,11 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 						else
 							continue;
 					}
-					//µÃµ½×ø±ê
+					//å¾—åˆ°åæ ‡
 					*x = sh[0] - 'A' + 1;
 					break;
-				case '3'://ĞĞµÄ×ø±êÎªA-P,ÁĞµÄ×ø±êÎª1-9,a-u
-					if (i == 0)//ÊäÈëĞĞ
+				case '3'://è¡Œçš„åæ ‡ä¸ºA-P,åˆ—çš„åæ ‡ä¸º1-9,a-u
+					if (i == 0)//è¾“å…¥è¡Œ
 					{
 						if (temp1 >= 'A' && temp1 <= 'P')
 						{
@@ -475,7 +475,7 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 						else
 							continue;
 					}
-					if (i == 1)//ÊäÈëÁĞ
+					if (i == 1)//è¾“å…¥åˆ—
 					{
 						temp2 = _getch();
 						if (temp2 >= '1' && temp2 <= '9')
@@ -493,13 +493,13 @@ int fetch_instruction(int* x, int* y, int select, bool MARK)
 						else
 							continue;
 					}
-					//µÃµ½×ø±ê
+					//å¾—åˆ°åæ ‡
 					*x = sh[0] - 'A' + 1;
 					break;
 
 			}
 
-			//´ò¿ªÀ×Õó
+			//æ‰“å¼€é›·é˜µ
 			return 1;
 		}
 	}

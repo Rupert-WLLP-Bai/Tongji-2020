@@ -13,7 +13,7 @@ int g(unsigned int a, unsigned int b)
 	}
 	return a;
 }
-/*ÎÊÌâ2µÄ²âÊÔº¯Êı*/
+/*é—®é¢˜2çš„æµ‹è¯•å‡½æ•°*/
 void f2()
 {
 	static int a = 5;

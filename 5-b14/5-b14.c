@@ -1,5 +1,5 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
-/*ÒÑÑéÖ¤ 2052312 ĞíÖ¾¿µ¡¢2052521 ÕÅÒ«Òü¡¢2052849 ëøÃ÷öÎ¡¢2052081 Ö£ĞÛ¡¢2051500 ¶ÅÆæÎµ µÄÉ¨À×ÄÚ²¿Êı×é*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
+/*å·²éªŒè¯ 2052312 è®¸å¿—åº·ã€2052521 å¼ è€€å°¹ã€2052849 æ»•æ˜é‘«ã€2052081 éƒ‘é›„ã€2051500 æœå¥‡è”š çš„æ‰«é›·å†…éƒ¨æ•°ç»„*/
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<string.h>
@@ -31,7 +31,7 @@ int Num_of_mine(int i, int j, bool mine[12][28])
 	return num;
 }
 
-int check_2(char ch[12][100],int a[12][28],bool mine[12][28])//ÕıÈ··µ»Ø0£¬·ñÔò·µ»Ø-2
+int check_2(char ch[12][100],int a[12][28],bool mine[12][28])//æ­£ç¡®è¿”å›0ï¼Œå¦åˆ™è¿”å›-2
 {
 	for (int i = 1; i < 11; i++)
 	{
@@ -60,7 +60,7 @@ int main()
 		fgets(sh[i], 100, stdin);
 	}
 
-	for (int i = 1; i < 11; i++)//ÖØĞÂĞ´ÈëchÖĞ
+	for (int i = 1; i < 11; i++)//é‡æ–°å†™å…¥chä¸­
 	{
 		k = 0;
 		for(int j = 0; j < 60; j++)
@@ -72,7 +72,7 @@ int main()
 		}
 	}
 
-	for (int i = 1; i < 11; i++)//¹¹½¨boolĞÍÀ×Õó
+	for (int i = 1; i < 11; i++)//æ„å»ºboolå‹é›·é˜µ
 	{
 		for (int j = 1; j < 27; j++)
 		{
@@ -81,7 +81,7 @@ int main()
 		}
 	}
 
-	for (int i = 1; i < 11; i++)//ÖØĞÂ¼ÆËãÀ×Êı
+	for (int i = 1; i < 11; i++)//é‡æ–°è®¡ç®—é›·æ•°
 	{
 		for (int j = 1; j < 27; j++)
 		{
@@ -89,7 +89,7 @@ int main()
 		}
 	}
 	
-	//À×Õó0/1²âÊÔ
+	//é›·é˜µ0/1æµ‹è¯•
 	/*for (int i = 0; i < 12; i++)
 	{
 		for (int j = 0; j < 28; j++)
@@ -99,15 +99,15 @@ int main()
 		printf("\n");
 	}*/
 
-	//5-b13½á¹û
+	//5-b13ç»“æœ
 	/*for (int i = 0; i < 12; i++)
 	{
 		puts(ch[i]);
 	}*/
 
 
-	//À×Õó0/1²âÊÔ
-	/*printf("boolĞÍÀ×Õó : \n");
+	//é›·é˜µ0/1æµ‹è¯•
+	/*printf("boolå‹é›·é˜µ : \n");
 	for (int i = 1; i < 11; i++)
 	{
 		for (int j = 1; j < 27; j++)
@@ -117,8 +117,8 @@ int main()
 		printf("\n");
 	}*/
 
-	//ch²âÊÔ
-	/*printf("ch(ÊäÈëµÄÖµ) : \n");
+	//chæµ‹è¯•
+	/*printf("ch(è¾“å…¥çš„å€¼) : \n");
 	for (int i = 1; i < 11; i++)
 	{
 		for (int j = 1; j < 27; j++)
@@ -128,8 +128,8 @@ int main()
 		printf("\n");
 	}*/
 
-	//a²âÊÔ
-	/*printf("ÖØĞÂ¼ÆËãµÄÖµ : \n");
+	//aæµ‹è¯•
+	/*printf("é‡æ–°è®¡ç®—çš„å€¼ : \n");
 	for (int i = 1; i < 11; i++)
 	{
 		for (int j = 1; j < 27; j++)
@@ -143,11 +143,11 @@ int main()
 	}*/
 
 	if (check_1(ch) == -1)
-		printf("´íÎó\n");
+		printf("é”™è¯¯\n");
 	else if (check_2(ch,a,mine) == -2)
-		printf("´íÎó\n");
+		printf("é”™è¯¯\n");
 	else
-		printf("ÕıÈ·\n");
+		printf("æ­£ç¡®\n");
 
 	return 0;
 }

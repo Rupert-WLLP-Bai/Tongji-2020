@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 using namespace std;
 
@@ -12,8 +12,8 @@ int leap_year(int year)
 
 int f(int year, int month, int day)
 {
-	int a[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };//Æ½Äê
-	int b[12] = { 31,29,31,30,31,30,31,31,30,31,30,31 };//ÈòÄê
+	int a[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };//å¹³å¹´
+	int b[12] = { 31,29,31,30,31,30,31,31,30,31,30,31 };//é—°å¹´
 	int sum = 0;
 	if (leap_year(year))
 	{
@@ -38,13 +38,13 @@ int f(int year, int month, int day)
 int main()
 {
 	int year, month, day;
-	cout << "ÇëÊäÈëÄê,ÔÂ,ÈÕ : " << endl;
-	cin >> year >> month >> day; //ÊäÈë²¿·Ö
-		//ÅĞ¶ÏÕıÈ·ĞÔ	cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << f(year,month,day) << "Ìì" << endl;
+	cout << "è¯·è¾“å…¥å¹´,æœˆ,æ—¥ : " << endl;
+	cin >> year >> month >> day; //è¾“å…¥éƒ¨åˆ†
+		//åˆ¤æ–­æ­£ç¡®æ€§	cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << f(year,month,day) << "å¤©" << endl;
 	if (year >= 2000 && year <= 2030)
 	{
 		if (month > 12 || month < 0)
-			cout << "ÔÂ·İ²»ÕıÈ·" << endl;
+			cout << "æœˆä»½ä¸æ­£ç¡®" << endl;
 		else
 		{
 			if (leap_year(year))
@@ -52,23 +52,23 @@ int main()
 				if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
 				{ 
 					if (!(day >= 1 && day <= 31))
-						cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+						cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 					else
-						cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << f(year, month, day) << "Ìì" << endl;
+						cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << f(year, month, day) << "å¤©" << endl;
 				}
 				else if(month == 4 || month == 6 || month == 9 || month == 11)
 				{
 					if (!(day >= 1 && day <= 30))
-						cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+						cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 					else
-						cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << f(year, month, day) << "Ìì" << endl;
+						cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << f(year, month, day) << "å¤©" << endl;
 				}
-				else//ÈòÄê2ÔÂ
+				else//é—°å¹´2æœˆ
 				{
 					if (!(day >= 1 && day <= 29))
-						cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+						cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 					else
-						cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << f(year, month, day) << "Ìì" << endl;
+						cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << f(year, month, day) << "å¤©" << endl;
 				}
 			}
 			else
@@ -76,30 +76,30 @@ int main()
 				if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
 				{
 					if (!(day >= 1 && day <= 31))
-						cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+						cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 					else
-						cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << f(year, month, day) << "Ìì" << endl;
+						cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << f(year, month, day) << "å¤©" << endl;
 				}
 				else if (month == 4 || month == 6 || month == 9 || month == 11)
 				{
 					if (!(day >= 1 && day <= 30))
-						cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+						cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 					else
-						cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << f(year, month, day) << "Ìì" << endl;
+						cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << f(year, month, day) << "å¤©" << endl;
 				}
-				else//Æ½Äê2ÔÂ
+				else//å¹³å¹´2æœˆ
 				{
 					if (!(day >= 1 && day <= 28))
-						cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+						cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 					else
-						cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << f(year, month, day) << "Ìì" << endl;
+						cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << f(year, month, day) << "å¤©" << endl;
 				}
 			}
 		}
 	}
 	else
 	{
-		cout << "ÊäÈë´íÎó-Äê·İÊäÈë´íÎó" << endl;
+		cout << "è¾“å…¥é”™è¯¯-å¹´ä»½è¾“å…¥é”™è¯¯" << endl;
 	}
 
 	return 0;

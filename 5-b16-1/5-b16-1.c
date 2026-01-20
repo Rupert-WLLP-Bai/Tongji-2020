@@ -1,23 +1,23 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<math.h>
 #include<string.h>
 #define SIZE 10
 
-//ÊäÈëÊı¾İ
+//è¾“å…¥æ•°æ®
 void input(char id[10][8], char name[10][8],  int score[10])
 {
 	for (int i = 0; i < SIZE; i++)
 	{
-		printf("ÇëÊäÈëµÚ%d¸öÈËµÄÑ§ºÅ¡¢ĞÕÃû¡¢³É¼¨\n", i + 1);
+		printf("è¯·è¾“å…¥ç¬¬%dä¸ªäººçš„å­¦å·ã€å§“åã€æˆç»©\n", i + 1);
 		scanf("%s", &id[i]);
 		scanf("%s", &name[i]);
 		scanf("%d", &score[i]);
 	}
 }
 
-//½»»»Ãû×Ö
+//äº¤æ¢åå­—
 void swap_name(char a[8], char b[8])
 {
 	char t[8];
@@ -29,7 +29,7 @@ void swap_name(char a[8], char b[8])
 	}
 }
 
-//½»»»id
+//äº¤æ¢id
 void swap_id(char a[8], char b[8])
 {
 	char t[8];
@@ -41,7 +41,7 @@ void swap_id(char a[8], char b[8])
 	}
 }
 
-//½»»»Á½¸ö³É¼¨µÄÖµ
+//äº¤æ¢ä¸¤ä¸ªæˆç»©çš„å€¼
 void swap_score(int score[10], int i, int j)
 {
 	int temp = score[i];
@@ -49,7 +49,7 @@ void swap_score(int score[10], int i, int j)
 	score[j] = temp;
 }
 
-//±È½ÏÑ§ºÅµÄ´óĞ¡,Ç°±Èºó´ó·µ»Ø0£¬Ç°±ÈºóĞ¡·µ»Ø1(ĞèÒªÓÃswap),ÏàµÈ·µ»Ø-1
+//æ¯”è¾ƒå­¦å·çš„å¤§å°,å‰æ¯”åå¤§è¿”å›0ï¼Œå‰æ¯”åå°è¿”å›1(éœ€è¦ç”¨swap),ç›¸ç­‰è¿”å›-1
 int compare(char a[8], char b[8])
 {
 	for (int i = 0; i < 8; i++)
@@ -64,10 +64,10 @@ int compare(char a[8], char b[8])
 	return -1;
 }
 
-//Ã°ÅİÅÅĞò
+//å†’æ³¡æ’åº
 void bubble(char id[10][8], char name[10][8], int score[10])
 {
-	//±È½ÏidµÄË³Ğò²¢½»»»Öµ
+	//æ¯”è¾ƒidçš„é¡ºåºå¹¶äº¤æ¢å€¼
 	for (int i = 0; i < SIZE - 1; i++)
 	{
 		for (int j = 0; j < SIZE - i - 1; j++)
@@ -84,7 +84,7 @@ void bubble(char id[10][8], char name[10][8], int score[10])
 
 void print_result(char id[10][8], char name[10][8], int score[10])
 {
-	printf("\n²»¼°¸ñÃûµ¥:\n");
+	printf("\nä¸åŠæ ¼åå•:\n");
 	for (int i = 0; i < SIZE; i++)
 	{
 		if (score[i] < 60)

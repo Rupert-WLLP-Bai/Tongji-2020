@@ -1,23 +1,23 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include<iostream>
 #include<cmath>
 #include<string>
 #define SIZE 10
 using namespace std;
 
-/*ÊäÈëĞÅÏ¢*/
+/*è¾“å…¥ä¿¡æ¯*/
 string input(int i)
 {
 	string a;
-	cout << "ÇëÊäÈëµÚ" << i + 1 << "¸öÈËµÄÑ§ºÅ¡¢ĞÕÃû¡¢³É¼¨" << endl;
+	cout << "è¯·è¾“å…¥ç¬¬" << i + 1 << "ä¸ªäººçš„å­¦å·ã€å§“åã€æˆç»©" << endl;
 	getline(cin, a);
 	return a;
 }
 
-/*Ã°ÅİÅÅĞò*/
+/*å†’æ³¡æ’åº*/
 void bubble(string a[SIZE])
 {
-	for (int i = 0; i < SIZE - 1; i++)//Ã°ÅİÅÅĞò
+	for (int i = 0; i < SIZE - 1; i++)//å†’æ³¡æ’åº
 	{
 		for (int j = 0; j < SIZE - i - 1; j++)
 			if (a[j] < a[j + 1])
@@ -25,23 +25,23 @@ void bubble(string a[SIZE])
 	}
 }
 
-/*µÃµ½³É¼¨µÄ×Ö·û´®*/
+/*å¾—åˆ°æˆç»©çš„å­—ç¬¦ä¸²*/
 string get_score(string a)
 {
-	a.erase(0, a.find_last_of(' ', a.size()) + 1);//×îºóÒ»¸ö¿Õ¸ñ³öÏÖµÄÎ»ÖÃÖ®Ç°µÄ²¿·ÖÈ«²¿É¾È¥
+	a.erase(0, a.find_last_of(' ', a.size()) + 1);//æœ€åä¸€ä¸ªç©ºæ ¼å‡ºç°çš„ä½ç½®ä¹‹å‰çš„éƒ¨åˆ†å…¨éƒ¨åˆ å»
 	return a;
 }
 
-/*»ñÈ¡²»¼°¸ñµÄÃûµ¥*/
+/*è·å–ä¸åŠæ ¼çš„åå•*/
 bool result(string score)
 {
-	//½«score×ªÎªÕûĞÍ
+	//å°†scoreè½¬ä¸ºæ•´å‹
 	int a = 0;
 	for (unsigned int i = 0; i < score.length(); i++)
 	{
 		a += (score[i] - '0') * int(pow(10, score.length() - i - 1));
 	}
-	int pass = 60;;//ÓÃ³É¼¨ºÍ"60"±È½Ï
+	int pass = 60;;//ç”¨æˆç»©å’Œ"60"æ¯”è¾ƒ
 
 	if (a >= 60)
 		return 1;
@@ -49,10 +49,10 @@ bool result(string score)
 		return 0;
 }
 
-/*Êä³ö½á¹û*/
+/*è¾“å‡ºç»“æœ*/
 void print_result(bool pass[SIZE], string a[SIZE])
 {
-	cout << endl << "²»¼°¸ñÃûµ¥:" << endl;
+	cout << endl << "ä¸åŠæ ¼åå•:" << endl;
 	for (int i = 0; i < SIZE; i++)
 	{
 		if (!pass[i])
@@ -62,22 +62,22 @@ void print_result(bool pass[SIZE], string a[SIZE])
 
 int main()
 {
-	string a[SIZE];//Ê®¸öÑ§Éú
-	string score[SIZE];//Ê®¸ö³É¼¨
-	bool pass[10] = { 0 };//¼ÇÂ¼ÊÇ·ñ¼°¸ñ
-	for (int i = 0; i < 10; i++)//ÊäÈë
+	string a[SIZE];//åä¸ªå­¦ç”Ÿ
+	string score[SIZE];//åä¸ªæˆç»©
+	bool pass[10] = { 0 };//è®°å½•æ˜¯å¦åŠæ ¼
+	for (int i = 0; i < 10; i++)//è¾“å…¥
 		a[i] = input(i);
 
-	bubble(a);//Ã°ÅİÅÅĞò
+	bubble(a);//å†’æ³¡æ’åº
 
-	//µÃµ½³É¼¨
+	//å¾—åˆ°æˆç»©
 	for (int i = 0; i < SIZE; i++)
 	{
 		score[i] = a[i];
 		score[i] = get_score(score[i]);
 		pass[i] = result(score[i]);
 	}
-	//Êä³ö½á¹û
+	//è¾“å‡ºç»“æœ
 	print_result(pass, a);
 
 	return 0;

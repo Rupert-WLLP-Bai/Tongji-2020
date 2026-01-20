@@ -1,6 +1,6 @@
 /* -----------------------------------------
 
-     ±¾ÎÄ¼þ²»ÐèÒªÌá½»¡¢²»ÔÊÐí¸Ä¶¯
+     æœ¬æ–‡ä»¶ä¸éœ€è¦æäº¤ã€ä¸å…è®¸æ”¹åŠ¨
 
    ----------------------------------------- */
 #define _CRT_SECURE_NO_WARNINGS
@@ -13,18 +13,18 @@
 using namespace std;
 
 /* --------------------------------------------------------------------------------------- */
-/*   ´Ë´¦¶¨ÒåÁ½¸ö¾²Ì¬È«¾Ö±äÁ¿£¬Ä¿µÄÊÇËùÓÐº¯Êý¶¼²»ÐèÒªÔÙ´ø HANDLE ²ÎÊý£¬Ê¹Íâ²¿µ÷ÓÃÊ±¸ü·½±ã  */
-/*   ×¢£ºÎª·ÀÖ¹Í¬Ãû£¬¾²Ì¬È«¾ÖÒ»°ã½¨Òé¼Ó__×öÎª±äÁ¿Ãû¿ªÊ¼                                    */
+/*   æ­¤å¤„å®šä¹‰ä¸¤ä¸ªé™æ€å…¨å±€å˜é‡ï¼Œç›®çš„æ˜¯æ‰€æœ‰å‡½æ•°éƒ½ä¸éœ€è¦å†å¸¦ HANDLE å‚æ•°ï¼Œä½¿å¤–éƒ¨è°ƒç”¨æ—¶æ›´æ–¹ä¾¿  */
+/*   æ³¨ï¼šä¸ºé˜²æ­¢åŒåï¼Œé™æ€å…¨å±€ä¸€èˆ¬å»ºè®®åŠ __åšä¸ºå˜é‡åå¼€å§‹                                    */
 /* --------------------------------------------------------------------------------------- */
-static const HANDLE __hout = GetStdHandle(STD_OUTPUT_HANDLE);		//È¡±ê×¼Êä³öÉè±¸¶ÔÓ¦µÄ¾ä±ú
-static const HANDLE __hin  = GetStdHandle(STD_INPUT_HANDLE);		//È¡±ê×¼ÊäÈëÉè±¸¶ÔÓ¦µÄ¾ä±ú
+static const HANDLE __hout = GetStdHandle(STD_OUTPUT_HANDLE);		//å–æ ‡å‡†è¾“å‡ºè®¾å¤‡å¯¹åº”çš„å¥æŸ„
+static const HANDLE __hin  = GetStdHandle(STD_INPUT_HANDLE);		//å–æ ‡å‡†è¾“å…¥è®¾å¤‡å¯¹åº”çš„å¥æŸ„
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£ºÍê³ÉÓësystem("cls")Ò»ÑùµÄ¹¦ÄÜ£¬µ«Ð§ÂÊ¸ß
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºÇå³ýÕû¸öÆÁÄ»»º³åÇø£¬²»½ö½öÊÇ¿É¼û´°¿ÚÇøÓò(Ê¹ÓÃµ±Ç°ÑÕÉ«)
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šå®Œæˆä¸Žsystem("cls")ä¸€æ ·çš„åŠŸèƒ½ï¼Œä½†æ•ˆçŽ‡é«˜
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šæ¸…é™¤æ•´ä¸ªå±å¹•ç¼“å†²åŒºï¼Œä¸ä»…ä»…æ˜¯å¯è§çª—å£åŒºåŸŸ(ä½¿ç”¨å½“å‰é¢œè‰²)
 ***************************************************************************/
 void cct_cls(void)
 {
@@ -32,30 +32,30 @@ void cct_cls(void)
 	CONSOLE_SCREEN_BUFFER_INFO binfo; /* to get buffer info */
 	DWORD num;
 
-	/* È¡µ±Ç°»º³åÇøÐÅÏ¢ */
+	/* å–å½“å‰ç¼“å†²åŒºä¿¡æ¯ */
 	GetConsoleScreenBufferInfo(__hout, &binfo);
-	/* Ìî³ä×Ö·û */
+	/* å¡«å……å­—ç¬¦ */
 	FillConsoleOutputCharacter(__hout, (TCHAR) ' ', binfo.dwSize.X * binfo.dwSize.Y, coord, &num);
-	/* Ìî³äÊôÐÔ */
+	/* å¡«å……å±žæ€§ */
 	FillConsoleOutputAttribute(__hout, binfo.wAttributes, binfo.dwSize.X * binfo.dwSize.Y, coord, &num);
 
-	/* ¹â±ê»Øµ½(0,0) */
+	/* å…‰æ ‡å›žåˆ°(0,0) */
 	SetConsoleCursorPosition(__hout, coord);
 	return;
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£ºÉèÖÃÖ¸¶¨µÄÑÕÉ«
-  ÊäÈë²ÎÊý£ºconst int bg_color £º±³¾°É«£¨0-15£©
-			const int fg_color £ºÇ°¾°É«£¨0-15£©
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºÑÕÉ«µÄÈ¡ÖµÓÉ±³¾°É«+Ç°¾°É«×é³É£¬¸÷16ÖÖ
-			fg_color£º0-7    ºÚ   À¶   ÂÌ   Çà   ºì   ·Û   »Æ   °×
-					  8-15 ÁÁºÚ ÁÁÀ¶ ÁÁÂÌ ÁÁÇà ÁÁºì ÁÁ·Û ÁÁ»Æ ÁÁ°×
-			bg_color£º0-7    ºÚ   À¶   ÂÌ   Çà   ºì   ·Û   »Æ   °×
-					  8-15 ÁÁºÚ ÁÁÀ¶ ÁÁÂÌ ÁÁÇà ÁÁºì ÁÁ·Û ÁÁ»Æ ÁÁ°×
-			×îÖÕµÄÑÕÉ«Îª ±³¾°É«*16+Ç°¾°É«
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šè®¾ç½®æŒ‡å®šçš„é¢œè‰²
+  è¾“å…¥å‚æ•°ï¼šconst int bg_color ï¼šèƒŒæ™¯è‰²ï¼ˆ0-15ï¼‰
+			const int fg_color ï¼šå‰æ™¯è‰²ï¼ˆ0-15ï¼‰
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šé¢œè‰²çš„å–å€¼ç”±èƒŒæ™¯è‰²+å‰æ™¯è‰²ç»„æˆï¼Œå„16ç§
+			fg_colorï¼š0-7    é»‘   è“   ç»¿   é’   çº¢   ç²‰   é»„   ç™½
+					  8-15 äº®é»‘ äº®è“ äº®ç»¿ äº®é’ äº®çº¢ äº®ç²‰ äº®é»„ äº®ç™½
+			bg_colorï¼š0-7    é»‘   è“   ç»¿   é’   çº¢   ç²‰   é»„   ç™½
+					  8-15 äº®é»‘ äº®è“ äº®ç»¿ äº®é’ äº®çº¢ äº®ç²‰ äº®é»„ äº®ç™½
+			æœ€ç»ˆçš„é¢œè‰²ä¸º èƒŒæ™¯è‰²*16+å‰æ™¯è‰²
 ***************************************************************************/
 void cct_setcolor(const int bg_color, const int fg_color)
 {
@@ -63,12 +63,12 @@ void cct_setcolor(const int bg_color, const int fg_color)
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£º·µ»Ø×îºóÒ»´ÎsetcolorµÄÇ°¾°É«ºÍ±³¾°É«
-  ÊäÈë²ÎÊý£ºint &bg_color      £º·µ»ØµÄ±³¾°É«£¨0-15£©
-			int &fg_color      £º·µ»ØµÄÇ°¾°É«£¨0-15£©
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºÐÎ²ÎÖÐµÄ&±íÊ¾ÒýÓÃ£¬µÚÁùÕÂ»á½²µ½£¬ÒýÓÃÐÎ²ÎµÄÖµ¿ÉÒÔ·µ»Ø¸øÊµ²Î
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šè¿”å›žæœ€åŽä¸€æ¬¡setcolorçš„å‰æ™¯è‰²å’ŒèƒŒæ™¯è‰²
+  è¾“å…¥å‚æ•°ï¼šint &bg_color      ï¼šè¿”å›žçš„èƒŒæ™¯è‰²ï¼ˆ0-15ï¼‰
+			int &fg_color      ï¼šè¿”å›žçš„å‰æ™¯è‰²ï¼ˆ0-15ï¼‰
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šå½¢å‚ä¸­çš„&è¡¨ç¤ºå¼•ç”¨ï¼Œç¬¬å…­ç« ä¼šè®²åˆ°ï¼Œå¼•ç”¨å½¢å‚çš„å€¼å¯ä»¥è¿”å›žç»™å®žå‚
 ***************************************************************************/
 void cct_getcolor(int &bg_color, int &fg_color)
 {
@@ -80,14 +80,14 @@ void cct_getcolor(int &bg_color, int &fg_color)
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£º½«¹â±êÒÆ¶¯µ½Ö¸¶¨Î»ÖÃ
-  ÊäÈë²ÎÊý£ºconst int X       £ºXÖá×ø±ê£¨ÁÐ£©
-			const int Y       £ºYÖá×ø±ê£¨ÐÐ£©
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºÆÁÄ»×óÉÏ½Ç×ø±êÎª(0,0)£¬ÔÚcmd´°¿ÚµÄ´óÐ¡Î´±»µ÷ÕûµÄÇé¿öÏÂ£¬Win10Îª£º
-			ºáÏòxÖá£¬¶ÔÓ¦ÁÐ(0-119)
-			×ÝÏòyÖá£¬¶ÔÓ¦ÐÐ(0-29)
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šå°†å…‰æ ‡ç§»åŠ¨åˆ°æŒ‡å®šä½ç½®
+  è¾“å…¥å‚æ•°ï¼šconst int X       ï¼šXè½´åæ ‡ï¼ˆåˆ—ï¼‰
+			const int Y       ï¼šYè½´åæ ‡ï¼ˆè¡Œï¼‰
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šå±å¹•å·¦ä¸Šè§’åæ ‡ä¸º(0,0)ï¼Œåœ¨cmdçª—å£çš„å¤§å°æœªè¢«è°ƒæ•´çš„æƒ…å†µä¸‹ï¼ŒWin10ä¸ºï¼š
+			æ¨ªå‘xè½´ï¼Œå¯¹åº”åˆ—(0-119)
+			çºµå‘yè½´ï¼Œå¯¹åº”è¡Œ(0-29)
 ***************************************************************************/
 void cct_gotoxy(const int X, const int Y)
 {
@@ -98,12 +98,12 @@ void cct_gotoxy(const int X, const int Y)
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£ºÈ¡µ±Ç°¹â±êËùÔÚÎ»ÖÃµÄ×ø±êÖµ
-  ÊäÈë²ÎÊý£ºint &x            £ºÈ¡µÃµÄXÖá×ø±ê£¨ÁÐ£©
-			int &y            £ºÈ¡µÃµÄYÖá×ø±ê£¨ÐÐ£©
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºÐÎ²ÎÖÐµÄ&±íÊ¾ÒýÓÃ£¬µÚÁùÕÂ»á½²µ½£¬ÒýÓÃÐÎ²ÎµÄÖµ¿ÉÒÔ·µ»Ø¸øÊµ²Î
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šå–å½“å‰å…‰æ ‡æ‰€åœ¨ä½ç½®çš„åæ ‡å€¼
+  è¾“å…¥å‚æ•°ï¼šint &x            ï¼šå–å¾—çš„Xè½´åæ ‡ï¼ˆåˆ—ï¼‰
+			int &y            ï¼šå–å¾—çš„Yè½´åæ ‡ï¼ˆè¡Œï¼‰
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šå½¢å‚ä¸­çš„&è¡¨ç¤ºå¼•ç”¨ï¼Œç¬¬å…­ç« ä¼šè®²åˆ°ï¼Œå¼•ç”¨å½¢å‚çš„å€¼å¯ä»¥è¿”å›žç»™å®žå‚
 ***************************************************************************/
 void cct_getxy(int &x, int &y)
 {
@@ -117,11 +117,11 @@ void cct_getxy(int &x, int &y)
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£ºÉèÖÃ¹â±ê×´Ì¬£¨ÏÔÊ¾/²»ÏÔÊ¾/È«¸ß/°ë¸ß/ºáÏßµÈ£©
-  ÊäÈë²ÎÊý£ºconst int option£ºÒªÉèÖÃµÄ¹â±ê×´Ì¬
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šè®¾ç½®å…‰æ ‡çŠ¶æ€ï¼ˆæ˜¾ç¤º/ä¸æ˜¾ç¤º/å…¨é«˜/åŠé«˜/æ¨ªçº¿ç­‰ï¼‰
+  è¾“å…¥å‚æ•°ï¼šconst int optionï¼šè¦è®¾ç½®çš„å…‰æ ‡çŠ¶æ€
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼š
 ***************************************************************************/
 void cct_setcursor(const int options)
 {
@@ -141,7 +141,7 @@ void cct_setcursor(const int options)
 			cursor_info.dwSize = 1;
 			break;
 		case CURSOR_VISIBLE_NORMAL:
-		default: //È±Ê¡ÏÔÊ¾¹â±ê£¬ºáÏß
+		default: //ç¼ºçœæ˜¾ç¤ºå…‰æ ‡ï¼Œæ¨ªçº¿
 			cursor_info.bVisible = 1;
 			cursor_info.dwSize = 25;
 			break;
@@ -150,16 +150,16 @@ void cct_setcursor(const int options)
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£ºÔÚÖ¸¶¨Î»ÖÃ£¬ÓÃÖ¸¶¨ÑÕÉ«£¬ÏÔÊ¾Ò»¸ö×Ö·ûÈô¸É´Î
-  ÊäÈë²ÎÊý£ºconst int X       £ºXÖá×ø±ê£¨ÁÐ£©
-			const int Y       £ºYÖá×ø±ê£¨ÐÐ£©
-			const char ch     £ºÒªÊä³öµÄ×Ö·ûÖµ
-			const int bg_color£º±³¾°É«£¨È±Ê¡ÎªCOLOR_BLACK£©
-			const int fg_color£º±³¾°É«£¨È±Ê¡ÎªCOLOR_WHITE£©
-			const int rpt     £ºÖØ¸´´ÎÊý£¨È±Ê¡Îª1£©
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºX¡¢YµÄ·¶Î§²Î¼ûgotoxyº¯ÊýµÄËµÃ÷
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šåœ¨æŒ‡å®šä½ç½®ï¼Œç”¨æŒ‡å®šé¢œè‰²ï¼Œæ˜¾ç¤ºä¸€ä¸ªå­—ç¬¦è‹¥å¹²æ¬¡
+  è¾“å…¥å‚æ•°ï¼šconst int X       ï¼šXè½´åæ ‡ï¼ˆåˆ—ï¼‰
+			const int Y       ï¼šYè½´åæ ‡ï¼ˆè¡Œï¼‰
+			const char ch     ï¼šè¦è¾“å‡ºçš„å­—ç¬¦å€¼
+			const int bg_colorï¼šèƒŒæ™¯è‰²ï¼ˆç¼ºçœä¸ºCOLOR_BLACKï¼‰
+			const int fg_colorï¼šèƒŒæ™¯è‰²ï¼ˆç¼ºçœä¸ºCOLOR_WHITEï¼‰
+			const int rpt     ï¼šé‡å¤æ¬¡æ•°ï¼ˆç¼ºçœä¸º1ï¼‰
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šXã€Yçš„èŒƒå›´å‚è§gotoxyå‡½æ•°çš„è¯´æ˜Ž
 ***************************************************************************/
 void cct_showch(const int X, const int Y, const char ch, const int bg_color, const int fg_color, const int rpt)
 {
@@ -168,23 +168,23 @@ void cct_showch(const int X, const int Y, const char ch, const int bg_color, con
 	cct_gotoxy(X, Y);
 	cct_setcolor(bg_color, fg_color);
 
-	/* Ñ­»·n´Î£¬´òÓ¡×Ö·ûch */
+	/* å¾ªçŽ¯næ¬¡ï¼Œæ‰“å°å­—ç¬¦ch */
 	for (i = 0; i < rpt; i++)
 		putchar(ch);
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£ºÔÚÖ¸¶¨Î»ÖÃ£¬ÓÃÖ¸¶¨ÑÕÉ«£¬ÏÔÊ¾Ò»¸ö×Ö·û´®
-  ÊäÈë²ÎÊý£ºconst int X       £ºXÖá×ø±ê£¨ÁÐ£©
-		    const int Y       £ºYÖá×ø±ê£¨ÐÐ£©
-		    const char *str   £ºÒªÊä³öµÄ×Ö·û´®
-		    const int bg_color£º±³¾°É«£¨È±Ê¡ÎªCOLOR_BLACK£©
-		    const int fg_color£º±³¾°É«£¨È±Ê¡ÎªCOLOR_WHITE£©
-			const int rpt     £ºÖØ¸´´ÎÊý£¨È±Ê¡Îª1£©
-			const int max_len £º-1£¨±íÊ¾²»ÏÞÖÆ³¤¶È£¬°´strlen(str)*rptµÄÊµ¼Ê´òÓ¡£©
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºÈç¹û¶Á²»¶®£¬ÔÝÊ±·Å×Å£¬µÈÖ¸ÕëÑ§Ï°Íê³ÉºóÔÙÔÄ¶Á
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šåœ¨æŒ‡å®šä½ç½®ï¼Œç”¨æŒ‡å®šé¢œè‰²ï¼Œæ˜¾ç¤ºä¸€ä¸ªå­—ç¬¦ä¸²
+  è¾“å…¥å‚æ•°ï¼šconst int X       ï¼šXè½´åæ ‡ï¼ˆåˆ—ï¼‰
+		    const int Y       ï¼šYè½´åæ ‡ï¼ˆè¡Œï¼‰
+		    const char *str   ï¼šè¦è¾“å‡ºçš„å­—ç¬¦ä¸²
+		    const int bg_colorï¼šèƒŒæ™¯è‰²ï¼ˆç¼ºçœä¸ºCOLOR_BLACKï¼‰
+		    const int fg_colorï¼šèƒŒæ™¯è‰²ï¼ˆç¼ºçœä¸ºCOLOR_WHITEï¼‰
+			const int rpt     ï¼šé‡å¤æ¬¡æ•°ï¼ˆç¼ºçœä¸º1ï¼‰
+			const int max_len ï¼š-1ï¼ˆè¡¨ç¤ºä¸é™åˆ¶é•¿åº¦ï¼ŒæŒ‰strlen(str)*rptçš„å®žé™…æ‰“å°ï¼‰
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šå¦‚æžœè¯»ä¸æ‡‚ï¼Œæš‚æ—¶æ”¾ç€ï¼Œç­‰æŒ‡é’ˆå­¦ä¹ å®ŒæˆåŽå†é˜…è¯»
 ***************************************************************************/
 void cct_showstr(const int X, const int Y, const char *str, const int bg_color, const int fg_color, int rpt, int maxlen)
 {
@@ -194,42 +194,42 @@ void cct_showstr(const int X, const int Y, const char *str, const int bg_color, 
 	cct_gotoxy(X, Y);
 	cct_setcolor(bg_color, fg_color);
 
-	/* Ê×ÏÈ¿¼ÂÇstr==NULL / str="" µÄÇé¿ö
-	   1¡¢Èç¹ûmaxlenÊÇ-1/0£¬ÔòÖ±½Ó·µ»Ø£¬Ê²Ã´¶¼²»´òÓ¡ 
-	   2¡¢Èç¹ûmaxlen>0£¬ÔòÓÃmaxlen¸ö¿Õ¸ñÌî³ä */
+	/* é¦–å…ˆè€ƒè™‘str==NULL / str="" çš„æƒ…å†µ
+	   1ã€å¦‚æžœmaxlenæ˜¯-1/0ï¼Œåˆ™ç›´æŽ¥è¿”å›žï¼Œä»€ä¹ˆéƒ½ä¸æ‰“å° 
+	   2ã€å¦‚æžœmaxlen>0ï¼Œåˆ™ç”¨maxlenä¸ªç©ºæ ¼å¡«å…… */
 	if (str == NULL || str[0] == 0) {
-		for (i = 0; i < maxlen; i++) //Èç¹ûmaxlenÊÇ-1¡¢0£¬Ñ­»·²»Ö´ÐÐ£¬Ö±½Ó·µ»Ø
+		for (i = 0; i < maxlen; i++) //å¦‚æžœmaxlenæ˜¯-1ã€0ï¼Œå¾ªçŽ¯ä¸æ‰§è¡Œï¼Œç›´æŽ¥è¿”å›ž
 			putchar(' ');
 		return;
 	}
 
-	/* Ö®ÐÐµ½´Ë£¬ÊÇstr·ÇNULL/str!=""µÄÇé¿ö(¼ÈstrlenÒ»¶¨>0) */
+	/* ä¹‹è¡Œåˆ°æ­¤ï¼Œæ˜¯stréžNULL/str!=""çš„æƒ…å†µ(æ—¢strlenä¸€å®š>0) */
 	if (rpt <= 0)
-		rpt = 1; //·ÀÖ¹´íÎó²ÎÊý
+		rpt = 1; //é˜²æ­¢é”™è¯¯å‚æ•°
 
 	if (maxlen < 0)
-		maxlen = strlen(str) * rpt; //Î´¸ø³ömaxlenÔòÎªÔ­Ê¼³¤¶È
+		maxlen = strlen(str) * rpt; //æœªç»™å‡ºmaxlenåˆ™ä¸ºåŽŸå§‹é•¿åº¦
 
-	for (i = 0, p = str; i < maxlen; i++, p++) {	//ÖØ¸´rpt´Î£¬Ã¿´ÎÊä³ö×Ö·û´®£¬ÊÊÓÃÓÚÔÚ»­±ß¿òÊ±Êä³öÈô¸É¸ö"¨T"µÈÇé¿ö
+	for (i = 0, p = str; i < maxlen; i++, p++) {	//é‡å¤rptæ¬¡ï¼Œæ¯æ¬¡è¾“å‡ºå­—ç¬¦ä¸²ï¼Œé€‚ç”¨äºŽåœ¨ç”»è¾¹æ¡†æ—¶è¾“å‡ºè‹¥å¹²ä¸ª"ã„”"ç­‰æƒ…å†µ
 		if (*p == 0) {
-			p = str; //Èç¹ûpÒÑ¾­µ½\0£¬Ôò»Øµ½Í·£¨´Ë´¦ÒÑ±£Ö¤strlen(str)>0£¬¼´Ò»¶¨ÓÐÄÚÈÝ£©
+			p = str; //å¦‚æžœpå·²ç»åˆ°\0ï¼Œåˆ™å›žåˆ°å¤´ï¼ˆæ­¤å¤„å·²ä¿è¯strlen(str)>0ï¼Œå³ä¸€å®šæœ‰å†…å®¹ï¼‰
 			rpt_count++;
 			}
-		putchar(rpt_count < rpt ? *p : ' '); //Èç¹û³¬¹ýÁËrpt´ÎÊýÔòÓÃ¿Õ¸ñÌî³ä
+		putchar(rpt_count < rpt ? *p : ' '); //å¦‚æžœè¶…è¿‡äº†rptæ¬¡æ•°åˆ™ç”¨ç©ºæ ¼å¡«å……
 	}
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£ºÔÚÖ¸¶¨Î»ÖÃ£¬ÓÃÖ¸¶¨ÑÕÉ«£¬ÏÔÊ¾Ò»¸ö×Ö·û´®
-  ÊäÈë²ÎÊý£ºconst int X       £ºXÖá×ø±ê£¨ÁÐ£©
-			const int Y       £ºYÖá×ø±ê£¨ÐÐ£©
-			const int num     £ºÒªÊä³öµÄintÖµ
-			const int bg_color£º±³¾°É«£¨È±Ê¡ÎªCOLOR_BLACK£©
-			const int fg_color£º±³¾°É«£¨È±Ê¡ÎªCOLOR_WHITE£©
-			const int rpt     £ºÖØ¸´´ÎÊý£¨È±Ê¡Îª1£©
-·µ »Ø Öµ£º
-Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šåœ¨æŒ‡å®šä½ç½®ï¼Œç”¨æŒ‡å®šé¢œè‰²ï¼Œæ˜¾ç¤ºä¸€ä¸ªå­—ç¬¦ä¸²
+  è¾“å…¥å‚æ•°ï¼šconst int X       ï¼šXè½´åæ ‡ï¼ˆåˆ—ï¼‰
+			const int Y       ï¼šYè½´åæ ‡ï¼ˆè¡Œï¼‰
+			const int num     ï¼šè¦è¾“å‡ºçš„intå€¼
+			const int bg_colorï¼šèƒŒæ™¯è‰²ï¼ˆç¼ºçœä¸ºCOLOR_BLACKï¼‰
+			const int fg_colorï¼šèƒŒæ™¯è‰²ï¼ˆç¼ºçœä¸ºCOLOR_WHITEï¼‰
+			const int rpt     ï¼šé‡å¤æ¬¡æ•°ï¼ˆç¼ºçœä¸º1ï¼‰
+è¿” å›ž å€¼ï¼š
+è¯´    æ˜Žï¼š
 ***************************************************************************/
 void cct_showint(const int X, const int Y, const int num, const int bg_color, const int fg_color, const int rpt)
 {
@@ -237,28 +237,28 @@ void cct_showint(const int X, const int Y, const int num, const int bg_color, co
 
 	cct_gotoxy(X, Y);
 	cct_setcolor(bg_color, fg_color);
-	for (i = 0; i < rpt; i++)	//ÖØ¸´rpt´Î£¬Ã¿´ÎÊä³ö×Ö·û´®£¬ÊÊÓÃÓÚÔÚ»­±ß¿òÊ±Êä³öÈô¸É¸ö"¨T"µÈÇé¿ö
+	for (i = 0; i < rpt; i++)	//é‡å¤rptæ¬¡ï¼Œæ¯æ¬¡è¾“å‡ºå­—ç¬¦ä¸²ï¼Œé€‚ç”¨äºŽåœ¨ç”»è¾¹æ¡†æ—¶è¾“å‡ºè‹¥å¹²ä¸ª"ã„”"ç­‰æƒ…å†µ
 		cout << num;
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£º¸Ä±äcmd´°¿ÚµÄ´óÐ¡¼°»º³åÇøµÄ´óÐ¡
-  ÊäÈë²ÎÊý£ºconst int cols         £ºÐÂµÄÁÐÊý
-			const int lines        £ºÐÂµÄÐÐÊý
-			const int buffer_cols  £ºÐÂµÄ»º³åÇøÁÐÊý
-			const int buffer_lines £ºÐÂµÄ»º³åÇøÐÐÊý
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º±ØÐëÏÈÉèÖÃ»º³åÇø£¬ÔÙÉèÖÃ´°¿Ú´óÐ¡£¬
-			·ñÔòÈô´°¿Ú´óÐ¡´óÓÚµ±Ç°»º³åÇø£¨Î´ÉèÖÃÇ°£©ÔòÉèÖÃÊ§°Ü
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šæ”¹å˜cmdçª—å£çš„å¤§å°åŠç¼“å†²åŒºçš„å¤§å°
+  è¾“å…¥å‚æ•°ï¼šconst int cols         ï¼šæ–°çš„åˆ—æ•°
+			const int lines        ï¼šæ–°çš„è¡Œæ•°
+			const int buffer_cols  ï¼šæ–°çš„ç¼“å†²åŒºåˆ—æ•°
+			const int buffer_lines ï¼šæ–°çš„ç¼“å†²åŒºè¡Œæ•°
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šå¿…é¡»å…ˆè®¾ç½®ç¼“å†²åŒºï¼Œå†è®¾ç½®çª—å£å¤§å°ï¼Œ
+			å¦åˆ™è‹¥çª—å£å¤§å°å¤§äºŽå½“å‰ç¼“å†²åŒºï¼ˆæœªè®¾ç½®å‰ï¼‰åˆ™è®¾ç½®å¤±è´¥
 ***************************************************************************/
 void cct_setconsoleborder(int set_cols, int set_lines, int set_buffer_cols, int set_buffer_lines)
 {
-	/* È¡µ±Ç°ÏµÍ³ÔÊÐíµÄ´°¿ÚµÄÐÐÁÐ×î´óÖµ */
+	/* å–å½“å‰ç³»ç»Ÿå…è®¸çš„çª—å£çš„è¡Œåˆ—æœ€å¤§å€¼ */
 	COORD max_coord;
-	max_coord = GetLargestConsoleWindowSize(__hout); /* .X ºÍ .Y ·Ö±ðÊÇ´°¿ÚµÄÁÐºÍÐÐµÄ×î´óÖµ */
+	max_coord = GetLargestConsoleWindowSize(__hout); /* .X å’Œ .Y åˆ†åˆ«æ˜¯çª—å£çš„åˆ—å’Œè¡Œçš„æœ€å¤§å€¼ */
 
-	/* ´¦ÀíÉèÖÃ´°¿ÚµÄÐÐÁÐµÄ·Ç·¨Öµ */
+	/* å¤„ç†è®¾ç½®çª—å£çš„è¡Œåˆ—çš„éžæ³•å€¼ */
 	if (set_cols <= 0 || set_lines <= 0)
 		return;
 	if (set_cols > max_coord.X)
@@ -266,58 +266,58 @@ void cct_setconsoleborder(int set_cols, int set_lines, int set_buffer_cols, int 
 	if (set_lines > max_coord.Y)
 		set_lines = max_coord.Y;
 
-	/* ÉèÖÃ´°¿ÚµÄÐÐÁÐ´óÐ¡£¨´Ó0¿ªÊ¼£¬0 ~ lines-1, 0 ~ cols-1£©*/
+	/* è®¾ç½®çª—å£çš„è¡Œåˆ—å¤§å°ï¼ˆä»Ž0å¼€å§‹ï¼Œ0 ~ lines-1, 0 ~ cols-1ï¼‰*/
 	SMALL_RECT rect;
 	rect.Top = 0;
 	rect.Bottom = set_lines - 1;
 	rect.Left = 0;
 	rect.Right = set_cols - 1;
 
-	/* ÉèÖÃ»º³åÇøµÄÐÐÁÐ´óÐ¡(È±Ê¡»òÐ¡ÓÚ´°¿ÚÖµÔòÓë´°¿ÚÖµÒ»Ñù) */
+	/* è®¾ç½®ç¼“å†²åŒºçš„è¡Œåˆ—å¤§å°(ç¼ºçœæˆ–å°äºŽçª—å£å€¼åˆ™ä¸Žçª—å£å€¼ä¸€æ ·) */
 	COORD cr;
-	cr.X = (set_buffer_cols == -1 || set_buffer_cols < set_cols) ? set_cols : set_buffer_cols;		//Î´¸ø³ö»ò¸ø³öµÄÖµÐ¡ÓÚset_colsÔòÓÃset_cols£¬Î´¿ØÖÆÉÏÏÞ
-	cr.Y = (set_buffer_lines == -1 || set_buffer_lines < set_lines) ? set_lines : set_buffer_lines;	//Î´¸ø³ö»ò¸ø³öµÄÖµÐ¡ÓÚset_linesÔòÓÃset_lines£¬Î´¿ØÖÆÉÏÏÞ
+	cr.X = (set_buffer_cols == -1 || set_buffer_cols < set_cols) ? set_cols : set_buffer_cols;		//æœªç»™å‡ºæˆ–ç»™å‡ºçš„å€¼å°äºŽset_colsåˆ™ç”¨set_colsï¼ŒæœªæŽ§åˆ¶ä¸Šé™
+	cr.Y = (set_buffer_lines == -1 || set_buffer_lines < set_lines) ? set_lines : set_buffer_lines;	//æœªç»™å‡ºæˆ–ç»™å‡ºçš„å€¼å°äºŽset_linesåˆ™ç”¨set_linesï¼ŒæœªæŽ§åˆ¶ä¸Šé™
 
-	/* È¡µ±Ç°´°¿Ú¼°»º³åÇøµÄ´óÐ¡(¾ÍÊÇgetconsoleborder) */
+	/* å–å½“å‰çª—å£åŠç¼“å†²åŒºçš„å¤§å°(å°±æ˜¯getconsoleborder) */
 	int cur_cols, cur_lines, cur_buffer_cols, cur_buffer_lines;
 	CONSOLE_SCREEN_BUFFER_INFO binfo;
 	GetConsoleScreenBufferInfo(__hout, &binfo);
 
-	cur_cols = binfo.srWindow.Right - binfo.srWindow.Left + 1;	//¿É¼û´°¿ÚµÄÁÐÊý
-	cur_lines = binfo.srWindow.Bottom - binfo.srWindow.Top + 1;	//¿É¼û´°¿ÚµÄÐÐÊý
-	cur_buffer_cols = binfo.dwSize.X;							//»º³åÇøµÄÁÐÊý
-	cur_buffer_lines = binfo.dwSize.Y;							//»º³åÇøµÄÐÐÊý
+	cur_cols = binfo.srWindow.Right - binfo.srWindow.Left + 1;	//å¯è§çª—å£çš„åˆ—æ•°
+	cur_lines = binfo.srWindow.Bottom - binfo.srWindow.Top + 1;	//å¯è§çª—å£çš„è¡Œæ•°
+	cur_buffer_cols = binfo.dwSize.X;							//ç¼“å†²åŒºçš„åˆ—æ•°
+	cur_buffer_lines = binfo.dwSize.Y;							//ç¼“å†²åŒºçš„è¡Œæ•°
 
 	cct_cls();
-	/* ÉèÖÃË³Ðò(±£Ö¤ÉèÖÃ´°¿Ú´óÐ¡Ê±£¬ÏÖ»º³åÇøµÄÁÐÖµ>´°¿ÚÖµ) */
+	/* è®¾ç½®é¡ºåº(ä¿è¯è®¾ç½®çª—å£å¤§å°æ—¶ï¼ŒçŽ°ç¼“å†²åŒºçš„åˆ—å€¼>çª—å£å€¼) */
 	if (cr.X <= cur_buffer_cols) {
 		if (cr.Y <= cur_buffer_lines) {
-			SetConsoleWindowInfo(__hout, true, &rect);//ÉèÖÃ´°¿Ú
-			SetConsoleScreenBufferSize(__hout, cr);//ÉèÖÃ»º³åÇø
+			SetConsoleWindowInfo(__hout, true, &rect);//è®¾ç½®çª—å£
+			SetConsoleScreenBufferSize(__hout, cr);//è®¾ç½®ç¼“å†²åŒº
 		}
-		else { //cr.Y > cur_buffer_lines£¬ÏÈÒªÈÃ»º³åÇøµÄÐÐÊý±ä´ó
+		else { //cr.Y > cur_buffer_linesï¼Œå…ˆè¦è®©ç¼“å†²åŒºçš„è¡Œæ•°å˜å¤§
 			COORD tmpcr;
 			tmpcr.X = cur_buffer_cols;
 			tmpcr.Y = cr.Y;
-			SetConsoleScreenBufferSize(__hout, tmpcr);//ÉèÖÃ»º³åÇø
+			SetConsoleScreenBufferSize(__hout, tmpcr);//è®¾ç½®ç¼“å†²åŒº
 
-			SetConsoleWindowInfo(__hout, true, &rect);//ÉèÖÃ´°¿Ú
-			SetConsoleScreenBufferSize(__hout, cr);//ÉèÖÃ»º³åÇø
+			SetConsoleWindowInfo(__hout, true, &rect);//è®¾ç½®çª—å£
+			SetConsoleScreenBufferSize(__hout, cr);//è®¾ç½®ç¼“å†²åŒº
 		}
 	}
 	else {//cr.X > cur_buffer_cols
 		if (cr.Y >= cur_buffer_lines) {
-			SetConsoleScreenBufferSize(__hout, cr);//ÉèÖÃ»º³åÇø
-			SetConsoleWindowInfo(__hout, true, &rect);//ÉèÖÃ´°¿Ú
+			SetConsoleScreenBufferSize(__hout, cr);//è®¾ç½®ç¼“å†²åŒº
+			SetConsoleWindowInfo(__hout, true, &rect);//è®¾ç½®çª—å£
 		}
 		else {	//cr.Y < cur_buffer_lines
 			COORD tmpcr;
 			tmpcr.X = cr.X;
 			tmpcr.Y = cur_buffer_lines;
-			SetConsoleScreenBufferSize(__hout, tmpcr);//ÉèÖÃ»º³åÇø
+			SetConsoleScreenBufferSize(__hout, tmpcr);//è®¾ç½®ç¼“å†²åŒº
 
-			SetConsoleWindowInfo(__hout, true, &rect);//ÉèÖÃ´°¿Ú
-			SetConsoleScreenBufferSize(__hout, cr);//ÉèÖÃ»º³åÇø
+			SetConsoleWindowInfo(__hout, true, &rect);//è®¾ç½®çª—å£
+			SetConsoleScreenBufferSize(__hout, cr);//è®¾ç½®ç¼“å†²åŒº
 		}
 	}
 
@@ -325,44 +325,44 @@ void cct_setconsoleborder(int set_cols, int set_lines, int set_buffer_cols, int 
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£ºÈ¡µ±Ç°cmd´°¿ÚµÄ´óÐ¡ÉèÖÃ
-  ÊäÈë²ÎÊý£ºint &cols         £ºµ±Ç°´°¿ÚµÄÁÐÊý-·µ»ØÖµ
-			int &lines        £ºµ±Ç°´°¿ÚµÄÐÐÊý-·µ»ØÖµ
-			int &buffer_cols  £ºµ±Ç°»º³åÇøµÄÁÐÊý-·µ»ØÖµ
-			int &buffer_lines £ºµ±Ç°»º³åÇøµÄÐÐÊý-·µ»ØÖµ
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šå–å½“å‰cmdçª—å£çš„å¤§å°è®¾ç½®
+  è¾“å…¥å‚æ•°ï¼šint &cols         ï¼šå½“å‰çª—å£çš„åˆ—æ•°-è¿”å›žå€¼
+			int &lines        ï¼šå½“å‰çª—å£çš„è¡Œæ•°-è¿”å›žå€¼
+			int &buffer_cols  ï¼šå½“å‰ç¼“å†²åŒºçš„åˆ—æ•°-è¿”å›žå€¼
+			int &buffer_lines ï¼šå½“å‰ç¼“å†²åŒºçš„è¡Œæ•°-è¿”å›žå€¼
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼š
 ***************************************************************************/
 void cct_getconsoleborder(int &cols, int &lines, int &buffer_cols, int &buffer_lines)
 {
 	CONSOLE_SCREEN_BUFFER_INFO binfo;
 	GetConsoleScreenBufferInfo(__hout, &binfo);
 
-	cols = binfo.srWindow.Right - binfo.srWindow.Left + 1;		//¿É¼û´°¿ÚµÄÁÐÊý
-	lines = binfo.srWindow.Bottom - binfo.srWindow.Top + 1;		//¿É¼û´°¿ÚµÄÐÐÊý
-	buffer_cols = binfo.dwSize.X;			//»º³åÇøµÄÁÐÊý
-	buffer_lines = binfo.dwSize.Y;			//»º³åÇøµÄÐÐÊý
+	cols = binfo.srWindow.Right - binfo.srWindow.Left + 1;		//å¯è§çª—å£çš„åˆ—æ•°
+	lines = binfo.srWindow.Bottom - binfo.srWindow.Top + 1;		//å¯è§çª—å£çš„è¡Œæ•°
+	buffer_cols = binfo.dwSize.X;			//ç¼“å†²åŒºçš„åˆ—æ•°
+	buffer_lines = binfo.dwSize.Y;			//ç¼“å†²åŒºçš„è¡Œæ•°
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£ºÈ¡µ±Ç°cmd´°¿ÚµÄ±êÌâ
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šå–å½“å‰cmdçª—å£çš„æ ‡é¢˜
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼š
 ***************************************************************************/
 void cct_getconsoletitle(char *title, int maxbuflen)
 {
-	GetConsoleTitleA(title, maxbuflen); //²»¼ì²éÊÇ·ñÔ½½ç¡¢ÊÇ·ñÓÐ¿Õ¼ä
+	GetConsoleTitleA(title, maxbuflen); //ä¸æ£€æŸ¥æ˜¯å¦è¶Šç•Œã€æ˜¯å¦æœ‰ç©ºé—´
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£º
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼š
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼š
 ***************************************************************************/
 void cct_setconsoletitle(const char *title)
 {
@@ -370,76 +370,76 @@ void cct_setconsoletitle(const char *title)
 }
 
 /***************************************************************************
-º¯ÊýÃû³Æ£º
-¹¦    ÄÜ£ºÔÊÐíÊ¹ÓÃÊó±ê
-ÊäÈë²ÎÊý£ºconst HANDLE hin £ºcmd´°¿ÚÊäÈë¾ä±ú
-·µ »Ø Öµ£º
-Ëµ    Ã÷£ºÄ³Ð©cmd´°¿Ú¿ØÖÆÓï¾äÖ´ÐÐºó£¬¿ÉÄÜ»áÈ¡ÏûÊó±êÖ§³Ö£¬Ôòµ÷ÓÃ±¾º¯Êý»ØÔÙ´Î¼ÓÈë
+å‡½æ•°åç§°ï¼š
+åŠŸ    èƒ½ï¼šå…è®¸ä½¿ç”¨é¼ æ ‡
+è¾“å…¥å‚æ•°ï¼šconst HANDLE hin ï¼šcmdçª—å£è¾“å…¥å¥æŸ„
+è¿” å›ž å€¼ï¼š
+è¯´    æ˜Žï¼šæŸäº›cmdçª—å£æŽ§åˆ¶è¯­å¥æ‰§è¡ŒåŽï¼Œå¯èƒ½ä¼šå–æ¶ˆé¼ æ ‡æ”¯æŒï¼Œåˆ™è°ƒç”¨æœ¬å‡½æ•°å›žå†æ¬¡åŠ å…¥
 ***************************************************************************/
 void cct_enable_mouse(void)
 {
 	DWORD Mode;
 
-	GetConsoleMode(__hin, &Mode);	/* È¡µÃ¿ØÖÆÌ¨Ô­À´µÄÄ£Ê½ */
-	SetConsoleMode(__hin, Mode | ENABLE_MOUSE_INPUT);	//¼ÓÈëÊó±êÖ§³Ö£¨¿ÉÄÜÔ­ÏÈÒÑÖ§³ÖÊó±ê£¬ÔÙ¼ÓÒ²Ã»´í£©
+	GetConsoleMode(__hin, &Mode);	/* å–å¾—æŽ§åˆ¶å°åŽŸæ¥çš„æ¨¡å¼ */
+	SetConsoleMode(__hin, Mode | ENABLE_MOUSE_INPUT);	//åŠ å…¥é¼ æ ‡æ”¯æŒï¼ˆå¯èƒ½åŽŸå…ˆå·²æ”¯æŒé¼ æ ‡ï¼Œå†åŠ ä¹Ÿæ²¡é”™ï¼‰
 }
 
 /***************************************************************************
-º¯ÊýÃû³Æ£º
-¹¦    ÄÜ£ºÔÊÐíÊ¹ÓÃÊó±ê
-ÊäÈë²ÎÊý£ºconst HANDLE hin £ºcmd´°¿ÚÊäÈë¾ä±ú
-·µ »Ø Öµ£º
-Ëµ    Ã÷£ºÄ³Ð©cmd´°¿Ú¿ØÖÆÓï¾äÖ´ÐÐºó£¬¿ÉÄÜ»áÈ¡ÏûÊó±êÖ§³Ö£¬Ôòµ÷ÓÃ±¾º¯Êý»ØÔÙ´Î¼ÓÈë
+å‡½æ•°åç§°ï¼š
+åŠŸ    èƒ½ï¼šå…è®¸ä½¿ç”¨é¼ æ ‡
+è¾“å…¥å‚æ•°ï¼šconst HANDLE hin ï¼šcmdçª—å£è¾“å…¥å¥æŸ„
+è¿” å›ž å€¼ï¼š
+è¯´    æ˜Žï¼šæŸäº›cmdçª—å£æŽ§åˆ¶è¯­å¥æ‰§è¡ŒåŽï¼Œå¯èƒ½ä¼šå–æ¶ˆé¼ æ ‡æ”¯æŒï¼Œåˆ™è°ƒç”¨æœ¬å‡½æ•°å›žå†æ¬¡åŠ å…¥
 ***************************************************************************/
 void cct_disable_mouse(void)
 {
 	DWORD Mode;
 
-	GetConsoleMode(__hin, &Mode);	/* È¡µÃ¿ØÖÆÌ¨Ô­À´µÄÄ£Ê½ */
-	SetConsoleMode(__hin, Mode&(~ENABLE_MOUSE_INPUT));	//È¥³ýÊó±êÖ§³Ö£¨Èç¹ûÔ­ÏÈÒÑ²»Ö§³ÖÊó±ê£¬ÔÙÉèÒ²Ã»´í£©
+	GetConsoleMode(__hin, &Mode);	/* å–å¾—æŽ§åˆ¶å°åŽŸæ¥çš„æ¨¡å¼ */
+	SetConsoleMode(__hin, Mode&(~ENABLE_MOUSE_INPUT));	//åŽ»é™¤é¼ æ ‡æ”¯æŒï¼ˆå¦‚æžœåŽŸå…ˆå·²ä¸æ”¯æŒé¼ æ ‡ï¼Œå†è®¾ä¹Ÿæ²¡é”™ï¼‰
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£º¶ÁÊó±ê°´¼ü
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºÏÂÁÐËµÃ÷À´×ÔÊó±ê¶¨ÒåÎÄ¼þ
-			01.typedef struct _MOUSE_EVENT_RECORD      //Êó±êÊÂ¼þ½á¹¹Ìå
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šè¯»é¼ æ ‡æŒ‰é”®
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šä¸‹åˆ—è¯´æ˜Žæ¥è‡ªé¼ æ ‡å®šä¹‰æ–‡ä»¶
+			01.typedef struct _MOUSE_EVENT_RECORD      //é¼ æ ‡äº‹ä»¶ç»“æž„ä½“
 			02.{
-			03.    COORD dwMousePosition;      //µ±Ç°Êó±êÔÚ¿ØÖÆÌ¨´°¿Ú»º³åÇøµÄÎ»ÖÃ
-			04.    DWORD dwButtonState;        //Êó±ê°´¼üµÄ×´Ì¬
-			05.    DWORD dwControlKeyState;    //¿ØÖÆ¼ü×´Ì¬
-			06.    DWORD dwEventFlags;         //Êó±êÊÂ¼þÀàÐÍ
+			03.    COORD dwMousePosition;      //å½“å‰é¼ æ ‡åœ¨æŽ§åˆ¶å°çª—å£ç¼“å†²åŒºçš„ä½ç½®
+			04.    DWORD dwButtonState;        //é¼ æ ‡æŒ‰é”®çš„çŠ¶æ€
+			05.    DWORD dwControlKeyState;    //æŽ§åˆ¶é”®çŠ¶æ€
+			06.    DWORD dwEventFlags;         //é¼ æ ‡äº‹ä»¶ç±»åž‹
 			07.} MOUSE_EVENT_RECORD;
 			08.
-			09.ÆäÖÐÊó±ê°´¼ü×´Ì¬dwButtonState¿ÉÄÜµÄÖµÓÐ
+			09.å…¶ä¸­é¼ æ ‡æŒ‰é”®çŠ¶æ€dwButtonStateå¯èƒ½çš„å€¼æœ‰
 			10.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			11.FROM_LEFT_1ST_BUTTON_PRESSED        ×î×ó±ßµÄÊó±ê¼ü±»°´ÏÂ      Ò»°ãÀ´Ëµ¾ÍÊÇÊó±ê×ó¼ü
-			12.FROM_LEFT_2ND_BUTTON_PRESSED        ×óÆðµÚ¶þ¸öÊó±ê¼ü±»°´ÏÂ    Ò»°ãÀ´ËµÊÇÊó±êÖÐ¼ü£¬¾ÍÊÇ¹öÂÖ¼ü
-			13.FROM_LEFT_3RD_BUTTON_PRESSED        ×óÆðµÚÈý¸öÊó±ê¼ü±»°´ÏÂ
-			14.FROM_LEFT_4TH_BUTTON_PRESSED        ×óÆðµÚËÄ¸öÊó±ê¼ü±»°´ÏÂ
-			15.RIGHTMOST_BUTTON_PRESSED            ×îÓÒ±ßµÄÊó±ê¼ü±»°´ÏÂ      Ò»°ãÀ´ËµÊÇÊó±êÓÒ¼ü
+			11.FROM_LEFT_1ST_BUTTON_PRESSED        æœ€å·¦è¾¹çš„é¼ æ ‡é”®è¢«æŒ‰ä¸‹      ä¸€èˆ¬æ¥è¯´å°±æ˜¯é¼ æ ‡å·¦é”®
+			12.FROM_LEFT_2ND_BUTTON_PRESSED        å·¦èµ·ç¬¬äºŒä¸ªé¼ æ ‡é”®è¢«æŒ‰ä¸‹    ä¸€èˆ¬æ¥è¯´æ˜¯é¼ æ ‡ä¸­é”®ï¼Œå°±æ˜¯æ»šè½®é”®
+			13.FROM_LEFT_3RD_BUTTON_PRESSED        å·¦èµ·ç¬¬ä¸‰ä¸ªé¼ æ ‡é”®è¢«æŒ‰ä¸‹
+			14.FROM_LEFT_4TH_BUTTON_PRESSED        å·¦èµ·ç¬¬å››ä¸ªé¼ æ ‡é”®è¢«æŒ‰ä¸‹
+			15.RIGHTMOST_BUTTON_PRESSED            æœ€å³è¾¹çš„é¼ æ ‡é”®è¢«æŒ‰ä¸‹      ä¸€èˆ¬æ¥è¯´æ˜¯é¼ æ ‡å³é”®
 			16.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			17.¿ØÖÆ¼ü×´Ì¬dwControlKeyStateÓë¼üÅÌÊÂ¼þµÄÒ»Ñù
+			17.æŽ§åˆ¶é”®çŠ¶æ€dwControlKeyStateä¸Žé”®ç›˜äº‹ä»¶çš„ä¸€æ ·
 			18.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			19.ENHANCED_KEY        À©Õ¹¼ü±»°´ÏÂ
-			20.LEFT_ALT_PRESSED    ×óAlt¼ü±»°´ÏÂ
-			21.LEFT_CTRL_PRESSED   ×óCtrl¼ü±»°´ÏÂ
-			22.RIGHT_ALT_PRESSED   ÓÒAlt¼ü±»°´ÏÂ
-			23.RIGHT_CTRL_PRESSED  ÓÒCtrl¼ü±»°´ÏÂ
-			24.NUMLOCK_ON          Êý×ÖËø¶¨±»´ò¿ª
-			25.SCROLLLOCK_ON       ¹ö¶¯Ëø¶¨±»´ò¿ª
-			26.CAPSLOCK_ON         ´óÐ´Ëø¶¨±»´ò¿ª
-			27.SHIFT_PRESSED       Shift¼ü±»°´ÏÂ
+			19.ENHANCED_KEY        æ‰©å±•é”®è¢«æŒ‰ä¸‹
+			20.LEFT_ALT_PRESSED    å·¦Alté”®è¢«æŒ‰ä¸‹
+			21.LEFT_CTRL_PRESSED   å·¦Ctrlé”®è¢«æŒ‰ä¸‹
+			22.RIGHT_ALT_PRESSED   å³Alté”®è¢«æŒ‰ä¸‹
+			23.RIGHT_CTRL_PRESSED  å³Ctrlé”®è¢«æŒ‰ä¸‹
+			24.NUMLOCK_ON          æ•°å­—é”å®šè¢«æ‰“å¼€
+			25.SCROLLLOCK_ON       æ»šåŠ¨é”å®šè¢«æ‰“å¼€
+			26.CAPSLOCK_ON         å¤§å†™é”å®šè¢«æ‰“å¼€
+			27.SHIFT_PRESSED       Shifté”®è¢«æŒ‰ä¸‹
 			28.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			29.Êó±êÊÂ¼þÀàÐÍdwEventFlagsÓÐÒÔÏÂ¼¸ÖÖ
+			29.é¼ æ ‡äº‹ä»¶ç±»åž‹dwEventFlagsæœ‰ä»¥ä¸‹å‡ ç§
 			30.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			31.DOUBLE_CLICK            Ë«»÷£¬µÚÒ»»÷Ö»×÷ÎªÆÕÍ¨°´¼üÊÂ¼þ£¬µÚ¶þ»÷²Å×÷ÎªË«»÷ÊÂ¼þ
-			32.MOUSE_HWHEELED          Ë®Æ½Êó±ê¹öÂÖÒÆ¶¯
-			33.MOUSE_MOVED             Êó±êÒÆ¶¯
-			34.MOUSE_WHEELED           ´¹Ö±Êó±ê¹öÂÖÒÆ¶¯
-			35.0                       µ±Êó±êÓÐ¼ü±»°´ÏÂ»òÕßÊÍ·Å
+			31.DOUBLE_CLICK            åŒå‡»ï¼Œç¬¬ä¸€å‡»åªä½œä¸ºæ™®é€šæŒ‰é”®äº‹ä»¶ï¼Œç¬¬äºŒå‡»æ‰ä½œä¸ºåŒå‡»äº‹ä»¶
+			32.MOUSE_HWHEELED          æ°´å¹³é¼ æ ‡æ»šè½®ç§»åŠ¨
+			33.MOUSE_MOVED             é¼ æ ‡ç§»åŠ¨
+			34.MOUSE_WHEELED           åž‚ç›´é¼ æ ‡æ»šè½®ç§»åŠ¨
+			35.0                       å½“é¼ æ ‡æœ‰é”®è¢«æŒ‰ä¸‹æˆ–è€…é‡Šæ”¾
 ***************************************************************************/
 int cct_read_keyboard_and_mouse(int &MX, int &MY, int &MAction, int &keycode1, int &keycode2)
 {
@@ -449,108 +449,108 @@ int cct_read_keyboard_and_mouse(int &MX, int &MY, int &MAction, int &keycode1, i
 	COORD        crPos;
 
 	while (1) {
-		/* ´ÓhinÖÐ¶ÁÊäÈë×´Ì¬£¨°üÀ¨Êó±ê¡¢¼üÅÌµÈ£© */
+		/* ä»Žhinä¸­è¯»è¾“å…¥çŠ¶æ€ï¼ˆåŒ…æ‹¬é¼ æ ‡ã€é”®ç›˜ç­‰ï¼‰ */
 		ReadConsoleInput(__hin, &InputRec, 1, &res);
 
-		/* ¼üÅÌÊÂ¼þ£¨ÒªÓÅÓÚÊó±êÊÂ¼þ£¬·ñÔòÈç¹ûÊó±ê·ÅÔÚÄ¿±êÇø£¬ÎÞ·¨¶Á¼ü£© */
+		/* é”®ç›˜äº‹ä»¶ï¼ˆè¦ä¼˜äºŽé¼ æ ‡äº‹ä»¶ï¼Œå¦åˆ™å¦‚æžœé¼ æ ‡æ”¾åœ¨ç›®æ ‡åŒºï¼Œæ— æ³•è¯»é”®ï¼‰ */
 		if (InputRec.EventType == KEY_EVENT) {
 			keycode1 = 0x00;
 			keycode2 = 0x00;
-			if (InputRec.Event.KeyEvent.bKeyDown) { // Ö»ÔÚ°´ÏÂÊ±ÅÐ¶Ï£¬µ¯ÆðÊ±²»ÅÐ¶Ï
-				/* ËùÓÐµÄÐéÄâ¼üÂë¿É²Î¿¼ÏÂÁÐÍøÖ·£º
+			if (InputRec.Event.KeyEvent.bKeyDown) { // åªåœ¨æŒ‰ä¸‹æ—¶åˆ¤æ–­ï¼Œå¼¹èµ·æ—¶ä¸åˆ¤æ–­
+				/* æ‰€æœ‰çš„è™šæ‹Ÿé”®ç å¯å‚è€ƒä¸‹åˆ—ç½‘å€ï¼š
 					https://baike.baidu.com/item/%E8%99%9A%E6%8B%9F%E9%94%AE%E7%A0%81/9884611?fr=aladdin
-					¶ÔÓ¦Í·ÎÄ¼þ£ºc:\Program Files (x86)\Windows Kits\10\Include\°æ±¾ºÅ\um\WinUser.h (ÒÔVS2017ÎªÀý£¬È±Ê¡Â·¾¶)
-					Ä¿Ç°Ö»·µ»ØËÄ¸ö¼ýÍ·¼ü£¬ÆäÓàµÄ¿ÉÒÔ×ÔÐÐÌí¼Ó */
+					å¯¹åº”å¤´æ–‡ä»¶ï¼šc:\Program Files (x86)\Windows Kits\10\Include\ç‰ˆæœ¬å·\um\WinUser.h (ä»¥VS2017ä¸ºä¾‹ï¼Œç¼ºçœè·¯å¾„)
+					ç›®å‰åªè¿”å›žå››ä¸ªç®­å¤´é”®ï¼Œå…¶ä½™çš„å¯ä»¥è‡ªè¡Œæ·»åŠ  */
 				switch (InputRec.Event.KeyEvent.wVirtualKeyCode) {
 					case VK_UP:
 						keycode1 = 0xe0;
-						keycode2 = KB_ARROW_UP;		//Ä£Äâ _getch()·½Ê½·µ»ØµÄÁ½¸ö¼üÂë£¬·Ö±ðÊÇ224£¨0xE0£©ºÍ72£¨0x48£©
+						keycode2 = KB_ARROW_UP;		//æ¨¡æ‹Ÿ _getch()æ–¹å¼è¿”å›žçš„ä¸¤ä¸ªé”®ç ï¼Œåˆ†åˆ«æ˜¯224ï¼ˆ0xE0ï¼‰å’Œ72ï¼ˆ0x48ï¼‰
 						break;
 					case VK_DOWN:
 						keycode1 = 0xe0;
-						keycode2 = KB_ARROW_DOWN;	//Ä£Äâ _getch()·½Ê½·µ»ØµÄÁ½¸ö¼üÂë£¬·Ö±ðÊÇ224£¨0xE0£©ºÍ80£¨0x50£©
+						keycode2 = KB_ARROW_DOWN;	//æ¨¡æ‹Ÿ _getch()æ–¹å¼è¿”å›žçš„ä¸¤ä¸ªé”®ç ï¼Œåˆ†åˆ«æ˜¯224ï¼ˆ0xE0ï¼‰å’Œ80ï¼ˆ0x50ï¼‰
 						break;
 					case VK_LEFT:
 						keycode1 = 0xe0;
-						keycode2 = KB_ARROW_LEFT;	//Ä£Äâ _getch()·½Ê½·µ»ØµÄÁ½¸ö¼üÂë£¬·Ö±ðÊÇ224£¨0xE0£©ºÍ75£¨0x4B£©
+						keycode2 = KB_ARROW_LEFT;	//æ¨¡æ‹Ÿ _getch()æ–¹å¼è¿”å›žçš„ä¸¤ä¸ªé”®ç ï¼Œåˆ†åˆ«æ˜¯224ï¼ˆ0xE0ï¼‰å’Œ75ï¼ˆ0x4Bï¼‰
 						break;
 					case VK_RIGHT:
 						keycode1 = 0xe0;
-						keycode2 = KB_ARROW_RIGHT;	//Ä£Äâ _getch()·½Ê½·µ»ØµÄÁ½¸ö¼üÂë£¬·Ö±ðÊÇ224£¨0xE0£©ºÍ77£¨0x4D£©
+						keycode2 = KB_ARROW_RIGHT;	//æ¨¡æ‹Ÿ _getch()æ–¹å¼è¿”å›žçš„ä¸¤ä¸ªé”®ç ï¼Œåˆ†åˆ«æ˜¯224ï¼ˆ0xE0ï¼‰å’Œ77ï¼ˆ0x4Dï¼‰
 						break;
 					default:
 						break;
 				} //end of switch
 
-				  /* ·Ç¼ýÍ·¼üÖ±½Ó·µ»ØASCIIÐÎÊ½£¨Fn¡¢Insert¡¢DeleteµÈ¾ùÎ´´¦Àí£© */
+				  /* éžç®­å¤´é”®ç›´æŽ¥è¿”å›žASCIIå½¢å¼ï¼ˆFnã€Insertã€Deleteç­‰å‡æœªå¤„ç†ï¼‰ */
 				if (keycode1 == 0)
 					keycode1 = InputRec.Event.KeyEvent.uChar.AsciiChar;
 
 				return CCT_KEYBOARD_EVENT;
 			} //end of if (KEYDOWN)
-		} // end of if (¼üÅÌÊÂ¼þ)
+		} // end of if (é”®ç›˜äº‹ä»¶)
 
-		/* Êó±êÊÂ¼þ */
+		/* é¼ æ ‡äº‹ä»¶ */
 		if (InputRec.EventType == MOUSE_EVENT) {
-			/* ´Ó·µ»ØÖÐ¶ÁÊó±êÖ¸Õëµ±Ç°µÄ×ø±ê */
+			/* ä»Žè¿”å›žä¸­è¯»é¼ æ ‡æŒ‡é’ˆå½“å‰çš„åæ ‡ */
 			crPos = InputRec.Event.MouseEvent.dwMousePosition;
 			MX = crPos.X;
 			MY = crPos.Y;
 
-			if (InputRec.Event.MouseEvent.dwEventFlags == MOUSE_MOVED) {//Êó±êÒÆ¶¯
-				/* Èç¹ûÊ¼ÖÕÊÇMOUSE_MOVEDÊÂ¼þÇÒ×ø±ê²»±ä£¬Ôò²»ÈÏÎªÊÇMOUSE_MOVED */
+			if (InputRec.Event.MouseEvent.dwEventFlags == MOUSE_MOVED) {//é¼ æ ‡ç§»åŠ¨
+				/* å¦‚æžœå§‹ç»ˆæ˜¯MOUSE_MOVEDäº‹ä»¶ä¸”åæ ‡ä¸å˜ï¼Œåˆ™ä¸è®¤ä¸ºæ˜¯MOUSE_MOVED */
 				if (MX_old == MX && MY_old == MY && MAction_old == MOUSE_ONLY_MOVED)
 					continue;
 
-				/* Î»ÖÃ±ä»¯Ôò¼ÇÂ¼ÏÂÀ´ */
+				/* ä½ç½®å˜åŒ–åˆ™è®°å½•ä¸‹æ¥ */
 				MX_old = MX;	
 				MY_old = MY;
 				MAction = MOUSE_ONLY_MOVED;
 				MAction_old = MAction;
 				return CCT_MOUSE_EVENT;
 			}
-			MAction_old = MOUSE_NO_ACTION; //ÖÃ·ÇMOUSE_ONLY_MOVEDÖµ¼´¿É
+			MAction_old = MOUSE_NO_ACTION; //ç½®éžMOUSE_ONLY_MOVEDå€¼å³å¯
 
-			if (InputRec.Event.MouseEvent.dwEventFlags == MOUSE_WHEELED) { //¹öÂÖÒÆ¶¯ 
+			if (InputRec.Event.MouseEvent.dwEventFlags == MOUSE_WHEELED) { //æ»šè½®ç§»åŠ¨ 
 			/* https://docs.microsoft.com/en-us/windows/console/mouse-event-record-str
 				The vertical mouse wheel was moved.
 				If the high word of the dwButtonState member contains a positive value, the wheel was rotated forward, away from the user.
 				Otherwise, the wheel was rotated backward, toward the user. */
-				if (InputRec.Event.MouseEvent.dwButtonState & 0x80000000) //¸ßÎ»Îª1£¬¸ºÊý
+				if (InputRec.Event.MouseEvent.dwButtonState & 0x80000000) //é«˜ä½ä¸º1ï¼Œè´Ÿæ•°
 					MAction = MOUSE_WHEEL_MOVED_DOWN;
 				else
 					MAction = MOUSE_WHEEL_MOVED_UP;
 				return CCT_MOUSE_EVENT;
 			}
 
-			if (InputRec.Event.MouseEvent.dwButtonState == (FROM_LEFT_1ST_BUTTON_PRESSED | RIGHTMOST_BUTTON_PRESSED)) { //Í¬Ê±°´ÏÂ×óÓÒ¼ü
+			if (InputRec.Event.MouseEvent.dwButtonState == (FROM_LEFT_1ST_BUTTON_PRESSED | RIGHTMOST_BUTTON_PRESSED)) { //åŒæ—¶æŒ‰ä¸‹å·¦å³é”®
 				MAction = MOUSE_LEFTRIGHT_BUTTON_CLICK;
 				return CCT_MOUSE_EVENT;
 			}
-			else if (InputRec.Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED) { //°´ÏÂ×ó¼ü
+			else if (InputRec.Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED) { //æŒ‰ä¸‹å·¦é”®
 				if (InputRec.Event.MouseEvent.dwEventFlags == DOUBLE_CLICK)
 					MAction = MOUSE_LEFT_BUTTON_DOUBLE_CLICK;
 				else
 					MAction = MOUSE_LEFT_BUTTON_CLICK;
 				return CCT_MOUSE_EVENT;
 			}
-			else if (InputRec.Event.MouseEvent.dwButtonState == RIGHTMOST_BUTTON_PRESSED) { //°´ÏÂÓÒ¼ü
+			else if (InputRec.Event.MouseEvent.dwButtonState == RIGHTMOST_BUTTON_PRESSED) { //æŒ‰ä¸‹å³é”®
 				if (InputRec.Event.MouseEvent.dwEventFlags == DOUBLE_CLICK)
 					MAction = MOUSE_RIGHT_BUTTON_DOUBLE_CLICK;
 				else
 					MAction = MOUSE_RIGHT_BUTTON_CLICK;
 				return CCT_MOUSE_EVENT;
 			}
-			else if (InputRec.Event.MouseEvent.dwButtonState == FROM_LEFT_2ND_BUTTON_PRESSED) { //°´ÏÂ¹öÂÖ
+			else if (InputRec.Event.MouseEvent.dwButtonState == FROM_LEFT_2ND_BUTTON_PRESSED) { //æŒ‰ä¸‹æ»šè½®
 				MAction = MOUSE_WHEEL_CLICK;
 				return CCT_MOUSE_EVENT;
 			}
-			else //ºöÂÔÆäËü°´¼ü²Ù×÷
+			else //å¿½ç•¥å…¶å®ƒæŒ‰é”®æ“ä½œ
 				continue;
-		} // end of if(Êó±êÊÂ¼þ)
+		} // end of if(é¼ æ ‡äº‹ä»¶)
 	} //end of while(1)
 
-	return CCT_MOUSE_EVENT; //´Ë¾äÓ¦¸ÃÖ´ÐÐ²»µ½£¬Îª±ÜÃâÄ³Ð©±àÒëÆ÷±¨²»ÍêÈ«·ÖÖ§´íÎó£¬¼Ó
+	return CCT_MOUSE_EVENT; //æ­¤å¥åº”è¯¥æ‰§è¡Œä¸åˆ°ï¼Œä¸ºé¿å…æŸäº›ç¼–è¯‘å™¨æŠ¥ä¸å®Œå…¨åˆ†æ”¯é”™è¯¯ï¼ŒåŠ 
 }
 
 typedef BOOL(WINAPI *PROCSETCONSOLEFONT)(HANDLE, DWORD);
@@ -561,7 +561,7 @@ typedef BOOL(WINAPI *PROCGETCURRENTCONSOLEFONT)(HANDLE, BOOL, PCONSOLE_FONT_INFO
 typedef BOOL(WINAPI *PROCSetBufferSize)(HANDLE hConsoleOutput, COORD dwSize);
 typedef HWND(WINAPI *PROCGETCONSOLEWINDOW)();
 
-#if 0 //Ìõ¼þ±àÒë£¬0±íÊ¾¹Ø±Õ
+#if 0 //æ¡ä»¶ç¼–è¯‘ï¼Œ0è¡¨ç¤ºå…³é—­
 PROCSETCONSOLEFONT SetConsoleFont;
 PROCGETCONSOLEFONTINFO GetConsoleFontInfo;
 PROCGETCONSOLEFONTSIZE GetConsoleFontSize;
@@ -570,11 +570,11 @@ PROCGETCURRENTCONSOLEFONT GetCurrentConsoleFont;
 #endif
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£º
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼š
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼š
 ***************************************************************************/
 int cct_getfontinfo(void)
 {
@@ -594,31 +594,31 @@ int cct_getfontinfo(void)
 	CONSOLE_FONT_INFO cur_f;
 	int nFontNum;
 
-	/* È¡µ±Ç°×ÖÌåµÄÃû³Æ£¬cmdÏÂÄ¿Ç°ÊÇÁ½ÖÖ£ºTerminal(µãÕó×ÖÌå)ºÍÐÂËÎÌå*/
+	/* å–å½“å‰å­—ä½“çš„åç§°ï¼Œcmdä¸‹ç›®å‰æ˜¯ä¸¤ç§ï¼šTerminal(ç‚¹é˜µå­—ä½“)å’Œæ–°å®‹ä½“*/
 	infoex.cbSize = sizeof(CONSOLE_FONT_INFOEX);
 	GetCurrentConsoleFontEx(__hout, 1, &infoex);
 	WideCharToMultiByte(CP_ACP, 0, infoex.FaceName, -1, fontname, sizeof(fontname), NULL, NULL);
-	cout << "µ±Ç°×ÖÌå£º" << fontname << endl;
+	cout << "å½“å‰å­—ä½“ï¼š" << fontname << endl;
 
-	/* ´òÓ¡µ±Ç°×ÖÌåµÄ×ÖºÅÐÅÏ¢ */
+	/* æ‰“å°å½“å‰å­—ä½“çš„å­—å·ä¿¡æ¯ */
 	nFontNum = GetNumberOfConsoleFonts();
-	cout << "    ×Ö ºÅ Êý Á¿ £º" << nFontNum << endl;
+	cout << "    å­— å· æ•° é‡ ï¼š" << nFontNum << endl;
 
-	/* È¡µ±Ç°µÄ×ÖºÅÉèÖÃ */
+	/* å–å½“å‰çš„å­—å·è®¾ç½® */
 	GetCurrentConsoleFont(__hout, 0, &cur_f);
-	cout << "    µ±Ç°×ÖºÅÐòºÅ£º" << cur_f.nFont << endl;
-	cout << "            ¿í¶È£º" << cur_f.dwFontSize.X << " pixels" << endl;
-	cout << "            ¸ß¶È£º" << cur_f.dwFontSize.Y << " pixels" << endl;
+	cout << "    å½“å‰å­—å·åºå·ï¼š" << cur_f.nFont << endl;
+	cout << "            å®½åº¦ï¼š" << cur_f.dwFontSize.X << " pixels" << endl;
+	cout << "            é«˜åº¦ï¼š" << cur_f.dwFontSize.Y << " pixels" << endl;
 
 	return 0;
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£º¸Ä±äÊä³ö´°¿ÚµÄ×ÖºÅ
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šæ”¹å˜è¾“å‡ºçª—å£çš„å­—å·
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼š
 ***************************************************************************/
 void cct_setconsolefont(const int font_no)
 {
@@ -648,21 +648,21 @@ void cct_setconsolefont(const int font_no)
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£º¸Ä±äÊä³ö´°¿ÚµÄ×ÖÌå¼°´óÐ¡
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºGBK±àÂëµÄcmd´°¿ÚÖ»Ö§³Ö"µãÕó×ÖÌå"ºÍ"ÐÂËÎÌå"Á½ÖÖ£¬
-            ¸ø³öfontnameÊ±£¬·Ç"ÐÂËÎÌå"È«²¿×öÎªÈ±Ê¡×ÖÌå(Terminal-"µãÕó×ÖÌå")
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼šæ”¹å˜è¾“å‡ºçª—å£çš„å­—ä½“åŠå¤§å°
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šGBKç¼–ç çš„cmdçª—å£åªæ”¯æŒ"ç‚¹é˜µå­—ä½“"å’Œ"æ–°å®‹ä½“"ä¸¤ç§ï¼Œ
+            ç»™å‡ºfontnameæ—¶ï¼Œéž"æ–°å®‹ä½“"å…¨éƒ¨åšä¸ºç¼ºçœå­—ä½“(Terminal-"ç‚¹é˜µå­—ä½“")
 ***************************************************************************/
 void cct_setfontsize(const char *fontname, const int high, const int width)
 {
 	CONSOLE_FONT_INFOEX infoex = { 0 };
 
 	infoex.cbSize = sizeof(CONSOLE_FONT_INFOEX);
-	infoex.dwFontSize.X = width;		// ×ÖÌå¿í¶È£¬¶ÔÓÚTruetype×ÖÌå£¬²»ÐèÒª¿í¶È£¬Îª0¼´¿É£¬¶ÔÓÚµãÕó×ÖÌå£¬Èç¹û¿í¶ÈÎª0£¬ÔòÑ¡Ö¸¶¨¸ß¶È´æÔÚµÄ¿í¶È
-	infoex.dwFontSize.Y = high;			// ×ÖÌå¸ß¶È
-	infoex.FontWeight = FW_NORMAL;		//¾ßÌå¼û wingdi.h
+	infoex.dwFontSize.X = width;		// å­—ä½“å®½åº¦ï¼Œå¯¹äºŽTruetypeå­—ä½“ï¼Œä¸éœ€è¦å®½åº¦ï¼Œä¸º0å³å¯ï¼Œå¯¹äºŽç‚¹é˜µå­—ä½“ï¼Œå¦‚æžœå®½åº¦ä¸º0ï¼Œåˆ™é€‰æŒ‡å®šé«˜åº¦å­˜åœ¨çš„å®½åº¦
+	infoex.dwFontSize.Y = high;			// å­—ä½“é«˜åº¦
+	infoex.FontWeight = FW_NORMAL;		//å…·ä½“è§ wingdi.h
 
 	MultiByteToWideChar(CP_ACP, 0, fontname, -1, infoex.FaceName, LF_FACESIZE);
 	SetCurrentConsoleFontEx(__hout, NULL, &infoex);

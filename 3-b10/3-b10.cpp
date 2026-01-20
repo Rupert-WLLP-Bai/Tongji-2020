@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 using namespace std;
 int main()
@@ -6,13 +6,13 @@ int main()
     int x;
     while (1)
     {
-        cout << "ÇëÊäÈëxµÄÖµ(0-100)£º";
-        cin >> x; //¶ÁÈëxµÄ·½Ê½±ØĞëÊÇcin>>intĞÍ±äÁ¿
+        cout << "è¯·è¾“å…¥xçš„å€¼(0-100)ï¼š";
+        cin >> x; //è¯»å…¥xçš„æ–¹å¼å¿…é¡»æ˜¯cin>>intå‹å˜é‡
         while (cin.fail())
         {
             cin.clear();
             cin.ignore(1024,'\n');
-            cout << "ÇëÊäÈëxµÄÖµ(0-100)£º";
+            cout << "è¯·è¾“å…¥xçš„å€¼(0-100)ï¼š";
             cin >> x;
         }
         if (x >= 0 && x <= 100)

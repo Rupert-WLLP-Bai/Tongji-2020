@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include<iostream>
 using namespace std;
 
@@ -22,24 +22,24 @@ int main()
 	int a, b, c, d;
 	while (1)
 	{
-		cout << "ÇëÊäÈë¸öÊýnum¼°num¸öÕýÕûÊý" << endl;
-		/*ÊäÈë¸öÊý*/
+		cout << "è¯·è¾“å…¥ä¸ªæ•°numåŠnumä¸ªæ­£æ•´æ•°" << endl;
+		/*è¾“å…¥ä¸ªæ•°*/
 		while (1)
 		{
 			cin >> num;
-			if (cin.fail())//ÊäÈë´íÎó
+			if (cin.fail())//è¾“å…¥é”™è¯¯
 			{
 				cin.clear();
 				cin.ignore(65536, '\n');
 				continue;
 			}
-			else//ÊäÈëÕýÈ·
+			else//è¾“å…¥æ­£ç¡®
 			{
 				if (num >= 2 && num <= 4)
 					break;
 				else
 				{
-					cout << "¸öÊýÊäÈë´íÎó" << endl;
+					cout << "ä¸ªæ•°è¾“å…¥é”™è¯¯" << endl;
 					return 0;
 				}
 			}

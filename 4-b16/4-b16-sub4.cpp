@@ -1,10 +1,10 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <cmath>
 using namespace std;
 
 void f4(double a, double b)
 {
-	cout << "ÓÐÁ½¸öÏàµÈÊµ¸ù:" << endl;
+	cout << "æœ‰ä¸¤ä¸ªç›¸ç­‰å®žæ ¹:" << endl;
 	cout << "x1=x2=" << -b / (2 * a) << endl;
 }

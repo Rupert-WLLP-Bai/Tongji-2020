@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 int main()
@@ -6,7 +6,7 @@ int main()
     int i;
     int temp1, temp2, temp3, temp4;
     int i1, i2, i3, i4, i5;
-    printf("ÇëÊäÈëÒ»¸ö[1..30000]¼äµÄÕûÊı£º\n");
+    printf("è¯·è¾“å…¥ä¸€ä¸ª[1..30000]é—´çš„æ•´æ•°ï¼š\n");
     scanf("%d", &i);
 
     i1 = i % 10;
@@ -19,11 +19,11 @@ int main()
     temp4 = temp3 / 10;
     i5 = temp4 % 10;
 
-    printf("ÍòÎ» : %d\n", i5);
-    printf("Ç§Î» : %d\n", i4);
-    printf("°ÙÎ» : %d\n", i3);
-    printf("Ê®Î» : %d\n", i2);
-    printf("¸öÎ» : %d\n", i1);
+    printf("ä¸‡ä½ : %d\n", i5);
+    printf("åƒä½ : %d\n", i4);
+    printf("ç™¾ä½ : %d\n", i3);
+    printf("åä½ : %d\n", i2);
+    printf("ä¸ªä½ : %d\n", i1);
 
     return 0;
 }

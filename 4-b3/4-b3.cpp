@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -8,14 +8,14 @@ int zeller(int y, int m, int d)
     int w, c, y1, start;
     if (m >= 3 && m <= 14)
     {
-        y1 = y % 100; //µÃµ½¹«Ê½ÖÐYµÄÖµ
-        c = y / 100;  //µÃµ½¹«Ê½ÖÐCµÄÖµ
+        y1 = y % 100; //å¾—åˆ°å…¬å¼ä¸­Yçš„å€¼
+        c = y / 100;  //å¾—åˆ°å…¬å¼ä¸­Cçš„å€¼
     }
     else
     {
         m += 12;
-        y1 = (y - 1) % 100; //µÃµ½¹«Ê½ÖÐYµÄÖµ
-        c = (y - 1) / 100;  //µÃµ½¹«Ê½ÖÐCµÄÖµ
+        y1 = (y - 1) % 100; //å¾—åˆ°å…¬å¼ä¸­Yçš„å€¼
+        c = (y - 1) / 100;  //å¾—åˆ°å…¬å¼ä¸­Cçš„å€¼
     }
     w = y1 + y1 / 4 + c / 4 - 2 * c + (13 * (m + 1) / 5) + d - 1;
     while (w <= 0)
@@ -28,12 +28,12 @@ int calendar(int year, int month, int row)
 {
     int spaces;
     int day = 1;
-    cout << year << "Äê" << month << "ÔÂ" << endl;
+    cout << year << "å¹´" << month << "æœˆ" << endl;
     cout << "======================================================" << endl;
-    cout << "ÐÇÆÚÈÕ  ÐÇÆÚÒ»  ÐÇÆÚ¶þ  ÐÇÆÚÈý  ÐÇÆÚËÄ  ÐÇÆÚÎå  ÐÇÆÚÁù" << endl;
+    cout << "æ˜ŸæœŸæ—¥  æ˜ŸæœŸä¸€  æ˜ŸæœŸäºŒ  æ˜ŸæœŸä¸‰  æ˜ŸæœŸå››  æ˜ŸæœŸäº”  æ˜ŸæœŸå…­" << endl;
     cout << "======================================================" << endl;
 
-    if (row != 0) //²¹³äÇ°ÖÃ¿Õ¸ñ
+    if (row != 0) //è¡¥å……å‰ç½®ç©ºæ ¼
     {
         for (spaces = row; spaces > 1; spaces--)
         {
@@ -42,7 +42,7 @@ int calendar(int year, int month, int row)
         cout << "    ";
     }
 
-    if ((year % 100 != 0 && year % 4 == 0) || year % 400 == 0) //ÈòÄê
+    if ((year % 100 != 0 && year % 4 == 0) || year % 400 == 0) //é—°å¹´
     {
         switch (month)
         {
@@ -59,7 +59,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -81,7 +81,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -102,7 +102,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -123,7 +123,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -144,7 +144,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -165,7 +165,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -186,7 +186,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -207,7 +207,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -228,7 +228,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -249,7 +249,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -270,7 +270,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -291,7 +291,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -302,7 +302,7 @@ int calendar(int year, int month, int row)
         }
     }
 
-    else //Æ½Äê
+    else //å¹³å¹´
     {
         switch (month)
         {
@@ -319,7 +319,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -341,7 +341,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -362,7 +362,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -383,7 +383,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -404,7 +404,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -425,7 +425,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -446,7 +446,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -467,7 +467,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -488,7 +488,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -509,7 +509,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -530,7 +530,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -551,7 +551,7 @@ int calendar(int year, int month, int row)
                         cout << setw(8) << day;
                         row++;
                     }
-                    if (row > 6) //»»ÐÐÖØÖÃrowµÄÖµ
+                    if (row > 6) //æ¢è¡Œé‡ç½®rowçš„å€¼
                     {
                         row = 0;
                         cout << endl;
@@ -568,17 +568,17 @@ int main()
 {
     int y, m;
     int row;
-    //ÊäÈëÒÔ¼°ÅÐ¶ÏºÏ·¨ÐÔ(1.Æ½Äê,ÈòÄê 2.·Ç·¨×Ö·û)
+    //è¾“å…¥ä»¥åŠåˆ¤æ–­åˆæ³•æ€§(1.å¹³å¹´,é—°å¹´ 2.éžæ³•å­—ç¬¦)
     while (1)
     {
-        cout << "ÊäÈëÄêÔÂ,·¶Î§ÊÇ(1900.1-2099.12) : " << endl;
+        cout << "è¾“å…¥å¹´æœˆ,èŒƒå›´æ˜¯(1900.1-2099.12) : " << endl;
         cin >> y >> m;
         while (cin.fail())
         {
             cin.clear();
             cin.ignore(1024, '\n');
-            cout << "ÊäÈë·Ç·¨,ÇëÖØÐÂÊäÈë" << endl;
-            cout << "ÊäÈëÄêÔÂ,·¶Î§ÊÇ(1900.1-2099.12) : " << endl;
+            cout << "è¾“å…¥éžæ³•,è¯·é‡æ–°è¾“å…¥" << endl;
+            cout << "è¾“å…¥å¹´æœˆ,èŒƒå›´æ˜¯(1900.1-2099.12) : " << endl;
             cin >> y >> m;
         }
 
@@ -588,14 +588,14 @@ int main()
                 break;
             else
             {
-                cout << "ÔÂ·Ý´íÎó,ÇëÖØÐÂÊäÈë" << endl;
+                cout << "æœˆä»½é”™è¯¯,è¯·é‡æ–°è¾“å…¥" << endl;
                 cin.clear();
                 cin.ignore(1024, '\n');
             }
         }
         else
         {
-            cout << "Äê·Ý´íÎó,ÇëÖØÐÂÊäÈë" << endl;
+            cout << "å¹´ä»½é”™è¯¯,è¯·é‡æ–°è¾“å…¥" << endl;
             cin.clear();
             cin.ignore(1024, '\n');
         }

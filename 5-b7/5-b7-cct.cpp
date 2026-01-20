@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <iomanip>
 #include <cstdio>
@@ -6,15 +6,15 @@
 #include <windows.h>
 using namespace std;
 
-/* ¾²Ì¬È«¾Ö±äÁ¿£¨Í¬Ò»ÏîÄ¿ÖÐµÄÆäËücpp²»ÄÜ·ÃÎÊ±¾±äÁ¿£© */
-static HANDLE hout = GetStdHandle(STD_OUTPUT_HANDLE); //È¡±ê×¼Êä³öÉè±¸¶ÔÓ¦µÄ¾ä±ú
+/* é™æ€å…¨å±€å˜é‡ï¼ˆåŒä¸€é¡¹ç›®ä¸­çš„å…¶å®ƒcppä¸èƒ½è®¿é—®æœ¬å˜é‡ï¼‰ */
+static HANDLE hout = GetStdHandle(STD_OUTPUT_HANDLE); //å–æ ‡å‡†è¾“å‡ºè®¾å¤‡å¯¹åº”çš„å¥æŸ„
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£ºcct_cls
-  ¹¦    ÄÜ£ºÍê³ÉÓësystem("cls")Ò»ÑùµÄ¹¦ÄÜ£¬µ«Ð§ÂÊ¸ß
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºÇå³ýÕû¸öÆÁÄ»»º³åÇø£¬²»½ö½öÊÇ¿É¼û´°¿ÚÇøÓò(Ê¹ÓÃµ±Ç°ÑÕÉ«)
+  å‡½æ•°åç§°ï¼šcct_cls
+  åŠŸ    èƒ½ï¼šå®Œæˆä¸Žsystem("cls")ä¸€æ ·çš„åŠŸèƒ½ï¼Œä½†æ•ˆçŽ‡é«˜
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼šæ¸…é™¤æ•´ä¸ªå±å¹•ç¼“å†²åŒºï¼Œä¸ä»…ä»…æ˜¯å¯è§çª—å£åŒºåŸŸ(ä½¿ç”¨å½“å‰é¢œè‰²)
 ***************************************************************************/
 void cct_cls()
 {
@@ -22,26 +22,26 @@ void cct_cls()
 	CONSOLE_SCREEN_BUFFER_INFO binfo; /* to get buffer info */
 	DWORD num;
 
-	/* È¡µ±Ç°»º³åÇøÐÅÏ¢ */
+	/* å–å½“å‰ç¼“å†²åŒºä¿¡æ¯ */
 	GetConsoleScreenBufferInfo(hout, &binfo);
-	/* Ìî³ä×Ö·û */
+	/* å¡«å……å­—ç¬¦ */
 	FillConsoleOutputCharacter(hout, (TCHAR)' ', binfo.dwSize.X * binfo.dwSize.Y, coord, &num);
-	/* Ìî³äÊôÐÔ */
+	/* å¡«å……å±žæ€§ */
 	FillConsoleOutputAttribute(hout, binfo.wAttributes, binfo.dwSize.X * binfo.dwSize.Y, coord, &num);
 
-	/* ¹â±ê»Øµ½(0,0) */
+	/* å…‰æ ‡å›žåˆ°(0,0) */
 	SetConsoleCursorPosition(hout, coord);
 	return;
 }
 
 /***************************************************************************
-  º¯ÊýÃû³Æ£ºcct_gotoxy
-  ¹¦    ÄÜ£º½«¹â±êÒÆ¶¯µ½Ö¸¶¨Î»ÖÃ
-  ÊäÈë²ÎÊý£ºHANDLE hout£ºÊä³öÉè±¸¾ä±ú
-			int X      £ºÖ¸¶¨Î»ÖÃµÄx×ø±ê
-			int Y      £ºÖ¸¶¨Î»ÖÃµÄy×ø±ê
-  ·µ »Ø Öµ£ºÎÞ
-  Ëµ    Ã÷£º´Ëº¯Êý²»×¼ÐÞ¸Ä
+  å‡½æ•°åç§°ï¼šcct_gotoxy
+  åŠŸ    èƒ½ï¼šå°†å…‰æ ‡ç§»åŠ¨åˆ°æŒ‡å®šä½ç½®
+  è¾“å…¥å‚æ•°ï¼šHANDLE houtï¼šè¾“å‡ºè®¾å¤‡å¥æŸ„
+			int X      ï¼šæŒ‡å®šä½ç½®çš„xåæ ‡
+			int Y      ï¼šæŒ‡å®šä½ç½®çš„yåæ ‡
+  è¿” å›ž å€¼ï¼šæ— 
+  è¯´    æ˜Žï¼šæ­¤å‡½æ•°ä¸å‡†ä¿®æ”¹
 ***************************************************************************/
 void cct_gotoxy(const int X, const int Y)
 {

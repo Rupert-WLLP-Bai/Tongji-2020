@@ -1,8 +1,8 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-int pointer[3];//Õ»¶¥Ö¸Õë
-int line[3][10];//Èý¸öÕ»
+int pointer[3];//æ ˆé¡¶æŒ‡é’ˆ
+int line[3][10];//ä¸‰ä¸ªæ ˆ
 
 void haoni(int n, char src, char tmp, char dst)
 {
@@ -11,14 +11,14 @@ void haoni(int n, char src, char tmp, char dst)
 	if (n == 1)
 	{
 		i++;
-		printf("µÚ%4d²½", i);
+		printf("ç¬¬%4dæ­¥", i);
 		move(n, src, dst);
 	}
 	else
 	{
 		haoni(n - 1, src, dst, tmp);
 		i++;
-		printf("µÚ%4d²½", i);
+		printf("ç¬¬%4dæ­¥", i);
 		move(n, src, dst);
 		haoni(n - 1, tmp, src, dst);
 	}
@@ -134,12 +134,12 @@ int main()
 	char start, mid, end;
 	while (1)
 	{
-		printf("ÇëÊäÈëººÅµËþµÄ²ãÊý(1-10)\n");
+		printf("è¯·è¾“å…¥æ±‰è¯ºå¡”çš„å±‚æ•°(1-10)\n");
 		re = scanf("%d", &level);
 		while (re != 1)
 		{
 			rewind(stdin);
-			printf("ÇëÊäÈëººÅµËþµÄ²ãÊý(1-10)\n");
+			printf("è¯·è¾“å…¥æ±‰è¯ºå¡”çš„å±‚æ•°(1-10)\n");
 			re = scanf("%d", &level);
 		}
 		if (level >= 1 && level <= 10)
@@ -148,12 +148,12 @@ int main()
 	rewind(stdin);
 	while (1)
 	{
-		printf("ÇëÊäÈëÆðÊ¼Öù(A-C)\n");
+		printf("è¯·è¾“å…¥èµ·å§‹æŸ±(A-C)\n");
 		re = scanf("%c", &start);
 		while (re != 1)
 		{
 			rewind(stdin);
-			printf("ÇëÊäÈëÆðÊ¼Öù(A-C)\n");
+			printf("è¯·è¾“å…¥èµ·å§‹æŸ±(A-C)\n");
 			re = scanf("%c", &start);
 		}
 		if (start == 'A' || start == 'B' || start == 'C')
@@ -168,18 +168,18 @@ int main()
 	rewind(stdin);
 	while (1)
 	{
-		printf("ÇëÊäÈëÄ¿±êÖù(A-C)\n");
+		printf("è¯·è¾“å…¥ç›®æ ‡æŸ±(A-C)\n");
 		re = scanf("%c", &end);
 		while (re != 1)
 		{
 			rewind(stdin);
-			printf("ÇëÊäÈëÄ¿±êÖù(A-C)\n");
+			printf("è¯·è¾“å…¥ç›®æ ‡æŸ±(A-C)\n");
 			re = scanf("%c", &end);
 		}
 		if (end == start || end == start + 32 || end == start - 32)
 		{
 			rewind(stdin);
-			printf("Ä¿±êÖù²»ÄÜÓëÆðÊ¼ÖùÏàÍ¬\n");
+			printf("ç›®æ ‡æŸ±ä¸èƒ½ä¸Žèµ·å§‹æŸ±ç›¸åŒ\n");
 			continue;
 		}
 		if (end == 'A' || end == 'B' || end == 'C')
@@ -194,7 +194,7 @@ int main()
 	mid = 'A' + 'B' + 'C' - start - end;
 
 
-	for (int i = 0; i < 10; i++)//³õÊ¼»¯
+	for (int i = 0; i < 10; i++)//åˆå§‹åŒ–
 	{
 		for (int j = 0; j < 3; j++)
 		{
@@ -205,7 +205,7 @@ int main()
 	{
 		pointer[i] = 0;
 	}
-	switch (start)//¿ªÊ¼µÄÊý×é×´Ì¬
+	switch (start)//å¼€å§‹çš„æ•°ç»„çŠ¶æ€
 	{
 		case 'A':
 		{
@@ -236,7 +236,7 @@ int main()
 		}
 	}
 
-	printf("³õÊ¼:             ");
+	printf("åˆå§‹:             ");
 	printf("A:");
 	if (line[0][0] != 10)
 		printf(" ");

@@ -1,10 +1,10 @@
-/*Îª8-b1µÄ²âÊÔÉú³ÉËæ»úµÄÎÄ±¾*/
+/*ä¸º8-b1çš„æµ‹è¯•ç”Ÿæˆéšæœºçš„æ–‡æœ¬*/
 #define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include<time.h>
 #include<stdlib.h>
 #define SIZE 145320
-char ch[SIZE];//È«¾ÖÊı×é²»ÓÃ¿¼ÂÇÕ»
+char ch[SIZE];//å…¨å±€æ•°ç»„ä¸ç”¨è€ƒè™‘æ ˆ
 
 using namespace std;
 
@@ -15,11 +15,11 @@ void datagen(char* ch)
 	for (int i = 0; i < SIZE; i++)
 	{
 		ch[i] = rand();
-		////ÈÎÒâASCIIÂëÎªÕıµÄ×Ö·û
+		////ä»»æ„ASCIIç ä¸ºæ­£çš„å­—ç¬¦
 		//ch[i] = rand() % 127 + 1;
-		////Êı×Ö
+		////æ•°å­—
 		//ch[i] = rand() % 10 + '0';
-		////¿É¼û
+		////å¯è§
 		//ch[i] = rand() % 94 + 33;
 	}
 }
@@ -30,34 +30,34 @@ int main()
 	FILE* fp2;
 	FILE* fp3;
 	datagen(ch);
-	fp1 = fopen("E:\\Homework\\¸ß³Ì\\Debug\\hello.docx", "wb");
+	fp1 = fopen("E:\\Homework\\é«˜ç¨‹\\Debug\\hello.docx", "wb");
 	if (fp1 == NULL)
 	{
-		printf("ÎÄ¼ş´ò¿ªÊ§°Ü!\n");
+		printf("æ–‡ä»¶æ‰“å¼€å¤±è´¥!\n");
 		exit(EXIT_FAILURE);
 	}
-	fp2 = fopen("E:\\Homework\\¸ß³Ì\\Debug\\hello.txt", "wb");
+	fp2 = fopen("E:\\Homework\\é«˜ç¨‹\\Debug\\hello.txt", "wb");
 	if (fp2 == NULL)
 	{
-		printf("ÎÄ¼ş´ò¿ªÊ§°Ü!\n");
+		printf("æ–‡ä»¶æ‰“å¼€å¤±è´¥!\n");
 		exit(EXIT_FAILURE);
 	}
-	fp3 = fopen("E:\\Homework\\¸ß³Ì\\Debug\\hello.bin", "wb");
+	fp3 = fopen("E:\\Homework\\é«˜ç¨‹\\Debug\\hello.bin", "wb");
 	if (fp3 == NULL)
 	{
-		printf("ÎÄ¼ş´ò¿ªÊ§°Ü!\n");
+		printf("æ–‡ä»¶æ‰“å¼€å¤±è´¥!\n");
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		printf("ÎÄ¼ş´ò¿ª³É¹¦!\n");
+		printf("æ–‡ä»¶æ‰“å¼€æˆåŠŸ!\n");
 		for (int i = 0; i < SIZE; i++)
 		{
 			fputc(ch[i], fp1);
 			fputc(ch[i], fp2);
 			fputc(ch[i], fp3);
 		}
-		printf("ÎÄ¼şĞ´ÈëÍê³É!\n");
+		printf("æ–‡ä»¶å†™å…¥å®Œæˆ!\n");
 	}
 	return 0;
 }

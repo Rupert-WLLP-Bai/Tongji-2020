@@ -1,13 +1,13 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include<math.h>
-//¿É°´ÐèÔö¼ÓÐèÒªµÄÍ·ÎÄ¼þ
+//å¯æŒ‰éœ€å¢žåŠ éœ€è¦çš„å¤´æ–‡ä»¶
 
-const char chistr[] = "ÁãÒ¼·¡ÈþËÁÎéÂ½Æâ°Æ¾Á"; /* ËùÓÐÊä³ö´óÐ´ "Áã" ~ "¾Á" µÄµØ·½£¬Ö»ÔÊÐí´ÓÕâ¸öÊý×éÖÐÈ¡Öµ */
-char result[256];  /* ³ýresultÍâ£¬²»ÔÙÔÊÐí¶¨ÒåÈÎºÎÐÎÊ½µÄÈ«¾Ö±äÁ¿ */
+const char chistr[] = "é›¶å£¹è´°åè‚†ä¼é™†æŸ’æŒçŽ–"; /* æ‰€æœ‰è¾“å‡ºå¤§å†™ "é›¶" ~ "çŽ–" çš„åœ°æ–¹ï¼Œåªå…è®¸ä»Žè¿™ä¸ªæ•°ç»„ä¸­å–å€¼ */
+char result[256];  /* é™¤resultå¤–ï¼Œä¸å†å…è®¸å®šä¹‰ä»»ä½•å½¢å¼çš„å…¨å±€å˜é‡ */
 
-/* --ÔÊÐíÌí¼ÓÐèÒªµÄº¯Êý --*/
+/* --å…è®¸æ·»åŠ éœ€è¦çš„å‡½æ•° --*/
 void add_result(int num, int i)
 {
 	if (num)
@@ -23,29 +23,29 @@ void print_zero(int i)
 	result[i++] = chistr[1];
 }
 /***************************************************************************
-  º¯ÊýÃû³Æ£º
-  ¹¦    ÄÜ£º
-  ÊäÈë²ÎÊý£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼š
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å›ž å€¼ï¼š
+  è¯´    æ˜Žï¼š
 ***************************************************************************/
 int main()
 {
-	/* --ÔÊÐíÌí¼ÓÐèÒªµÄÄÚÈÝ --*/
-	char yi[3] = { "ÒÚ" };
-	char wan[3] = { "Íò" };
-	char qian[3] = { "Çª" };
-	char bai[3] = { "°Û" };
-	char shi[3] = { "Ê°" };
-	char yuan[3] = { "Ô²" };
-	char jiao[3] = { "½Ç" };
-	char fen[3] = { "·Ö" };
-	char zheng[3] = { "Õû" };
+	/* --å…è®¸æ·»åŠ éœ€è¦çš„å†…å®¹ --*/
+	char yi[3] = { "äº¿" };
+	char wan[3] = { "ä¸‡" };
+	char qian[3] = { "ä»Ÿ" };
+	char bai[3] = { "ä½°" };
+	char shi[3] = { "æ‹¾" };
+	char yuan[3] = { "åœ†" };
+	char jiao[3] = { "è§’" };
+	char fen[3] = { "åˆ†" };
+	char zheng[3] = { "æ•´" };
 	int k = 0;
 	int i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i_1, i_2, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9;
 	double temp_1, num, num_int, num_decimal_part;
 	int i10_19_exist = 1, zero_1_exist = 0, zero_2_exist = 0, zheng_exist = 0;
-	printf("ÇëÊäÈë[0-100ÒÚ)Ö®¼äµÄÊý×Ö,Ð¡Êýµãºó×î¶àÁ½Î»£º\n");
+	printf("è¯·è¾“å…¥[0-100äº¿)ä¹‹é—´çš„æ•°å­—,å°æ•°ç‚¹åŽæœ€å¤šä¸¤ä½ï¼š\n");
 	scanf("%lf", &num);
 	num_int = num - fmod(num, 1);
 	i1 = (int)(fmod(num_int, 10));
@@ -73,7 +73,7 @@ int main()
 	i_2 = (int)(fmod(temp_1, 10) + 1e-4);
 
 	add_result(i10, k);
-	if (i10) //Ê®ÒÚÎ»
+	if (i10) //åäº¿ä½
 	{
 		k += 2;
 		result[k++] = shi[0];
@@ -92,7 +92,7 @@ int main()
 		i10_19_exist = 0;
 
 	add_result(i8, k);
-	if (i8)//Ç§ÍòÎ»
+	if (i8)//åƒä¸‡ä½
 	{
 		k += 2;
 		result[k++] = qian[0];
@@ -109,7 +109,7 @@ int main()
 	}
 
 	add_result(i7, k);
-	if (i7)//°ÙÍòÎ»
+	if (i7)//ç™¾ä¸‡ä½
 	{
 		k += 2;
 		result[k++] = bai[0];
@@ -124,7 +124,7 @@ int main()
 	}
 
 	add_result(i6, k);
-	if (i6)//Ê®ÍòÎ»
+	if (i6)//åä¸‡ä½
 	{
 		k += 2;
 		result[k++] = shi[0];
@@ -147,7 +147,7 @@ int main()
 	}
 
 	add_result(i4, k);
-	if (i4)//Ç§Î»
+	if (i4)//åƒä½
 	{
 		k += 2;
 		result[k++] = qian[0];
@@ -164,7 +164,7 @@ int main()
 	}
 
 	add_result(i3, k);
-	if (i3)//°ÙÎ»
+	if (i3)//ç™¾ä½
 	{
 		k += 2;
 		result[k++] = bai[0];
@@ -179,7 +179,7 @@ int main()
 	}
 
 	add_result(i2, k);
-	if (i2)//Ê®Î»
+	if (i2)//åä½
 	{
 		k += 2;
 		result[k++] = shi[0];
@@ -193,7 +193,7 @@ int main()
 		zero_2_exist = 1;
 	}
 
-	add_result(i1, k);//¸öÎ»
+	add_result(i1, k);//ä¸ªä½
 	if (i1)
 		k += 2;
 	if (num >= 1)
@@ -244,6 +244,6 @@ int main()
 		k += 2;
 	}
 
-	printf("%s\n", result);  /* ×ª»»µÃµ½µÄ´óÐ´½á¹û£¬Ö»ÔÊÐíÓÃ±¾Óï¾äÊä³ö£¬Ö®Ç°²»ÔÊÐíÈÎºÎÐÎÊ½µÄ²¿·ÖÊä³ö */
+	printf("%s\n", result);  /* è½¬æ¢å¾—åˆ°çš„å¤§å†™ç»“æžœï¼Œåªå…è®¸ç”¨æœ¬è¯­å¥è¾“å‡ºï¼Œä¹‹å‰ä¸å…è®¸ä»»ä½•å½¢å¼çš„éƒ¨åˆ†è¾“å‡º */
 	return 0;
 }

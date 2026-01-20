@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 using namespace std;
 int main()
@@ -6,13 +6,13 @@ int main()
 	int year, month, day;
 	int order;
 	int is_leap_year = 0;
-	cout << "ÇëÊäÈëÄê,ÔÂ,ÈÕ : " << endl;
-	cin >> year >> month >> day; //ÊäÈë²¿·Ö
+	cout << "è¯·è¾“å…¥å¹´,æœˆ,æ—¥ : " << endl;
+	cin >> year >> month >> day; //è¾“å…¥éƒ¨åˆ†
 
-	//ÅĞ¶ÏÈòÄê
+	//åˆ¤æ–­é—°å¹´
 	if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
 		is_leap_year = 1;
-	//ÅĞ¶ÏÔÂ·İ,ÔÂ·İÓëÈÕÆÚµÄ¹ØÏµÊÇ·ñºÏ·¨
+	//åˆ¤æ–­æœˆä»½,æœˆä»½ä¸æ—¥æœŸçš„å…³ç³»æ˜¯å¦åˆæ³•
 	if (is_leap_year == 1) // leap year
 	{
 		switch (month)
@@ -21,11 +21,11 @@ int main()
 				if (day >= 1 && day <= 31)
 				{
 					order = day;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 
@@ -33,125 +33,125 @@ int main()
 				if (day >= 1 && day <= 29)
 				{
 					order = day + 31;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 3:
 				if (day >= 1 && day <= 31)
 				{
 					order = day + 31 + 29;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 4:
 				if (day >= 1 && day <= 30)
 				{
 					order = day + 31 + 29 + 31;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 5:
 				if (day >= 1 && day <= 31)
 				{
 					order = day + 31 + 29 + 31 + 30;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 6:
 				if (day >= 1 && day <= 30)
 				{
 					order = day + 31 + 29 + 31 + 30 + 31;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 7:
 				if (day >= 1 && day <= 31)
 				{
 					order = day + 31 + 29 + 31 + 30 + 31 + 30;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 8:
 				if (day >= 1 && day <= 31)
 				{
 					order = day + 31 + 29 + 31 + 30 + 31 + 30 + 31;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 9:
 				if (day >= 1 && day <= 30)
 				{
 					order = day + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 10:
 				if (day >= 1 && day <= 31)
 				{
 					order = day + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 11:
 				if (day >= 1 && day <= 30)
 				{
 					order = day + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 12:
 				if (day >= 1 && day <= 31)
 				{
 					order = day + 31 + 29 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			default:
-				cout << "ÔÂ·İ²»ÕıÈ·" << endl;
+				cout << "æœˆä»½ä¸æ­£ç¡®" << endl;
 				break;
 		}
 	}
@@ -163,11 +163,11 @@ int main()
 				if (day >= 1 && day <= 31)
 				{
 					order = day;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 
@@ -175,125 +175,125 @@ int main()
 				if (day >= 1 && day <= 28)
 				{
 					order = day + 31;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 3:
 				if (day >= 1 && day <= 31)
 				{
 					order = day + 31 + 28;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 4:
 				if (day >= 1 && day <= 30)
 				{
 					order = day + 31 + 28 + 31;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 5:
 				if (day >= 1 && day <= 31)
 				{
 					order = day + 31 + 28 + 31 + 30;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 6:
 				if (day >= 1 && day <= 30)
 				{
 					order = day + 31 + 28 + 31 + 30 + 31;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 7:
 				if (day >= 1 && day <= 31)
 				{
 					order = day + 31 + 28 + 31 + 30 + 31 + 30;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 8:
 				if (day >= 1 && day <= 31)
 				{
 					order = day + 31 + 28 + 31 + 30 + 31 + 30 + 31;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 9:
 				if (day >= 1 && day <= 30)
 				{
 					order = day + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 10:
 				if (day >= 1 && day <= 31)
 				{
 					order = day + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 11:
 				if (day >= 1 && day <= 30)
 				{
 					order = day + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			case 12:
 				if (day >= 1 && day <= 31)
 				{
 					order = day + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30;
-					cout << year << "-" << month << "-" << day << "ÊÇ" << year << "ÄêµÄµÚ" << order << "Ìì" << endl;
+					cout << year << "-" << month << "-" << day << "æ˜¯" << year << "å¹´çš„ç¬¬" << order << "å¤©" << endl;
 				}
 				else
 				{
-					cout << "ÊäÈë´íÎó-ÈÕÓëÔÂµÄ¹ØÏµ·Ç·¨" << endl;
+					cout << "è¾“å…¥é”™è¯¯-æ—¥ä¸æœˆçš„å…³ç³»éæ³•" << endl;
 				}
 				break;
 			default:
-				cout << "ÔÂ·İ²»ÕıÈ·" << endl;
+				cout << "æœˆä»½ä¸æ­£ç¡®" << endl;
 				break;
 		}
 	}

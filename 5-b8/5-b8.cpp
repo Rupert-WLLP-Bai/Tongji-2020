@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include<iostream>
 #include<cmath>
 using namespace std;
@@ -17,7 +17,7 @@ bool convex(int num,double x[8],double y[8])
 	bool flag = 1;
 	for (int i = 0; i < num; i++)
 	{
-		/*cout << "µÚ" << i+1 << "×é : " << cross_product(x[i % num], y[i % num], x[(i + 1) % num], y[(i + 1) % num], x[(i + 2) % num], y[(i + 2) % num])<< endl;
+		/*cout << "ç¬¬" << i+1 << "ç»„ : " << cross_product(x[i % num], y[i % num], x[(i + 1) % num], y[(i + 1) % num], x[(i + 2) % num], y[(i + 2) % num])<< endl;
 		cout << cross_product(x[i % num], y[i % num], x[(i + 1) % num], y[(i + 1) % num], x[(i + 2) % num], y[(i + 2) % num]) * cross_product(x[(i + 1) % num], y[(i + 1) % num], x[(i + 2) % num], y[(i + 2) % num], x[(i + 3) % num], y[(i + 3) % num]) << endl;*/
 		
 		if ( cross_product(x[i % num], y[i % num], x[(i + 1) % num], y[(i + 1) % num], x[(i + 2) % num], y[(i + 2) % num]) * cross_product(x[(i + 1) % num], y[(i + 1) % num], x[(i + 2) % num], y[(i + 2) % num], x[(i + 3) % num], y[(i + 3) % num])<= 0)
@@ -39,12 +39,12 @@ int main()
 {
 	double x[8] = { 0 };
 	double y[8] = { 0 };
-	int num;//¶¥µãÊý
+	int num;//é¡¶ç‚¹æ•°
 	double x0, y0;
 
-	while (1)//ÊäÈë¶¥µãÊýÁ¿
+	while (1)//è¾“å…¥é¡¶ç‚¹æ•°é‡
 	{
-		cout << "ÇëÊäÈë¶à±ßÐÎµÄ¶¥µãÊýÁ¿(4-7)" << endl;
+		cout << "è¯·è¾“å…¥å¤šè¾¹å½¢çš„é¡¶ç‚¹æ•°é‡(4-7)" << endl;
 		cin >> num;
 		if (!cin.fail() && num >= 4 && num <= 7)
 			break;
@@ -55,11 +55,11 @@ int main()
 		}
 	}
 
-	for (int i = 0; i < num; i++)//ÊäÈë¶¥µã×ø±ê
+	for (int i = 0; i < num; i++)//è¾“å…¥é¡¶ç‚¹åæ ‡
 	{
 		while (1)
 		{
-			cout << "ÇëÊäÈëµÚ" << i + 1 << "¸ö¶¥µãµÄ×ø±ê" << endl;
+			cout << "è¯·è¾“å…¥ç¬¬" << i + 1 << "ä¸ªé¡¶ç‚¹çš„åæ ‡" << endl;
 			cin >> x0 >> y0;
 			if (!cin.fail())
 			{
@@ -76,9 +76,9 @@ int main()
 	}
 
 	if (convex(num,x,y))
-		cout << "Í¹" << num << "±ßÐÎµÄÃæ»ýÎª" << area_calculate(num,x,y) << endl;
+		cout << "å‡¸" << num << "è¾¹å½¢çš„é¢ç§¯ä¸º" << area_calculate(num,x,y) << endl;
 	else
-		cout << "²»ÊÇÍ¹" << num << "±ßÐÎ" << endl;
+		cout << "ä¸æ˜¯å‡¸" << num << "è¾¹å½¢" << endl;
 
 	return 0;
 }

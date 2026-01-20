@@ -1,24 +1,24 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 using namespace std;
 
-#define  N  10	/* ¼ÙÉè×î¶à×ª»»10¸öÊý×Ö */
+#define  N  10	/* å‡è®¾æœ€å¤šè½¬æ¢10ä¸ªæ•°å­— */
 
-/* ²»ÔÊÐíÔÙ¶¨ÒåÆäËüº¯Êý¡¢È«¾Ö±äÁ¿ */
+/* ä¸å…è®¸å†å®šä¹‰å…¶å®ƒå‡½æ•°ã€å…¨å±€å˜é‡ */
 
 int main()
 {
-	/* Èç¹ûÓÐ²»ÐèÒªµÄ±äÁ¿£¬ÔÊÐíÉ¾³ý£¬µ«²»ÔÊÐíÌí¼Ó»òÌæ»»ÎªÆäËüÀàÐÍµÄ±äÁ¿ */
+	/* å¦‚æžœæœ‰ä¸éœ€è¦çš„å˜é‡ï¼Œå…è®¸åˆ é™¤ï¼Œä½†ä¸å…è®¸æ·»åŠ æˆ–æ›¿æ¢ä¸ºå…¶å®ƒç±»åž‹çš„å˜é‡ */
 	char str[256], * p;
 	int  a[N] = { 0 }, * pnum, * pa;
 
-	/* ÉÏÃæµÄ¶¨Òå²»×¼¶¯(É¾³ý²»ÐèÒªµÄ±äÁ¿³ýÍâ)£¬ÏÂÃæÎª³ÌÐòµÄ¾ßÌåÊµÏÖ£¬ÒªÇó²»µÃÔÙ¶¨ÒåÈÎºÎ±äÁ¿¡¢³£Á¿¡¢³£±äÁ¿ */
+	/* ä¸Šé¢çš„å®šä¹‰ä¸å‡†åŠ¨(åˆ é™¤ä¸éœ€è¦çš„å˜é‡é™¤å¤–)ï¼Œä¸‹é¢ä¸ºç¨‹åºçš„å…·ä½“å®žçŽ°ï¼Œè¦æ±‚ä¸å¾—å†å®šä¹‰ä»»ä½•å˜é‡ã€å¸¸é‡ã€å¸¸å˜é‡ */
 	p = str;
 	pa = a;
 	pnum = a;
-	cout << "ÇëÊäÈë¼ä¸ôº¬ÓÐÈô¸ÉÕý¸ºÊý×ÖµÄ×Ö·û´®" << endl;
+	cout << "è¯·è¾“å…¥é—´éš”å«æœ‰è‹¥å¹²æ­£è´Ÿæ•°å­—çš„å­—ç¬¦ä¸²" << endl;
 
-	/*Ìõ¼þ±àÒë*/
+	/*æ¡ä»¶ç¼–è¯‘*/
 #if(__GNUC__)
 	gets(str);
 #elif(_MSC_VER)
@@ -45,8 +45,8 @@ int main()
 		}
 
 
-	cout << "×Ö·û´®ÖÐ°üº¬µÄÕûÊý¸öÊýÎª£º" << pa - pnum << "¸ö" << endl;
-	cout << "ÕâÐ©ÕûÊýÎª:" << endl;
+	cout << "å­—ç¬¦ä¸²ä¸­åŒ…å«çš„æ•´æ•°ä¸ªæ•°ä¸ºï¼š" << pa - pnum << "ä¸ª" << endl;
+	cout << "è¿™äº›æ•´æ•°ä¸º:" << endl;
 
 	
 	for (int i = 0; i < pa - pnum; pnum++)

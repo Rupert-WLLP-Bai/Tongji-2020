@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 using namespace std;
 void haoni(int n, char src, char tmp, char dst)
@@ -27,13 +27,13 @@ int main()
     char start, mid, end;
     while (1)
     {
-        cout << "ÇëÊäÈëººÅµËþµÄ²ãÊý(1-16)" << endl;
+        cout << "è¯·è¾“å…¥æ±‰è¯ºå¡”çš„å±‚æ•°(1-16)" << endl;
         cin >> level;
         while (cin.fail())
         {
             cin.clear();
             cin.ignore(1024, '\n');
-            cout << "ÇëÊäÈëººÅµËþµÄ²ãÊý(1-16)" << endl;
+            cout << "è¯·è¾“å…¥æ±‰è¯ºå¡”çš„å±‚æ•°(1-16)" << endl;
             cin >> level;
         }
         if (level >= 1 && level <= 16)
@@ -43,13 +43,13 @@ int main()
     cin.ignore(1024, '\n');
     while (1)
     {
-        cout << "ÇëÊäÈëÆðÊ¼Öù(A-C)" << endl;
+        cout << "è¯·è¾“å…¥èµ·å§‹æŸ±(A-C)" << endl;
         cin >> start;
         while (cin.fail())
         {
             cin.clear();
             cin.ignore(1024, '\n');
-            cout << "ÇëÊäÈëÆðÊ¼Öù(A-C)" << endl;
+            cout << "è¯·è¾“å…¥èµ·å§‹æŸ±(A-C)" << endl;
             cin >> start;
         }
         if (start == 'A' || start == 'B' || start == 'C')
@@ -66,20 +66,20 @@ int main()
     cin.ignore(1024, '\n');
     while (1)
     {
-        cout << "ÇëÊäÈëÄ¿±êÖù(A-C)" << endl;
+        cout << "è¯·è¾“å…¥ç›®æ ‡æŸ±(A-C)" << endl;
         cin >> end;
         while (cin.fail())
         {
             cin.clear();
             cin.ignore(1024, '\n');
-            cout << "ÇëÊäÈëÄ¿±êÖù(A-C)" << endl;
+            cout << "è¯·è¾“å…¥ç›®æ ‡æŸ±(A-C)" << endl;
             cin >> end;
         }
         if (end == start || end == start + 32 || end == start - 32)
         {
             cin.clear();
             cin.ignore();
-            cout << "ÆðÊ¼Öù²»ÄÜÓëÄ¿±êÖùÏàÍ¬" << endl;
+            cout << "èµ·å§‹æŸ±ä¸èƒ½ä¸Žç›®æ ‡æŸ±ç›¸åŒ" << endl;
             continue;
         }
         if (end == 'A' || end == 'B' || end == 'C')

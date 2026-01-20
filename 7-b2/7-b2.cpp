@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include<cstring>
 #include<iostream>
@@ -14,32 +14,32 @@ struct KFC
 };
 
 const struct KFC list[] = {
-	{'A', "ÏãÀ±¼¦ÍÈ±¤",         18},
-	{'B', "¾¢´à¼¦ÍÈ±¤",         18},
-	{'C', "ÐÂ°Â¶ûÁ¼¿¾¼¦ÍÈ±¤",   18.5},
-	{'D', "¼¦Èâ»ðÍÈÅÁÄáÄá",   14.0},
-	{'E', "ÀÏ±±¾©¼¦Èâ¾í",       16.5},
-	{'F', "´¨À±ÄÛÅ£¾í",     19},
-	{'G', "Ë±Ö¸Ô­Î¶¼¦(1¿é)",   11.5},
-	{'H', "ÈÈÀ±ÊíÆ¬´àÆ¤¼¦",   12.5},
-	{'I', "ÐÂ°Â¶ûÁ¼¿¾³á(2¿é)", 12},
-	{'J', "¾¢±¬¼¦Ã×»¨",         10.5},
-	{'K', "ÏãÀ±¼¦³á(2¿é)",     11.0},
-	{'L', "ÈÈÀ±Ïã¹Ç¼¦(3¿é)",     11.0},
-	{'M', "ÏÊÊßÉ«À­",           12.5},
-	{'N', "ÊíÌõ(Ð¡)",           8},
-	{'O', "ÊíÌõ(ÖÐ)",           11},
-	{'P', "ÊíÌõ(´ó)",           13},
-	{'Q', "Ü½ÈØÊßÜöÌÀ",         8},
-	{'R', "Ô­Î¶»¨Í²±ù¼¤Áè",     6},
-	{'S', "´¼ÏãÍÁ¶¹Äà",         6.5},
-	{'T', "ÏãÌðËÚÃ×°ô",         8.0},
-	{'U', "ÆÏÊ½µ°Ì¢",           7.5},
-	{'V', "°ÙÊÂ¿ÉÀÖ(Ð¡)",       7.0},
-	{'W', "°ÙÊÂ¿ÉÀÖ(ÖÐ)",       9.5},
-	{'X', "°ÙÊÂ¿ÉÀÖ(´ó)",       11.5},
-	{'Y', "¾ÅÕä¹ûÖ­ÒûÁÏ",       12.0},
-	{'Z', "´¿´¿ÓñÃ×Òû",         11.0},
+	{'A', "é¦™è¾£é¸¡è…¿å ¡",         18},
+	{'B', "åŠ²è„†é¸¡è…¿å ¡",         18},
+	{'C', "æ–°å¥¥å°”è‰¯çƒ¤é¸¡è…¿å ¡",   18.5},
+	{'D', "é¸¡è‚‰ç«è…¿å¸•å°¼å°¼",   14.0},
+	{'E', "è€åŒ—äº¬é¸¡è‚‰å·",       16.5},
+	{'F', "å·è¾£å«©ç‰›å·",     19},
+	{'G', "å®æŒ‡åŽŸå‘³é¸¡(1å—)",   11.5},
+	{'H', "çƒ­è¾£è–¯ç‰‡è„†çš®é¸¡",   12.5},
+	{'I', "æ–°å¥¥å°”è‰¯çƒ¤ç¿…(2å—)", 12},
+	{'J', "åŠ²çˆ†é¸¡ç±³èŠ±",         10.5},
+	{'K', "é¦™è¾£é¸¡ç¿…(2å—)",     11.0},
+	{'L', "çƒ­è¾£é¦™éª¨é¸¡(3å—)",     11.0},
+	{'M', "é²œè”¬è‰²æ‹‰",           12.5},
+	{'N', "è–¯æ¡(å°)",           8},
+	{'O', "è–¯æ¡(ä¸­)",           11},
+	{'P', "è–¯æ¡(å¤§)",           13},
+	{'Q', "èŠ™è“‰è”¬èŸæ±¤",         8},
+	{'R', "åŽŸå‘³èŠ±ç­’å†°æ¿€å‡Œ",     6},
+	{'S', "é†‡é¦™åœŸè±†æ³¥",         6.5},
+	{'T', "é¦™ç”œç²Ÿç±³æ£’",         8.0},
+	{'U', "è‘¡å¼è›‹æŒž",           7.5},
+	{'V', "ç™¾äº‹å¯ä¹(å°)",       7.0},
+	{'W', "ç™¾äº‹å¯ä¹(ä¸­)",       9.5},
+	{'X', "ç™¾äº‹å¯ä¹(å¤§)",       11.5},
+	{'Y', "ä¹çæžœæ±é¥®æ–™",       12.0},
+	{'Z', "çº¯çº¯çŽ‰ç±³é¥®",         11.0},
 	{'\0', NULL,                0}
 };
 
@@ -51,42 +51,42 @@ struct SPECIAL
 };
 
 const struct SPECIAL special[] = {
-	{"ANV", "ÏãÀ±¼¦ÍÈ±¤¹¤×÷ÈÕÎç²Í",    22},
-	{"BMV", "¾¢´à¼¦ÍÈ±¤³¬ÖµÌ×²Í",    24},
-	{"ABCGGIIKKOUWWW", "³¬ÖµÈ«¼ÒÍ°", 100},
-	{"KIIRRJUWW", "çÍ·×Ð¡³ÔÍ°",  65},
-	{"JJ","¾¢±¬¼¦Ã×»¨(2·ÝÐ¡)",      9.5},
+	{"ANV", "é¦™è¾£é¸¡è…¿å ¡å·¥ä½œæ—¥åˆé¤",    22},
+	{"BMV", "åŠ²è„†é¸¡è…¿å ¡è¶…å€¼å¥—é¤",    24},
+	{"ABCGGIIKKOUWWW", "è¶…å€¼å…¨å®¶æ¡¶", 100},
+	{"KIIRRJUWW", "ç¼¤çº·å°åƒæ¡¶",  65},
+	{"JJ","åŠ²çˆ†é¸¡ç±³èŠ±(2ä»½å°)",      9.5},
 	{NULL, NULL, 0}
 };
 
-/*¼ÆÊý*/
+/*è®¡æ•°*/
 void counter(char input[], int count[])
 {
 	char uppercase1(char ch);
 	char sh[500]{};
-	for (unsigned int i = 0; i < strlen(input) + 1; i++)//×ªÎª´óÐ´
+	for (unsigned int i = 0; i < strlen(input) + 1; i++)//è½¬ä¸ºå¤§å†™
 	{
 		sh[i] = uppercase1(input[i]);
 	}
-	for (unsigned int i = 0; i < strlen(input) + 1; i++)//ÓÃcounter¼ÆÊý
+	for (unsigned int i = 0; i < strlen(input) + 1; i++)//ç”¨counterè®¡æ•°
 	{
 		count[sh[i] - 'A']++;
 	}
 }
 
-/*¼ÆÊý*/
+/*è®¡æ•°*/
 void counter_const(const char input[], int count[])
 {
 	char in[500];
 	strcpy_s(in, input);
 	_strupr(in);
-	for (unsigned int i = 0; i < strlen(input) + 1; i++)//ÓÃcounter¼ÆÊý
+	for (unsigned int i = 0; i < strlen(input) + 1; i++)//ç”¨counterè®¡æ•°
 	{
 		count[in[i] - 'A']++;
 	}
 }
 
-/*¼ÆËãÓÅ»Ý*/
+/*è®¡ç®—ä¼˜æƒ */
 bool minus_count(int s1[26], int s2[26])
 {
 	for (int i = 0; i < 26; i++)
@@ -104,10 +104,10 @@ bool minus_count(int s1[26], int s2[26])
 	return 1;
 }
 
-/*¼ÆËãÓÅ»Ý*/
+/*è®¡ç®—ä¼˜æƒ */
 double calc_discount(const char input[])
 {
-	double DISCOUNT[26] = { 0 };//´¢´æÃ¿Ò»ÖÖÓÅ»ÝµÄ¼Û¸ñ²î
+	double DISCOUNT[26] = { 0 };//å‚¨å­˜æ¯ä¸€ç§ä¼˜æƒ çš„ä»·æ ¼å·®
 	for (int i = 0; i < sizeof(special) / sizeof(special[0]) - 1; i++)
 	{
 		double a = 0;
@@ -119,7 +119,7 @@ double calc_discount(const char input[])
 	}
 
 	double discount = 0;
-	char in[500];//¸´ÖÆÊäÈëµ½ÁíÍâÒ»¸ö×Ö·û´®ÖÐ
+	char in[500];//å¤åˆ¶è¾“å…¥åˆ°å¦å¤–ä¸€ä¸ªå­—ç¬¦ä¸²ä¸­
 	strcpy_s(in, input);
 	void counter(char input[], int count[]);
 
@@ -136,17 +136,17 @@ double calc_discount(const char input[])
 	return discount;
 }
 
-/*Êä³öÄÚÈÝ¼°ÆäÊýÁ¿*/
+/*è¾“å‡ºå†…å®¹åŠå…¶æ•°é‡*/
 void print_result(int count[], double discount)
 {
 	double sum = 0;
-	int m = 0;//ÓÃÓÚ¿ØÖÆÊä³ö"+"
+	int m = 0;//ç”¨äºŽæŽ§åˆ¶è¾“å‡º"+"
 	for (int i = 0; i < 26; i++)
 	{
 		if (count[i] != 0)
 			m++;
 	}
-	cout << "ÄúµÄµã²Í = ";
+	cout << "æ‚¨çš„ç‚¹é¤ = ";
 	for (int k = 0; k < 26; k++)
 	{
 		sum += list[k].price * count[k];
@@ -165,31 +165,31 @@ void print_result(int count[], double discount)
 				cout << "+";
 		}
 	}
-	cout << endl << "×Ü¼Æ:" << sum - discount << "Ôª" << endl;
+	cout << endl << "æ€»è®¡:" << sum - discount << "å…ƒ" << endl;
 
 	cout << endl;
 }
 
-/*´íÎóÌáÊ¾*/
+/*é”™è¯¯æç¤º*/
 static void to_be_continued(const char* prompt, const int X = 0, const int Y = 22)
 {
 	if (prompt)
-		cout << prompt << "£¬°´ÈÎÒâ¼ü¼ÌÐø";
+		cout << prompt << "ï¼ŒæŒ‰ä»»æ„é”®ç»§ç»­";
 	else
-		cout << "°´ÈÎÒâ¼ü¼ÌÐø";
+		cout << "æŒ‰ä»»æ„é”®ç»§ç»­";
 
 	int ch = _getch();
 
 	return;
 }
 
-/*¼ì²éÊäÈë*/
-/*ÕýÈ·*/
+/*æ£€æŸ¥è¾“å…¥*/
+/*æ­£ç¡®*/
 int check_input(char input[])
 {
-	if (input[0] == '0' && input[1] == '\0')//ÊäÈë0ÍË³ö
+	if (input[0] == '0' && input[1] == '\0')//è¾“å…¥0é€€å‡º
 		return 0;
-	else if (input[0] == '\0')//Ö»ÊäÈë»Ø³µÔòÖ±½ÓÌø¹ýºóÃæµÄ²½Öè£¬ÖØÐÂ´òÓ¡²Ëµ¥
+	else if (input[0] == '\0')//åªè¾“å…¥å›žè½¦åˆ™ç›´æŽ¥è·³è¿‡åŽé¢çš„æ­¥éª¤ï¼Œé‡æ–°æ‰“å°èœå•
 	{
 		return -1;
 	}
@@ -201,14 +201,14 @@ int check_input(char input[])
 				continue;
 			else
 			{
-				return -2;//ÊäÈë´íÎó
+				return -2;//è¾“å…¥é”™è¯¯
 			}
 		}
 	}
-	return 1;//ÊäÈëÕýÈ·
+	return 1;//è¾“å…¥æ­£ç¡®
 }
 
-/*×Ö·û×ª´óÐ´*/
+/*å­—ç¬¦è½¬å¤§å†™*/
 char uppercase1(char ch)
 {
 	if (ch >= 'a' && ch <= 'z')
@@ -219,11 +219,11 @@ char uppercase1(char ch)
 
 
 
-/*´òÓ¡ÓÅ»Ý*/
+/*æ‰“å°ä¼˜æƒ */
 void print_discount()
 {
 	cout << endl;
-	cout << "¡¾ÓÅ»ÝÐÅÏ¢¡¿£º" << endl;
+	cout << "ã€ä¼˜æƒ ä¿¡æ¯ã€‘ï¼š" << endl;
 	for (int i = 0; i < sizeof(special) / sizeof(special[0]) - 1; i++)
 	{
 		cout << special[i].name << "=";
@@ -250,11 +250,11 @@ void print_discount()
 	}
 }
 
-/*´òÓ¡²Ëµ¥*/
+/*æ‰“å°èœå•*/
 void print_menu()
 {
 	cout << "=============================================================" << endl;
-	cout << "                      KFC 2020¶¬¼¾²Ëµ¥                       " << endl;
+	cout << "                      KFC 2020å†¬å­£èœå•                       " << endl;
 	cout << "=============================================================" << endl;
 	for (int i = 0; list[i].choice != '\0'; i++)
 	{
@@ -273,18 +273,18 @@ void print_menu()
 	}
 	print_discount();
 
-	cout << "¡¾ÊäÈë¹æÔòËµÃ÷¡¿£º" << endl;
-	cout << "ANV = ÏãÀ±¼¦ÍÈ±¤ + ÊíÌõ(Ð¡) + °ÙÊÂ¿ÉÀÖ(Ð¡) / akaak = ÏãÀ±¼¦ÍÈ±¤ * 3 + ÏãÀ±¼¦³á * 2" << endl;
-	cout << "×ÖÄ¸²»·Ö´óÐ¡Ð´£¬²»ÏÞË³Ðò£¬µ¥¶ÀÊäÈë0ÔòÍË³ö³ÌÐò" << endl;
-	cout << endl << "Çëµãµ¥:";
+	cout << "ã€è¾“å…¥è§„åˆ™è¯´æ˜Žã€‘ï¼š" << endl;
+	cout << "ANV = é¦™è¾£é¸¡è…¿å ¡ + è–¯æ¡(å°) + ç™¾äº‹å¯ä¹(å°) / akaak = é¦™è¾£é¸¡è…¿å ¡ * 3 + é¦™è¾£é¸¡ç¿… * 2" << endl;
+	cout << "å­—æ¯ä¸åˆ†å¤§å°å†™ï¼Œä¸é™é¡ºåºï¼Œå•ç‹¬è¾“å…¥0åˆ™é€€å‡ºç¨‹åº" << endl;
+	cout << endl << "è¯·ç‚¹å•:";
 }
 
-/*Ö÷º¯Êý*/
+/*ä¸»å‡½æ•°*/
 int main()
 {
 	int check;
 	double discount = 0;
-	char input[1000];//µãµ¥ÊäÈë
+	char input[1000];//ç‚¹å•è¾“å…¥
 	while (1)
 	{
 		int count[26] = { 0 };
@@ -298,15 +298,15 @@ int main()
 			continue;
 		else if (check == -2)
 		{
-			to_be_continued("ÊäÈë´íÎó");
+			to_be_continued("è¾“å…¥é”™è¯¯");
 			continue;
 		}
-		else//ÊäÈëÕýÈ·
+		else//è¾“å…¥æ­£ç¡®
 		{
 			counter(input, count);
 			discount = calc_discount(_strupr(input));
 			print_result(count, discount);
-			to_be_continued("µã²ÍÍê³É");
+			to_be_continued("ç‚¹é¤å®Œæˆ");
 		}
 	}
 	return 0;

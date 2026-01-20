@@ -1,8 +1,8 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 
-/*»­³öÎ±Í¼ÐÎ½çÃæ*/
-/*ÔÚÏàÓ¦µÄ¸ñ×ÓÀïÃæÊä³öÏàÓ¦µÄÊý×Ö*//*ÑÕÉ«µÄÉèÖÃ»¹ÊÇCOLOR_WHITER,mine[i][j]*/
-/*ÀûÓÃ×ø±êËã³öÏàÓ¦µÄ¸ñ×Ó(ÐÐ2,ÁÐ4),¼´ÀûÓÃx,yËã³öi,j,Êä³öµÄÎ»ÖÃ¹Ì¶¨ÔÚµÚ2ÐÐ£¬µÚ2ÁÐµÄÎ»ÖÃ*/
+/*ç”»å‡ºä¼ªå›¾å½¢ç•Œé¢*/
+/*åœ¨ç›¸åº”çš„æ ¼å­é‡Œé¢è¾“å‡ºç›¸åº”çš„æ•°å­—*//*é¢œè‰²çš„è®¾ç½®è¿˜æ˜¯COLOR_WHITER,mine[i][j]*/
+/*åˆ©ç”¨åæ ‡ç®—å‡ºç›¸åº”çš„æ ¼å­(è¡Œ2,åˆ—4),å³åˆ©ç”¨x,yç®—å‡ºi,j,è¾“å‡ºçš„ä½ç½®å›ºå®šåœ¨ç¬¬2è¡Œï¼Œç¬¬2åˆ—çš„ä½ç½®*/
 #include<iostream>
 #include<iomanip>
 #include"cmd_console_tools.h"
@@ -17,62 +17,62 @@ void print_cross_start(int line)
 	for (int i = 0; i < line; i++)
 	{
 		cout << setiosflags(ios::right) << setw(6) << setfill(' ') << i;
-		if (i == 9)//²¹Ò»¸ö¿Õ¸ñ,ºóÃæ²ÅÄÜ¶ÔÆë
+		if (i == 9)//è¡¥ä¸€ä¸ªç©ºæ ¼,åŽé¢æ‰èƒ½å¯¹é½
 			cout << " ";
 	}
 	cout << endl << "  ";
 	cct_setcolor(COLOR_HWHITE, COLOR_BLACK);
 	if (line == 9)
-		cout << "¨X¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨[" << endl;
+		cout << "â•”â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•—" << endl;
 	else if (line == 16)
-		cout << "¨X¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨[" << endl;
+		cout << "â•”â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•—" << endl;
 	else if (line == 30)
-		cout << "¨X¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨j¨T¨T¨[" << endl;
+		cout << "â•”â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•¦â•â•â•—" << endl;
 	else
 		cout << "error" << endl;
 }
 
-void print_cross_mid(int line, int row)//ÁÐ,ÐÐ
+void print_cross_mid(int line, int row)//åˆ—,è¡Œ
 {
 	for (int j = 0; j < row; j++)
 	{
-		cct_setcolor(COLOR_BLACK, COLOR_WHITE);//µÚÒ»ÐÐ
+		cct_setcolor(COLOR_BLACK, COLOR_WHITE);//ç¬¬ä¸€è¡Œ
 		cout << "  ";
 		for (int i = 0; i < line; i++)
 		{
 			cct_setcolor(COLOR_HWHITE, COLOR_BLACK);
-			cout << "¨U";
+			cout << "â•‘";
 			cct_setcolor(COLOR_WHITE, COLOR_BLACK);
 			cout << "    ";
 		}
 		cct_setcolor(COLOR_HWHITE, COLOR_BLACK);
-		cout << "¨U" << endl;
+		cout << "â•‘" << endl;
 
 
-		cct_setcolor(COLOR_BLACK, COLOR_WHITE);//µÚ¶þÐÐ
+		cct_setcolor(COLOR_BLACK, COLOR_WHITE);//ç¬¬äºŒè¡Œ
 		cout << static_cast<char>(j + 'A') << " ";
 		for (int i = 0; i < line; i++)
 		{
 			cct_setcolor(COLOR_HWHITE, COLOR_BLACK);
-			cout << "¨U";
+			cout << "â•‘";
 			cct_setcolor(COLOR_WHITE, COLOR_BLACK);
 			cout << "    ";
 		}
 		cct_setcolor(COLOR_HWHITE, COLOR_BLACK);
-		cout << "¨U" << endl;
+		cout << "â•‘" << endl;
 
 		if (j < row - 1)
 		{
-			cct_setcolor(COLOR_BLACK, COLOR_WHITE);//µÚÈýÐÐ
+			cct_setcolor(COLOR_BLACK, COLOR_WHITE);//ç¬¬ä¸‰è¡Œ
 			cout << "  ";
 			cct_setcolor(COLOR_HWHITE, COLOR_BLACK);
-			cout << "¨d";
+			cout << "â• ";
 			for (int i = 0; i < line - 1; i++)
 			{
-				cout << "¨T¨T";
-				cout << "¨p";
+				cout << "â•â•";
+				cout << "â•¬";
 			}
-			cout << "¨T¨T¨g" << endl;
+			cout << "â•â•â•£" << endl;
 		}
 	}
 }
@@ -81,43 +81,43 @@ void print_cross_mid_color0(int line, int row)
 {
 	for (int j = 0; j < row; j++)
 	{
-		cct_setcolor(COLOR_BLACK, COLOR_WHITE);//µÚÒ»ÐÐ
+		cct_setcolor(COLOR_BLACK, COLOR_WHITE);//ç¬¬ä¸€è¡Œ
 		cout << "  ";
 		for (int i = 0; i < line; i++)
 		{
 			cct_setcolor(COLOR_HWHITE, COLOR_BLACK);
-			cout << "¨U";
+			cout << "â•‘";
 			cct_setcolor(COLOR_YELLOW, COLOR_BLACK);
 			cout << "    ";
 		}
 		cct_setcolor(COLOR_HWHITE, COLOR_BLACK);
-		cout << "¨U" << endl;
+		cout << "â•‘" << endl;
 
 
-		cct_setcolor(COLOR_BLACK, COLOR_WHITE);//µÚ¶þÐÐ
+		cct_setcolor(COLOR_BLACK, COLOR_WHITE);//ç¬¬äºŒè¡Œ
 		cout << static_cast<char>(j + 'A') << " ";
 		for (int i = 0; i < line; i++)
 		{
 			cct_setcolor(COLOR_HWHITE, COLOR_BLACK);
-			cout << "¨U";
+			cout << "â•‘";
 			cct_setcolor(COLOR_YELLOW, COLOR_BLACK);
 			cout << "    ";
 		}
 		cct_setcolor(COLOR_HWHITE, COLOR_BLACK);
-		cout << "¨U" << endl;
+		cout << "â•‘" << endl;
 
 		if (j < row - 1)
 		{
-			cct_setcolor(COLOR_BLACK, COLOR_WHITE);//µÚÈýÐÐ
+			cct_setcolor(COLOR_BLACK, COLOR_WHITE);//ç¬¬ä¸‰è¡Œ
 			cout << "  ";
 			cct_setcolor(COLOR_HWHITE, COLOR_BLACK);
-			cout << "¨d";
+			cout << "â• ";
 			for (int i = 0; i < line - 1; i++)
 			{
-				cout << "¨T¨T";
-				cout << "¨p";
+				cout << "â•â•";
+				cout << "â•¬";
 			}
-			cout << "¨T¨T¨g" << endl;
+			cout << "â•â•â•£" << endl;
 		}
 	}
 }
@@ -128,16 +128,16 @@ void print_cross_end(int line)
 	cout << "  ";
 	cct_setcolor(COLOR_HWHITE, COLOR_BLACK);
 	if (line == 9)
-		cout << "¨^¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨a" << endl;
+		cout << "â•šâ•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•" << endl;
 	else if (line == 16)
-		cout << "¨^¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨a" << endl;
+		cout << "â•šâ•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•" << endl;
 	else if (line == 30)
-		cout << "¨^¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨m¨T¨T¨a" << endl;
+		cout << "â•šâ•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•©â•â•â•" << endl;
 	else
 		cout << "error" << endl;
 }
 
-/*½«Ò»¸öÇøÓòµÄÑÕÉ«ÉèÖÃÎªWHITE*/
+/*å°†ä¸€ä¸ªåŒºåŸŸçš„é¢œè‰²è®¾ç½®ä¸ºWHITE*/
 void resetcolor(const int x, const int y)
 {
 	cct_showch(x - 2, y - 1, ' ', COLOR_WHITE, COLOR_BLACK, 4);
@@ -145,7 +145,7 @@ void resetcolor(const int x, const int y)
 	cct_gotoxy(x, y);
 }
 
-/*½«Ò»¸öÇøÓòµÄÑÕÉ«ÉèÖÃÎªYELLOW*/
+/*å°†ä¸€ä¸ªåŒºåŸŸçš„é¢œè‰²è®¾ç½®ä¸ºYELLOW*/
 void resetcolor_yellow(const int x, const int y)
 {
 	cct_showch(x - 2, y - 1, ' ', COLOR_YELLOW, COLOR_BLACK, 4);
@@ -163,14 +163,14 @@ void setcolor_mark(const int x, const int y)
 
 
 
-/*Î´´ò¿ª²¿·ÖÎªéÙÉ«,ÆäÓàÕý³£Êä³ö*/
-/*ÓÃcct_gotoxy±éÀúÃ¿Ò»¸ñ½øÐÐÊä³ö*/
-/*Çé¿ö7Ö»ÐèÒªb(ÊÇ·ñ±»´ò¿ª),mine(À×Êý)*/
-/*Çé¿ö8¼ÓÈë±ê¼Ç*/
+/*æœªæ‰“å¼€éƒ¨åˆ†ä¸ºæ©˜è‰²,å…¶ä½™æ­£å¸¸è¾“å‡º*/
+/*ç”¨cct_gotoxyéåŽ†æ¯ä¸€æ ¼è¿›è¡Œè¾“å‡º*/
+/*æƒ…å†µ7åªéœ€è¦b(æ˜¯å¦è¢«æ‰“å¼€),mine(é›·æ•°)*/
+/*æƒ…å†µ8åŠ å…¥æ ‡è®°*/
 void print_result7(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max], int select)
 {
-	int i, j;//Êý×éÏÂ±ê
-	int x, y;//Î±Í¼ÐÎ×ø±ê
+	int i, j;//æ•°ç»„ä¸‹æ ‡
+	int x, y;//ä¼ªå›¾å½¢åæ ‡
 	switch (select)
 	{
 		case '1':
@@ -180,12 +180,12 @@ void print_result7(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_
 				{
 					y = 1 + 3 * i;
 					x = 6 * j;
-					if (b[i][j] == OPEN && c[i][j] == no)//´ò¿ªÇÒÎ´±»±ê¼Ç
+					if (b[i][j] == OPEN && c[i][j] == no)//æ‰“å¼€ä¸”æœªè¢«æ ‡è®°
 					{
 						resetcolor(x, y);
-						if (a[i][j] == 0)//ÎÞÀ×
+						if (a[i][j] == 0)//æ— é›·
 						{
-							if (mine[i][j] != 0)//ÖÜÎ§ÓÐÀ×
+							if (mine[i][j] != 0)//å‘¨å›´æœ‰é›·
 							{
 								cct_setcolor(COLOR_WHITE, mine[i][j]);
 								cout << mine[i][j];
@@ -193,18 +193,18 @@ void print_result7(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_
 							else
 								continue;
 						}
-						else//ÓÐÀ×
+						else//æœ‰é›·
 						{
 							cct_gotoxy(x, y);
 							cct_setcolor(COLOR_WHITE, COLOR_BLACK);
 							cout << "*";
 						}
 					}
-					else if (c[i][j] == mark)//±»±ê¼ÇÇÒÎ´±»´ò¿ª
+					else if (c[i][j] == mark)//è¢«æ ‡è®°ä¸”æœªè¢«æ‰“å¼€
 					{
 						setcolor_mark(x, y);
 					}
-					else//Î´±»±ê¼Ç,Î´±»´ò¿ª
+					else//æœªè¢«æ ‡è®°,æœªè¢«æ‰“å¼€
 					{
 						resetcolor_yellow(x, y);
 					}
@@ -220,12 +220,12 @@ void print_result7(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_
 				{
 					y = 1 + 3 * i;
 					x = 6 * j;
-					if (b[i][j] == OPEN && c[i][j] == no)//´ò¿ªÇÒÎ´±»±ê¼Ç
+					if (b[i][j] == OPEN && c[i][j] == no)//æ‰“å¼€ä¸”æœªè¢«æ ‡è®°
 					{
 						resetcolor(x, y);
-						if (a[i][j] == 0)//ÎÞÀ×
+						if (a[i][j] == 0)//æ— é›·
 						{
-							if (mine[i][j] != 0)//ÖÜÎ§ÓÐÀ×
+							if (mine[i][j] != 0)//å‘¨å›´æœ‰é›·
 							{
 								cct_setcolor(COLOR_WHITE, mine[i][j]);
 								cout << mine[i][j];
@@ -233,18 +233,18 @@ void print_result7(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_
 							else
 								continue;
 						}
-						else//ÓÐÀ×
+						else//æœ‰é›·
 						{
 							cct_gotoxy(x, y);
 							cct_setcolor(COLOR_WHITE, COLOR_BLACK);
 							cout << "*";
 						}
 					}
-					else if (c[i][j] == mark)//±»±ê¼ÇÇÒÎ´±»´ò¿ª
+					else if (c[i][j] == mark)//è¢«æ ‡è®°ä¸”æœªè¢«æ‰“å¼€
 					{
 						setcolor_mark(x, y);
 					}
-					else//Î´±»±ê¼Ç,Î´±»´ò¿ª
+					else//æœªè¢«æ ‡è®°,æœªè¢«æ‰“å¼€
 					{
 						resetcolor_yellow(x, y);
 					}
@@ -260,12 +260,12 @@ void print_result7(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_
 				{
 					y = 1 + 3 * i;
 					x = 6 * j;
-					if (b[i][j] == OPEN && c[i][j] == no)//´ò¿ªÇÒÎ´±»±ê¼Ç
+					if (b[i][j] == OPEN && c[i][j] == no)//æ‰“å¼€ä¸”æœªè¢«æ ‡è®°
 					{
 						resetcolor(x, y);
-						if (a[i][j] == 0)//ÎÞÀ×
+						if (a[i][j] == 0)//æ— é›·
 						{
-							if (mine[i][j] != 0)//ÖÜÎ§ÓÐÀ×
+							if (mine[i][j] != 0)//å‘¨å›´æœ‰é›·
 							{
 								cct_setcolor(COLOR_WHITE, mine[i][j]);
 								cout << mine[i][j];
@@ -273,18 +273,18 @@ void print_result7(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_
 							else
 								continue;
 						}
-						else//ÓÐÀ×
+						else//æœ‰é›·
 						{
 							cct_gotoxy(x, y);
 							cct_setcolor(COLOR_WHITE, COLOR_BLACK);
 							cout << "*";
 						}
 					}
-					else if (c[i][j] == mark)//±»±ê¼ÇÇÒÎ´±»´ò¿ª
+					else if (c[i][j] == mark)//è¢«æ ‡è®°ä¸”æœªè¢«æ‰“å¼€
 					{
 						setcolor_mark(x, y);
 					}
-					else//Î´±»±ê¼Ç,Î´±»´ò¿ª
+					else//æœªè¢«æ ‡è®°,æœªè¢«æ‰“å¼€
 					{
 						resetcolor_yellow(x, y);
 					}
@@ -300,10 +300,10 @@ void print_result7(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_
 
 }
 
-/*Êä³öÇé¿ö5ÖÐµÄ½á¹û*/
+/*è¾“å‡ºæƒ…å†µ5ä¸­çš„ç»“æžœ*/
 void print_result5(int(*mine)[L_max], int(*a)[L_max], int select)
 {
-	int x, y;//¶ÔÓ¦Êä³öÎ»ÖÃµÄ×ø±ê
+	int x, y;//å¯¹åº”è¾“å‡ºä½ç½®çš„åæ ‡
 	if (select == '1')
 	{
 		for (int i = 1; i < W1 + 1; i++)
@@ -313,12 +313,12 @@ void print_result5(int(*mine)[L_max], int(*a)[L_max], int select)
 				y = 1 + 3 * i;
 				x = 6 * j;
 				cct_gotoxy(x, y);
-				if (a[i][j] == 0 && mine[i][j] != 0)//ÎÞÀ×,ÇÒmine²»Îª0
+				if (a[i][j] == 0 && mine[i][j] != 0)//æ— é›·,ä¸”mineä¸ä¸º0
 				{
 					cct_setcolor(COLOR_WHITE, mine[i][j]);
 					cout << mine[i][j];
 				}
-				else if (a[i][j] == 1)//ÓÐÀ×
+				else if (a[i][j] == 1)//æœ‰é›·
 				{
 					cct_setcolor(COLOR_WHITE, COLOR_BLACK);
 					cout << "*";
@@ -337,12 +337,12 @@ void print_result5(int(*mine)[L_max], int(*a)[L_max], int select)
 				y = 1 + 3 * i;
 				x = 6 * j;
 				cct_gotoxy(x, y);
-				if (a[i][j] == 0 && mine[i][j] != 0)//ÎÞÀ×,ÇÒmine²»Îª0
+				if (a[i][j] == 0 && mine[i][j] != 0)//æ— é›·,ä¸”mineä¸ä¸º0
 				{
 					cct_setcolor(COLOR_WHITE, mine[i][j]);
 					cout << mine[i][j];
 				}
-				else if (a[i][j] == 1)//ÓÐÀ×
+				else if (a[i][j] == 1)//æœ‰é›·
 				{
 					cct_setcolor(COLOR_WHITE, COLOR_BLACK);
 					cout << "*";
@@ -361,12 +361,12 @@ void print_result5(int(*mine)[L_max], int(*a)[L_max], int select)
 				y = 1 + 3 * i;
 				x = 6 * j;
 				cct_gotoxy(x, y);
-				if (a[i][j] == 0 && mine[i][j] != 0)//ÎÞÀ×,ÇÒmine²»Îª0
+				if (a[i][j] == 0 && mine[i][j] != 0)//æ— é›·,ä¸”mineä¸ä¸º0
 				{
 					cct_setcolor(COLOR_WHITE, mine[i][j]);
 					cout << mine[i][j];
 				}
-				else if (a[i][j] == 1)//ÓÐÀ×
+				else if (a[i][j] == 1)//æœ‰é›·
 				{
 					cct_setcolor(COLOR_WHITE, COLOR_BLACK);
 					cout << "*";
@@ -378,10 +378,10 @@ void print_result5(int(*mine)[L_max], int(*a)[L_max], int select)
 	}
 }
 
-/*Êä³ö³õÊ¼µÄ¸ñ×Ó*/
+/*è¾“å‡ºåˆå§‹çš„æ ¼å­*/
 void print_graph(int select)
 {
-	cct_setfontsize("µãÕó×ÖÌå", 16, 8);
+	cct_setfontsize("ç‚¹é˜µå­—ä½“", 16, 8);
 	switch (select)
 	{
 		case '1':
@@ -408,10 +408,10 @@ void print_graph(int select)
 	}
 }
 
-/*Êä³ö³õÊ¼µÄ´øÑÕÉ«µÄ¸ñ×Ó*/
+/*è¾“å‡ºåˆå§‹çš„å¸¦é¢œè‰²çš„æ ¼å­*/
 void print_graph_color_0(int select)
 {
-	cct_setfontsize("µãÕó×ÖÌå", 16, 8);
+	cct_setfontsize("ç‚¹é˜µå­—ä½“", 16, 8);
 	switch (select)
 	{
 		case '1':
@@ -438,8 +438,8 @@ void print_graph_color_0(int select)
 	}
 }
 
-/*Çé¿ö5*/
-/*Éú³ÉÀ×Õó²¢Êä³ö,0²»Êä³ö,À×Êä³öºÚÉ«µÄ*,ÆäËûµÄÊý×Ö´øÑÕÉ«,Êä³öµÄÎ»ÖÃ¹Ì¶¨ÔÚµÚ2ÐÐ£¬µÚ2ÁÐµÄÎ»ÖÃ*/
+/*æƒ…å†µ5*/
+/*ç”Ÿæˆé›·é˜µå¹¶è¾“å‡º,0ä¸è¾“å‡º,é›·è¾“å‡ºé»‘è‰²çš„*,å…¶ä»–çš„æ•°å­—å¸¦é¢œè‰²,è¾“å‡ºçš„ä½ç½®å›ºå®šåœ¨ç¬¬2è¡Œï¼Œç¬¬2åˆ—çš„ä½ç½®*/
 void case5(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 {
 	int x, y;
@@ -483,16 +483,16 @@ void case5(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 }
 
 
-/*¼ì²é×ø±ê*/
+/*æ£€æŸ¥åæ ‡*/
 bool check(int difficulty, const int x, const int y)
 {
-	if (x == 0 || x == 1)//¼ì²éÁÐ
+	if (x == 0 || x == 1)//æ£€æŸ¥åˆ—
 		return 0;
-	if (x % 6 == 2 || x % 6 == 3)//¼ì²éÁÐ
+	if (x % 6 == 2 || x % 6 == 3)//æ£€æŸ¥åˆ—
 		return 0;
-	if (y % 3 == 2 || y == 0 || y == 1)//¼ì²éÐÐ
+	if (y % 3 == 2 || y == 0 || y == 1)//æ£€æŸ¥è¡Œ
 		return 0;
-	//¼ì²é±ß½ç
+	//æ£€æŸ¥è¾¹ç•Œ
 	switch (difficulty)
 	{
 		case '1':
@@ -509,16 +509,16 @@ bool check(int difficulty, const int x, const int y)
 	return 1;
 }
 
-/*¼ì²éÊó±êµÄÎ»ÖÃÊÇ·ñºÏ·¨²¢Êä³ö*/
-/*°´×ó¼üÍË³ö*/
+/*æ£€æŸ¥é¼ æ ‡çš„ä½ç½®æ˜¯å¦åˆæ³•å¹¶è¾“å‡º*/
+/*æŒ‰å·¦é”®é€€å‡º*/
 void check_mouse1(int difficulty)
 {
-	cct_enable_mouse();//Ìí¼ÓÊó±êÖ§³Ö
+	cct_enable_mouse();//æ·»åŠ é¼ æ ‡æ”¯æŒ
 	int X = 0, Y = 0, loop = 1;
 	int ret, maction;
 	int keycode1, keycode2;
-	int row, line;//ÐÐÁÐ
-	int start_X, start_Y;//³õÊ¼µÄÊä³öÎ»ÖÃ
+	int row, line;//è¡Œåˆ—
+	int start_X, start_Y;//åˆå§‹çš„è¾“å‡ºä½ç½®
 	cct_getxy(start_X, start_Y);
 	cct_setcursor(CURSOR_INVISIBLE);
 
@@ -529,37 +529,37 @@ void check_mouse1(int difficulty)
 		if (ret == CCT_MOUSE_EVENT)
 		{
 			cct_showch(start_X, start_Y, ' ', COLOR_BLACK, COLOR_WHITE, 185);
-			if (check(difficulty, X, Y))//Î»ÖÃºÏ·¨
+			if (check(difficulty, X, Y))//ä½ç½®åˆæ³•
 			{
-				if (maction == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+				if (maction == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 					break;
-				else//Êä³ö¶ÔÓ¦µÄ×ø±ê
+				else//è¾“å‡ºå¯¹åº”çš„åæ ‡
 				{
 					cct_gotoxy(start_X, start_Y);
 					line = (X + 2) / 6 - 1;
 					row = Y / 3;
-					cout << "[µ±Ç°¹â±ê] " << static_cast<char>(row - 1 + 'A') << "ÐÐ" << line << "ÁÐ";
+					cout << "[å½“å‰å…‰æ ‡] " << static_cast<char>(row - 1 + 'A') << "è¡Œ" << line << "åˆ—";
 				}
 			}
-			else//Êä³öÎ»ÖÃ²»ºÏ·¨
+			else//è¾“å‡ºä½ç½®ä¸åˆæ³•
 			{
 				cct_gotoxy(start_X, start_Y);
-				cout << "[µ±Ç°¹â±ê] Î»ÖÃ·Ç·¨";
+				cout << "[å½“å‰å…‰æ ‡] ä½ç½®éžæ³•";
 			}
 		}
 	}
 }
 
-/*¼ì²éÊó±êµÄÎ»ÖÃÊÇ·ñºÏ·¨²¢Êä³ö,ÐèÒª×ó¼üÍË³öµÄ¹¦ÄÜ*/
-/*°´×ó¼ü´ò¿ªÀ×Õó,¼´°´×ó¼ü·µ»ØËùÖ¸Î»ÖÃ×ø±ê¶ÔÓ¦µÄÊý×éÏÂ±ê£¬½øÐÐÏàÓ¦µÄ´ò¿ª²Ù×÷*/
+/*æ£€æŸ¥é¼ æ ‡çš„ä½ç½®æ˜¯å¦åˆæ³•å¹¶è¾“å‡º,éœ€è¦å·¦é”®é€€å‡ºçš„åŠŸèƒ½*/
+/*æŒ‰å·¦é”®æ‰“å¼€é›·é˜µ,å³æŒ‰å·¦é”®è¿”å›žæ‰€æŒ‡ä½ç½®åæ ‡å¯¹åº”çš„æ•°ç»„ä¸‹æ ‡ï¼Œè¿›è¡Œç›¸åº”çš„æ‰“å¼€æ“ä½œ*/
 void mouse_open_1(int difficulty, int* i, int* j)
 {
-	cct_enable_mouse();//Ìí¼ÓÊó±êÖ§³Ö
+	cct_enable_mouse();//æ·»åŠ é¼ æ ‡æ”¯æŒ
 	int X = 0, Y = 0, loop = 1;
 	int ret, maction;
 	int keycode1, keycode2;
-	int row, line;//ÐÐÁÐ
-	int start_X, start_Y;//³õÊ¼µÄÊä³öÎ»ÖÃ
+	int row, line;//è¡Œåˆ—
+	int start_X, start_Y;//åˆå§‹çš„è¾“å‡ºä½ç½®
 	cct_getxy(start_X, start_Y);
 	cct_setcursor(CURSOR_INVISIBLE);
 
@@ -571,26 +571,26 @@ void mouse_open_1(int difficulty, int* i, int* j)
 		if (ret == CCT_MOUSE_EVENT)
 		{
 			cct_showch(start_X, start_Y, ' ', COLOR_BLACK, COLOR_WHITE, 185);
-			if (check(difficulty, X, Y))//Î»ÖÃºÏ·¨
+			if (check(difficulty, X, Y))//ä½ç½®åˆæ³•
 			{
-				if (maction == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+				if (maction == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 				{
 					*i = row;
 					*j = line + 1;
 					break;
 				}
-				else//Êä³ö¶ÔÓ¦µÄ×ø±ê
+				else//è¾“å‡ºå¯¹åº”çš„åæ ‡
 				{
 					cct_gotoxy(start_X, start_Y);
 					line = (X + 2) / 6 - 1;
 					row = Y / 3;
-					cout << "[µ±Ç°¹â±ê] " << static_cast<char>(row - 1 + 'A') << "ÐÐ" << line << "ÁÐ";
+					cout << "[å½“å‰å…‰æ ‡] " << static_cast<char>(row - 1 + 'A') << "è¡Œ" << line << "åˆ—";
 				}
 			}
-			else//Êä³öÎ»ÖÃ²»ºÏ·¨
+			else//è¾“å‡ºä½ç½®ä¸åˆæ³•
 			{
 				cct_gotoxy(start_X, start_Y);
-				cout << "[µ±Ç°¹â±ê] Î»ÖÃ·Ç·¨";
+				cout << "[å½“å‰å…‰æ ‡] ä½ç½®éžæ³•";
 			}
 		}
 	}
@@ -598,19 +598,19 @@ void mouse_open_1(int difficulty, int* i, int* j)
 }
 
 
-/*¼ì²éÊó±êµÄÎ»ÖÃÊÇ·ñºÏ·¨²¢Êä³ö,ÐèÒª×ó¼üÍË³öµÄ¹¦ÄÜ*/
-/*°´×ó¼ü´ò¿ªÀ×Õó,¼´°´×ó¼ü·µ»ØËùÖ¸Î»ÖÃ×ø±ê¶ÔÓ¦µÄÊý×éÏÂ±ê£¬½øÐÐÏàÓ¦µÄ´ò¿ª²Ù×÷*/
-/*ÓÒ¼ü±ê¼Ç»òÈ¡Ïû±ê¼Ç*/
-/*°´ESCÍË³ö*/
+/*æ£€æŸ¥é¼ æ ‡çš„ä½ç½®æ˜¯å¦åˆæ³•å¹¶è¾“å‡º,éœ€è¦å·¦é”®é€€å‡ºçš„åŠŸèƒ½*/
+/*æŒ‰å·¦é”®æ‰“å¼€é›·é˜µ,å³æŒ‰å·¦é”®è¿”å›žæ‰€æŒ‡ä½ç½®åæ ‡å¯¹åº”çš„æ•°ç»„ä¸‹æ ‡ï¼Œè¿›è¡Œç›¸åº”çš„æ‰“å¼€æ“ä½œ*/
+/*å³é”®æ ‡è®°æˆ–å–æ¶ˆæ ‡è®°*/
+/*æŒ‰ESCé€€å‡º*/
 int mouse_open_2(int difficulty, int* i, int* j)
 {
 
-	cct_enable_mouse();//Ìí¼ÓÊó±êÖ§³Ö
+	cct_enable_mouse();//æ·»åŠ é¼ æ ‡æ”¯æŒ
 	int X = 0, Y = 0, loop = 1;
 	int ret, maction;
 	int keycode1, keycode2;
-	int row, line;//ÐÐÁÐ
-	int start_X, start_Y;//³õÊ¼µÄÊä³öÎ»ÖÃ
+	int row, line;//è¡Œåˆ—
+	int start_X, start_Y;//åˆå§‹çš„è¾“å‡ºä½ç½®
 	cct_getxy(start_X, start_Y);
 	cct_setcursor(CURSOR_INVISIBLE);
 
@@ -623,33 +623,33 @@ int mouse_open_2(int difficulty, int* i, int* j)
 		{
 			cct_showch(start_X, start_Y, ' ', COLOR_BLACK, COLOR_WHITE, 20);
 			cct_gotoxy(start_X, start_Y);
-			if (check(difficulty, X, Y))//Î»ÖÃºÏ·¨
+			if (check(difficulty, X, Y))//ä½ç½®åˆæ³•
 			{
-				if (maction == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+				if (maction == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 				{
 					*i = row;
 					*j = line + 1;
 					return MOUSE_LEFT_BUTTON_CLICK;
 				}
-				else if (maction == MOUSE_RIGHT_BUTTON_CLICK)//°´ÏÂÓÒ¼ü
+				else if (maction == MOUSE_RIGHT_BUTTON_CLICK)//æŒ‰ä¸‹å³é”®
 				{
 					*i = row;
 					*j = line + 1;
 					return MOUSE_RIGHT_BUTTON_CLICK;
 				}
-				else//Êä³ö¶ÔÓ¦µÄ×ø±ê
+				else//è¾“å‡ºå¯¹åº”çš„åæ ‡
 				{
 					cct_gotoxy(start_X, start_Y);
 					line = (X + 2) / 6 - 1;
 					row = Y / 3;
-					cout << "[µ±Ç°¹â±ê] " << static_cast<char>(row - 1 + 'A') << "ÐÐ" << line << "ÁÐ";
+					cout << "[å½“å‰å…‰æ ‡] " << static_cast<char>(row - 1 + 'A') << "è¡Œ" << line << "åˆ—";
 					cct_gotoxy(start_X, start_Y);
 				}
 			}
-			else//Êä³öÎ»ÖÃ²»ºÏ·¨
+			else//è¾“å‡ºä½ç½®ä¸åˆæ³•
 			{
 				cct_gotoxy(start_X, start_Y);
-				cout << "[µ±Ç°¹â±ê] Î»ÖÃ·Ç·¨";
+				cout << "[å½“å‰å…‰æ ‡] ä½ç½®éžæ³•";
 				cct_gotoxy(start_X, start_Y);
 			}
 		}
@@ -664,11 +664,11 @@ int mouse_open_2(int difficulty, int* i, int* j)
 	}
 	return 0;
 }
-/*Çé¿ö6*/
-/*¼ì²éÊó±êÎ»ÖÃµÄºÏ·¨ÐÔ,Êä³ö¶ÔÓ¦µÄÐÐÁÐÎ»ÖÃ,ÔÚºÏ·¨Î»ÖÃ°´×ó¼üÍË³ö*/
-/*ÓÃcase5Éú³ÉÀ×Õó*/
-/*»ñÈ¡Êó±êµÄÎ»ÖÃÓëÊÂ¼þ*/
-/*Êä³öÏàÓ¦µÄÎ»ÖÃ,×ó¼übreak;*/
+/*æƒ…å†µ6*/
+/*æ£€æŸ¥é¼ æ ‡ä½ç½®çš„åˆæ³•æ€§,è¾“å‡ºå¯¹åº”çš„è¡Œåˆ—ä½ç½®,åœ¨åˆæ³•ä½ç½®æŒ‰å·¦é”®é€€å‡º*/
+/*ç”¨case5ç”Ÿæˆé›·é˜µ*/
+/*èŽ·å–é¼ æ ‡çš„ä½ç½®ä¸Žäº‹ä»¶*/
+/*è¾“å‡ºç›¸åº”çš„ä½ç½®,å·¦é”®break;*/
 void case6(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 {
 	int x, y;
@@ -712,7 +712,7 @@ void case6(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 
 }
 
-/*Çé¿ö7*/
+/*æƒ…å†µ7*/
 void case7(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 {
 	int x, y;
@@ -758,10 +758,10 @@ void case7(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 	cout << endl << endl;
 }
 
-/*Çé¿ö8*/
+/*æƒ…å†µ8*/
 void case8(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 {
-	int spawned = 0;//ÅÐ¶ÏÊÇ·ñÒÑ¾­Éú³ÉÀ×Õó
+	int spawned = 0;//åˆ¤æ–­æ˜¯å¦å·²ç»ç”Ÿæˆé›·é˜µ
 	int x, y;
 	print_choose_difficulty();
 	int difficulty;
@@ -784,14 +784,14 @@ void case8(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 				print_result7(mine, a, b, c, '1');
 
 			}
-			else if (ret == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+			else if (ret == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 			{
 				if (c[x][y] != mark)
 				{
 					break;
 				}
 			}
-			else if (ret == 27)//°´ÏÂESC
+			else if (ret == 27)//æŒ‰ä¸‹ESC
 				return;
 		}
 		spawn(W1, L1, mine1, a, x, y);
@@ -804,14 +804,14 @@ void case8(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 			if (game_over(b, '1'))
 			{
 				cct_gotoxy(0, 30);
-				cout << "ÄãÓ®ÁË£¬ÓÎÏ·½áÊø";
+				cout << "ä½ èµ¢äº†ï¼Œæ¸¸æˆç»“æŸ";
 				return;
 			}
 			if (judge4(x, y, a, b, c))
 			{
 				print_result7(mine, a, b, c, '1');
 				cct_gotoxy(0, 30);
-				cout << "ÄãÊäÁË£¬ÓÎÏ·½áÊø";
+				cout << "ä½ è¾“äº†ï¼Œæ¸¸æˆç»“æŸ";
 				return;
 			}
 			else
@@ -824,14 +824,14 @@ void case8(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 					else if (c[x][y] == no && b[x][y] == HIDE)
 						c[x][y] = mark;
 				}
-				else if (ret == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+				else if (ret == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 				{
 					if (c[x][y] != mark)
 					{
 						open_matrix(a, b, x, y, 1);
 					}
 				}
-				else if (ret == 27)//°´ÏÂESC
+				else if (ret == 27)//æŒ‰ä¸‹ESC
 					return;
 
 				print_result7(mine, a, b, c, '1');
@@ -855,14 +855,14 @@ void case8(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 				print_result7(mine, a, b, c, '2');
 
 			}
-			else if (ret == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+			else if (ret == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 			{
 				if (c[x][y] != mark)
 				{
 					break;
 				}
 			}
-			else if (ret == 27)//°´ÏÂESC
+			else if (ret == 27)//æŒ‰ä¸‹ESC
 				return;
 		}
 		spawn(W2, L2, mine2, a, x, y);
@@ -875,14 +875,14 @@ void case8(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 			if (game_over(b, '2'))
 			{
 				cct_gotoxy(0, 51);
-				cout << "ÄãÓ®ÁË£¬ÓÎÏ·½áÊø";
+				cout << "ä½ èµ¢äº†ï¼Œæ¸¸æˆç»“æŸ";
 				return;
 			}
 			if (judge4(x, y, a, b, c))
 			{
 				print_result7(mine, a, b, c, '2');
 				cct_gotoxy(0, 51);
-				cout << "ÄãÊäÁË£¬ÓÎÏ·½áÊø";
+				cout << "ä½ è¾“äº†ï¼Œæ¸¸æˆç»“æŸ";
 				return;
 			}
 			else
@@ -896,14 +896,14 @@ void case8(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 					else if (c[x][y] == no && b[x][y] == HIDE)
 						c[x][y] = mark;
 				}
-				else if (ret == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+				else if (ret == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 				{
 					if (c[x][y] != mark)
 					{
 						open_matrix(a, b, x, y, 2);
 					}
 				}
-				else if (ret == 27)//°´ÏÂESC
+				else if (ret == 27)//æŒ‰ä¸‹ESC
 					return;
 
 				print_result7(mine, a, b, c, '2');
@@ -927,14 +927,14 @@ void case8(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 				print_result7(mine, a, b, c, '3');
 
 			}
-			else if (ret == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+			else if (ret == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 			{
 				if (c[x][y] != mark)
 				{
 					break;
 				}
 			}
-			else if (ret == 27)//°´ÏÂESC
+			else if (ret == 27)//æŒ‰ä¸‹ESC
 				return;
 		}
 		spawn(W3, L3, mine3, a, x, y);
@@ -947,14 +947,14 @@ void case8(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 			if (game_over(b, '3'))
 			{
 				cct_gotoxy(0, 51);
-				cout << "ÄãÓ®ÁË£¬ÓÎÏ·½áÊø";
+				cout << "ä½ èµ¢äº†ï¼Œæ¸¸æˆç»“æŸ";
 				return;
 			}
 			if (judge4(x, y, a, b, c))
 			{
 				print_result7(mine, a, b, c, '3');
 				cct_gotoxy(0, 51);
-				cout << "ÄãÊäÁË£¬ÓÎÏ·½áÊø";
+				cout << "ä½ è¾“äº†ï¼Œæ¸¸æˆç»“æŸ";
 				return;
 			}
 			else
@@ -968,14 +968,14 @@ void case8(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 					else if (c[x][y] == no && b[x][y] == HIDE)
 						c[x][y] = mark;
 				}
-				else if (ret == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+				else if (ret == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 				{
 					if (c[x][y] != mark)
 					{
 						open_matrix(a, b, x, y, 3);
 					}
 				}
-				else if (ret == 27)//°´ÏÂESC
+				else if (ret == 27)//æŒ‰ä¸‹ESC
 					return;
 
 				print_result7(mine, a, b, c, '3');
@@ -986,16 +986,16 @@ void case8(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 
 }
 
-/*Çé¿ö9*/
-/*°´¿Õ¸ñÊä³öÊ±¼ä£¬¸ù¾Ý±ê¼Ç¸öÊýÏÔÊ¾ËùÊ£µÄÀ×Êý*/
+/*æƒ…å†µ9*/
+/*æŒ‰ç©ºæ ¼è¾“å‡ºæ—¶é—´ï¼Œæ ¹æ®æ ‡è®°ä¸ªæ•°æ˜¾ç¤ºæ‰€å‰©çš„é›·æ•°*/
 void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 {
 	LARGE_INTEGER tick, begin, end;
-	QueryPerformanceFrequency(&tick); //»ñµÃÊ±ÖÓÆµÂÊ
-	QueryPerformanceCounter(&begin);  //»ñµÃ³õÊ¼Ó²¼þ¶¨Ê±Æ÷¼ÆÊý
-	int rest = 0;//Ê£ÓàÀ×Êý
-	int M = 0;//ÒÑ±»±ê¼Ç
-	int spawned = 0;//ÅÐ¶ÏÊÇ·ñÒÑ¾­Éú³ÉÀ×Õó
+	QueryPerformanceFrequency(&tick); //èŽ·å¾—æ—¶é’Ÿé¢‘çŽ‡
+	QueryPerformanceCounter(&begin);  //èŽ·å¾—åˆå§‹ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+	int rest = 0;//å‰©ä½™é›·æ•°
+	int M = 0;//å·²è¢«æ ‡è®°
+	int spawned = 0;//åˆ¤æ–­æ˜¯å¦å·²ç»ç”Ÿæˆé›·é˜µ
 	int x, y;
 	print_choose_difficulty();
 	int difficulty;
@@ -1008,7 +1008,7 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 		rest = mine1;
 		print_graph_color_0('1');
 		cct_gotoxy(0, 0);
-		cout << "°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+		cout << "æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 		cct_setcolor();
 		cct_gotoxy(0, 30);
 
@@ -1033,7 +1033,7 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 					cct_gotoxy(0, 0);
 					cout << "                                                   ";
 					cct_gotoxy(0, 0);
-					cout << "Ê£ÓàÀ×Êý: " << rest << ",°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+					cout << "å‰©ä½™é›·æ•°: " << rest << ",æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 					cct_gotoxy(0, 30);
 				}
 				else
@@ -1041,32 +1041,32 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 					cct_gotoxy(0, 0);
 					cout << "                                                   ";
 					cct_gotoxy(0, 0);
-					cout << "Ê£ÓàÀ×Êý: 0,°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+					cout << "å‰©ä½™é›·æ•°: 0,æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 					cct_gotoxy(0, 30);
 				}
 				print_result7(mine, a, b, c, '1');
 
 			}
-			else if (ret == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+			else if (ret == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 			{
 				if (c[x][y] != mark)
 				{
 					break;
 				}
 			}
-			else if (ret == 27)//°´ÏÂESC
+			else if (ret == 27)//æŒ‰ä¸‹ESC
 				return;
-			else if (ret == ' ')//°´ÏÂSPACE
+			else if (ret == ' ')//æŒ‰ä¸‹SPACE
 			{
 				cct_gotoxy(0, 0);
 				cout << "                                                     ";
 				cct_gotoxy(0, 0);
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼þ¶¨Ê±Æ÷¼ÆÊý
+				QueryPerformanceCounter(&end); //èŽ·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
 				cct_setcolor(COLOR_BLACK, COLOR_YELLOW);
-				cout << "ÒÑÔËÐÐÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(5)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë";
+				cout << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(5)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’";
 				cct_setcolor();
-				cout << ",°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+				cout << ",æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 				cct_gotoxy(0, 30);
 			}
 		}
@@ -1080,11 +1080,11 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 			if (game_over(b, '1'))
 			{
 				cct_gotoxy(0, 30);
-				cout << "ÄãÓ®ÁË£¬ÓÎÏ·½áÊø"<<endl;
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼þ¶¨Ê±Æ÷¼ÆÊý
+				cout << "ä½ èµ¢äº†ï¼Œæ¸¸æˆç»“æŸ"<<endl;
+				QueryPerformanceCounter(&end); //èŽ·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
 				cct_setcolor(COLOR_BLACK, COLOR_YELLOW);
-				cout << "ÒÑÔËÐÐÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(5)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë";
+				cout << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(5)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’";
 				cct_setcolor();
 				return;
 			}
@@ -1092,11 +1092,11 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 			{
 				print_result7(mine, a, b, c, '1');
 				cct_gotoxy(0, 30);
-				cout << "ÄãÊäÁË£¬ÓÎÏ·½áÊø"<<endl;
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼þ¶¨Ê±Æ÷¼ÆÊý
+				cout << "ä½ è¾“äº†ï¼Œæ¸¸æˆç»“æŸ"<<endl;
+				QueryPerformanceCounter(&end); //èŽ·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
 				cct_setcolor(COLOR_BLACK, COLOR_YELLOW);
-				cout << "ÒÑÔËÐÐÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(5)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë";
+				cout << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(5)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’";
 				cct_setcolor();
 				return;
 			}
@@ -1121,7 +1121,7 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 						cct_gotoxy(0, 0);
 						cout << "                                                   ";
 						cct_gotoxy(0, 0);
-						cout << "Ê£ÓàÀ×Êý: " << rest << ",°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+						cout << "å‰©ä½™é›·æ•°: " << rest << ",æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 						cct_gotoxy(0, 30);
 					}
 					else
@@ -1129,13 +1129,13 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 						cct_gotoxy(0, 0);
 						cout << "                                                   ";
 						cct_gotoxy(0, 0);
-						cout << "Ê£ÓàÀ×Êý: 0,°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+						cout << "å‰©ä½™é›·æ•°: 0,æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 						cct_gotoxy(0, 30);
 					}
 					print_result7(mine, a, b, c, '1');
 
 				}
-				else if (ret == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+				else if (ret == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 				{
 					if (c[x][y] != mark)
 					{
@@ -1143,19 +1143,19 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 					}
 					print_result7(mine, a, b, c, '1');
 				}
-				else if (ret == 27)//°´ÏÂESC
+				else if (ret == 27)//æŒ‰ä¸‹ESC
 					return;
-				else if (ret == ' ')//°´ÏÂSPACE
+				else if (ret == ' ')//æŒ‰ä¸‹SPACE
 				{
 					cct_gotoxy(0, 0);
 					cout << "                                                     ";
 					cct_gotoxy(0, 0);
-					QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼þ¶¨Ê±Æ÷¼ÆÊý
+					QueryPerformanceCounter(&end); //èŽ·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
 					cct_setcolor(COLOR_BLACK, COLOR_YELLOW);
-					cout << "ÒÑÔËÐÐÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(5)
-						<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë";
+					cout << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(5)
+						<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’";
 					cct_setcolor();
-					cout << ",°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+					cout << ",æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 					cct_gotoxy(0, 30);
 				}
 				print_result7(mine, a, b, c, '1');
@@ -1168,7 +1168,7 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 		rest = mine2;
 		print_graph_color_0('2');
 		cct_gotoxy(0, 0);
-		cout << "°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+		cout << "æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 		cct_setcolor();
 		cct_gotoxy(0, 51);
 
@@ -1193,7 +1193,7 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 					cct_gotoxy(0, 0);
 					cout << "                                                   ";
 					cct_gotoxy(0, 0);
-					cout << "Ê£ÓàÀ×Êý: " << rest << ",°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+					cout << "å‰©ä½™é›·æ•°: " << rest << ",æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 					cct_gotoxy(0, 51);
 				}
 				else
@@ -1201,32 +1201,32 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 					cct_gotoxy(0, 0);
 					cout << "                                                   ";
 					cct_gotoxy(0, 0);
-					cout << "Ê£ÓàÀ×Êý: 0,°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+					cout << "å‰©ä½™é›·æ•°: 0,æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 					cct_gotoxy(0, 51);
 				}
 				print_result7(mine, a, b, c, '1');
 				cct_gotoxy(0, 51);
 			}
-			else if (ret == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+			else if (ret == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 			{
 				if (c[x][y] != mark)
 				{
 					break;
 				}
 			}
-			else if (ret == 27)//°´ÏÂESC
+			else if (ret == 27)//æŒ‰ä¸‹ESC
 				return;
-			else if (ret == ' ')//°´ÏÂSPACE
+			else if (ret == ' ')//æŒ‰ä¸‹SPACE
 			{
 				cct_gotoxy(0, 0);
 				cout << "                                                     ";
 				cct_gotoxy(0, 0);
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼þ¶¨Ê±Æ÷¼ÆÊý
+				QueryPerformanceCounter(&end); //èŽ·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
 				cct_setcolor(COLOR_BLACK, COLOR_YELLOW);
-				cout << "ÒÑÔËÐÐÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(5)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë";
+				cout << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(5)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’";
 				cct_setcolor();
-				cout << ",°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+				cout << ",æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 				cct_gotoxy(0, 51);
 			}
 		}
@@ -1240,11 +1240,11 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 			if (game_over(b, '2'))
 			{
 				cct_gotoxy(0, 51);
-				cout << "ÄãÓ®ÁË£¬ÓÎÏ·½áÊø"<<endl;
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼þ¶¨Ê±Æ÷¼ÆÊý
+				cout << "ä½ èµ¢äº†ï¼Œæ¸¸æˆç»“æŸ"<<endl;
+				QueryPerformanceCounter(&end); //èŽ·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
 				cct_setcolor(COLOR_BLACK, COLOR_YELLOW);
-				cout << "ÒÑÔËÐÐÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(5)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë";
+				cout << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(5)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’";
 				cct_setcolor();
 				return;
 			}
@@ -1252,11 +1252,11 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 			{
 				print_result7(mine, a, b, c, '2');
 				cct_gotoxy(0, 51);
-				cout << "ÄãÊäÁË£¬ÓÎÏ·½áÊø"<<endl;
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼þ¶¨Ê±Æ÷¼ÆÊý
+				cout << "ä½ è¾“äº†ï¼Œæ¸¸æˆç»“æŸ"<<endl;
+				QueryPerformanceCounter(&end); //èŽ·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
 				cct_setcolor(COLOR_BLACK, COLOR_YELLOW);
-				cout << "ÒÑÔËÐÐÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(5)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë";
+				cout << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(5)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’";
 				cct_setcolor();
 				return;
 			}
@@ -1281,7 +1281,7 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 						cct_gotoxy(0, 0);
 						cout << "                                                   ";
 						cct_gotoxy(0, 0);
-						cout << "Ê£ÓàÀ×Êý: " << rest << ",°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+						cout << "å‰©ä½™é›·æ•°: " << rest << ",æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 						cct_gotoxy(0, 51);
 					}
 					else
@@ -1289,13 +1289,13 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 						cct_gotoxy(0, 0);
 						cout << "                                                   ";
 						cct_gotoxy(0, 0);
-						cout << "Ê£ÓàÀ×Êý: 0,°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+						cout << "å‰©ä½™é›·æ•°: 0,æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 						cct_gotoxy(0, 51);
 					}
 					print_result7(mine, a, b, c, '2');
 
 				}
-				else if (ret == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+				else if (ret == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 				{
 					if (c[x][y] != mark)
 					{
@@ -1303,19 +1303,19 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 					}
 					print_result7(mine, a, b, c, '2');
 				}
-				else if (ret == 27)//°´ÏÂESC
+				else if (ret == 27)//æŒ‰ä¸‹ESC
 					return;
-				else if (ret == ' ')//°´ÏÂSPACE
+				else if (ret == ' ')//æŒ‰ä¸‹SPACE
 				{
 					cct_gotoxy(0, 0);
 					cout << "                                                     ";
 					cct_gotoxy(0, 0);
-					QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼þ¶¨Ê±Æ÷¼ÆÊý
+					QueryPerformanceCounter(&end); //èŽ·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
 					cct_setcolor(COLOR_BLACK, COLOR_YELLOW);
-					cout << "ÒÑÔËÐÐÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(5)
-						<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë";
+					cout << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(5)
+						<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’";
 					cct_setcolor();
-					cout << ",°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+					cout << ",æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 					cct_gotoxy(0, 51);
 				}
 				print_result7(mine, a, b, c, '2');
@@ -1328,7 +1328,7 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 		rest = mine3;
 		print_graph_color_0('3');
 		cct_gotoxy(0, 0);
-		cout << "°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+		cout << "æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 		cct_setcolor();
 		cct_gotoxy(0, 51);
 
@@ -1353,7 +1353,7 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 					cct_gotoxy(0, 0);
 					cout << "                                                   ";
 					cct_gotoxy(0, 0);
-					cout << "Ê£ÓàÀ×Êý: " << rest << ",°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+					cout << "å‰©ä½™é›·æ•°: " << rest << ",æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 					cct_gotoxy(0, 51);
 				}
 				else
@@ -1361,32 +1361,32 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 					cct_gotoxy(0, 0);
 					cout << "                                                   ";
 					cct_gotoxy(0, 0);
-					cout << "Ê£ÓàÀ×Êý: 0,°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+					cout << "å‰©ä½™é›·æ•°: 0,æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 					cct_gotoxy(0, 51);
 				}
 				print_result7(mine, a, b, c, '3');
 
 			}
-			else if (ret == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+			else if (ret == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 			{
 				if (c[x][y] != mark)
 				{
 					break;
 				}
 			}
-			else if (ret == 27)//°´ÏÂESC
+			else if (ret == 27)//æŒ‰ä¸‹ESC
 				return;
-			else if (ret == ' ')//°´ÏÂSPACE
+			else if (ret == ' ')//æŒ‰ä¸‹SPACE
 			{
 				cct_gotoxy(0, 0);
 				cout << "                                                     ";
 				cct_gotoxy(0, 0);
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼þ¶¨Ê±Æ÷¼ÆÊý
+				QueryPerformanceCounter(&end); //èŽ·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
 				cct_setcolor(COLOR_BLACK, COLOR_YELLOW);
-				cout << "ÒÑÔËÐÐÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(5)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë";
+				cout << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(5)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’";
 				cct_setcolor();
-				cout << ",°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+				cout << ",æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 				cct_gotoxy(0, 51);
 			}
 		}
@@ -1400,11 +1400,11 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 			if (game_over(b, '3'))
 			{
 				cct_gotoxy(0, 51);
-				cout << "ÄãÓ®ÁË£¬ÓÎÏ·½áÊø"<<endl;
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼þ¶¨Ê±Æ÷¼ÆÊý
+				cout << "ä½ èµ¢äº†ï¼Œæ¸¸æˆç»“æŸ"<<endl;
+				QueryPerformanceCounter(&end); //èŽ·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
 				cct_setcolor(COLOR_BLACK, COLOR_YELLOW);
-				cout << "ÒÑÔËÐÐÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(5)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë";
+				cout << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(5)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’";
 				cct_setcolor();
 				return;
 			}
@@ -1412,11 +1412,11 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 			{
 				print_result7(mine, a, b, c, '3');
 				cct_gotoxy(0, 51);
-				cout << "ÄãÊäÁË£¬ÓÎÏ·½áÊø"<<endl;
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼þ¶¨Ê±Æ÷¼ÆÊý
+				cout << "ä½ è¾“äº†ï¼Œæ¸¸æˆç»“æŸ"<<endl;
+				QueryPerformanceCounter(&end); //èŽ·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
 				cct_setcolor(COLOR_BLACK, COLOR_YELLOW);
-				cout << "ÒÑÔËÐÐÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(5)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë";
+				cout << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(5)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’";
 				cct_setcolor();
 				return;
 			}
@@ -1441,7 +1441,7 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 						cct_gotoxy(0, 0);
 						cout << "                                                   ";
 						cct_gotoxy(0, 0);
-						cout << "Ê£ÓàÀ×Êý: " << rest << ",°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+						cout << "å‰©ä½™é›·æ•°: " << rest << ",æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 						cct_gotoxy(0, 51);
 					}
 					else
@@ -1449,13 +1449,13 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 						cct_gotoxy(0, 0);
 						cout << "                                                   ";
 						cct_gotoxy(0, 0);
-						cout << "Ê£ÓàÀ×Êý: 0,°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+						cout << "å‰©ä½™é›·æ•°: 0,æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 						cct_gotoxy(0, 51);
 					}
 					print_result7(mine, a, b, c, '3');
 
 				}
-				else if (ret == MOUSE_LEFT_BUTTON_CLICK)//°´ÏÂ×ó¼ü
+				else if (ret == MOUSE_LEFT_BUTTON_CLICK)//æŒ‰ä¸‹å·¦é”®
 				{
 					if (c[x][y] != mark)
 					{
@@ -1463,19 +1463,19 @@ void case9(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 					}
 					print_result7(mine, a, b, c, '3');
 				}
-				else if (ret == 27)//°´ÏÂESC
+				else if (ret == 27)//æŒ‰ä¸‹ESC
 					return;
-				else if (ret == ' ')//°´ÏÂSPACE
+				else if (ret == ' ')//æŒ‰ä¸‹SPACE
 				{
 					cct_gotoxy(0, 0);
 					cout << "                                                     ";
 					cct_gotoxy(0, 0);
-					QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼þ¶¨Ê±Æ÷¼ÆÊý
+					QueryPerformanceCounter(&end); //èŽ·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
 					cct_setcolor(COLOR_BLACK, COLOR_YELLOW);
-					cout << "ÒÑÔËÐÐÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(5)
-						<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë";
+					cout << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(5)
+						<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’";
 					cct_setcolor();
-					cout << ",°´ESCÍË³ö,°´¿Õ¸ñÏÔÊ¾Ê±¼ä";
+					cout << ",æŒ‰ESCé€€å‡º,æŒ‰ç©ºæ ¼æ˜¾ç¤ºæ—¶é—´";
 					cct_gotoxy(0, 51);
 				}
 				print_result7(mine, a, b, c, '3');

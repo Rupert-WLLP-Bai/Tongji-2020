@@ -6,29 +6,29 @@ using namespace std;
 #include "6-b4.h"
 
 /***************************************************************************
-  º¯ÊıÃû³Æ£º
-  ¹¦    ÄÜ£º
-  ÊäÈë²ÎÊı£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£º
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼š
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  è¯´    æ˜ï¼š
 ***************************************************************************/
 void wait_for_enter(const char* prompt = "")
 {
-    if (prompt == NULL || prompt[0] == 0) //´úÌæstrlen(prompt)==0µÄ×÷ÓÃ£¬Ä¿µÄÊÇÎªÁË·ÀÖ¹ºóÃæ²»Ğ¡ĞÄÊ¹ÓÃÏµÍ³º¯Êı¶øÌØµØ²»¼Ó<cstring>Í·ÎÄ¼ş
-        cout << endl << "°´»Ø³µ¼ü¼ÌĞø";
+    if (prompt == NULL || prompt[0] == 0) //ä»£æ›¿strlen(prompt)==0çš„ä½œç”¨ï¼Œç›®çš„æ˜¯ä¸ºäº†é˜²æ­¢åé¢ä¸å°å¿ƒä½¿ç”¨ç³»ç»Ÿå‡½æ•°è€Œç‰¹åœ°ä¸åŠ <cstring>å¤´æ–‡ä»¶
+        cout << endl << "æŒ‰å›è½¦é”®ç»§ç»­";
     else
-        cout << endl << prompt << "£¬°´»Ø³µ¼ü¼ÌĞø";
+        cout << endl << prompt << "ï¼ŒæŒ‰å›è½¦é”®ç»§ç»­";
     while (_getch() != '\r')
         ;
     cout << endl << endl;
 }
 
 /***************************************************************************
-  º¯ÊıÃû³Æ£º
-  ¹¦    ÄÜ£º
-  ÊäÈë²ÎÊı£º
-  ·µ »Ø Öµ£º
-  Ëµ    Ã÷£ºÏ¸½Ú¿ÉÄÜÓĞ´í£¬Èô·¢ÏÖ£¬Çë¼°Ê±·´Ó³
+  å‡½æ•°åç§°ï¼š
+  åŠŸ    èƒ½ï¼š
+  è¾“å…¥å‚æ•°ï¼š
+  è¿” å› å€¼ï¼š
+  è¯´    æ˜ï¼šç»†èŠ‚å¯èƒ½æœ‰é”™ï¼Œè‹¥å‘ç°ï¼Œè¯·åŠæ—¶åæ˜ 
 ***************************************************************************/
 int main()
 {
@@ -38,14 +38,14 @@ int main()
         char  s3[] = "";
         char* p4 = NULL;
 
-        cout << "tj_strlen()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1      µÄ³¤¶ÈÓ¦¸ÃÊÇ26£¬Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
-        cout << "2.s2      µÄ³¤¶ÈÓ¦¸ÃÊÇ26£¬Êµ¼ÊÊÇ£º" << tj_strlen(s2) << endl;
-        cout << "3.&s2[27] µÄ³¤¶ÈÓ¦¸ÃÊÇ6£¬ Êµ¼ÊÊÇ£º" << tj_strlen(&s2[27]) << endl;
-        cout << "4.s3      µÄ³¤¶ÈÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strlen(s3) << endl;
-        cout << "5.p4      µÄ³¤¶ÈÈÏÎªÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strlen(p4) << endl;
+        cout << "tj_strlen()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1      çš„é•¿åº¦åº”è¯¥æ˜¯26ï¼Œå®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
+        cout << "2.s2      çš„é•¿åº¦åº”è¯¥æ˜¯26ï¼Œå®é™…æ˜¯ï¼š" << tj_strlen(s2) << endl;
+        cout << "3.&s2[27] çš„é•¿åº¦åº”è¯¥æ˜¯6ï¼Œ å®é™…æ˜¯ï¼š" << tj_strlen(&s2[27]) << endl;
+        cout << "4.s3      çš„é•¿åº¦åº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strlen(s3) << endl;
+        cout << "5.p4      çš„é•¿åº¦è®¤ä¸ºæ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strlen(p4) << endl;
 
-        wait_for_enter("tj_strlen() ²âÊÔÍê³É");
+        wait_for_enter("tj_strlen() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
@@ -55,32 +55,32 @@ int main()
         char  s4[] = "";
         char* p5 = NULL;
 
-        cout << "tj_strcat()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1µÄÊä³öÓ¦¸ÃÊÇabcdefghij£¬                Êµ¼ÊÊÇ£º" << s1 << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ10£¬                        Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "tj_strcat()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijï¼Œ                å®é™…æ˜¯ï¼š" << s1 << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯10ï¼Œ                        å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "2.s1µÄÊä³öÓ¦¸ÃÊÇabcdefghijabcde£¬           Êµ¼ÊÊÇ£º" << tj_strcat(s1, s2) << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ15£¬                        Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "2.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijabcdeï¼Œ           å®é™…æ˜¯ï¼š" << tj_strcat(s1, s2) << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯15ï¼Œ                        å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "3.s1µÄÊä³öÓ¦¸ÃÊÇabcdefghijabcdehello£¬      Êµ¼ÊÊÇ£º" << tj_strcat(s1, s3) << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ20£¬                        Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "3.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijabcdehelloï¼Œ      å®é™…æ˜¯ï¼š" << tj_strcat(s1, s3) << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯20ï¼Œ                        å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "4.s1µÄÊä³öÓ¦¸ÃÊÇabcdefghijabcdehelloUVWXYZ£¬Êµ¼ÊÊÇ£º" << tj_strcat(s1, &s3[6]) << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ26£¬                        Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "4.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijabcdehelloUVWXYZï¼Œå®é™…æ˜¯ï¼š" << tj_strcat(s1, &s3[6]) << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯26ï¼Œ                        å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "5.s1µÄÊä³öÓ¦¸ÃÊÇabcdefghijabcdehelloUVWXYZ£¬Êµ¼ÊÊÇ£º" << tj_strcat(s1, s4) << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ26£¬                        Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "5.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijabcdehelloUVWXYZï¼Œå®é™…æ˜¯ï¼š" << tj_strcat(s1, s4) << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯26ï¼Œ                        å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "6.s1µÄÊä³öÓ¦¸ÃÊÇabcdefghijabcdehelloUVWXYZ£¬Êµ¼ÊÊÇ£º" << tj_strcat(s1, p5) << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ26£¬                        Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "6.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijabcdehelloUVWXYZï¼Œå®é™…æ˜¯ï¼š" << tj_strcat(s1, p5) << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯26ï¼Œ                        å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "7.p5µÄÊä³öÓ¦¸ÃÊÇ<NULL>£¬                    Êµ¼ÊÊÇ£º" << (tj_strcat(p5, s1) == NULL ? "<NULL>" : tj_strcat(p5, s1)) << endl;
-        cout << "  p5µÄ³¤¶ÈÓ¦¸ÃÊÇ0£¬                         Êµ¼ÊÊÇ£º" << tj_strlen(p5) << endl;
+        cout << "7.p5çš„è¾“å‡ºåº”è¯¥æ˜¯<NULL>ï¼Œ                    å®é™…æ˜¯ï¼š" << (tj_strcat(p5, s1) == NULL ? "<NULL>" : tj_strcat(p5, s1)) << endl;
+        cout << "  p5çš„é•¿åº¦åº”è¯¥æ˜¯0ï¼Œ                         å®é™…æ˜¯ï¼š" << tj_strlen(p5) << endl;
 
-        cout << "8.p5µÄÊä³öÓ¦¸ÃÊÇ<NULL>£¬                    Êµ¼ÊÊÇ£º" << (tj_strcat(p5, NULL) == NULL ? "<NULL>" : tj_strcat(p5, NULL)) << endl;
-        cout << "  p5µÄ³¤¶ÈÓ¦¸ÃÊÇ0£¬                         Êµ¼ÊÊÇ£º" << tj_strlen(p5) << endl;
+        cout << "8.p5çš„è¾“å‡ºåº”è¯¥æ˜¯<NULL>ï¼Œ                    å®é™…æ˜¯ï¼š" << (tj_strcat(p5, NULL) == NULL ? "<NULL>" : tj_strcat(p5, NULL)) << endl;
+        cout << "  p5çš„é•¿åº¦åº”è¯¥æ˜¯0ï¼Œ                         å®é™…æ˜¯ï¼š" << tj_strlen(p5) << endl;
 
-        wait_for_enter("tj_strcat() ²âÊÔÍê³É");
+        wait_for_enter("tj_strcat() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
@@ -90,32 +90,32 @@ int main()
         char  s4[] = "";
         char* p5 = NULL;
 
-        cout << "tj_strncat()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1µÄÊä³öÓ¦¸ÃÊÇabcdefghij£¬              Êµ¼ÊÊÇ£º" << s1 << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ10£¬                      Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "tj_strncat()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijï¼Œ              å®é™…æ˜¯ï¼š" << s1 << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯10ï¼Œ                      å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "2.s1µÄÊä³öÓ¦¸ÃÊÇabcdefghijabc£¬           Êµ¼ÊÊÇ£º" << tj_strncat(s1, s2, 3) << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ13£¬                      Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "2.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijabcï¼Œ           å®é™…æ˜¯ï¼š" << tj_strncat(s1, s2, 3) << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯13ï¼Œ                      å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "3.s1µÄÊä³öÓ¦¸ÃÊÇabcdefghijabchello£¬      Êµ¼ÊÊÇ£º" << tj_strncat(s1, s3, 100) << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ18£¬                      Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "3.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijabchelloï¼Œ      å®é™…æ˜¯ï¼š" << tj_strncat(s1, s3, 100) << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯18ï¼Œ                      å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "4.s1µÄÊä³öÓ¦¸ÃÊÇabcdefghijabchelloUVWXYZ£¬Êµ¼ÊÊÇ£º" << tj_strncat(s1, &s3[6], 6) << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ24£¬                      Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "4.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijabchelloUVWXYZï¼Œå®é™…æ˜¯ï¼š" << tj_strncat(s1, &s3[6], 6) << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯24ï¼Œ                      å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "5.s1µÄÊä³öÓ¦¸ÃÊÇabcdefghijabchelloUVWXYZ£¬Êµ¼ÊÊÇ£º" << tj_strncat(s1, s4, 2) << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ24£¬                        Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "5.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijabchelloUVWXYZï¼Œå®é™…æ˜¯ï¼š" << tj_strncat(s1, s4, 2) << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯24ï¼Œ                        å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "6.s1µÄÊä³öÓ¦¸ÃÊÇabcdefghijabchelloUVWXYZ£¬Êµ¼ÊÊÇ£º" << tj_strncat(s1, p5, 100) << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ24£¬                      Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "6.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijabchelloUVWXYZï¼Œå®é™…æ˜¯ï¼š" << tj_strncat(s1, p5, 100) << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯24ï¼Œ                      å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "7.p5µÄÊä³öÓ¦¸ÃÊÇ<NULL>£¬                  Êµ¼ÊÊÇ£º" << (tj_strncat(p5, s1, 100) == NULL ? "<NULL>" : tj_strncat(p5, s1, 100)) << endl;
-        cout << "  p5µÄ³¤¶ÈÓ¦¸ÃÊÇ0£¬                       Êµ¼ÊÊÇ£º" << tj_strlen(p5) << endl;
+        cout << "7.p5çš„è¾“å‡ºåº”è¯¥æ˜¯<NULL>ï¼Œ                  å®é™…æ˜¯ï¼š" << (tj_strncat(p5, s1, 100) == NULL ? "<NULL>" : tj_strncat(p5, s1, 100)) << endl;
+        cout << "  p5çš„é•¿åº¦åº”è¯¥æ˜¯0ï¼Œ                       å®é™…æ˜¯ï¼š" << tj_strlen(p5) << endl;
 
-        cout << "8.p5µÄÊä³öÓ¦¸ÃÊÇ<NULL>£¬                  Êµ¼ÊÊÇ£º" << (tj_strncat(p5, NULL, 1) == NULL ? "<NULL>" : tj_strncat(p5, NULL, 1)) << endl;
-        cout << "  p5µÄ³¤¶ÈÓ¦¸ÃÊÇ0£¬                       Êµ¼ÊÊÇ£º" << tj_strlen(p5) << endl;
+        cout << "8.p5çš„è¾“å‡ºåº”è¯¥æ˜¯<NULL>ï¼Œ                  å®é™…æ˜¯ï¼š" << (tj_strncat(p5, NULL, 1) == NULL ? "<NULL>" : tj_strncat(p5, NULL, 1)) << endl;
+        cout << "  p5çš„é•¿åº¦åº”è¯¥æ˜¯0ï¼Œ                       å®é™…æ˜¯ï¼š" << tj_strlen(p5) << endl;
 
-        wait_for_enter("tj_strncat() ²âÊÔÍê³É");
+        wait_for_enter("tj_strncat() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
@@ -127,37 +127,37 @@ int main()
         char* p5 = NULL;
         char* p6 = NULL;
 
-        cout << "tj_strcpy()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1µÄÊä³öÓ¦¸ÃÊÇabcdefghijklm£¬   Êµ¼ÊÊÇ£º" << s1 << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ13£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "tj_strcpy()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijklmï¼Œ   å®é™…æ˜¯ï¼š" << s1 << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯13ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "2.s1µÄÊä³öÓ¦¸ÃÊÇabcde£¬           Êµ¼ÊÊÇ£º" << tj_strcpy(s1, s2) << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ5£¬               Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "2.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdeï¼Œ           å®é™…æ˜¯ï¼š" << tj_strcpy(s1, s2) << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯5ï¼Œ               å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "3.s1µÄÊä³öÓ¦¸ÃÊÇUVWXYZ£¬          Êµ¼ÊÊÇ£º" << tj_strcpy(s1, &s3[6]) << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ6£¬               Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "3.s1çš„è¾“å‡ºåº”è¯¥æ˜¯UVWXYZï¼Œ          å®é™…æ˜¯ï¼š" << tj_strcpy(s1, &s3[6]) << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯6ï¼Œ               å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "4.s1µÄÊä³öÓ¦¸ÃÊÇhello£¬           Êµ¼ÊÊÇ£º" << tj_strcpy(s1, s3) << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ5£¬               Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "4.s1çš„è¾“å‡ºåº”è¯¥æ˜¯helloï¼Œ           å®é™…æ˜¯ï¼š" << tj_strcpy(s1, s3) << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯5ï¼Œ               å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "5.s1µÄÊä³öÓ¦¸ÃÊÇ--£¬              Êµ¼ÊÊÇ£º-" << tj_strcpy(s1, s4) << '-' << endl;
-        cout << "  s1µÄ³¤¶ÈÓ¦¸ÃÊÇ0£¬               Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "5.s1çš„è¾“å‡ºåº”è¯¥æ˜¯--ï¼Œ              å®é™…æ˜¯ï¼š-" << tj_strcpy(s1, s4) << '-' << endl;
+        cout << "  s1çš„é•¿åº¦åº”è¯¥æ˜¯0ï¼Œ               å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
         tj_strcpy(s0, s2);
         tj_strcat(s0, s3);
-        cout << "6.s0µÄÊä³öÓ¦¸ÃÊÇabcdehelloUVWXYZ£¬Êµ¼ÊÊÇ£º" << tj_strcat(s0, &s3[6]) << endl;
-        cout << "  s0µÄ³¤¶ÈÓ¦¸ÃÊÇ16£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s0) << endl;
+        cout << "6.s0çš„è¾“å‡ºåº”è¯¥æ˜¯abcdehelloUVWXYZï¼Œå®é™…æ˜¯ï¼š" << tj_strcat(s0, &s3[6]) << endl;
+        cout << "  s0çš„é•¿åº¦åº”è¯¥æ˜¯16ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s0) << endl;
 
-        cout << "7.s0µÄÊä³öÓ¦¸ÃÊÇ--£¬              Êµ¼ÊÊÇ£º-" << tj_strcpy(s0, p5) << '-' << endl;
-        cout << "  s0µÄ³¤¶ÈÓ¦¸ÃÊÇ0£¬               Êµ¼ÊÊÇ£º" << tj_strlen(s0) << endl;
+        cout << "7.s0çš„è¾“å‡ºåº”è¯¥æ˜¯--ï¼Œ              å®é™…æ˜¯ï¼š-" << tj_strcpy(s0, p5) << '-' << endl;
+        cout << "  s0çš„é•¿åº¦åº”è¯¥æ˜¯0ï¼Œ               å®é™…æ˜¯ï¼š" << tj_strlen(s0) << endl;
 
-        cout << "8.p5µÄÊä³öÓ¦¸ÃÊÇ<NULL>£¬          Êµ¼ÊÊÇ£º" << (tj_strcpy(p5, s0) == NULL ? "<NULL>" : tj_strcpy(p5, s0)) << endl;
-        cout << "  p5µÄ³¤¶ÈÓ¦¸ÃÊÇ0£¬               Êµ¼ÊÊÇ£º" << tj_strlen(p5) << endl;
+        cout << "8.p5çš„è¾“å‡ºåº”è¯¥æ˜¯<NULL>ï¼Œ          å®é™…æ˜¯ï¼š" << (tj_strcpy(p5, s0) == NULL ? "<NULL>" : tj_strcpy(p5, s0)) << endl;
+        cout << "  p5çš„é•¿åº¦åº”è¯¥æ˜¯0ï¼Œ               å®é™…æ˜¯ï¼š" << tj_strlen(p5) << endl;
 
-        cout << "9.p5µÄÊä³öÓ¦¸ÃÊÇ<NULL>£¬          Êµ¼ÊÊÇ£º" << (tj_strcpy(p5, p6) == NULL ? "<NULL>" : tj_strcpy(p5, p6)) << endl;
-        cout << "  p5µÄ³¤¶ÈÓ¦¸ÃÊÇ0£¬               Êµ¼ÊÊÇ£º" << tj_strlen(p5) << endl;
+        cout << "9.p5çš„è¾“å‡ºåº”è¯¥æ˜¯<NULL>ï¼Œ          å®é™…æ˜¯ï¼š" << (tj_strcpy(p5, p6) == NULL ? "<NULL>" : tj_strcpy(p5, p6)) << endl;
+        cout << "  p5çš„é•¿åº¦åº”è¯¥æ˜¯0ï¼Œ               å®é™…æ˜¯ï¼š" << tj_strlen(p5) << endl;
 
-        wait_for_enter("tj_strcpy() ²âÊÔÍê³É");
+        wait_for_enter("tj_strcpy() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
@@ -169,81 +169,81 @@ int main()
         char* p5 = NULL;
         char* p6 = NULL;
 
-        cout << "tj_strncpy()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1. s1µÄÊä³öÓ¦¸ÃÊÇabcdefghijklm£¬   Êµ¼ÊÊÇ£º" << s1 << endl;
-        cout << "   s1µÄ³¤¶ÈÓ¦¸ÃÊÇ13£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "tj_strncpy()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1. s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijklmï¼Œ   å®é™…æ˜¯ï¼š" << s1 << endl;
+        cout << "   s1çš„é•¿åº¦åº”è¯¥æ˜¯13ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        cout << "2. s1µÄÊä³öÓ¦¸ÃÊÇhellofghijklm£¬   Êµ¼ÊÊÇ£º" << tj_strncpy(s1, s3, 10) << endl;
-        cout << "   s1µÄ³¤¶ÈÓ¦¸ÃÊÇ13£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
-
-        tj_strcpy(s1, "abcdefghijklm");
-        cout << "3. s1µÄÊä³öÓ¦¸ÃÊÇhellofghijklm£¬   Êµ¼ÊÊÇ£º" << tj_strncpy(s1, s3, 5) << endl;
-        cout << "   s1µÄ³¤¶ÈÓ¦¸ÃÊÇ13£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "2. s1çš„è¾“å‡ºåº”è¯¥æ˜¯hellofghijklmï¼Œ   å®é™…æ˜¯ï¼š" << tj_strncpy(s1, s3, 10) << endl;
+        cout << "   s1çš„é•¿åº¦åº”è¯¥æ˜¯13ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
         tj_strcpy(s1, "abcdefghijklm");
-        cout << "4. s1µÄÊä³öÓ¦¸ÃÊÇheldefghijklm£¬   Êµ¼ÊÊÇ£º" << tj_strncpy(s1, s3, 3) << endl;
-        cout << "   s1µÄ³¤¶ÈÓ¦¸ÃÊÇ13£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "3. s1çš„è¾“å‡ºåº”è¯¥æ˜¯hellofghijklmï¼Œ   å®é™…æ˜¯ï¼š" << tj_strncpy(s1, s3, 5) << endl;
+        cout << "   s1çš„é•¿åº¦åº”è¯¥æ˜¯13ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
         tj_strcpy(s1, "abcdefghijklm");
-        cout << "5. s1µÄÊä³öÓ¦¸ÃÊÇabcdefghijklm£¬   Êµ¼ÊÊÇ£º" << tj_strncpy(s1, s4, 2) << endl;
-        cout << "   s1µÄ³¤¶ÈÓ¦¸ÃÊÇ13£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "4. s1çš„è¾“å‡ºåº”è¯¥æ˜¯heldefghijklmï¼Œ   å®é™…æ˜¯ï¼š" << tj_strncpy(s1, s3, 3) << endl;
+        cout << "   s1çš„é•¿åº¦åº”è¯¥æ˜¯13ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
+
+        tj_strcpy(s1, "abcdefghijklm");
+        cout << "5. s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdefghijklmï¼Œ   å®é™…æ˜¯ï¼š" << tj_strncpy(s1, s4, 2) << endl;
+        cout << "   s1çš„é•¿åº¦åº”è¯¥æ˜¯13ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
         tj_strcpy(s1, "abcdefghijklm");
         tj_strncpy(&s1[4], s3, 10);
-        cout << "6. s1µÄÊä³öÓ¦¸ÃÊÇabcdhellojklm£¬   Êµ¼ÊÊÇ£º" << s1 << endl;
-        cout << "   s1µÄ³¤¶ÈÓ¦¸ÃÊÇ13£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "6. s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdhellojklmï¼Œ   å®é™…æ˜¯ï¼š" << s1 << endl;
+        cout << "   s1çš„é•¿åº¦åº”è¯¥æ˜¯13ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
         tj_strcpy(s1, "abcdefghijklm");
         tj_strncpy(&s1[4], s3, 5);
-        cout << "7. s1µÄÊä³öÓ¦¸ÃÊÇabcdhellojklm£¬   Êµ¼ÊÊÇ£º" << s1 << endl;
-        cout << "   s1µÄ³¤¶ÈÓ¦¸ÃÊÇ13£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "7. s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdhellojklmï¼Œ   å®é™…æ˜¯ï¼š" << s1 << endl;
+        cout << "   s1çš„é•¿åº¦åº”è¯¥æ˜¯13ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
         tj_strcpy(s1, "abcdefghijklm");
         tj_strncpy(&s1[4], s3, 3);
-        cout << "8. s1µÄÊä³öÓ¦¸ÃÊÇabcdhelhijklm£¬   Êµ¼ÊÊÇ£º" << s1 << endl;
-        cout << "   s1µÄ³¤¶ÈÓ¦¸ÃÊÇ13£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "8. s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdhelhijklmï¼Œ   å®é™…æ˜¯ï¼š" << s1 << endl;
+        cout << "   s1çš„é•¿åº¦åº”è¯¥æ˜¯13ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
         tj_strcpy(s1, "abcdefghijklm");
         tj_strncpy(&s1[4], &s3[6], 10);
-        cout << "9. s1µÄÊä³öÓ¦¸ÃÊÇabcdUVWXYZklm£¬   Êµ¼ÊÊÇ£º" << s1 << endl;
-        cout << "   s1µÄ³¤¶ÈÓ¦¸ÃÊÇ13£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "9. s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdUVWXYZklmï¼Œ   å®é™…æ˜¯ï¼š" << s1 << endl;
+        cout << "   s1çš„é•¿åº¦åº”è¯¥æ˜¯13ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
-        wait_for_enter("tj_strncpy() ²âÊÔÔİÍ£");
+        wait_for_enter("tj_strncpy() æµ‹è¯•æš‚åœ");
 
         tj_strcpy(s1, "abcdefghijklm");
         tj_strncpy(&s1[4], &s3[6], 6);
-        cout << "10.s1µÄÊä³öÓ¦¸ÃÊÇabcdUVWXYZklm£¬   Êµ¼ÊÊÇ£º" << s1 << endl;
-        cout << "   s1µÄ³¤¶ÈÓ¦¸ÃÊÇ13£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "10.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdUVWXYZklmï¼Œ   å®é™…æ˜¯ï¼š" << s1 << endl;
+        cout << "   s1çš„é•¿åº¦åº”è¯¥æ˜¯13ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
         tj_strcpy(s1, "abcdefghijklm");
         tj_strncpy(&s1[4], &s3[6], 3);
-        cout << "11.s1µÄÊä³öÓ¦¸ÃÊÇabcdUVWhijklm£¬   Êµ¼ÊÊÇ£º" << s1 << endl;
-        cout << "   s1µÄ³¤¶ÈÓ¦¸ÃÊÇ13£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s1) << endl;
+        cout << "11.s1çš„è¾“å‡ºåº”è¯¥æ˜¯abcdUVWhijklmï¼Œ   å®é™…æ˜¯ï¼š" << s1 << endl;
+        cout << "   s1çš„é•¿åº¦åº”è¯¥æ˜¯13ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s1) << endl;
 
         tj_strncpy(s0, s2, tj_strlen(s2));
         s0[tj_strlen(s2)] = 0;
-        cout << "12.s0µÄÊä³öÓ¦¸ÃÊÇabcde£¬           Êµ¼ÊÊÇ£º" << s0 << endl;
-        cout << "   s0µÄ³¤¶ÈÓ¦¸ÃÊÇ5£¬               Êµ¼ÊÊÇ£º" << tj_strlen(s0) << endl;
+        cout << "12.s0çš„è¾“å‡ºåº”è¯¥æ˜¯abcdeï¼Œ           å®é™…æ˜¯ï¼š" << s0 << endl;
+        cout << "   s0çš„é•¿åº¦åº”è¯¥æ˜¯5ï¼Œ               å®é™…æ˜¯ï¼š" << tj_strlen(s0) << endl;
 
-        cout << "13.s0µÄÊä³öÓ¦¸ÃÊÇabcdehello£¬      Êµ¼ÊÊÇ£º" << tj_strcat(s0, s3) << endl;
-        cout << "   s0µÄ³¤¶ÈÓ¦¸ÃÊÇ10£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s0) << endl;
+        cout << "13.s0çš„è¾“å‡ºåº”è¯¥æ˜¯abcdehelloï¼Œ      å®é™…æ˜¯ï¼š" << tj_strcat(s0, s3) << endl;
+        cout << "   s0çš„é•¿åº¦åº”è¯¥æ˜¯10ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s0) << endl;
 
         int old_len = tj_strlen(s0);
         tj_strncpy(&s0[10], &s3[6], tj_strlen(&s3[6]));
         s0[old_len + tj_strlen(&s3[6])] = 0;
-        cout << "14.s0µÄÊä³öÓ¦¸ÃÊÇabcdehelloUVWXYZ£¬Êµ¼ÊÊÇ£º" << s0 << endl;
-        cout << "   s0µÄ³¤¶ÈÓ¦¸ÃÊÇ16£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s0) << endl;
+        cout << "14.s0çš„è¾“å‡ºåº”è¯¥æ˜¯abcdehelloUVWXYZï¼Œå®é™…æ˜¯ï¼š" << s0 << endl;
+        cout << "   s0çš„é•¿åº¦åº”è¯¥æ˜¯16ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s0) << endl;
 
-        cout << "15.s0µÄÊä³öÓ¦¸ÃÊÇabcdehelloUVWXYZ£¬Êµ¼ÊÊÇ£º" << tj_strncpy(s0, p5, 2) << endl;
-        cout << "   s0µÄ³¤¶ÈÓ¦¸ÃÊÇ16£¬              Êµ¼ÊÊÇ£º" << tj_strlen(s0) << endl;
+        cout << "15.s0çš„è¾“å‡ºåº”è¯¥æ˜¯abcdehelloUVWXYZï¼Œå®é™…æ˜¯ï¼š" << tj_strncpy(s0, p5, 2) << endl;
+        cout << "   s0çš„é•¿åº¦åº”è¯¥æ˜¯16ï¼Œ              å®é™…æ˜¯ï¼š" << tj_strlen(s0) << endl;
 
-        cout << "16.p5µÄÊä³öÓ¦¸ÃÊÇ<NULL>£¬          Êµ¼ÊÊÇ£º" << (tj_strncpy(p5, s0, 2) == NULL ? "<NULL>" : tj_strncpy(p5, s0, 2)) << endl;
-        cout << "   p5µÄ³¤¶ÈÓ¦¸ÃÊÇ0£¬               Êµ¼ÊÊÇ£º" << tj_strlen(p5) << endl;
+        cout << "16.p5çš„è¾“å‡ºåº”è¯¥æ˜¯<NULL>ï¼Œ          å®é™…æ˜¯ï¼š" << (tj_strncpy(p5, s0, 2) == NULL ? "<NULL>" : tj_strncpy(p5, s0, 2)) << endl;
+        cout << "   p5çš„é•¿åº¦åº”è¯¥æ˜¯0ï¼Œ               å®é™…æ˜¯ï¼š" << tj_strlen(p5) << endl;
 
-        cout << "17.p5µÄÊä³öÓ¦¸ÃÊÇ<NULL>£¬          Êµ¼ÊÊÇ£º" << (tj_strncpy(p5, p6, 2) == NULL ? "<NULL>" : tj_strncpy(p5, p6, 2)) << endl;
-        cout << "   p5µÄ³¤¶ÈÓ¦¸ÃÊÇ0£¬               Êµ¼ÊÊÇ£º" << tj_strlen(p5) << endl;
+        cout << "17.p5çš„è¾“å‡ºåº”è¯¥æ˜¯<NULL>ï¼Œ          å®é™…æ˜¯ï¼š" << (tj_strncpy(p5, p6, 2) == NULL ? "<NULL>" : tj_strncpy(p5, p6, 2)) << endl;
+        cout << "   p5çš„é•¿åº¦åº”è¯¥æ˜¯0ï¼Œ               å®é™…æ˜¯ï¼š" << tj_strlen(p5) << endl;
 
-        wait_for_enter("tj_strncpy() ²âÊÔÍê³É");
+        wait_for_enter("tj_strncpy() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
@@ -264,19 +264,19 @@ int main()
         char* p15 = NULL;
         char* p16 = NULL;
 
-        cout << "tj_strcmp()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1 ºÍs2 µÄÊä³öÓ¦¸ÃÊÇ-3£¬  Êµ¼ÊÊÇ£º" << tj_strcmp(s1, s2) << endl;
-        cout << "2.s3 ºÍs4 µÄÊä³öÓ¦¸ÃÊÇ-111£¬Êµ¼ÊÊÇ£º" << tj_strcmp(s3, s4) << endl;
-        cout << "3.s5 ºÍs6 µÄÊä³öÓ¦¸ÃÊÇ111£¬ Êµ¼ÊÊÇ£º" << tj_strcmp(s5, s6) << endl;
-        cout << "4.s7 ºÍs8 µÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcmp(s7, s8) << endl;
-        cout << "5.s9 ºÍs10µÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcmp(s9, s10) << endl;
-        cout << "6.s11ºÍs12µÄÊä³öÓ¦¸ÃÊÇ-32£¬ Êµ¼ÊÊÇ£º" << tj_strcmp(s11, s12) << endl;
-        cout << "7.s13ºÍs14µÄÊä³öÓ¦¸ÃÊÇ-32£¬ Êµ¼ÊÊÇ£º" << tj_strcmp(s13, s14) << endl;
-        cout << "8.p15ºÍs1 µÄÊä³öÓ¦¸ÃÊÇ-1£¬  Êµ¼ÊÊÇ£º" << tj_strcmp(p15, s1) << endl;
-        cout << "  s1 ºÍp15µÄÊä³öÓ¦¸ÃÊÇ1£¬   Êµ¼ÊÊÇ£º" << tj_strcmp(s1, p15) << endl;
-        cout << "  p15ºÍp16µÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcmp(p15, p16) << endl;
+        cout << "tj_strcmp()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1 å’Œs2 çš„è¾“å‡ºåº”è¯¥æ˜¯-3ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcmp(s1, s2) << endl;
+        cout << "2.s3 å’Œs4 çš„è¾“å‡ºåº”è¯¥æ˜¯-111ï¼Œå®é™…æ˜¯ï¼š" << tj_strcmp(s3, s4) << endl;
+        cout << "3.s5 å’Œs6 çš„è¾“å‡ºåº”è¯¥æ˜¯111ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcmp(s5, s6) << endl;
+        cout << "4.s7 å’Œs8 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcmp(s7, s8) << endl;
+        cout << "5.s9 å’Œs10çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcmp(s9, s10) << endl;
+        cout << "6.s11å’Œs12çš„è¾“å‡ºåº”è¯¥æ˜¯-32ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcmp(s11, s12) << endl;
+        cout << "7.s13å’Œs14çš„è¾“å‡ºåº”è¯¥æ˜¯-32ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcmp(s13, s14) << endl;
+        cout << "8.p15å’Œs1 çš„è¾“å‡ºåº”è¯¥æ˜¯-1ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcmp(p15, s1) << endl;
+        cout << "  s1 å’Œp15çš„è¾“å‡ºåº”è¯¥æ˜¯1ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcmp(s1, p15) << endl;
+        cout << "  p15å’Œp16çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcmp(p15, p16) << endl;
 
-        wait_for_enter("tj_strcmp() ²âÊÔÍê³É");
+        wait_for_enter("tj_strcmp() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
@@ -309,31 +309,31 @@ int main()
         char* p15 = NULL;
         char* p16 = NULL;
 
-        cout << "tj_strcasecmp()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1 ºÍs2 µÄÊä³öÓ¦¸ÃÊÇ-3£¬  Êµ¼ÊÊÇ£º" << tj_strcasecmp(s1, s2) << endl;
-        cout << "2.s3 ºÍs4 µÄÊä³öÓ¦¸ÃÊÇ-111£¬Êµ¼ÊÊÇ£º" << tj_strcasecmp(s3, s4) << endl;
-        cout << "3.s5 ºÍs6 µÄÊä³öÓ¦¸ÃÊÇ111£¬ Êµ¼ÊÊÇ£º" << tj_strcasecmp(s5, s6) << endl;
-        cout << "4.s7 ºÍs8 µÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasecmp(s7, s8) << endl;
-        cout << "5.s9 ºÍs10µÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasecmp(s9, s10) << endl;
-        cout << "6.s11ºÍs12µÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasecmp(s11, s12) << endl;
-        cout << "7.s13ºÍs14µÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasecmp(s13, s14) << endl;
-        cout << "8.s15ºÍs16µÄÊä³öÓ¦¸ÃÊÇ-1 £¬ Êµ¼ÊÊÇ£º" << tj_strcasecmp(s15, s16) << endl;
-        cout << "  s16ºÍs15µÄÊä³öÓ¦¸ÃÊÇ1 £¬  Êµ¼ÊÊÇ£º" << tj_strcasecmp(s16, s15) << endl;
-        cout << "9.s17ºÍs18µÄÊä³öÓ¦¸ÃÊÇ12£¬  Êµ¼ÊÊÇ£º" << tj_strcasecmp(s17, s18) << endl;
-        cout << "  s18ºÍs17µÄÊä³öÓ¦¸ÃÊÇ-12£¬ Êµ¼ÊÊÇ£º" << tj_strcasecmp(s18, s17) << endl;
-        cout << "10.s19ºÍs20µÄÊä³öÓ¦¸ÃÊÇ-15£¬Êµ¼ÊÊÇ£º" << tj_strcasecmp(s19, s20) << endl;
-        cout << "   s20ºÍs19µÄÊä³öÓ¦¸ÃÊÇ15£¬ Êµ¼ÊÊÇ£º" << tj_strcasecmp(s20, s19) << endl;
-        cout << "11.s21ºÍs22µÄÊä³öÓ¦¸ÃÊÇ-15£¬Êµ¼ÊÊÇ£º" << tj_strcasecmp(s21, s22) << endl;
-        cout << "   s22ºÍs21µÄÊä³öÓ¦¸ÃÊÇ15£¬ Êµ¼ÊÊÇ£º" << tj_strcasecmp(s22, s21) << endl;
-        cout << "12.s23ºÍs24µÄÊä³öÓ¦¸ÃÊÇ-76£¬Êµ¼ÊÊÇ£º" << tj_strcasecmp(s23, s24) << endl;
-        cout << "   s24ºÍs23µÄÊä³öÓ¦¸ÃÊÇ76£¬ Êµ¼ÊÊÇ£º" << tj_strcasecmp(s24, s23) << endl;
-        cout << "13.s25ºÍs26µÄÊä³öÓ¦¸ÃÊÇ-76£¬Êµ¼ÊÊÇ£º" << tj_strcasecmp(s25, s26) << endl;
-        cout << "   s26ºÍs25µÄÊä³öÓ¦¸ÃÊÇ76£¬ Êµ¼ÊÊÇ£º" << tj_strcasecmp(s26, s25) << endl;
-        cout << "14.p15ºÍs1 µÄÊä³öÓ¦¸ÃÊÇ-1£¬ Êµ¼ÊÊÇ£º" << tj_strcasecmp(p15, s1) << endl;
-        cout << "   s1 ºÍp15µÄÊä³öÓ¦¸ÃÊÇ1£¬  Êµ¼ÊÊÇ£º" << tj_strcasecmp(s1, p15) << endl;
-        cout << "   p15ºÍp16µÄÊä³öÓ¦¸ÃÊÇ0£¬  Êµ¼ÊÊÇ£º" << tj_strcasecmp(p15, p16) << endl;
+        cout << "tj_strcasecmp()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1 å’Œs2 çš„è¾“å‡ºåº”è¯¥æ˜¯-3ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasecmp(s1, s2) << endl;
+        cout << "2.s3 å’Œs4 çš„è¾“å‡ºåº”è¯¥æ˜¯-111ï¼Œå®é™…æ˜¯ï¼š" << tj_strcasecmp(s3, s4) << endl;
+        cout << "3.s5 å’Œs6 çš„è¾“å‡ºåº”è¯¥æ˜¯111ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasecmp(s5, s6) << endl;
+        cout << "4.s7 å’Œs8 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasecmp(s7, s8) << endl;
+        cout << "5.s9 å’Œs10çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasecmp(s9, s10) << endl;
+        cout << "6.s11å’Œs12çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasecmp(s11, s12) << endl;
+        cout << "7.s13å’Œs14çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasecmp(s13, s14) << endl;
+        cout << "8.s15å’Œs16çš„è¾“å‡ºåº”è¯¥æ˜¯-1 ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasecmp(s15, s16) << endl;
+        cout << "  s16å’Œs15çš„è¾“å‡ºåº”è¯¥æ˜¯1 ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasecmp(s16, s15) << endl;
+        cout << "9.s17å’Œs18çš„è¾“å‡ºåº”è¯¥æ˜¯12ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasecmp(s17, s18) << endl;
+        cout << "  s18å’Œs17çš„è¾“å‡ºåº”è¯¥æ˜¯-12ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasecmp(s18, s17) << endl;
+        cout << "10.s19å’Œs20çš„è¾“å‡ºåº”è¯¥æ˜¯-15ï¼Œå®é™…æ˜¯ï¼š" << tj_strcasecmp(s19, s20) << endl;
+        cout << "   s20å’Œs19çš„è¾“å‡ºåº”è¯¥æ˜¯15ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasecmp(s20, s19) << endl;
+        cout << "11.s21å’Œs22çš„è¾“å‡ºåº”è¯¥æ˜¯-15ï¼Œå®é™…æ˜¯ï¼š" << tj_strcasecmp(s21, s22) << endl;
+        cout << "   s22å’Œs21çš„è¾“å‡ºåº”è¯¥æ˜¯15ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasecmp(s22, s21) << endl;
+        cout << "12.s23å’Œs24çš„è¾“å‡ºåº”è¯¥æ˜¯-76ï¼Œå®é™…æ˜¯ï¼š" << tj_strcasecmp(s23, s24) << endl;
+        cout << "   s24å’Œs23çš„è¾“å‡ºåº”è¯¥æ˜¯76ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasecmp(s24, s23) << endl;
+        cout << "13.s25å’Œs26çš„è¾“å‡ºåº”è¯¥æ˜¯-76ï¼Œå®é™…æ˜¯ï¼š" << tj_strcasecmp(s25, s26) << endl;
+        cout << "   s26å’Œs25çš„è¾“å‡ºåº”è¯¥æ˜¯76ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasecmp(s26, s25) << endl;
+        cout << "14.p15å’Œs1 çš„è¾“å‡ºåº”è¯¥æ˜¯-1ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasecmp(p15, s1) << endl;
+        cout << "   s1 å’Œp15çš„è¾“å‡ºåº”è¯¥æ˜¯1ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasecmp(s1, p15) << endl;
+        cout << "   p15å’Œp16çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasecmp(p15, p16) << endl;
 
-        wait_for_enter("tj_strcasecmp() ²âÊÔÍê³É");
+        wait_for_enter("tj_strcasecmp() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
@@ -354,36 +354,36 @@ int main()
         char* p15 = NULL;
         char* p16 = NULL;
 
-        cout << "tj_strncmp()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1 ºÍs2 ±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-3£¬  Êµ¼ÊÊÇ£º" << tj_strncmp(s1, s2, 10) << endl;
-        cout << "  s1 ºÍs2 ±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-3£¬  Êµ¼ÊÊÇ£º" << tj_strncmp(s1, s2, 5) << endl;
-        cout << "  s1 ºÍs2 ±È½ÏÇ°3 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-3£¬  Êµ¼ÊÊÇ£º" << tj_strncmp(s1, s2, 3) << endl;
-        cout << "  s1 ºÍs2 ±È½ÏÇ°2 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strncmp(s1, s2, 2) << endl;
-        cout << "2.s3 ºÍs4 ±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-111£¬Êµ¼ÊÊÇ£º" << tj_strncmp(s3, s4, 10) << endl;
-        cout << "  s3 ºÍs4 ±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-111£¬Êµ¼ÊÊÇ£º" << tj_strncmp(s3, s4, 5) << endl;
-        cout << "  s3 ºÍs4 ±È½ÏÇ°4 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strncmp(s3, s4, 4) << endl;
-        cout << "3.s5 ºÍs6 ±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ111 £¬Êµ¼ÊÊÇ£º" << tj_strncmp(s5, s6, 10) << endl;
-        cout << "  s5 ºÍs6 ±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ111£¬ Êµ¼ÊÊÇ£º" << tj_strncmp(s5, s6, 5) << endl;
-        cout << "  s5 ºÍs6 ±È½ÏÇ°4 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strncmp(s5, s6, 4) << endl;
-        cout << "4.s7 ºÍs8 ±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0 £¬  Êµ¼ÊÊÇ£º" << tj_strncmp(s7, s8, 10) << endl;
-        cout << "  s7 ºÍs8 ±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strncmp(s7, s8, 5) << endl;
-        cout << "  s7 ºÍs8 ±È½ÏÇ°4 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strncmp(s7, s8, 4) << endl;
-        cout << "5.s9 ºÍs10±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0 £¬  Êµ¼ÊÊÇ£º" << tj_strncmp(s9, s10, 10) << endl;
-        cout << "  s9 ºÍs10±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strncmp(s9, s10, 5) << endl;
-        cout << "  s9 ºÍs10±È½ÏÇ°4 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strncmp(s9, s10, 4) << endl;
-        wait_for_enter("tj_strncmp() ²âÊÔÔİÍ£");
+        cout << "tj_strncmp()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1 å’Œs2 æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-3ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strncmp(s1, s2, 10) << endl;
+        cout << "  s1 å’Œs2 æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-3ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strncmp(s1, s2, 5) << endl;
+        cout << "  s1 å’Œs2 æ¯”è¾ƒå‰3 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-3ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strncmp(s1, s2, 3) << endl;
+        cout << "  s1 å’Œs2 æ¯”è¾ƒå‰2 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strncmp(s1, s2, 2) << endl;
+        cout << "2.s3 å’Œs4 æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-111ï¼Œå®é™…æ˜¯ï¼š" << tj_strncmp(s3, s4, 10) << endl;
+        cout << "  s3 å’Œs4 æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-111ï¼Œå®é™…æ˜¯ï¼š" << tj_strncmp(s3, s4, 5) << endl;
+        cout << "  s3 å’Œs4 æ¯”è¾ƒå‰4 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strncmp(s3, s4, 4) << endl;
+        cout << "3.s5 å’Œs6 æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯111 ï¼Œå®é™…æ˜¯ï¼š" << tj_strncmp(s5, s6, 10) << endl;
+        cout << "  s5 å’Œs6 æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯111ï¼Œ å®é™…æ˜¯ï¼š" << tj_strncmp(s5, s6, 5) << endl;
+        cout << "  s5 å’Œs6 æ¯”è¾ƒå‰4 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strncmp(s5, s6, 4) << endl;
+        cout << "4.s7 å’Œs8 æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0 ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strncmp(s7, s8, 10) << endl;
+        cout << "  s7 å’Œs8 æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strncmp(s7, s8, 5) << endl;
+        cout << "  s7 å’Œs8 æ¯”è¾ƒå‰4 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strncmp(s7, s8, 4) << endl;
+        cout << "5.s9 å’Œs10æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0 ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strncmp(s9, s10, 10) << endl;
+        cout << "  s9 å’Œs10æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strncmp(s9, s10, 5) << endl;
+        cout << "  s9 å’Œs10æ¯”è¾ƒå‰4 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strncmp(s9, s10, 4) << endl;
+        wait_for_enter("tj_strncmp() æµ‹è¯•æš‚åœ");
 
-        cout << "6.s11ºÍs12±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-32£¬ Êµ¼ÊÊÇ£º" << tj_strncmp(s11, s12, 10) << endl;
-        cout << "  s11ºÍs12±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-32£¬ Êµ¼ÊÊÇ£º" << tj_strncmp(s11, s12, 5) << endl;
-        cout << "  s11ºÍs12±È½ÏÇ°2 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-32£¬ Êµ¼ÊÊÇ£º" << tj_strncmp(s11, s12, 2) << endl;
-        cout << "7.s13ºÍs14±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-32£¬ Êµ¼ÊÊÇ£º" << tj_strncmp(s13, s14, 10) << endl;
-        cout << "  s13ºÍs14±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-32£¬ Êµ¼ÊÊÇ£º" << tj_strncmp(s13, s14, 5) << endl;
-        cout << "  s13ºÍs14±È½ÏÇ°2 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-32£¬ Êµ¼ÊÊÇ£º" << tj_strncmp(s13, s14, 2) << endl;
-        cout << "8.p15ºÍs1 ±È½ÏÇ°2 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-1£¬  Êµ¼ÊÊÇ£º" << tj_strncmp(p15, s1, 2) << endl;
-        cout << "  s1 ºÍp15±È½ÏÇ°2 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ1£¬   Êµ¼ÊÊÇ£º" << tj_strncmp(s1, p15, 5) << endl;
-        cout << "  p15ºÍp16±È½ÏÇ°2 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strncmp(p15, p16, 2) << endl;
+        cout << "6.s11å’Œs12æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-32ï¼Œ å®é™…æ˜¯ï¼š" << tj_strncmp(s11, s12, 10) << endl;
+        cout << "  s11å’Œs12æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-32ï¼Œ å®é™…æ˜¯ï¼š" << tj_strncmp(s11, s12, 5) << endl;
+        cout << "  s11å’Œs12æ¯”è¾ƒå‰2 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-32ï¼Œ å®é™…æ˜¯ï¼š" << tj_strncmp(s11, s12, 2) << endl;
+        cout << "7.s13å’Œs14æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-32ï¼Œ å®é™…æ˜¯ï¼š" << tj_strncmp(s13, s14, 10) << endl;
+        cout << "  s13å’Œs14æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-32ï¼Œ å®é™…æ˜¯ï¼š" << tj_strncmp(s13, s14, 5) << endl;
+        cout << "  s13å’Œs14æ¯”è¾ƒå‰2 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-32ï¼Œ å®é™…æ˜¯ï¼š" << tj_strncmp(s13, s14, 2) << endl;
+        cout << "8.p15å’Œs1 æ¯”è¾ƒå‰2 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-1ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strncmp(p15, s1, 2) << endl;
+        cout << "  s1 å’Œp15æ¯”è¾ƒå‰2 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯1ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strncmp(s1, p15, 5) << endl;
+        cout << "  p15å’Œp16æ¯”è¾ƒå‰2 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strncmp(p15, p16, 2) << endl;
 
-        wait_for_enter("tj_strncmp() ²âÊÔ½áÊø");
+        wait_for_enter("tj_strncmp() æµ‹è¯•ç»“æŸ");
     }
 
     if (1) {
@@ -416,48 +416,48 @@ int main()
         char* p27 = NULL;
         char* p28 = NULL;
 
-        cout << "tj_strcasencmp()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1 ºÍs2 ±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-3£¬  Êµ¼ÊÊÇ£º" << tj_strcasencmp(s1, s2, 10) << endl;
-        cout << "  s1 ºÍs2 ±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-3£¬  Êµ¼ÊÊÇ£º" << tj_strcasencmp(s1, s2, 5) << endl;
-        cout << "  s1 ºÍs2 ±È½ÏÇ°3 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-3£¬  Êµ¼ÊÊÇ£º" << tj_strcasencmp(s1, s2, 3) << endl;
-        cout << "  s1 ºÍs2 ±È½ÏÇ°2 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s1, s2, 2) << endl;
-        cout << "2.s3 ºÍs4 ±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-111£¬Êµ¼ÊÊÇ£º" << tj_strcasencmp(s3, s4, 10) << endl;
-        cout << "  s3 ºÍs4 ±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-111£¬Êµ¼ÊÊÇ£º" << tj_strcasencmp(s3, s4, 5) << endl;
-        cout << "  s3 ºÍs4 ±È½ÏÇ°4 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s3, s4, 4) << endl;
-        cout << "3.s5 ºÍs6 ±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ111 £¬Êµ¼ÊÊÇ£º" << tj_strcasencmp(s5, s6, 10) << endl;
-        cout << "  s5 ºÍs6 ±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ111£¬ Êµ¼ÊÊÇ£º" << tj_strcasencmp(s5, s6, 5) << endl;
-        cout << "  s5 ºÍs6 ±È½ÏÇ°4 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s5, s6, 4) << endl;
-        cout << "4.s7 ºÍs8 ±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0 £¬  Êµ¼ÊÊÇ£º" << tj_strcasencmp(s7, s8, 10) << endl;
-        cout << "  s7 ºÍs8 ±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s7, s8, 5) << endl;
-        cout << "  s7 ºÍs8 ±È½ÏÇ°4 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s7, s8, 4) << endl;
-        cout << "5.s9 ºÍs10±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0 £¬  Êµ¼ÊÊÇ£º" << tj_strcasencmp(s9, s10, 10) << endl;
-        cout << "  s9 ºÍs10±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s9, s10, 5) << endl;
-        cout << "  s9 ºÍs10±È½ÏÇ°4 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s9, s10, 4) << endl;
-        wait_for_enter("tj_strcasencmp() ²âÊÔÔİÍ£");
+        cout << "tj_strcasencmp()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1 å’Œs2 æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-3ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasencmp(s1, s2, 10) << endl;
+        cout << "  s1 å’Œs2 æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-3ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasencmp(s1, s2, 5) << endl;
+        cout << "  s1 å’Œs2 æ¯”è¾ƒå‰3 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-3ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasencmp(s1, s2, 3) << endl;
+        cout << "  s1 å’Œs2 æ¯”è¾ƒå‰2 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s1, s2, 2) << endl;
+        cout << "2.s3 å’Œs4 æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-111ï¼Œå®é™…æ˜¯ï¼š" << tj_strcasencmp(s3, s4, 10) << endl;
+        cout << "  s3 å’Œs4 æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-111ï¼Œå®é™…æ˜¯ï¼š" << tj_strcasencmp(s3, s4, 5) << endl;
+        cout << "  s3 å’Œs4 æ¯”è¾ƒå‰4 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s3, s4, 4) << endl;
+        cout << "3.s5 å’Œs6 æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯111 ï¼Œå®é™…æ˜¯ï¼š" << tj_strcasencmp(s5, s6, 10) << endl;
+        cout << "  s5 å’Œs6 æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯111ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasencmp(s5, s6, 5) << endl;
+        cout << "  s5 å’Œs6 æ¯”è¾ƒå‰4 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s5, s6, 4) << endl;
+        cout << "4.s7 å’Œs8 æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0 ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasencmp(s7, s8, 10) << endl;
+        cout << "  s7 å’Œs8 æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s7, s8, 5) << endl;
+        cout << "  s7 å’Œs8 æ¯”è¾ƒå‰4 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s7, s8, 4) << endl;
+        cout << "5.s9 å’Œs10æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0 ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasencmp(s9, s10, 10) << endl;
+        cout << "  s9 å’Œs10æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s9, s10, 5) << endl;
+        cout << "  s9 å’Œs10æ¯”è¾ƒå‰4 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s9, s10, 4) << endl;
+        wait_for_enter("tj_strcasencmp() æµ‹è¯•æš‚åœ");
 
-        cout << "6.s11ºÍs12±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s11, s12, 10) << endl;
-        cout << "  s11ºÍs12±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s11, s12, 5) << endl;
-        cout << "  s11ºÍs12±È½ÏÇ°2 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s11, s12, 2) << endl;
-        cout << "7.s13ºÍs14±È½ÏÇ°10¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s13, s14, 10) << endl;
-        cout << "  s13ºÍs14±È½ÏÇ°5 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s13, s14, 5) << endl;
-        cout << "  s13ºÍs14±È½ÏÇ°2 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s13, s14, 2) << endl;
-        cout << "8.s15ºÍs16±È½ÏÇ°2¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬    Êµ¼ÊÊÇ£º" << tj_strcasencmp(s15, s16, 2) << endl;
-        cout << "  s16ºÍs15±È½ÏÇ°2¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬    Êµ¼ÊÊÇ£º" << tj_strcasencmp(s16, s15, 2) << endl;
-        cout << "9.s17ºÍs18±È½ÏÇ°4¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ12£¬   Êµ¼ÊÊÇ£º" << tj_strcasencmp(s17, s18, 4) << endl;
-        cout << "  s18ºÍs17±È½ÏÇ°4¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-12£¬  Êµ¼ÊÊÇ£º" << tj_strcasencmp(s18, s17, 4) << endl;
-        cout << "10.s19ºÍs20±È½ÏÇ°4¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-15£¬ Êµ¼ÊÊÇ£º" << tj_strcasencmp(s19, s20, 4) << endl;
-        cout << "   s20ºÍs19±È½ÏÇ°4¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ15£¬  Êµ¼ÊÊÇ£º" << tj_strcasencmp(s20, s19, 4) << endl;
-        cout << "11.s21ºÍs22±È½ÏÇ°4¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-15£¬ Êµ¼ÊÊÇ£º" << tj_strcasencmp(s21, s22, 4) << endl;
-        cout << "   s22ºÍs21±È½ÏÇ°4¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ15£¬  Êµ¼ÊÊÇ£º" << tj_strcasencmp(s22, s21, 4) << endl;
-        cout << "12.s23ºÍs24±È½ÏÇ°4¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-76£¬ Êµ¼ÊÊÇ£º" << tj_strcasencmp(s23, s24, 4) << endl;
-        cout << "   s24ºÍs23±È½ÏÇ°4¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ76£¬  Êµ¼ÊÊÇ£º" << tj_strcasencmp(s24, s23, 4) << endl;
-        cout << "13.s25ºÍs26±È½ÏÇ°4¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-76£¬ Êµ¼ÊÊÇ£º" << tj_strcasencmp(s25, s26, 4) << endl;
-        cout << "   s26ºÍs25±È½ÏÇ°4¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ76£¬  Êµ¼ÊÊÇ£º" << tj_strcasencmp(s26, s25, 4) << endl;
-        cout << "14.p27ºÍs1 ±È½ÏÇ°2 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ-1£¬ Êµ¼ÊÊÇ£º" << tj_strcasencmp(p27, s1, 2) << endl;
-        cout << "   s1 ºÍp27±È½ÏÇ°2 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ1£¬  Êµ¼ÊÊÇ£º" << tj_strcasencmp(s1, p27, 2) << endl;
-        cout << "   p27ºÍp28±È½ÏÇ°2 ¸ö×Ö·ûµÄÊä³öÓ¦¸ÃÊÇ0£¬  Êµ¼ÊÊÇ£º" << tj_strcasencmp(p27, p28, 2) << endl;
+        cout << "6.s11å’Œs12æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s11, s12, 10) << endl;
+        cout << "  s11å’Œs12æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s11, s12, 5) << endl;
+        cout << "  s11å’Œs12æ¯”è¾ƒå‰2 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s11, s12, 2) << endl;
+        cout << "7.s13å’Œs14æ¯”è¾ƒå‰10ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s13, s14, 10) << endl;
+        cout << "  s13å’Œs14æ¯”è¾ƒå‰5 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s13, s14, 5) << endl;
+        cout << "  s13å’Œs14æ¯”è¾ƒå‰2 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s13, s14, 2) << endl;
+        cout << "8.s15å’Œs16æ¯”è¾ƒå‰2ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ    å®é™…æ˜¯ï¼š" << tj_strcasencmp(s15, s16, 2) << endl;
+        cout << "  s16å’Œs15æ¯”è¾ƒå‰2ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ    å®é™…æ˜¯ï¼š" << tj_strcasencmp(s16, s15, 2) << endl;
+        cout << "9.s17å’Œs18æ¯”è¾ƒå‰4ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯12ï¼Œ   å®é™…æ˜¯ï¼š" << tj_strcasencmp(s17, s18, 4) << endl;
+        cout << "  s18å’Œs17æ¯”è¾ƒå‰4ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-12ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasencmp(s18, s17, 4) << endl;
+        cout << "10.s19å’Œs20æ¯”è¾ƒå‰4ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-15ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasencmp(s19, s20, 4) << endl;
+        cout << "   s20å’Œs19æ¯”è¾ƒå‰4ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯15ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasencmp(s20, s19, 4) << endl;
+        cout << "11.s21å’Œs22æ¯”è¾ƒå‰4ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-15ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasencmp(s21, s22, 4) << endl;
+        cout << "   s22å’Œs21æ¯”è¾ƒå‰4ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯15ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasencmp(s22, s21, 4) << endl;
+        cout << "12.s23å’Œs24æ¯”è¾ƒå‰4ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-76ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasencmp(s23, s24, 4) << endl;
+        cout << "   s24å’Œs23æ¯”è¾ƒå‰4ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯76ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasencmp(s24, s23, 4) << endl;
+        cout << "13.s25å’Œs26æ¯”è¾ƒå‰4ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-76ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasencmp(s25, s26, 4) << endl;
+        cout << "   s26å’Œs25æ¯”è¾ƒå‰4ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯76ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasencmp(s26, s25, 4) << endl;
+        cout << "14.p27å’Œs1 æ¯”è¾ƒå‰2 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯-1ï¼Œ å®é™…æ˜¯ï¼š" << tj_strcasencmp(p27, s1, 2) << endl;
+        cout << "   s1 å’Œp27æ¯”è¾ƒå‰2 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯1ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasencmp(s1, p27, 2) << endl;
+        cout << "   p27å’Œp28æ¯”è¾ƒå‰2 ä¸ªå­—ç¬¦çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ  å®é™…æ˜¯ï¼š" << tj_strcasencmp(p27, p28, 2) << endl;
 
-        wait_for_enter("tj_strcasencmp() ²âÊÔÍê³É");
+        wait_for_enter("tj_strcasencmp() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
@@ -465,12 +465,12 @@ int main()
         char  s2[] = "1A2b3C*d#E@f";
         char* p3 = NULL;
 
-        cout << "tj_strupr()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1 µÄÊä³öÓ¦¸ÃÊÇ123HORSEHELLO*#@£¬Êµ¼ÊÊÇ£º" << tj_strupr(s1) << endl;
-        cout << "2.s2 µÄÊä³öÓ¦¸ÃÊÇ1A2B3C*D#E@F£¬    Êµ¼ÊÊÇ£º" << tj_strupr(s2) << endl;
-        cout << "3.p3 µÄÊä³öÓ¦¸ÃÊÇ<NULL>£¬          Êµ¼ÊÊÇ£º" << (tj_strupr(p3) == NULL ? "<NULL>" : tj_strupr(p3)) << endl;
+        cout << "tj_strupr()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1 çš„è¾“å‡ºåº”è¯¥æ˜¯123HORSEHELLO*#@ï¼Œå®é™…æ˜¯ï¼š" << tj_strupr(s1) << endl;
+        cout << "2.s2 çš„è¾“å‡ºåº”è¯¥æ˜¯1A2B3C*D#E@Fï¼Œ    å®é™…æ˜¯ï¼š" << tj_strupr(s2) << endl;
+        cout << "3.p3 çš„è¾“å‡ºåº”è¯¥æ˜¯<NULL>ï¼Œ          å®é™…æ˜¯ï¼š" << (tj_strupr(p3) == NULL ? "<NULL>" : tj_strupr(p3)) << endl;
 
-        wait_for_enter("tj_strupr() ²âÊÔÍê³É");
+        wait_for_enter("tj_strupr() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
@@ -478,26 +478,26 @@ int main()
         char  s2[] = "1A2b3C*d#E@f";
         char* p3 = NULL;
 
-        cout << "tj_strlwr()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1 µÄÊä³öÓ¦¸ÃÊÇ123horsehello*#@£¬Êµ¼ÊÊÇ£º" << tj_strlwr(s1) << endl;
-        cout << "2.s2 µÄÊä³öÓ¦¸ÃÊÇ1a2b3c*d#e@f£¬    Êµ¼ÊÊÇ£º" << tj_strlwr(s2) << endl;
-        cout << "3.p3 µÄÊä³öÓ¦¸ÃÊÇ<NULL>£¬          Êµ¼ÊÊÇ£º" << (tj_strlwr(p3) == NULL ? "<NULL>" : tj_strlwr(p3)) << endl;
+        cout << "tj_strlwr()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1 çš„è¾“å‡ºåº”è¯¥æ˜¯123horsehello*#@ï¼Œå®é™…æ˜¯ï¼š" << tj_strlwr(s1) << endl;
+        cout << "2.s2 çš„è¾“å‡ºåº”è¯¥æ˜¯1a2b3c*d#e@fï¼Œ    å®é™…æ˜¯ï¼š" << tj_strlwr(s2) << endl;
+        cout << "3.p3 çš„è¾“å‡ºåº”è¯¥æ˜¯<NULL>ï¼Œ          å®é™…æ˜¯ï¼š" << (tj_strlwr(p3) == NULL ? "<NULL>" : tj_strlwr(p3)) << endl;
 
-        wait_for_enter("tj_strlwr() ²âÊÔÍê³É");
+        wait_for_enter("tj_strlwr() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
         char  s1[] = "This is a pencil.";
         char* p2 = NULL;
 
-        cout << "tj_strchr()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1 µÄÊä³öÓ¦¸ÃÊÇ1£¬Êµ¼ÊÊÇ£º" << tj_strchr(s1, 'T') << endl;
-        cout << "2.s1 µÄÊä³öÓ¦¸ÃÊÇ3£¬Êµ¼ÊÊÇ£º" << tj_strchr(s1, 'i') << endl;
-        cout << "3.s1 µÄÊä³öÓ¦¸ÃÊÇ5£¬Êµ¼ÊÊÇ£º" << tj_strchr(s1, ' ') << endl;
-        cout << "4.s1 µÄÊä³öÓ¦¸ÃÊÇ0£¬Êµ¼ÊÊÇ£º" << tj_strchr(s1, 'x') << endl;
-        cout << "5.p2 µÄÊä³öÓ¦¸ÃÊÇ0£¬Êµ¼ÊÊÇ£º" << tj_strchr(p2, 'a') << endl;
+        cout << "tj_strchr()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1 çš„è¾“å‡ºåº”è¯¥æ˜¯1ï¼Œå®é™…æ˜¯ï¼š" << tj_strchr(s1, 'T') << endl;
+        cout << "2.s1 çš„è¾“å‡ºåº”è¯¥æ˜¯3ï¼Œå®é™…æ˜¯ï¼š" << tj_strchr(s1, 'i') << endl;
+        cout << "3.s1 çš„è¾“å‡ºåº”è¯¥æ˜¯5ï¼Œå®é™…æ˜¯ï¼š" << tj_strchr(s1, ' ') << endl;
+        cout << "4.s1 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œå®é™…æ˜¯ï¼š" << tj_strchr(s1, 'x') << endl;
+        cout << "5.p2 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œå®é™…æ˜¯ï¼š" << tj_strchr(p2, 'a') << endl;
 
-        wait_for_enter("tj_strchr() ²âÊÔÍê³É");
+        wait_for_enter("tj_strchr() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
@@ -506,44 +506,44 @@ int main()
         char  s3[] = "abcde";
         char* p4 = NULL;
 
-        cout << "tj_strstr()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1 µÄÊä³öÓ¦¸ÃÊÇ1£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s1, "T") << endl;
-        cout << "  s1 µÄÊä³öÓ¦¸ÃÊÇ3£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s1, "is") << endl;
-        cout << "  s1 µÄÊä³öÓ¦¸ÃÊÇ11£¬Êµ¼ÊÊÇ£º" << tj_strstr(s1, "pencil") << endl;
-        cout << "  s1 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s1, "Pencil") << endl;
-        cout << "2.s2 µÄÊä³öÓ¦¸ÃÊÇ3£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s2, "bb") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ3£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s2, "bbb") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ4£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s2, "bbc") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s2, "bbbb") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ6£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s2, "ce") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ13£¬Êµ¼ÊÊÇ£º" << tj_strstr(s2, "cee") << endl;
-        cout << "3.s2 µÄÊä³öÓ¦¸ÃÊÇ5£¬ Êµ¼ÊÊÇ£º" << tj_strstr(&s2[5], "bb") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ5£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s2 + 5, "bbb") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ6£¬ Êµ¼ÊÊÇ£º" << tj_strstr(&s2[5], "bbc") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s2 + 5, "bbbb") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ1£¬ Êµ¼ÊÊÇ£º" << tj_strstr(&s2[5], "ce") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ8£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s2 + 5, "cee") << endl;
-        cout << "4.s3 µÄÊä³öÓ¦¸ÃÊÇ1£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s3, "abcde") << endl;
-        cout << "  s3 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s3, "abcdef") << endl;
-        cout << "  s3 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strstr(s3, NULL) << endl;
-        cout << "5.p4 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strstr(p4, "abc") << endl;
-        cout << "  p4 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strstr(p4, NULL) << endl;
+        cout << "tj_strstr()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1 çš„è¾“å‡ºåº”è¯¥æ˜¯1ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s1, "T") << endl;
+        cout << "  s1 çš„è¾“å‡ºåº”è¯¥æ˜¯3ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s1, "is") << endl;
+        cout << "  s1 çš„è¾“å‡ºåº”è¯¥æ˜¯11ï¼Œå®é™…æ˜¯ï¼š" << tj_strstr(s1, "pencil") << endl;
+        cout << "  s1 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s1, "Pencil") << endl;
+        cout << "2.s2 çš„è¾“å‡ºåº”è¯¥æ˜¯3ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s2, "bb") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯3ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s2, "bbb") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯4ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s2, "bbc") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s2, "bbbb") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯6ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s2, "ce") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯13ï¼Œå®é™…æ˜¯ï¼š" << tj_strstr(s2, "cee") << endl;
+        cout << "3.s2 çš„è¾“å‡ºåº”è¯¥æ˜¯5ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(&s2[5], "bb") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯5ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s2 + 5, "bbb") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯6ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(&s2[5], "bbc") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s2 + 5, "bbbb") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯1ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(&s2[5], "ce") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯8ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s2 + 5, "cee") << endl;
+        cout << "4.s3 çš„è¾“å‡ºåº”è¯¥æ˜¯1ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s3, "abcde") << endl;
+        cout << "  s3 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s3, "abcdef") << endl;
+        cout << "  s3 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(s3, NULL) << endl;
+        cout << "5.p4 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(p4, "abc") << endl;
+        cout << "  p4 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strstr(p4, NULL) << endl;
 
-        wait_for_enter("tj_strstr() ²âÊÔÍê³É");
+        wait_for_enter("tj_strstr() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
         char  s1[] = "This is a pencil.";
         char* p2 = NULL;
 
-        cout << "tj_strrchr()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1 µÄÊä³öÓ¦¸ÃÊÇ1£¬ Êµ¼ÊÊÇ£º" << tj_strrchr(s1, 'T') << endl;
-        cout << "2.s1 µÄÊä³öÓ¦¸ÃÊÇ15£¬Êµ¼ÊÊÇ£º" << tj_strrchr(s1, 'i') << endl;
-        cout << "3.s1 µÄÊä³öÓ¦¸ÃÊÇ10£¬Êµ¼ÊÊÇ£º" << tj_strrchr(s1, ' ') << endl;
-        cout << "4.s1 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strrchr(s1, 'x') << endl;
-        cout << "5.p2 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strrchr(p2, 'a') << endl;
+        cout << "tj_strrchr()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1 çš„è¾“å‡ºåº”è¯¥æ˜¯1ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrchr(s1, 'T') << endl;
+        cout << "2.s1 çš„è¾“å‡ºåº”è¯¥æ˜¯15ï¼Œå®é™…æ˜¯ï¼š" << tj_strrchr(s1, 'i') << endl;
+        cout << "3.s1 çš„è¾“å‡ºåº”è¯¥æ˜¯10ï¼Œå®é™…æ˜¯ï¼š" << tj_strrchr(s1, ' ') << endl;
+        cout << "4.s1 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrchr(s1, 'x') << endl;
+        cout << "5.p2 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrchr(p2, 'a') << endl;
 
-        wait_for_enter("tj_strrchr() ²âÊÔÍê³É");
+        wait_for_enter("tj_strrchr() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
@@ -552,30 +552,30 @@ int main()
         char  s3[] = "abcde";
         char* p4 = NULL;
 
-        cout << "tj_strrstr()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1 µÄÊä³öÓ¦¸ÃÊÇ1£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(s1, "T") << endl;
-        cout << "  s1 µÄÊä³öÓ¦¸ÃÊÇ6£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(s1, "is") << endl;
-        cout << "  s1 µÄÊä³öÓ¦¸ÃÊÇ11£¬Êµ¼ÊÊÇ£º" << tj_strrstr(s1, "pencil") << endl;
-        cout << "  s1 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(s1, "Pencil") << endl;
-        cout << "2.s2 µÄÊä³öÓ¦¸ÃÊÇ11£¬Êµ¼ÊÊÇ£º" << tj_strrstr(s2, "bb") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ10£¬Êµ¼ÊÊÇ£º" << tj_strrstr(s2, "bbb") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ11£¬Êµ¼ÊÊÇ£º" << tj_strrstr(s2, "bbc") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(s2, "bbbb") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ13£¬Êµ¼ÊÊÇ£º" << tj_strrstr(s2, "ce") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ13£¬Êµ¼ÊÊÇ£º" << tj_strrstr(s2, "cee") << endl;
-        cout << "2.s2 µÄÊä³öÓ¦¸ÃÊÇ6£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(&s2[5], "bb") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ5£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(s2 + 5, "bbb") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ6£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(&s2[5], "bbc") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(s2 + 5, "bbbb") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ8£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(&s2[5], "ce") << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇ8£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(s2 + 5, "cee") << endl;
-        cout << "4.s3 µÄÊä³öÓ¦¸ÃÊÇ1£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(s3, "abcde") << endl;
-        cout << "  s3 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(s3, "abcdef") << endl;
-        cout << "  s3 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(s3, NULL) << endl;
-        cout << "5.p4 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(p4, "abc") << endl;
-        cout << "  p4 µÄÊä³öÓ¦¸ÃÊÇ0£¬ Êµ¼ÊÊÇ£º" << tj_strrstr(p4, NULL) << endl;
+        cout << "tj_strrstr()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1 çš„è¾“å‡ºåº”è¯¥æ˜¯1ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(s1, "T") << endl;
+        cout << "  s1 çš„è¾“å‡ºåº”è¯¥æ˜¯6ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(s1, "is") << endl;
+        cout << "  s1 çš„è¾“å‡ºåº”è¯¥æ˜¯11ï¼Œå®é™…æ˜¯ï¼š" << tj_strrstr(s1, "pencil") << endl;
+        cout << "  s1 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(s1, "Pencil") << endl;
+        cout << "2.s2 çš„è¾“å‡ºåº”è¯¥æ˜¯11ï¼Œå®é™…æ˜¯ï¼š" << tj_strrstr(s2, "bb") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯10ï¼Œå®é™…æ˜¯ï¼š" << tj_strrstr(s2, "bbb") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯11ï¼Œå®é™…æ˜¯ï¼š" << tj_strrstr(s2, "bbc") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(s2, "bbbb") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯13ï¼Œå®é™…æ˜¯ï¼š" << tj_strrstr(s2, "ce") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯13ï¼Œå®é™…æ˜¯ï¼š" << tj_strrstr(s2, "cee") << endl;
+        cout << "2.s2 çš„è¾“å‡ºåº”è¯¥æ˜¯6ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(&s2[5], "bb") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯5ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(s2 + 5, "bbb") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯6ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(&s2[5], "bbc") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(s2 + 5, "bbbb") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯8ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(&s2[5], "ce") << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯8ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(s2 + 5, "cee") << endl;
+        cout << "4.s3 çš„è¾“å‡ºåº”è¯¥æ˜¯1ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(s3, "abcde") << endl;
+        cout << "  s3 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(s3, "abcdef") << endl;
+        cout << "  s3 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(s3, NULL) << endl;
+        cout << "5.p4 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(p4, "abc") << endl;
+        cout << "  p4 çš„è¾“å‡ºåº”è¯¥æ˜¯0ï¼Œ å®é™…æ˜¯ï¼š" << tj_strrstr(p4, NULL) << endl;
 
-        wait_for_enter("tj_strrstr() ²âÊÔÍê³É");
+        wait_for_enter("tj_strrstr() æµ‹è¯•å®Œæˆ");
     }
 
     if (1) {
@@ -584,20 +584,20 @@ int main()
         char  s3[] = "";
         char* p4 = NULL;
 
-        cout << "tj_strrev()²âÊÔ²¿·Ö£º" << endl;
-        cout << "1.s1 µÄÊä³öÓ¦¸ÃÊÇThis is a pencil.£¬  Êµ¼ÊÊÇ£º" << s1 << endl;
-        cout << "  s1 µÄÊä³öÓ¦¸ÃÊÇ.licnep a si sihT£¬  Êµ¼ÊÊÇ£º" << tj_strrev(s1) << endl;
+        cout << "tj_strrev()æµ‹è¯•éƒ¨åˆ†ï¼š" << endl;
+        cout << "1.s1 çš„è¾“å‡ºåº”è¯¥æ˜¯This is a pencil.ï¼Œ  å®é™…æ˜¯ï¼š" << s1 << endl;
+        cout << "  s1 çš„è¾“å‡ºåº”è¯¥æ˜¯.licnep a si sihTï¼Œ  å®é™…æ˜¯ï¼š" << tj_strrev(s1) << endl;
 
-        cout << "2.s2 µÄÊä³öÓ¦¸ÃÊÇaabbbceddbbbceeeff£¬ Êµ¼ÊÊÇ£º" << s2 << endl;
-        cout << "  s2 µÄÊä³öÓ¦¸ÃÊÇffeeecbbbddecbbbaa£¬ Êµ¼ÊÊÇ£º" << tj_strrev(s2) << endl;
+        cout << "2.s2 çš„è¾“å‡ºåº”è¯¥æ˜¯aabbbceddbbbceeeffï¼Œ å®é™…æ˜¯ï¼š" << s2 << endl;
+        cout << "  s2 çš„è¾“å‡ºåº”è¯¥æ˜¯ffeeecbbbddecbbbaaï¼Œ å®é™…æ˜¯ï¼š" << tj_strrev(s2) << endl;
 
-        cout << "3.s3 µÄÊä³öÓ¦¸ÃÊÇ--£¬                 Êµ¼ÊÊÇ£º-" << s3 << "-" << endl;
-        cout << "  s3 µÄÊä³öÓ¦¸ÃÊÇ--£¬                 Êµ¼ÊÊÇ£º-" << tj_strrev(s3) << "-" << endl;
+        cout << "3.s3 çš„è¾“å‡ºåº”è¯¥æ˜¯--ï¼Œ                 å®é™…æ˜¯ï¼š-" << s3 << "-" << endl;
+        cout << "  s3 çš„è¾“å‡ºåº”è¯¥æ˜¯--ï¼Œ                 å®é™…æ˜¯ï¼š-" << tj_strrev(s3) << "-" << endl;
 
-        cout << "4.p4 µÄÊä³öÓ¦¸ÃÊÇ<NULL>£¬             Êµ¼ÊÊÇ£º" << (p4 == NULL ? "<NULL>" : p4) << endl;
-        cout << "  p4 µÄÊä³öÓ¦¸ÃÊÇ<NULL>£¬             Êµ¼ÊÊÇ£º" << (tj_strrev(p4) == NULL ? "<NULL>" : tj_strrev(s3)) << endl;
+        cout << "4.p4 çš„è¾“å‡ºåº”è¯¥æ˜¯<NULL>ï¼Œ             å®é™…æ˜¯ï¼š" << (p4 == NULL ? "<NULL>" : p4) << endl;
+        cout << "  p4 çš„è¾“å‡ºåº”è¯¥æ˜¯<NULL>ï¼Œ             å®é™…æ˜¯ï¼š" << (tj_strrev(p4) == NULL ? "<NULL>" : tj_strrev(s3)) << endl;
 
-        wait_for_enter("tj_strrev() ²âÊÔÍê³É");
+        wait_for_enter("tj_strrev() æµ‹è¯•å®Œæˆ");
     }
 
     return 0;

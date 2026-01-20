@@ -1,20 +1,20 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <cmath>
 using namespace std;
 
 extern double a, b, c, delta;
 
-void f1()	//·Ç¶ş´Î·½³Ì
+void f1()	//éäºŒæ¬¡æ–¹ç¨‹
 {
-	cout << "²»ÊÇÒ»Ôª¶ş´Î·½³Ì" << endl;
+	cout << "ä¸æ˜¯ä¸€å…ƒäºŒæ¬¡æ–¹ç¨‹" << endl;
 }
 
-void f2()	//Á½¹²éî¸´¸ù
+void f2()	//ä¸¤å…±è½­å¤æ ¹
 {
 	double delta = b * b - 4 * a * c;
-	cout << "ÓĞÁ½¸öĞé¸ù:" << endl;
-	if (fabs(b) < 1e-6)//ÎŞÊµÊı²¿·Ö
+	cout << "æœ‰ä¸¤ä¸ªè™šæ ¹:" << endl;
+	if (fabs(b) < 1e-6)//æ— å®æ•°éƒ¨åˆ†
 	{
 		if (a >= 1e-6)
 		{
@@ -43,7 +43,7 @@ void f2()	//Á½¹²éî¸´¸ù
 			}
 		}
 	}
-	else//ÓĞÊµÊı²¿·Ö
+	else//æœ‰å®æ•°éƒ¨åˆ†
 	{
 		if (a >= 1e-6)
 		{
@@ -75,16 +75,16 @@ void f2()	//Á½¹²éî¸´¸ù
 	}
 }
 
-void f3()//Á½²»µÈÊµ¸ù
+void f3()//ä¸¤ä¸ç­‰å®æ ¹
 {
 	double delta = b * b - 4 * a * c;
-	cout << "ÓĞÁ½¸ö²»µÈÊµ¸ù:" << endl;
+	cout << "æœ‰ä¸¤ä¸ªä¸ç­‰å®æ ¹:" << endl;
 	cout << "x1=" << -b / (2 * a) + sqrt(delta) / (2 * a) << endl;
 	cout << "x2=" << -b / (2 * a) - sqrt(delta) / (2 * a) << endl;
 }
 
 void f4()
 {
-	cout << "ÓĞÁ½¸öÏàµÈÊµ¸ù:" << endl;
+	cout << "æœ‰ä¸¤ä¸ªç›¸ç­‰å®æ ¹:" << endl;
 	cout << "x1=x2=" << -b / (2 * a) << endl;
 }

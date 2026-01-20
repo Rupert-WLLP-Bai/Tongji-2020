@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <iomanip>
@@ -10,33 +10,33 @@ using namespace std;
 
 /* -----------------------------------------
 
-	 ±¾ÎÄ¼þ¹¦ÄÜ£º
-	1¡¢·Åmainº¯Êý
-	2¡¢³õÊ¼»¯ÆÁÄ»
-	3¡¢µ÷ÓÃ²Ëµ¥º¯Êý£¨hanoi_menu.cppÖÐ£©²¢·µ»ØÑ¡Ïî
-	4¡¢¸ù¾ÝÑ¡Ïîµ÷ÓÃ²Ëµ¥¸÷Ïî¶ÔÓ¦µÄÖ´ÐÐº¯Êý£¨hanoi_multiple_solutions.cppÖÐ£©
+	 æœ¬æ–‡ä»¶åŠŸèƒ½ï¼š
+	1ã€æ”¾mainå‡½æ•°
+	2ã€åˆå§‹åŒ–å±å¹•
+	3ã€è°ƒç”¨èœå•å‡½æ•°ï¼ˆhanoi_menu.cppä¸­ï¼‰å¹¶è¿”å›žé€‰é¡¹
+	4ã€æ ¹æ®é€‰é¡¹è°ƒç”¨èœå•å„é¡¹å¯¹åº”çš„æ‰§è¡Œå‡½æ•°ï¼ˆhanoi_multiple_solutions.cppä¸­ï¼‰
 
-	 ±¾ÎÄ¼þÒªÇó£º
-	1¡¢²»ÔÊÐí¶¨ÒåÈ«¾Ö±äÁ¿£¨º¬Íâ²¿È«¾ÖºÍ¾²Ì¬È«¼¯£¬const¼°#define²»ÔÚÏÞÖÆ·¶Î§ÄÚ£©
-	2¡¢¾²Ì¬¾Ö²¿±äÁ¿µÄÊýÁ¿²»ÏÞÖÆ£¬µ«Ê¹ÓÃ×¼ÔòÒ²ÊÇ£ºÉÙÓÃ¡¢É÷ÓÃ¡¢ÄÜ²»ÓÃ¾¡Á¿²»ÓÃ
-	3¡¢°´Ðè¼ÓÈëÏµÍ³Í·ÎÄ¼þ¡¢×Ô¶¨ÒåÍ·ÎÄ¼þ¡¢ÃüÃû¿Õ¼äµÈ
+	 æœ¬æ–‡ä»¶è¦æ±‚ï¼š
+	1ã€ä¸å…è®¸å®šä¹‰å…¨å±€å˜é‡ï¼ˆå«å¤–éƒ¨å…¨å±€å’Œé™æ€å…¨é›†ï¼ŒconståŠ#defineä¸åœ¨é™åˆ¶èŒƒå›´å†…ï¼‰
+	2ã€é™æ€å±€éƒ¨å˜é‡çš„æ•°é‡ä¸é™åˆ¶ï¼Œä½†ä½¿ç”¨å‡†åˆ™ä¹Ÿæ˜¯ï¼šå°‘ç”¨ã€æ…Žç”¨ã€èƒ½ä¸ç”¨å°½é‡ä¸ç”¨
+	3ã€æŒ‰éœ€åŠ å…¥ç³»ç»Ÿå¤´æ–‡ä»¶ã€è‡ªå®šä¹‰å¤´æ–‡ä»¶ã€å‘½åç©ºé—´ç­‰
 
    ----------------------------------------- */
 //
 
 int main()
 {
-	cct_setconsoleborder(120, 40, 120, 9000);/* demoÖÐÊ×ÏÈÖ´ÐÐ´Ë¾ä£¬½«cmd´°¿ÚÉèÖÃÎª40ÐÐx120ÁÐ£¨»º³åÇø¿í¶È120ÁÐ£¬ÐÐÊý9000ÐÐ£¬¼´cmd´°¿ÚÓÒ²à´øÓÐ´¹Ö±¹ö¶¯¸Ë£©*/
+	cct_setconsoleborder(120, 40, 120, 9000);/* demoä¸­é¦–å…ˆæ‰§è¡Œæ­¤å¥ï¼Œå°†cmdçª—å£è®¾ç½®ä¸º40è¡Œx120åˆ—ï¼ˆç¼“å†²åŒºå®½åº¦120åˆ—ï¼Œè¡Œæ•°9000è¡Œï¼Œå³cmdçª—å£å³ä¾§å¸¦æœ‰åž‚ç›´æ»šåŠ¨æ†ï¼‰*/
 	int level, select;
 	char start, mid, end;
 	while (1)
 	{
-		i = 0;//³õÊ¼»¯
+		i = 0;//åˆå§‹åŒ–
 		print_menu();
 		get_choice(&select, &start, &mid, &end, &level);
 		if (!select)
-			break;//Ñ¡ÔñÁãÍË³ö
-		menu(level, start, mid, end, select);//Èë¿Ú
+			break;//é€‰æ‹©é›¶é€€å‡º
+		menu(level, start, mid, end, select);//å…¥å£
 		wait_for_enter();
 	}
 	return 0;

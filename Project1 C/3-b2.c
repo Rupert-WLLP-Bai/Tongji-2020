@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #define pi 3.14159
@@ -6,7 +6,7 @@
 int main()
 {
     double r, h, c, s1, s2, v1, v2;
-    printf("ÇëÊäÈë°ë¾¶ºÍ¸ß¶È £º \n");
+    printf("è¯·è¾“å…¥åŠå¾„å’Œé«˜åº¦ ï¼š \n");
     scanf("%lf%lf", &r, &h);
     c = 2 * pi * r;
     s1 = pi * r * r;
@@ -14,11 +14,11 @@ int main()
     v1 = 4 / 3 * pi * r * r * r;
     v2 = pi * r * r;
 
-    printf("Ô²ÖÜ³¤     : %.2lf\n", c);
-    printf("Ô²Ãæ»ı     : %.2lf\n", s1);
-    printf("Ô²Çò±íÃæ»ı : %.2lf\n", s2);
-    printf("Ô²ÇòÌå»ı   : %.2lf\n", v1);
-    printf("Ô²ÖùÌå»ı   : %.2lf\n", v2);
+    printf("åœ†å‘¨é•¿     : %.2lf\n", c);
+    printf("åœ†é¢ç§¯     : %.2lf\n", s1);
+    printf("åœ†çƒè¡¨é¢ç§¯ : %.2lf\n", s2);
+    printf("åœ†çƒä½“ç§¯   : %.2lf\n", v1);
+    printf("åœ†æŸ±ä½“ç§¯   : %.2lf\n", v2);
 
     return 0;
 }

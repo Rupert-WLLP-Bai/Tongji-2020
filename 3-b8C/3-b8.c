@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <math.h>
@@ -8,7 +8,7 @@ int main()
     double x;
     double x_decimal_part;
     int count;
-    printf("ÇëÊäÈëÕÒÁãÖµ : \n");
+    printf("è¯·è¾“å…¥æ‰¾é›¶å€¼ : \n");
     scanf("%lf", &x);
 
     fifty = (int)(x / 50);
@@ -25,27 +25,27 @@ int main()
     cent_one = (int)((x_decimal_part - 0.5 * point_five - 0.1 * point_one - 0.05 * cent_five - 0.02 * cent_two + 1e-5) / 0.01);
 
     count = fifty + twenty + ten + five + one + point_five + point_one + cent_five + cent_two + cent_one;
-    printf("¹²%dÕÅÕÒÁã£¬¾ßÌåÈçÏÂ : \n", count);
+    printf("å…±%då¼ æ‰¾é›¶ï¼Œå…·ä½“å¦‚ä¸‹ : \n", count);
     if (fifty != 0)
-        printf("50Ôª : %dÕÅ\n", fifty);
+        printf("50å…ƒ : %då¼ \n", fifty);
     if (twenty != 0)
-        printf("20Ôª : %dÕÅ\n", twenty);
+        printf("20å…ƒ : %då¼ \n", twenty);
     if (ten != 0)
-        printf("10Ôª : %dÕÅ\n", ten);
+        printf("10å…ƒ : %då¼ \n", ten);
     if (five != 0)
-        printf("5Ôª  : %dÕÅ\n", five);
+        printf("5å…ƒ  : %då¼ \n", five);
     if (one != 0)
-        printf("1Ôª  : %dÕÅ\n", one);
+        printf("1å…ƒ  : %då¼ \n", one);
     if (point_five != 0)
-        printf("5½Ç  : %dÕÅ\n", point_five);
+        printf("5è§’  : %då¼ \n", point_five);
     if (point_one != 0)
-        printf("1½Ç  : %dÕÅ\n", point_one);
+        printf("1è§’  : %då¼ \n", point_one);
     if (cent_five != 0)
-        printf("5·Ö  : %dÕÅ\n", cent_five);
+        printf("5åˆ†  : %då¼ \n", cent_five);
     if (cent_two != 0)
-        printf("2·Ö  : %dÕÅ\n", cent_two);
+        printf("2åˆ†  : %då¼ \n", cent_two);
     if (cent_one != 0)
-        printf("1·Ö  : %dÕÅ\n", cent_one);
+        printf("1åˆ†  : %då¼ \n", cent_one);
 
     return 0;
 }

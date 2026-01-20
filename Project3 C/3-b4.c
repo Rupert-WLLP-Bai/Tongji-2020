@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <math.h>
@@ -12,11 +12,11 @@ int main()
     double temp_1;
     double num, num_int;
     double num_decimal_part;
-    printf("ÇëÊäÈë[0-100ÒÚ)Ö®¼äµÄÊı×Ö,Ğ¡Êıµãºó×î¶àÁ½Î»£º\n");
+    printf("è¯·è¾“å…¥[0-100äº¿)ä¹‹é—´çš„æ•°å­—,å°æ•°ç‚¹åæœ€å¤šä¸¤ä½ï¼š\n");
     scanf("%lf", &num);
     num_int = num - fmod(num, 1);
 
-    //ÕûÊı²¿·ÖµÄ¼ÆËã£º
+    //æ•´æ•°éƒ¨åˆ†çš„è®¡ç®—ï¼š
     i1 = (int)(fmod(num_int, 10));
     temp1 = (int)(num_int / 10);
     i2 = temp1 % 10;
@@ -37,28 +37,28 @@ int main()
     temp9 = temp8 / 10;
     i10 = temp9 % 10;
 
-    //Ğ¡Êı²¿·ÖµÄ¼ÆËã£º
+    //å°æ•°éƒ¨åˆ†çš„è®¡ç®—ï¼š
     num_decimal_part = fmod(num, 1);
-    i_1 = (int)((num_decimal_part * 10) + 1e-4); //Èç¹ûÖ»ÊäÈëÒ»Î»Ğ¡Êı,ÓÃÓÚÅÅ³ıÎó²î
-    temp_1 = num_decimal_part * 100 + 1e-3;    //Í¬ÑùµÄ·½·¨µ÷Õûtemp_1,ÅÅ³ıÎ²ÊıÎªÁãÊ±¿ÉÄÜ³öÏÖµÄbug
+    i_1 = (int)((num_decimal_part * 10) + 1e-4); //å¦‚æœåªè¾“å…¥ä¸€ä½å°æ•°,ç”¨äºæ’é™¤è¯¯å·®
+    temp_1 = num_decimal_part * 100 + 1e-3;    //åŒæ ·çš„æ–¹æ³•è°ƒæ•´temp_1,æ’é™¤å°¾æ•°ä¸ºé›¶æ—¶å¯èƒ½å‡ºç°çš„bug
     i_2 = fmod(temp_1, 10);
 
-    //·½°¸¶ş£º½«Î²Êı¼ÓÉÏÒ»¸ö½ÏĞ¡µÄÊı£¬ÔÙÏòÏÂÈ¡Õû(ÓÃÓÚÅÅ³ı×îºóÒ»Î»¸³Öµ²»×¼È·µÄÎó²î)
+    //æ–¹æ¡ˆäºŒï¼šå°†å°¾æ•°åŠ ä¸Šä¸€ä¸ªè¾ƒå°çš„æ•°ï¼Œå†å‘ä¸‹å–æ•´(ç”¨äºæ’é™¤æœ€åä¸€ä½èµ‹å€¼ä¸å‡†ç¡®çš„è¯¯å·®)
     i_2 = (int)(i_2 + 1e-4);
 
-    //Êä³ö²¿·Ö£º
-    printf("Ê®ÒÚÎ»  : %d\n", i10);
-    printf("ÒÚÎ»    : %d\n", i9);
-    printf("Ç§ÍòÎ»  : %d\n", i8);
-    printf("°ÙÍòÎ»  : %d\n", i7);
-    printf("Ê®ÍòÎ»  : %d\n", i6);
-    printf("ÍòÎ»    : %d\n", i5);
-    printf("Ç§Î»    : %d\n", i4);
-    printf("°ÙÎ»    : %d\n", i3);
-    printf("Ê®Î»    : %d\n", i2);
-    printf("Ô²      : %d\n", i1);
-    printf("½Ç      : %d\n", i_1);
-    printf("·Ö      : %d\n", (int)(i_2));
+    //è¾“å‡ºéƒ¨åˆ†ï¼š
+    printf("åäº¿ä½  : %d\n", i10);
+    printf("äº¿ä½    : %d\n", i9);
+    printf("åƒä¸‡ä½  : %d\n", i8);
+    printf("ç™¾ä¸‡ä½  : %d\n", i7);
+    printf("åä¸‡ä½  : %d\n", i6);
+    printf("ä¸‡ä½    : %d\n", i5);
+    printf("åƒä½    : %d\n", i4);
+    printf("ç™¾ä½    : %d\n", i3);
+    printf("åä½    : %d\n", i2);
+    printf("åœ†      : %d\n", i1);
+    printf("è§’      : %d\n", i_1);
+    printf("åˆ†      : %d\n", (int)(i_2));
 
     return 0;
 }

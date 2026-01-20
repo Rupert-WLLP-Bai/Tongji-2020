@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <math.h>
@@ -7,10 +7,10 @@ int main()
 {
     int a, b, angle;
     double S;
-    printf("ÇëÊäÈëÈı½ÇĞÎµÄÁ½±ß¼°Æä¼Ğ½Ç£¨½Ç¶È£© :  \n");
+    printf("è¯·è¾“å…¥ä¸‰è§’å½¢çš„ä¸¤è¾¹åŠå…¶å¤¹è§’ï¼ˆè§’åº¦ï¼‰ :  \n");
     scanf("%d%d%d", &a, &b, &angle);
     S = a * b * sin(angle * pi / 180) / 2;
-    printf("Èı½ÇĞÎÃæ»ıÎª : %.3f", S);
+    printf("ä¸‰è§’å½¢é¢ç§¯ä¸º : %.3f", S);
     return 0;
 }
 

@@ -1,4 +1,4 @@
-/*2052521 ÐÅ13 ÕÅÒ«Òü*/
+/*2052521 ä¿¡13 å¼ è€€å°¹*/
 #include<iostream>
 #include<iomanip>
 #include<Windows.h>
@@ -8,7 +8,7 @@
 using namespace std;
 int main()
 {
-	/* demoÖÐÊ×ÏÈÖ´ÐÐ´Ë¾ä£¬½«cmd´°¿ÚÉèÖÃÎª40ÐÐx120ÁÐ£¨»º³åÇø¿í¶È120ÁÐ£¬ÐÐÊý9000ÐÐ£¬¼´cmd´°¿ÚÓÒ²à´øÓÐ´¹Ö±¹ö¶¯¸Ë£©*/
+	/* demoä¸­é¦–å…ˆæ‰§è¡Œæ­¤å¥ï¼Œå°†cmdçª—å£è®¾ç½®ä¸º40è¡Œx120åˆ—ï¼ˆç¼“å†²åŒºå®½åº¦120åˆ—ï¼Œè¡Œæ•°9000è¡Œï¼Œå³cmdçª—å£å³ä¾§å¸¦æœ‰åž‚ç›´æ»šåŠ¨æ†ï¼‰*/
 	cct_setconsoleborder(100, 30, 100, 9000);
 	while (1)
 	{

@@ -1,4 +1,4 @@
-/*2052526 ÐÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <cstring>
 #include <cmath>
@@ -10,7 +10,7 @@ unsigned int f(char* a)
     char * p = a;
     char* start = a;
     unsigned int sum = 0;
-    cout << "ÇëÊäÈëÒ»¸ö0/1×é³ÉµÄ×Ö·û´®£¬³¤¶È²»³¬¹ý32" << endl;
+    cout << "è¯·è¾“å…¥ä¸€ä¸ª0/1ç»„æˆçš„å­—ç¬¦ä¸²ï¼Œé•¿åº¦ä¸è¶…è¿‡32" << endl;
     cin.getline(a, SIZE);
 
     while(*p!='\0')

@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include<iostream>
 #include<cmath>
 #include<iomanip>
@@ -8,7 +8,7 @@
 
 using namespace std;
 
-/*À×ÕóÖØÖÃ*/
+/*é›·é˜µé‡ç½®*/
 void reset(int(*mine)[L_max], int(*a)[L_max])
 {
 	for (int i = 0; i < W_max; i++)
@@ -21,20 +21,20 @@ void reset(int(*mine)[L_max], int(*a)[L_max])
 
 }
 
-/*ÊäÈë³¤¶È,¿í¶È,À×ÊıÉú³É¶ÔÓ¦µÄÀ×Õó*/	/*´«ÈëµÄÊı×éÊÇ±íÊ¾ÓĞÀ×»òÎŞÀ×µÄÊı×é*/ /*ĞèÒª±£Ö¤µÚÒ»´ÎÊäÈëÎ»ÖÃÖÜÎ§µÄ°Ë¸öÎ»ÖÃµÄa¾ùµÄÎª0*/
+/*è¾“å…¥é•¿åº¦,å®½åº¦,é›·æ•°ç”Ÿæˆå¯¹åº”çš„é›·é˜µ*/	/*ä¼ å…¥çš„æ•°ç»„æ˜¯è¡¨ç¤ºæœ‰é›·æˆ–æ— é›·çš„æ•°ç»„*/ /*éœ€è¦ä¿è¯ç¬¬ä¸€æ¬¡è¾“å…¥ä½ç½®å‘¨å›´çš„å…«ä¸ªä½ç½®çš„aå‡çš„ä¸º0*/
 void spawn(int width, int length, int num, int(*a)[L_max], int x, int y)
 {
 	int count = 0;
-	int i, j;//±íÊ¾ĞĞºÅºÍÁĞºÅ
+	int i, j;//è¡¨ç¤ºè¡Œå·å’Œåˆ—å·
 	srand((unsigned int)(time(NULL) * time(NULL)));
 
-	/*cout << "ÎŞÀ×Î»ÖÃµÄ×ø±êÎª : " << "(" << static_cast<char>(x + 'A' - 1) << "," << y << ")" << endl;*/
+	/*cout << "æ— é›·ä½ç½®çš„åæ ‡ä¸º : " << "(" << static_cast<char>(x + 'A' - 1) << "," << y << ")" << endl;*/
 
 	while (count != num)
 	{
 		i = rand() % width + 1;
 		j = rand() % length + 1;
-		if ((i - x) <= 1 && (i - x) >= -1 && (j - y) <= 1 && (j - y) >= -1)//¾Å¸öÎ»ÖÃÎŞÀ×
+		if ((i - x) <= 1 && (i - x) >= -1 && (j - y) <= 1 && (j - y) >= -1)//ä¹ä¸ªä½ç½®æ— é›·
 			continue;
 		else
 		{
@@ -48,10 +48,10 @@ void spawn(int width, int length, int num, int(*a)[L_max], int x, int y)
 		}
 
 
-		//cout << "Éú³ÉÀ×µÄÎ»ÖÃÎª : " << "(" << static_cast<char>(i + 'A' - 1) << "," << j << ")" << endl;
+		//cout << "ç”Ÿæˆé›·çš„ä½ç½®ä¸º : " << "(" << static_cast<char>(i + 'A' - 1) << "," << j << ")" << endl;
 		//cout << "x = " << x << " y = " << y << " i = " << i << " j = " << j << endl;
-		//cout << "×ø±êµÄ²îÖµÎª : " << "delta_x = " << i - x << "  " << "delta_y = " << i - y << endl;
-		//cout << "½á¹ûÎª :" << endl;
+		//cout << "åæ ‡çš„å·®å€¼ä¸º : " << "delta_x = " << i - x << "  " << "delta_y = " << i - y << endl;
+		//cout << "ç»“æœä¸º :" << endl;
 		//Num_of_mine(mine, a, '1');
 		//print_result(mine, a, '1');
 		//cout << endl;
@@ -60,7 +60,7 @@ void spawn(int width, int length, int num, int(*a)[L_max], int x, int y)
 	}
 }
 
-/*ÓÃÓÚÉú³ÉÈıÖÖÇé¿öÏÂµÄËæ»úÀ×Õó*/
+/*ç”¨äºç”Ÿæˆä¸‰ç§æƒ…å†µä¸‹çš„éšæœºé›·é˜µ*/
 void spawn_mine(int a[][L_max], int select, int x, int y)
 {
 	switch (select)
@@ -79,7 +79,7 @@ void spawn_mine(int a[][L_max], int select, int x, int y)
 	}
 }
 
-/*¼ÆËãÀ×Êı*/	/*´«ÈëÊı×éÎª´æÀ×ÊıµÄÊı×é,±íÊ¾ÓĞÀ×»òÎŞÀ×µÄÊı×é*/
+/*è®¡ç®—é›·æ•°*/	/*ä¼ å…¥æ•°ç»„ä¸ºå­˜é›·æ•°çš„æ•°ç»„,è¡¨ç¤ºæœ‰é›·æˆ–æ— é›·çš„æ•°ç»„*/
 void Num_of_mine(int(*mine)[L_max], int(*a)[L_max], int select)
 {
 	switch (select)
@@ -112,10 +112,10 @@ void Num_of_mine(int(*mine)[L_max], int(*a)[L_max], int select)
 	}
 }
 
-/*Êä³öÀ×Õó,Çé¿ö1*/
+/*è¾“å‡ºé›·é˜µ,æƒ…å†µ1*/
 void print_result(int(*mine)[L_max], int(*a)[L_max], int select)
 {
-	cout << "ÄÚ²¿Êı×é£º" << endl;
+	cout << "å†…éƒ¨æ•°ç»„ï¼š" << endl;
 	switch (select)
 	{
 		case '1':
@@ -171,10 +171,10 @@ void print_result(int(*mine)[L_max], int(*a)[L_max], int select)
 	}
 }
 
-/*Êä³ö´ø'X'µÄÀ×Õó,Çé¿ö2*/
+/*è¾“å‡ºå¸¦'X'çš„é›·é˜µ,æƒ…å†µ2*/
 void print_process2(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int select)
 {
-	cout << endl << endl << "µã¿ªºóµÄÊı×é£º" << endl;
+	cout << endl << endl << "ç‚¹å¼€åçš„æ•°ç»„ï¼š" << endl;
 	switch (select)
 	{
 		case '1':
@@ -266,11 +266,11 @@ void print_process2(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int selec
 	}
 }
 
-/*Êä³ö´ø'X'µÄÀ×Õó,Çé¿ö3*/
+/*è¾“å‡ºå¸¦'X'çš„é›·é˜µ,æƒ…å†µ3*/
 void print_process3(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int select)
 {
 	cout << endl << endl;
-	cout << "µ±Ç°Êı×é£º" << endl;
+	cout << "å½“å‰æ•°ç»„ï¼š" << endl;
 	switch (select)
 	{
 		case '1':
@@ -362,11 +362,11 @@ void print_process3(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int selec
 	}
 }
 
-/*Êä³ö´ø'X'µÄÀ×Õó,Çé¿ö4*/
+/*è¾“å‡ºå¸¦'X'çš„é›·é˜µ,æƒ…å†µ4*/
 void print_process4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max], int select)
 {
 	cout << endl << endl;
-	cout << "µ±Ç°Êı×é£º" << endl;
+	cout << "å½“å‰æ•°ç»„ï¼š" << endl;
 	switch (select)
 	{
 		case '1':
@@ -377,7 +377,7 @@ void print_process4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L
 				cout << static_cast<char>('A' + i - 1) << " |";
 				for (int j = 1; j < L1 + 1; j++)
 				{
-					if (b[i][j] == OPEN && c[i][j] == no)//´ò¿ªÇÒÎ´±»±ê¼Ç
+					if (b[i][j] == OPEN && c[i][j] == no)//æ‰“å¼€ä¸”æœªè¢«æ ‡è®°
 					{
 						if (a[i][j] == 0)
 						{
@@ -391,9 +391,9 @@ void print_process4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L
 					}
 					else
 					{
-						if (c[i][j] == no)//Î´±»±ê¼Ç
+						if (c[i][j] == no)//æœªè¢«æ ‡è®°
 							cout << "X ";
-						else//±»±ê¼Ç
+						else//è¢«æ ‡è®°
 						{
 							cct_setcolor(COLOR_RED, COLOR_WHITE);
 							cout << "X";
@@ -424,9 +424,9 @@ void print_process4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L
 							cout << " ";
 						}
 						else
-							if (c[i][j] == no)//Î´±»±ê¼Ç
+							if (c[i][j] == no)//æœªè¢«æ ‡è®°
 								cout << "X ";
-							else//±»±ê¼Ç
+							else//è¢«æ ‡è®°
 							{
 								cct_setcolor(COLOR_RED, COLOR_WHITE);
 								cout << "X";
@@ -465,9 +465,9 @@ void print_process4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L
 					}
 					else
 					{
-						if (c[i][j] == no)//Î´±»±ê¼Ç
+						if (c[i][j] == no)//æœªè¢«æ ‡è®°
 							cout << "X ";
-						else//±»±ê¼Ç
+						else//è¢«æ ‡è®°
 						{
 							cct_setcolor(COLOR_RED, COLOR_WHITE);
 							cout << "X";
@@ -482,10 +482,10 @@ void print_process4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L
 	}
 }
 
-/*³õÊ¼Çé¿ö,´ø'X'µÄÀ×Õó*/
+/*åˆå§‹æƒ…å†µ,å¸¦'X'çš„é›·é˜µ*/
 void print_X(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int select)
 {
-	cout << "ÄÚ²¿Êı×é£º" << endl;
+	cout << "å†…éƒ¨æ•°ç»„ï¼š" << endl;
 	switch (select)
 	{
 		case '1':
@@ -526,8 +526,8 @@ void print_X(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int select)
 	}
 }
 
-/*¼ì²éÊÇ·ñ²ÈÀ×,Èç¹û²ÈÀ×Êä³öÓÎÏ·½áÊø,²¢±ê¼Ç³öÀ×µÄÎ»ÖÃ*/
-/*·µ»ØÖµÎª1±íÊ¾²ÈÀ×,·ñÔò·µ»Ø0*//*Çé¿ö3*/
+/*æ£€æŸ¥æ˜¯å¦è¸©é›·,å¦‚æœè¸©é›·è¾“å‡ºæ¸¸æˆç»“æŸ,å¹¶æ ‡è®°å‡ºé›·çš„ä½ç½®*/
+/*è¿”å›å€¼ä¸º1è¡¨ç¤ºè¸©é›·,å¦åˆ™è¿”å›0*//*æƒ…å†µ3*/
 int judge(const int x, const int y, int(*a)[L_max])
 {
 	if (a[x][y] == yes)
@@ -536,16 +536,16 @@ int judge(const int x, const int y, int(*a)[L_max])
 }
 
 
-/*¼ì²éÊÇ·ñ²ÈÀ×,Èç¹û²ÈÀ×Êä³öÓÎÏ·½áÊø,²¢±ê¼Ç³öÀ×µÄÎ»ÖÃ*/
-/*·µ»ØÖµÎª1±íÊ¾²ÈÀ×,·ñÔò·µ»Ø0*//*Çé¿ö3*/
+/*æ£€æŸ¥æ˜¯å¦è¸©é›·,å¦‚æœè¸©é›·è¾“å‡ºæ¸¸æˆç»“æŸ,å¹¶æ ‡è®°å‡ºé›·çš„ä½ç½®*/
+/*è¿”å›å€¼ä¸º1è¡¨ç¤ºè¸©é›·,å¦åˆ™è¿”å›0*//*æƒ…å†µ3*/
 int judge4(const int x, const int y, int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 {
-	if (a[x][y] == yes && c[x][y] == no && b[x][y] == OPEN)//Î´±»±ê¼ÇÇÒ±»µã¿ª
+	if (a[x][y] == yes && c[x][y] == no && b[x][y] == OPEN)//æœªè¢«æ ‡è®°ä¸”è¢«ç‚¹å¼€
 		return 1;
 	return 0;
 }
 
-/*¼ì²éÊÇ·ñÕÒ³öËùÓĞÀ×*/
+/*æ£€æŸ¥æ˜¯å¦æ‰¾å‡ºæ‰€æœ‰é›·*/
 int game_over(int(*b)[L_max], int select)
 {
 	int cnt = 0;
@@ -593,7 +593,7 @@ int game_over(int(*b)[L_max], int select)
 	return -1;
 }
 
-/*Çé¿ö1*/
+/*æƒ…å†µ1*/
 void case1(int(*mine)[L_max], int(*a)[L_max])
 {
 	int x, y;
@@ -630,7 +630,7 @@ void case1(int(*mine)[L_max], int(*a)[L_max])
 	reset(mine, a);
 }
 
-/*Çé¿ö2*//*Èç¹ûÊı×éopenµÄÖµÎª1ÔòÊä³öÊı×Ö·ñÔòÊä³öX,Êä³öÊı×ÖµÄÑÕÉ«,±³¾°É«ÁíÍâ¶¨Òå*/
+/*æƒ…å†µ2*//*å¦‚æœæ•°ç»„opençš„å€¼ä¸º1åˆ™è¾“å‡ºæ•°å­—å¦åˆ™è¾“å‡ºX,è¾“å‡ºæ•°å­—çš„é¢œè‰²,èƒŒæ™¯è‰²å¦å¤–å®šä¹‰*/
 void case2(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 {
 	print_choose_difficulty();
@@ -679,7 +679,7 @@ void case2(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 	reset(mine, b);
 }
 
-/*Çé¿ö3*//*ĞèÒªÅĞ¶ÏÊÇ·ñµãµ½À×*/
+/*æƒ…å†µ3*//*éœ€è¦åˆ¤æ–­æ˜¯å¦ç‚¹åˆ°é›·*/
 void case3(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 {
 	print_choose_difficulty();
@@ -692,7 +692,7 @@ void case3(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 	if (difficulty == '1')
 	{
 		print_X(mine, a, b, '1');
-		quit = fetch_instruction(&x, &y, '1', 0);//»ñÈ¡ÊäÈë
+		quit = fetch_instruction(&x, &y, '1', 0);//è·å–è¾“å…¥
 		if (!quit)
 			return;
 
@@ -705,10 +705,10 @@ void case3(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 		{
 			if (game_over(b, '1'))
 			{
-				cout << endl << endl << "ÄãÓ®ÁË,ÓÎÏ·½áÊø";
+				cout << endl << endl << "ä½ èµ¢äº†,æ¸¸æˆç»“æŸ";
 				return;
 			}
-			quit = fetch_instruction(&x, &y, '1', 0);//»ñÈ¡ÊäÈë
+			quit = fetch_instruction(&x, &y, '1', 0);//è·å–è¾“å…¥
 			if (!quit)
 				return;
 			open_matrix(a, b, x, y, 1);
@@ -716,7 +716,7 @@ void case3(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 			if (judge(x, y, a))
 			{
 				print_process3(mine, a, b, '1');
-				cout << endl << endl << "ÄãÊäÁË,ÓÎÏ·½áÊø";
+				cout << endl << endl << "ä½ è¾“äº†,æ¸¸æˆç»“æŸ";
 				return;
 			}
 			else
@@ -729,7 +729,7 @@ void case3(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 	else if (difficulty == '2')
 	{
 		print_X(mine, a, b, '2');
-		quit = fetch_instruction(&x, &y, '2', 0);//»ñÈ¡ÊäÈë
+		quit = fetch_instruction(&x, &y, '2', 0);//è·å–è¾“å…¥
 		if (!quit)
 			return;
 
@@ -742,10 +742,10 @@ void case3(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 		{
 			if (game_over(b, '2'))
 			{
-				cout << endl << endl << "ÄãÓ®ÁË,ÓÎÏ·½áÊø";
+				cout << endl << endl << "ä½ èµ¢äº†,æ¸¸æˆç»“æŸ";
 				return;
 			}
-			quit = fetch_instruction(&x, &y, '2', 0);//»ñÈ¡ÊäÈë
+			quit = fetch_instruction(&x, &y, '2', 0);//è·å–è¾“å…¥
 			if (!quit)
 				return;
 			open_matrix(a, b, x, y, 2);
@@ -753,7 +753,7 @@ void case3(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 			if (judge(x, y, a))
 			{
 				print_process3(mine, a, b, '2');
-				cout << endl << endl << "ÄãÊäÁË,ÓÎÏ·½áÊø";
+				cout << endl << endl << "ä½ è¾“äº†,æ¸¸æˆç»“æŸ";
 				return;
 			}
 			else
@@ -766,7 +766,7 @@ void case3(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 	else
 	{
 		print_X(mine, a, b, '3');
-		quit = fetch_instruction(&x, &y, '3', 0);//»ñÈ¡ÊäÈë
+		quit = fetch_instruction(&x, &y, '3', 0);//è·å–è¾“å…¥
 		if (!quit)
 			return;
 
@@ -779,10 +779,10 @@ void case3(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 		{
 			if (game_over(b, '3'))
 			{
-				cout << endl << endl << "ÄãÓ®ÁË,ÓÎÏ·½áÊø";
+				cout << endl << endl << "ä½ èµ¢äº†,æ¸¸æˆç»“æŸ";
 				return;
 			}
-			quit = fetch_instruction(&x, &y, '3', 0);//»ñÈ¡ÊäÈë
+			quit = fetch_instruction(&x, &y, '3', 0);//è·å–è¾“å…¥
 			if (!quit)
 				return;
 			open_matrix(a, b, x, y, 3);
@@ -790,7 +790,7 @@ void case3(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 			if (judge(x, y, a))
 			{
 				print_process3(mine, a, b, '3');
-				cout << endl << endl << "ÄãÊäÁË,ÓÎÏ·½áÊø";
+				cout << endl << endl << "ä½ è¾“äº†,æ¸¸æˆç»“æŸ";
 				return;
 			}
 			else
@@ -802,11 +802,11 @@ void case3(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max])
 
 }
 
-/*Çé¿ö4*//*ÔÚÇé¿ö3µÄ»ù´¡ÉÏ¼ÓÈë ±ê¼Ç,È¡Ïû±ê¼Ç,ÏÔÊ¾Ê±¼äµÄ¹¦ÄÜ*/
-	   /*ÅĞ¶ÏÓÎÏ·½áÊøµÄÌõ¼şĞèÒª¸Ä±ä*/
+/*æƒ…å†µ4*//*åœ¨æƒ…å†µ3çš„åŸºç¡€ä¸ŠåŠ å…¥ æ ‡è®°,å–æ¶ˆæ ‡è®°,æ˜¾ç¤ºæ—¶é—´çš„åŠŸèƒ½*/
+	   /*åˆ¤æ–­æ¸¸æˆç»“æŸçš„æ¡ä»¶éœ€è¦æ”¹å˜*/
 void case4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 {
-	int spawned = 0;//ÅĞ¶ÏÊÇ·ñÒÑ¾­Éú³ÉÀ×Õó
+	int spawned = 0;//åˆ¤æ–­æ˜¯å¦å·²ç»ç”Ÿæˆé›·é˜µ
 	print_choose_difficulty();
 	int difficulty;
 	get_difficulty(&difficulty);
@@ -814,31 +814,31 @@ void case4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 	int x, y;
 	int quit = 1;
 	LARGE_INTEGER tick, begin, end;
-	QueryPerformanceFrequency(&tick); //»ñµÃÊ±ÖÓÆµÂÊ
-	QueryPerformanceCounter(&begin);  //»ñµÃ³õÊ¼Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
+	QueryPerformanceFrequency(&tick); //è·å¾—æ—¶é’Ÿé¢‘ç‡
+	QueryPerformanceCounter(&begin);  //è·å¾—åˆå§‹ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
 
 
 	if (difficulty == '1')
 	{
 		print_X(mine, a, b, '1');
-		quit = fetch_instruction(&x, &y, '1', 1);//»ñÈ¡ÊäÈë,¹¦ÄÜ¿ªÆô
+		quit = fetch_instruction(&x, &y, '1', 1);//è·å–è¾“å…¥,åŠŸèƒ½å¼€å¯
 		if (!quit)
 			return;
-		if (quit == 2)//±ê¼Ç¹¦ÄÜ
+		if (quit == 2)//æ ‡è®°åŠŸèƒ½
 		{
 			if (b[x][y] == HIDE)
 				c[x][y] = mark;
 			print_process4(mine, a, b, c, '1');
 
 		}
-		if (quit == -2)//ÏÔÊ¾Ê±¼ä
+		if (quit == -2)//æ˜¾ç¤ºæ—¶é—´
 		{
-			QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
-			cout << endl << "ÒÑÔËĞĞÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(3)
-				<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+			QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+			cout << endl << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(3)
+				<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 
 		}
-		if (quit == -1)//È¡Ïû±ê¼Ç
+		if (quit == -1)//å–æ¶ˆæ ‡è®°
 		{
 			c[x][y] = no;
 			print_process4(mine, a, b, c, '1');
@@ -856,30 +856,30 @@ void case4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 		{
 			if (game_over(b, '1'))
 			{
-				cout << endl << endl << "ÄãÓ®ÁË,ÓÎÏ·½áÊø";
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
-				cout << endl << "ºÄÊ± :" << setiosflags(ios::fixed) << setprecision(3)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+				cout << endl << endl << "ä½ èµ¢äº†,æ¸¸æˆç»“æŸ";
+				QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+				cout << endl << "è€—æ—¶ :" << setiosflags(ios::fixed) << setprecision(3)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 				return;
 			}
-			quit = fetch_instruction(&x, &y, '1', 1);//»ñÈ¡ÊäÈë,¹¦ÄÜ¿ªÆô
+			quit = fetch_instruction(&x, &y, '1', 1);//è·å–è¾“å…¥,åŠŸèƒ½å¼€å¯
 			if (!quit)
 				return;
-			if (quit == 2)//±ê¼Ç¹¦ÄÜ
+			if (quit == 2)//æ ‡è®°åŠŸèƒ½
 			{
 				if (b[x][y] == HIDE)
 					c[x][y] = mark;
 				print_process4(mine, a, b, c, '1');
 				continue;
 			}
-			if (quit == -2)//ÏÔÊ¾Ê±¼ä
+			if (quit == -2)//æ˜¾ç¤ºæ—¶é—´
 			{
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
-				cout << endl << "ÒÑÔËĞĞÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(3)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+				QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+				cout << endl << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(3)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 				continue;
 			}
-			if (quit == -1)//È¡Ïû±ê¼Ç
+			if (quit == -1)//å–æ¶ˆæ ‡è®°
 			{
 				c[x][y] = no;
 				print_process4(mine, a, b, c, '1');
@@ -900,10 +900,10 @@ void case4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 			if (judge(x, y, a))
 			{
 				print_process4(mine, a, b, c, '1');
-				cout << endl << endl << "ÄãÊäÁË,ÓÎÏ·½áÊø";
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
-				cout << endl << "ºÄÊ± :" << setiosflags(ios::fixed) << setprecision(3)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+				cout << endl << endl << "ä½ è¾“äº†,æ¸¸æˆç»“æŸ";
+				QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+				cout << endl << "è€—æ—¶ :" << setiosflags(ios::fixed) << setprecision(3)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 				return;
 			}
 			else
@@ -916,24 +916,24 @@ void case4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 	else if (difficulty == '2')
 	{
 		print_X(mine, a, b, '1');
-		quit = fetch_instruction(&x, &y, '2', 1);//»ñÈ¡ÊäÈë,¹¦ÄÜ¿ªÆô
+		quit = fetch_instruction(&x, &y, '2', 1);//è·å–è¾“å…¥,åŠŸèƒ½å¼€å¯
 		if (!quit)
 			return;
-		if (quit == 2)//±ê¼Ç¹¦ÄÜ
+		if (quit == 2)//æ ‡è®°åŠŸèƒ½
 		{
 			if (b[x][y] == HIDE)
 				c[x][y] = mark;
 			print_process4(mine, a, b, c, '2');
 
 		}
-		if (quit == -2)//ÏÔÊ¾Ê±¼ä
+		if (quit == -2)//æ˜¾ç¤ºæ—¶é—´
 		{
-			QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
-			cout << endl << "ÒÑÔËĞĞÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(3)
-				<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+			QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+			cout << endl << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(3)
+				<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 
 		}
-		if (quit == -1)//È¡Ïû±ê¼Ç
+		if (quit == -1)//å–æ¶ˆæ ‡è®°
 		{
 			c[x][y] = no;
 			print_process4(mine, a, b, c, '2');
@@ -951,30 +951,30 @@ void case4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 		{
 			if (game_over(b, '2'))
 			{
-				cout << endl << endl << "ÄãÓ®ÁË,ÓÎÏ·½áÊø";
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
-				cout << endl << "ºÄÊ± :" << setiosflags(ios::fixed) << setprecision(3)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+				cout << endl << endl << "ä½ èµ¢äº†,æ¸¸æˆç»“æŸ";
+				QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+				cout << endl << "è€—æ—¶ :" << setiosflags(ios::fixed) << setprecision(3)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 				return;
 			}
-			quit = fetch_instruction(&x, &y, '2', 1);//»ñÈ¡ÊäÈë,¹¦ÄÜ¿ªÆô
+			quit = fetch_instruction(&x, &y, '2', 1);//è·å–è¾“å…¥,åŠŸèƒ½å¼€å¯
 			if (!quit)
 				return;
-			if (quit == 2)//±ê¼Ç¹¦ÄÜ
+			if (quit == 2)//æ ‡è®°åŠŸèƒ½
 			{
 				if (b[x][y] == HIDE)
 					c[x][y] = mark;
 				print_process4(mine, a, b, c, '2');
 				continue;
 			}
-			if (quit == -2)//ÏÔÊ¾Ê±¼ä
+			if (quit == -2)//æ˜¾ç¤ºæ—¶é—´
 			{
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
-				cout << endl << "ÒÑÔËĞĞÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(3)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+				QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+				cout << endl << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(3)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 				continue;
 			}
-			if (quit == -1)//È¡Ïû±ê¼Ç
+			if (quit == -1)//å–æ¶ˆæ ‡è®°
 			{
 				c[x][y] = no;
 				print_process4(mine, a, b, c, '2');
@@ -995,10 +995,10 @@ void case4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 			if (judge(x, y, a))
 			{
 				print_process4(mine, a, b, c, '2');
-				cout << endl << endl << "ÄãÊäÁË,ÓÎÏ·½áÊø";
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
-				cout << endl << "ºÄÊ± :" << setiosflags(ios::fixed) << setprecision(3)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+				cout << endl << endl << "ä½ è¾“äº†,æ¸¸æˆç»“æŸ";
+				QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+				cout << endl << "è€—æ—¶ :" << setiosflags(ios::fixed) << setprecision(3)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 				return;
 			}
 			else
@@ -1011,24 +1011,24 @@ void case4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 	else
 	{
 		print_X(mine, a, b, '3');
-		quit = fetch_instruction(&x, &y, '3', 1);//»ñÈ¡ÊäÈë,¹¦ÄÜ¿ªÆô
+		quit = fetch_instruction(&x, &y, '3', 1);//è·å–è¾“å…¥,åŠŸèƒ½å¼€å¯
 		if (!quit)
 			return;
-		if (quit == 2)//±ê¼Ç¹¦ÄÜ
+		if (quit == 2)//æ ‡è®°åŠŸèƒ½
 		{
 			if (b[x][y] == HIDE)
 				c[x][y] = mark;
 			print_process4(mine, a, b, c, '3');
 
 		}
-		if (quit == -2)//ÏÔÊ¾Ê±¼ä
+		if (quit == -2)//æ˜¾ç¤ºæ—¶é—´
 		{
-			QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
-			cout << endl << "ÒÑÔËĞĞÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(3)
-				<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+			QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+			cout << endl << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(3)
+				<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 
 		}
-		if (quit == -1)//È¡Ïû±ê¼Ç
+		if (quit == -1)//å–æ¶ˆæ ‡è®°
 		{
 			c[x][y] = no;
 			print_process4(mine, a, b, c, '3');
@@ -1046,30 +1046,30 @@ void case4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 		{
 			if (game_over(b, '3'))
 			{
-				cout << endl << endl << "ÄãÓ®ÁË,ÓÎÏ·½áÊø";
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
-				cout << endl << "ºÄÊ± :" << setiosflags(ios::fixed) << setprecision(3)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+				cout << endl << endl << "ä½ èµ¢äº†,æ¸¸æˆç»“æŸ";
+				QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+				cout << endl << "è€—æ—¶ :" << setiosflags(ios::fixed) << setprecision(3)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 				return;
 			}
-			quit = fetch_instruction(&x, &y, '3', 1);//»ñÈ¡ÊäÈë,¹¦ÄÜ¿ªÆô
+			quit = fetch_instruction(&x, &y, '3', 1);//è·å–è¾“å…¥,åŠŸèƒ½å¼€å¯
 			if (!quit)
 				return;
-			if (quit == 2)//±ê¼Ç¹¦ÄÜ
+			if (quit == 2)//æ ‡è®°åŠŸèƒ½
 			{
 				if (b[x][y] == HIDE)
 					c[x][y] = mark;
 				print_process4(mine, a, b, c, '3');
 				continue;
 			}
-			if (quit == -2)//ÏÔÊ¾Ê±¼ä
+			if (quit == -2)//æ˜¾ç¤ºæ—¶é—´
 			{
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
-				cout << endl << "ÒÑÔËĞĞÊ±¼ä :" << setiosflags(ios::fixed) << setprecision(3)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+				QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+				cout << endl << "å·²è¿è¡Œæ—¶é—´ :" << setiosflags(ios::fixed) << setprecision(3)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 				continue;
 			}
-			if (quit == -1)//È¡Ïû±ê¼Ç
+			if (quit == -1)//å–æ¶ˆæ ‡è®°
 			{
 				c[x][y] = no;
 				print_process4(mine, a, b, c, '3');
@@ -1090,10 +1090,10 @@ void case4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 			if (judge(x, y, a))
 			{
 				print_process4(mine, a, b, c, '3');
-				cout << endl << endl << "ÄãÊäÁË,ÓÎÏ·½áÊø";
-				QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¶¨Ê±Æ÷¼ÆÊı
-				cout << endl << "ºÄÊ± :" << setiosflags(ios::fixed) << setprecision(3)
-					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+				cout << endl << endl << "ä½ è¾“äº†,æ¸¸æˆç»“æŸ";
+				QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶å®šæ—¶å™¨è®¡æ•°
+				cout << endl << "è€—æ—¶ :" << setiosflags(ios::fixed) << setprecision(3)
+					<< double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 				return;
 			}
 			else
@@ -1104,7 +1104,7 @@ void case4(int(*mine)[L_max], int(*a)[L_max], int(*b)[L_max], int(*c)[L_max])
 	}
 }
 
-/*ÕûºÏ´ò¿ªÀ×ÕóµÄº¯Êı*/
+/*æ•´åˆæ‰“å¼€é›·é˜µçš„å‡½æ•°*/
 void open_matrix(int(*a)[L_max], int(*b)[L_max], int x, int y, int select)
 {
 	if (select == 1)
@@ -1115,7 +1115,7 @@ void open_matrix(int(*a)[L_max], int(*b)[L_max], int x, int y, int select)
 		open_matrix3(a, b, x, y);
 
 }
-/*µİ¹é´¦Àí´ò¿ªµÄÎ»ÖÃ*//*Çé¿ö1*/
+/*é€’å½’å¤„ç†æ‰“å¼€çš„ä½ç½®*//*æƒ…å†µ1*/
 void open_matrix1(int(*a)[L_max], int(*b)[L_max], int x, int y)
 {
 	b[x][y] = OPEN;
@@ -1128,9 +1128,9 @@ void open_matrix1(int(*a)[L_max], int(*b)[L_max], int x, int y)
 		}
 		cout << endl;
 	}*/
-	if (!stop1(a, b, x, y))//µİ¹éÖÕÖ¹Ìõ¼ş
+	if (!stop1(a, b, x, y))//é€’å½’ç»ˆæ­¢æ¡ä»¶
 		return;
-	else//´ò¿ªÖÜÎ§8¸ö¸ñ×Ó
+	else//æ‰“å¼€å‘¨å›´8ä¸ªæ ¼å­
 	{
 		if (b[x - 1][y - 1] == HIDE)
 			open_matrix(a, b, x - 1, y - 1, 1);
@@ -1151,16 +1151,16 @@ void open_matrix1(int(*a)[L_max], int(*b)[L_max], int x, int y)
 	}
 }
 
-/*ÖÜÎ§ÓĞÀ×·µ»Ø0,Óöµ½±ß½ç·µ»Ø0,·ñÔò·µ»Ø1*//*Çé¿ö1*/
+/*å‘¨å›´æœ‰é›·è¿”å›0,é‡åˆ°è¾¹ç•Œè¿”å›0,å¦åˆ™è¿”å›1*//*æƒ…å†µ1*/
 bool stop1(int(*a)[L_max], int(*b)[L_max], int x, int y)
 {
-	if (x < 1 || x > W1 || y < 1 || y > L1)//±ß½çÌõ¼ş
+	if (x < 1 || x > W1 || y < 1 || y > L1)//è¾¹ç•Œæ¡ä»¶
 		return 0;
 	for (int i = x - 1; i <= x + 1; i++)
 	{
 		for (int j = y - 1; j <= y + 1; j++)
 		{
-			if (i == x && j == y)//²»¼ì²é×Ô¼º
+			if (i == x && j == y)//ä¸æ£€æŸ¥è‡ªå·±
 				continue;
 			else
 			{
@@ -1172,15 +1172,15 @@ bool stop1(int(*a)[L_max], int(*b)[L_max], int x, int y)
 	return 1;
 }
 
-/*µİ¹é´¦Àí´ò¿ªµÄÎ»ÖÃ*//*Çé¿ö2*/
+/*é€’å½’å¤„ç†æ‰“å¼€çš„ä½ç½®*//*æƒ…å†µ2*/
 void open_matrix2(int(*a)[L_max], int(*b)[L_max], int x, int y)
 {
 	b[x][y] = OPEN;
-	if (!stop2(a, b, x, y))//µİ¹éÖÕÖ¹Ìõ¼ş
+	if (!stop2(a, b, x, y))//é€’å½’ç»ˆæ­¢æ¡ä»¶
 	{
 		return;
 	}
-	else//´ò¿ªÖÜÎ§8¸ö¸ñ×Ó
+	else//æ‰“å¼€å‘¨å›´8ä¸ªæ ¼å­
 	{
 		if (b[x - 1][y - 1] == HIDE)
 			open_matrix(a, b, x - 1, y - 1, 2);
@@ -1201,16 +1201,16 @@ void open_matrix2(int(*a)[L_max], int(*b)[L_max], int x, int y)
 	}
 }
 
-/*ÖÜÎ§ÓĞÀ×·µ»Ø0,Óöµ½±ß½ç·µ»Ø0,·ñÔò·µ»Ø1*//*Çé¿ö2*/
+/*å‘¨å›´æœ‰é›·è¿”å›0,é‡åˆ°è¾¹ç•Œè¿”å›0,å¦åˆ™è¿”å›1*//*æƒ…å†µ2*/
 bool stop2(int(*a)[L_max], int(*b)[L_max], int x, int y)
 {
-	if (x < 1 || x > W2 || y < 1 || y > L2)//±ß½çÌõ¼ş
+	if (x < 1 || x > W2 || y < 1 || y > L2)//è¾¹ç•Œæ¡ä»¶
 		return 0;
 	for (int i = x - 1; i <= x + 1; i++)
 	{
 		for (int j = y - 1; j <= y + 1; j++)
 		{
-			if (i == x && j == y)//²»¼ì²é×Ô¼º
+			if (i == x && j == y)//ä¸æ£€æŸ¥è‡ªå·±
 				continue;
 			else
 			{
@@ -1222,12 +1222,12 @@ bool stop2(int(*a)[L_max], int(*b)[L_max], int x, int y)
 	return 1;
 }
 
-/*µİ¹é´¦Àí´ò¿ªµÄÎ»ÖÃ*//*Çé¿ö3*/
+/*é€’å½’å¤„ç†æ‰“å¼€çš„ä½ç½®*//*æƒ…å†µ3*/
 void open_matrix3(int(*a)[L_max], int(*b)[L_max], int x, int y)
 {
 	b[x][y] = OPEN;
 
-	/*²âÊÔ´úÂë*/
+	/*æµ‹è¯•ä»£ç */
 	/*cout << endl << "x = " << x << " y = " << y << endl;
 	for (int i = 1; i <= W3; i++)
 	{
@@ -1255,10 +1255,10 @@ void open_matrix3(int(*a)[L_max], int(*b)[L_max], int x, int y)
 		cout << endl;
 	}*/
 
-	if (!stop3(a, b, x, y))//µİ¹éÖÕÖ¹Ìõ¼ş
+	if (!stop3(a, b, x, y))//é€’å½’ç»ˆæ­¢æ¡ä»¶
 		return;
 
-	else//´ò¿ªÖÜÎ§8¸ö¸ñ×Ó
+	else//æ‰“å¼€å‘¨å›´8ä¸ªæ ¼å­
 	{
 		if (b[x - 1][y - 1] == HIDE)
 			open_matrix(a, b, x - 1, y - 1, 3);
@@ -1279,16 +1279,16 @@ void open_matrix3(int(*a)[L_max], int(*b)[L_max], int x, int y)
 	}
 }
 
-/*ÖÜÎ§ÓĞÀ×·µ»Ø0,Óöµ½±ß½ç·µ»Ø0,·ñÔò·µ»Ø1*//*Çé¿ö3*/
+/*å‘¨å›´æœ‰é›·è¿”å›0,é‡åˆ°è¾¹ç•Œè¿”å›0,å¦åˆ™è¿”å›1*//*æƒ…å†µ3*/
 bool stop3(int(*a)[L_max], int(*b)[L_max], int x, int y)
 {
-	if (x < 1 || x > W3 || y < 1 || y > L3)//±ß½çÌõ¼ş
+	if (x < 1 || x > W3 || y < 1 || y > L3)//è¾¹ç•Œæ¡ä»¶
 		return 0;
 	for (int i = x - 1; i <= x + 1; i++)
 	{
 		for (int j = y - 1; j <= y + 1; j++)
 		{
-			if (i == x && j == y)//²»¼ì²é×Ô¼º
+			if (i == x && j == y)//ä¸æ£€æŸ¥è‡ªå·±
 				continue;
 			else
 			{

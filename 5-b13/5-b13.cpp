@@ -1,4 +1,4 @@
- /*2052526 ĞÅ15 °×¿¡ºÀ*/
+ /*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include<iostream>
 #include<time.h>
 #include<Windows.h>
@@ -30,9 +30,9 @@ void print_result(bool mine[][28],int a[][28])
 int main()
 {
 	int count = 0;
-	int i, j;//¶¨Î»À×µÄĞĞºÅºÍÁĞºÅ
-	int a[12][28] = { 0 };//×îÍâÒ»È¦ÊÇ0
-	bool mine[12][28] = { 0 };//ÎŞÀ×Îª0£¬ÓĞÀ×Îª1
+	int i, j;//å®šä½é›·çš„è¡Œå·å’Œåˆ—å·
+	int a[12][28] = { 0 };//æœ€å¤–ä¸€åœˆæ˜¯0
+	bool mine[12][28] = { 0 };//æ— é›·ä¸º0ï¼Œæœ‰é›·ä¸º1
 	srand((unsigned int)(time(NULL)));
 	while (count != 50)
 	{

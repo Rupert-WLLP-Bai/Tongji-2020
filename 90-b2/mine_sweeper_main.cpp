@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 
 #include<iostream>
 #include"cmd_console_tools.h"
@@ -7,16 +7,16 @@ using namespace std;
 
 int main()
 {
-	int mine[W_max][L_max] = { 0 };//¼ÆËãÀ×Êı
-	int a[W_max][L_max] = { no };//0,1À×Õó
-	int b[W_max][L_max] = { HIDE };//ÓÃÓÚ¼ÇÂ¼¸ÃÎ»ÖÃÊÇ·ñÒÑ¾­±»´¦Àí¹ı,³õÊ¼×´Ì¬ÊÇÈ«²¿Òş²Ø
-	int c[W_max][L_max] = { no };//ÊÇ·ñ±»±ê¼Ç
+	int mine[W_max][L_max] = { 0 };//è®¡ç®—é›·æ•°
+	int a[W_max][L_max] = { no };//0,1é›·é˜µ
+	int b[W_max][L_max] = { HIDE };//ç”¨äºè®°å½•è¯¥ä½ç½®æ˜¯å¦å·²ç»è¢«å¤„ç†è¿‡,åˆå§‹çŠ¶æ€æ˜¯å…¨éƒ¨éšè—
+	int c[W_max][L_max] = { no };//æ˜¯å¦è¢«æ ‡è®°
 	int select;
 	while (1)
 	{
 		cct_setcolor(COLOR_BLACK, COLOR_WHITE);
 		cct_setconsoleborder(100, 30);
-		cct_setfontsize("ĞÂËÎÌå", 24);
+		cct_setfontsize("æ–°å®‹ä½“", 24);
 		print_menu();
 		get_choice(&select);
 		if (select == '0')

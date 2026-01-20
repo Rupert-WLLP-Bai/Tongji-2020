@@ -1,16 +1,16 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include <iostream>
 #include <iomanip>
 #include <cstdio>
-#include <windows.h> //È¡ÏµÍ³Ê±¼ä
+#include <windows.h> //å–ç³»ç»Ÿæ—¶é—´
 using namespace std;
 
 int main()
 {
     LARGE_INTEGER tick, begin, end;
 
-    QueryPerformanceFrequency(&tick); //»ñµÃ¼ÆÊıÆ÷ÆµÂÊ
-    QueryPerformanceCounter(&begin);  //»ñµÃ³õÊ¼Ó²¼ş¼ÆÊıÆ÷¼ÆÊı
+    QueryPerformanceFrequency(&tick); //è·å¾—è®¡æ•°å™¨é¢‘ç‡
+    QueryPerformanceCounter(&begin);  //è·å¾—åˆå§‹ç¡¬ä»¶è®¡æ•°å™¨è®¡æ•°
 
     int i, j, k;
     int i1, i2, i3, j1, j2, j3, k1, k2, k3;
@@ -54,11 +54,11 @@ int main()
     }
     cout << "total = " << count << endl;
 
-    QueryPerformanceCounter(&end); //»ñµÃÖÕÖ¹Ó²¼ş¼ÆÊıÆ÷¼ÆÊı
+    QueryPerformanceCounter(&end); //è·å¾—ç»ˆæ­¢ç¡¬ä»¶è®¡æ•°å™¨è®¡æ•°
 
-    cout << "¼ÆÊıÆ÷ÆµÂÊ : " << tick.QuadPart << "Hz" << endl;
-    cout << "¼ÆÊıÆ÷¼ÆÊı : " << end.QuadPart - begin.QuadPart << endl;
-    cout << setiosflags(ios::fixed) << setprecision(6) << double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "Ãë" << endl;
+    cout << "è®¡æ•°å™¨é¢‘ç‡ : " << tick.QuadPart << "Hz" << endl;
+    cout << "è®¡æ•°å™¨è®¡æ•° : " << end.QuadPart - begin.QuadPart << endl;
+    cout << setiosflags(ios::fixed) << setprecision(6) << double(end.QuadPart - begin.QuadPart) / tick.QuadPart << "ç§’" << endl;
 
     return 0;
 }

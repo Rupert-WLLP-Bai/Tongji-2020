@@ -20,7 +20,7 @@ int main()
 		b=a[i];
 	}
 	aver=aver/10.0;
-	 cout<<"���ֵ"<<max<<"��Сֵ"<<min<<"ƽ��ֵ"<<aver<<endl;
+	 cout<<"最大值"<<max<<"最小值"<<min<<"平均值"<<aver<<endl;
 	 system("pause");
 	 return 0;
 }

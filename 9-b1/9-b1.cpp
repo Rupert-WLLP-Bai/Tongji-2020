@@ -1,4 +1,4 @@
-/*2052526 ĞÅ15 °×¿¡ºÀ*/
+/*2052526 ä¿¡15 ç™½ä¿Šè±ª*/
 #include<iostream>
 using namespace std;
 
@@ -38,28 +38,28 @@ int max(int a, int b, int c, int d)
 
 int main()
 {
-	int num;//ÊäÈë¸öÊı
-	int a, b, c, d;//±È½ÏµÄÊı
+	int num;//è¾“å…¥ä¸ªæ•°
+	int a, b, c, d;//æ¯”è¾ƒçš„æ•°
 
 	while (1)
 	{
-		cout << "ÇëÊäÈë¸öÊınum¼°num¸öÕıÕûÊı" << endl;
-		while (1)//ÊäÈë¸öÊı
+		cout << "è¯·è¾“å…¥ä¸ªæ•°numåŠnumä¸ªæ­£æ•´æ•°" << endl;
+		while (1)//è¾“å…¥ä¸ªæ•°
 		{
 			cin >> num;
-			if (cin.fail())//ÊäÈë´íÎó
+			if (cin.fail())//è¾“å…¥é”™è¯¯
 			{
 				cin.clear();
 				cin.ignore(65536, '\n');
 				continue;
 			}
-			else//ÊäÈëÕıÈ·
+			else//è¾“å…¥æ­£ç¡®
 			{
 				if (num >= 2 && num <= 4)
 					break;
 				else
 				{
-					cout << "¸öÊıÊäÈë´íÎó" << endl;
+					cout << "ä¸ªæ•°è¾“å…¥é”™è¯¯" << endl;
 					return 0;
 				}
 			}
@@ -69,14 +69,14 @@ int main()
 		{
 			case 2:
 				cin >> a;
-				if (cin.fail())//ÊäÈë´íÎó
+				if (cin.fail())//è¾“å…¥é”™è¯¯
 				{
 					cin.clear();
 					cin.ignore(65536, '\n');
 					continue;
 				}
 				cin >> b;
-				if (cin.fail())//ÊäÈë´íÎó
+				if (cin.fail())//è¾“å…¥é”™è¯¯
 				{
 					cin.clear();
 					cin.ignore(65536, '\n');
@@ -88,21 +88,21 @@ int main()
 				break;
 			case 3:
 				cin >> a;
-				if (cin.fail())//ÊäÈë´íÎó
+				if (cin.fail())//è¾“å…¥é”™è¯¯
 				{
 					cin.clear();
 					cin.ignore(65536, '\n');
 					continue;
 				}
 				cin >> b;
-				if (cin.fail())//ÊäÈë´íÎó
+				if (cin.fail())//è¾“å…¥é”™è¯¯
 				{
 					cin.clear();
 					cin.ignore(65536, '\n');
 					continue;
 				}
 				cin >> c;
-				if (cin.fail())//ÊäÈë´íÎó
+				if (cin.fail())//è¾“å…¥é”™è¯¯
 				{
 					cin.clear();
 					cin.ignore(65536, '\n');
@@ -114,28 +114,28 @@ int main()
 				break;
 			case 4:
 				cin >> a;
-				if (cin.fail())//ÊäÈë´íÎó
+				if (cin.fail())//è¾“å…¥é”™è¯¯
 				{
 					cin.ignore(65536, '\n');
 					cin.clear();
 					continue;
 				}
 				cin >> b;
-				if (cin.fail())//ÊäÈë´íÎó
+				if (cin.fail())//è¾“å…¥é”™è¯¯
 				{
 					cin.ignore(65536, '\n');
 					cin.clear();
 					continue;
 				}
 				cin >> c;
-				if (cin.fail())//ÊäÈë´íÎó
+				if (cin.fail())//è¾“å…¥é”™è¯¯
 				{
 					cin.ignore(65536, '\n');
 					cin.clear();
 					continue;
 				}
 				cin >> d;
-				if (cin.fail())//ÊäÈë´íÎó
+				if (cin.fail())//è¾“å…¥é”™è¯¯
 				{
 					cin.ignore(65536, '\n');
 					cin.clear();
