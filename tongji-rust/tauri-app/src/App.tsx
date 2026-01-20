@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ProjectList from './components/ProjectList';
+import HanoiGame from './components/HanoiGame';
 import { Project } from './types';
 import './index.css';
 
@@ -20,6 +21,8 @@ function App() {
     <div className="w-full h-screen bg-gray-900">
       {!selectedProject ? (
         <ProjectList onSelectProject={handleSelectProject} />
+      ) : selectedProject.id === 'hanoi' ? (
+        <HanoiGame onBack={handleBack} />
       ) : (
         <div className="flex flex-col h-full">
           {/* Header */}
@@ -37,20 +40,7 @@ function App() {
           {/* Content */}
           <div className="flex-1 overflow-auto p-6 text-white">
             {selectedProject.id === 'hanoi' && (
-              <div className="text-center">
-                <h2 className="text-3xl font-bold mb-4">Hanoi Tower Game</h2>
-                <p className="text-gray-400 mb-8">Coming soon: Interactive Hanoi Tower with canvas rendering</p>
-                <div className="bg-gray-800 rounded-lg p-8 max-w-2xl mx-auto">
-                  <p className="text-lg">Features:</p>
-                  <ul className="text-left mt-4 space-y-2 text-gray-300">
-                    <li>• Configurable disk count (1-10)</li>
-                    <li>• Smooth animations</li>
-                    <li>• Move counter</li>
-                    <li>• Undo/redo functionality</li>
-                    <li>• Auto-solve mode</li>
-                  </ul>
-                </div>
-              </div>
+              <HanoiGame onBack={handleBack} />
             )}
 
             {selectedProject.id === 'minesweeper' && (
