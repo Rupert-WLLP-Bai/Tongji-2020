@@ -75,7 +75,7 @@ pub fn cct_setconsoleborder_size(width: u16, height: u16) -> io::Result<()> {
 ///
 /// # Example
 /// ```no_run
-/// use console_tools::cct_showstr;
+/// use console_tools::screen::cct_showstr;
 /// // Show "Hello" at position (10, 5) with white text on black background
 /// cct_showstr(10, 5, "Hello", 15, 0).unwrap();
 /// ```
@@ -83,6 +83,53 @@ pub fn cct_showstr(x: u16, y: u16, text: &str, fg: u8, bg: u8) -> io::Result<()>
     crate::cursor::cct_gotoxy(x, y)?;
     crate::color::cct_setcolor(fg, bg)?;
     print!("{}", text);
+    crate::flush()?;
+    Ok(())
+}
+
+/// Display a character at a specific position with color, repeated n times
+///
+/// # Arguments
+/// * `x` - Column position (0-based)
+/// * `y` - Row position (0-based)
+/// * `ch` - Character to display
+/// * `fg` - Foreground color (0-15)
+/// * `bg` - Background color (0-15)
+/// * `repeat` - Number of times to repeat the character
+///
+/// # Example
+/// ```no_run
+/// use console_tools::screen::cct_showch;
+/// // Show "***" at position (10, 5) with white text on black background
+/// cct_showch(10, 5, '*', 15, 0, 3).unwrap();
+/// ```
+pub fn cct_showch(x: u16, y: u16, ch: char, fg: u8, bg: u8, repeat: usize) -> io::Result<()> {
+    crate::cursor::cct_gotoxy(x, y)?;
+    crate::color::cct_setcolor(fg, bg)?;
+    print!("{}", ch.to_string().repeat(repeat));
+    crate::flush()?;
+    Ok(())
+}
+
+/// Display an integer at a specific position with color
+///
+/// # Arguments
+/// * `x` - Column position (0-based)
+/// * `y` - Row position (0-based)
+/// * `num` - Integer to display
+/// * `fg` - Foreground color (0-15)
+/// * `bg` - Background color (0-15)
+///
+/// # Example
+/// ```no_run
+/// use console_tools::screen::cct_showint;
+/// // Show "42" at position (10, 5) with white text on black background
+/// cct_showint(10, 5, 42, 15, 0).unwrap();
+/// ```
+pub fn cct_showint(x: u16, y: u16, num: i32, fg: u8, bg: u8) -> io::Result<()> {
+    crate::cursor::cct_gotoxy(x, y)?;
+    crate::color::cct_setcolor(fg, bg)?;
+    print!("{}", num);
     crate::flush()?;
     Ok(())
 }

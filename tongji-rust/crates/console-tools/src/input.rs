@@ -123,7 +123,7 @@ fn parse_mouse_event(event: MouseEvent) -> KeyMouseEvent {
 ///
 /// # Example
 /// ```no_run
-/// use console_tools::read_char;
+/// use console_tools::input::read_char;
 /// let ch = read_char().unwrap();
 /// println!("You pressed: {}", ch);
 /// ```
@@ -139,7 +139,7 @@ pub fn read_char() -> io::Result<char> {
 ///
 /// # Example
 /// ```no_run
-/// use console_tools::read_line;
+/// use console_tools::input::read_line;
 /// let line = read_line().unwrap();
 /// println!("You entered: {}", line);
 /// ```
