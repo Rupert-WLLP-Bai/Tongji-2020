@@ -15,6 +15,8 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
   const [gameState, setGameState] = useState<HanoiState | null>(null);
   const [selectedDisk, setSelectedDisk] = useState<{ pillar: Pillar; disk: number } | null>(null);
   const [autoSolving, setAutoSolving] = useState(false);
+  const [moveHistory, setMoveHistory] = useState<string[]>([]);
+  const [currentStep, setCurrentStep] = useState<string>('');
 
   // Initialize game
   const initGame = () => {
@@ -35,6 +37,8 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     });
     setSelectedDisk(null);
     setAutoSolving(false);
+    setMoveHistory([]);
+    setCurrentStep('');
   };
 
   // Reset game when parameters change
@@ -140,18 +144,87 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
           newStacks[fromIndex].pop();
           newStacks[toIndex].push(selectedDisk.disk);
 
+          const moveCount = gameState.moveCount + 1;
+          const stepMsg = `Step ${moveCount}: ${selectedDisk.pillar} → ${pillar}`;
+
           setGameState({
             ...gameState,
             stacks: newStacks,
-            moveCount: gameState.moveCount + 1,
+            moveCount,
           });
           setSelectedDisk(null);
+          setCurrentStep(stepMsg);
+          setMoveHistory(prev => [...prev, stepMsg]);
         } else {
           // Invalid move - show error briefly
           alert('Cannot place larger disk on smaller disk!');
         }
       }
     }
+  };
+
+  // Auto solve function using recursive algorithm
+  const autoSolve = async () => {
+    if (!gameState || autoSolving) return;
+
+    setAutoSolving(true);
+    setMoveHistory([]);
+    setCurrentStep('');
+
+    // Reset to initial state
+    initGame();
+
+    // Wait a bit for reset to complete
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    // Generate move sequence
+    const moves: { from: Pillar; to: Pillar }[] = [];
+
+    const hanoi = (n: number, from: Pillar, to: Pillar, aux: Pillar) => {
+      if (n === 1) {
+        moves.push({ from, to });
+      } else {
+        hanoi(n - 1, from, aux, to);
+        moves.push({ from, to });
+        hanoi(n - 1, aux, to, from);
+      }
+    };
+
+    // Get auxiliary pillar
+    const pillars: Pillar[] = ['A', 'B', 'C'];
+    const auxPillar = pillars.find(p => p !== startPillar && p !== targetPillar)!;
+
+    hanoi(diskCount, startPillar, targetPillar, auxPillar);
+
+    // Execute moves with animation
+    let currentState = gameState;
+    for (let i = 0; i < moves.length; i++) {
+      const { from, to } = moves[i];
+      const fromIndex = from === 'A' ? 0 : from === 'B' ? 1 : 2;
+      const toIndex = to === 'A' ? 0 : to === 'B' ? 1 : 2;
+
+      const newStacks = currentState.stacks.map(s => [...s]);
+      const disk = newStacks[fromIndex].pop()!;
+      newStacks[toIndex].push(disk);
+
+      const moveCount = i + 1;
+      const stepMsg = `Step ${moveCount}: ${from} → ${to}`;
+
+      currentState = {
+        ...currentState,
+        stacks: newStacks,
+        moveCount,
+      };
+
+      setGameState(currentState);
+      setCurrentStep(stepMsg);
+      setMoveHistory(prev => [...prev, stepMsg]);
+
+      // Delay between moves (adjust speed here)
+      await new Promise(resolve => setTimeout(resolve, 500));
+    }
+
+    setAutoSolving(false);
   };
 
   // Check win condition
@@ -231,48 +304,94 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
           >
             Reset
           </button>
+
+          <button
+            onClick={autoSolve}
+            disabled={autoSolving}
+            className="px-4 py-1 bg-purple-600 hover:bg-purple-700 rounded transition-colors disabled:opacity-50 flex items-center gap-2"
+          >
+            {autoSolving ? (
+              <>
+                <span className="animate-spin">⚙️</span>
+                Auto Solving...
+              </>
+            ) : (
+              '🤖 Auto Solve'
+            )}
+          </button>
         </div>
+
+        {/* Current Step Display */}
+        {currentStep && (
+          <div className="mt-3 p-2 bg-blue-900/50 border border-blue-700 rounded text-center">
+            <span className="text-blue-300 font-mono">{currentStep}</span>
+          </div>
+        )}
       </div>
 
       {/* Game Canvas */}
-      <div className="flex-1 flex items-center justify-center p-4">
-        <div className="relative">
-          <canvas
-            ref={canvasRef}
-            width={800}
-            height={400}
-            className="border border-gray-700 rounded-lg cursor-pointer"
-            onClick={(e) => {
-              const rect = canvasRef.current?.getBoundingClientRect();
-              if (!rect) return;
+      <div className="flex-1 flex items-stretch p-4 gap-4">
+        {/* Canvas Container */}
+        <div className="flex-1 flex items-center justify-center">
+          <div className="relative">
+            <canvas
+              ref={canvasRef}
+              width={800}
+              height={400}
+              className="border border-gray-700 rounded-lg cursor-pointer"
+              onClick={(e) => {
+                const rect = canvasRef.current?.getBoundingClientRect();
+                if (!rect) return;
 
-              const x = e.clientX - rect.left;
-              const pillarWidth = 800 / 3;
+                const x = e.clientX - rect.left;
+                const pillarWidth = 800 / 3;
 
-              if (x < pillarWidth) handlePillarClick('A');
-              else if (x < pillarWidth * 2) handlePillarClick('B');
-              else handlePillarClick('C');
-            }}
-          />
+                if (x < pillarWidth) handlePillarClick('A');
+                else if (x < pillarWidth * 2) handlePillarClick('B');
+                else handlePillarClick('C');
+              }}
+            />
 
-          {isWon && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-75 rounded-lg">
-              <div className="text-center">
-                <h2 className="text-4xl font-bold text-green-400 mb-4">🎉 You Won!</h2>
-                <p className="text-xl mb-2">Moves: {gameState?.moveCount}</p>
-                <p className="text-sm text-gray-400 mb-4">
-                  {gameState?.moveCount === minMoves ? 'Perfect! Minimum moves!' : `Minimum was ${minMoves}`}
-                </p>
-                <button
-                  onClick={initGame}
-                  className="px-6 py-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors"
-                >
-                  Play Again
-                </button>
+            {isWon && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-75 rounded-lg">
+                <div className="text-center">
+                  <h2 className="text-4xl font-bold text-green-400 mb-4">🎉 You Won!</h2>
+                  <p className="text-xl mb-2">Moves: {gameState?.moveCount}</p>
+                  <p className="text-sm text-gray-400 mb-4">
+                    {gameState?.moveCount === minMoves ? 'Perfect! Minimum moves!' : `Minimum was ${minMoves}`}
+                  </p>
+                  <button
+                    onClick={initGame}
+                    className="px-6 py-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors"
+                  >
+                    Play Again
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
+
+        {/* Move History Panel */}
+        {moveHistory.length > 0 && (
+          <div className="w-64 bg-gray-800 border border-gray-700 rounded-lg p-4 flex flex-col">
+            <h3 className="text-lg font-bold mb-3 text-gray-300">Move History</h3>
+            <div className="flex-1 overflow-y-auto space-y-1 text-sm font-mono">
+              {moveHistory.map((move, index) => (
+                <div
+                  key={index}
+                  className={`p-2 rounded ${
+                    index === moveHistory.length - 1
+                      ? 'bg-blue-900/50 text-blue-300 border border-blue-700'
+                      : 'bg-gray-700/50 text-gray-400'
+                  }`}
+                >
+                  {move}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Instructions */}
