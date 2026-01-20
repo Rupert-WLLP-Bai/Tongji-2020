@@ -346,7 +346,7 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
     <div className="flex flex-col h-full bg-gray-900 text-white">
       {/* Header */}
       <div className="p-4 bg-gray-800 border-b border-gray-700">
-        <div className="flex items-center justify-between mb-4 flex-wrap gap-4">
+        <div className="flex items-center justify-between mb-4">
           <button
             onClick={onBack}
             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
@@ -362,14 +362,14 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
         </div>
 
         {/* Controls */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
+        <div className="flex gap-4 items-center flex-wrap">
           <div className="flex items-center gap-2">
-            <label className="text-sm whitespace-nowrap">Disks:</label>
+            <label className="text-sm">Disks:</label>
             <select
               value={diskCount}
               onChange={(e) => setDiskCount(Number(e.target.value))}
               disabled={autoSolving}
-              className="flex-1 px-3 py-1 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-1 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
                 <option key={n} value={n}>{n}</option>
@@ -378,12 +378,12 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            <label className="text-sm whitespace-nowrap">Start:</label>
+            <label className="text-sm">Start:</label>
             <select
               value={startPillar}
               onChange={(e) => setStartPillar(e.target.value as Pillar)}
               disabled={autoSolving}
-              className="flex-1 px-3 py-1 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-1 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="A">A</option>
               <option value="B">B</option>
@@ -392,12 +392,12 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            <label className="text-sm whitespace-nowrap">Target:</label>
+            <label className="text-sm">Target:</label>
             <select
               value={targetPillar}
               onChange={(e) => setTargetPillar(e.target.value as Pillar)}
               disabled={autoSolving}
-              className="flex-1 px-3 py-1 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-1 bg-gray-700 border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="A">A</option>
               <option value="B">B</option>
@@ -416,20 +416,15 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
           <button
             onClick={autoSolve}
             disabled={autoSolving}
-            className="px-4 py-1 bg-purple-600 hover:bg-purple-700 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="px-4 py-1 bg-purple-600 hover:bg-purple-700 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
           >
             {autoSolving ? (
               <>
                 <span className="animate-spin">⚙️</span>
-                <span className="hidden sm:inline">Auto Solving...</span>
-                <span className="sm:hidden">Solving...</span>
+                Auto Solving...
               </>
             ) : (
-              <>
-                <span>🤖</span>
-                <span className="hidden sm:inline">Auto Solve</span>
-                <span className="sm:hidden">Solve</span>
-              </>
+              '🤖 Auto Solve'
             )}
           </button>
         </div>
@@ -443,22 +438,21 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
       </div>
 
       {/* Game Canvas */}
-      <div className="flex-1 flex flex-col lg:flex-row items-stretch p-4 gap-4 overflow-hidden">
+      <div className="flex-1 flex items-stretch p-4 gap-4">
         {/* Canvas Container */}
-        <div className="flex-1 flex items-center justify-center min-h-0">
-          <div className="relative w-full max-w-4xl">
+        <div className="flex-1 flex items-center justify-center">
+          <div className="relative">
             <canvas
               ref={canvasRef}
               width={800}
               height={400}
-              className="border border-gray-700 rounded-lg cursor-pointer w-full h-auto"
-              style={{ maxWidth: '800px', aspectRatio: '2/1' }}
+              className="border border-gray-700 rounded-lg cursor-pointer"
               onClick={(e) => {
                 const rect = canvasRef.current?.getBoundingClientRect();
                 if (!rect) return;
 
                 const x = e.clientX - rect.left;
-                const pillarWidth = rect.width / 3;
+                const pillarWidth = 800 / 3;
 
                 if (x < pillarWidth) handlePillarClick('A');
                 else if (x < pillarWidth * 2) handlePillarClick('B');
@@ -468,10 +462,10 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
 
             {isWon && (
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-75 rounded-lg">
-                <div className="text-center p-4">
-                  <h2 className="text-2xl sm:text-4xl font-bold text-green-400 mb-4">🎉 You Won!</h2>
-                  <p className="text-lg sm:text-xl mb-2">Moves: {gameState?.moveCount}</p>
-                  <p className="text-xs sm:text-sm text-gray-400 mb-4">
+                <div className="text-center">
+                  <h2 className="text-4xl font-bold text-green-400 mb-4">🎉 You Won!</h2>
+                  <p className="text-xl mb-2">Moves: {gameState?.moveCount}</p>
+                  <p className="text-sm text-gray-400 mb-4">
                     {gameState?.moveCount === minMoves ? 'Perfect! Minimum moves!' : `Minimum was ${minMoves}`}
                   </p>
                   <button
@@ -488,7 +482,7 @@ export default function HanoiGame({ onBack }: HanoiGameProps) {
 
         {/* Move History Panel */}
         {moveHistory.length > 0 && (
-          <div className="w-full lg:w-64 bg-gray-800 border border-gray-700 rounded-lg p-4 flex flex-col max-h-64 lg:max-h-full">
+          <div className="w-64 bg-gray-800 border border-gray-700 rounded-lg p-4 flex flex-col max-h-full">
             <h3 className="text-lg font-bold mb-3 text-gray-300">Move History</h3>
             <div className="flex-1 overflow-y-auto space-y-1 text-sm font-mono min-h-0">
               {moveHistory.map((move, index) => (
