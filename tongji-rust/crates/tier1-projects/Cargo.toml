@@ -5,3 +5,5 @@ edition = "2021"
 
 [dependencies]
 console-tools = { path = "../console-tools" }
+crossterm = { workspace = true }
+rand = { workspace = true }
